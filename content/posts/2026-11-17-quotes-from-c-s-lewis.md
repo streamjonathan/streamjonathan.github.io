@@ -2,7 +2,7 @@
 title: "Quotes from C. S. Lewis"
 date: 2026-11-17
 slug: quotes-from-c-s-lewis
-draft: true
+draft: false
 original_url: https://jonamccallum.substack.com/p/quotes-from-c-s-lewis
 ---
 

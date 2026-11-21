@@ -5,38 +5,58 @@ permalink: /
 eleventyExcludeFromCollections: true
 ---
 
-<p>Writing about faith, film, surfing, music and life.</p>
+<p class="intro">Writing about faith, film, surfing, music and life.</p>
+
+<p class="social">
+  <a href="https://www.instagram.com/jonamccallum">Instagram</a>
+  <a href="https://www.tiktok.com/@jonamccallum">TikTok</a>
+  <a href="https://x.com/jonamccallum">X</a>
+  <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a>
+  <a href="https://www.threads.com/@jonamccallum">Threads</a>
+  <a href="https://jonamccallum.substack.com">Substack</a>
+</p>
+
+<section class="ask-hero" aria-labelledby="ask-heading">
+  <h2 id="ask-heading">Interact with Jonathan's writing</h2>
+  <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
+  <p>Jonathan reads the questions people ask here, takes on board what people say, and does his best to reply where he can.</p>
+  <form id="ask-form">
+    <label for="ask-question">Your question</label>
+    <input id="ask-question" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
+    <button type="submit">Ask</button>
+  </form>
+  <div class="chips" role="group" aria-label="Try asking">
+    <button type="button" data-q="What has he written about Narnia?">Narnia</button>
+    <button type="button" data-q="What does he say about surfing and Jesus?">Surfing and Jesus</button>
+    <button type="button" data-q="Tell me about the poem “to sea”.">The poem “to sea”</button>
+    <button type="button" data-q="What has he written about C. S. Lewis?">C. S. Lewis</button>
+  </div>
+  <div id="ask-answer" aria-live="polite"></div>
+  <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
+  <p class="ai-note">An AI answers from Jonathan's writing only. It is not Jonathan, and it can get things wrong.</p>
+</section>
+
+<section class="note-section" aria-labelledby="note-heading">
+  <h2 id="note-heading">Leave a note</h2>
+  <p>If something here spoke to you, leave a note for Jonathan. No name or email needed — notes are anonymous. If you would like a reply, the quickest way is a message on <a href="https://www.instagram.com/jonamccallum">Instagram</a> or <a href="https://www.threads.com/@jonamccallum">Threads</a>.</p>
+  <form id="note-form">
+    <label for="note-text">Your note</label>
+    <textarea id="note-text" name="note" rows="3" maxlength="1000" placeholder="Write a few words…" required></textarea>
+    <button type="submit">Leave the note</button>
+  </form>
+  <p id="note-result" aria-live="polite"></p>
+</section>
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 
-<section aria-labelledby="ask-heading">
-  <h2 id="ask-heading">Ask about the writing</h2>
-  <p>It only answers from his published posts, with a link to the post each answer came from. It is not Jonathan himself.</p>
-  <form id="ask-form">
-    <label for="ask-question">Your question</label>
-    <input id="ask-question" name="question" type="text" maxlength="500" placeholder="e.g. What has he written about Narnia?" required>
-    <button type="submit">Ask</button>
-  </form>
-  <div id="ask-answer" aria-live="polite"></div>
-  <p><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
-</section>
-
-<section aria-labelledby="connect-heading">
-  <h2 id="connect-heading">Connect</h2>
-  <p>If something here spoke to you, the easiest way to stay in touch:</p>
-  <ul>
-    <li><a href="https://www.instagram.com/jonamccallum">Instagram — @jonamccallum</a></li>
-    <li><a href="https://www.threads.com/@jonamccallum">Threads — @jonamccallum</a></li>
-    <li><a href="https://www.youtube.com/@Jonathanmccallum1">YouTube — @Jonathanmccallum1</a></li>
-    <li><a href="https://jonamccallum.substack.com">Substack — Jonathan's writing</a></li>
-    <li><a href="/feed/">RSS feed</a></li>
-  </ul>
-</section>
-
 <h2>Writing</h2>
-<ul>
+<ul class="article-list">
 {% for post in collections.publishedPosts | reverse %}
-  <li><a href="{{ post.url }}">{{ post.data.title }}</a> — {{ post.date | readableDate }}</li>
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="meta">{{ post.date | readableDate }}</span>
+    <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
+  </li>
 {% endfor %}
 </ul>
 

@@ -14,7 +14,8 @@
 // message and let the Pagefind search on the site do the work.
 //
 // Routes (set in the Cloudflare dashboard after sign-in):
-//   jonathanmccallum.com/api/ask  →  this Worker
+//   jonathanmccallum.com/api/ask   →  this Worker (chat)
+//   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
 // Everything else on the site is served by Cloudflare Pages.
 
 const FIXED_REFUSAL =
@@ -87,8 +88,43 @@ function answerIsSafe(draft, sources) {
   return true;
 }
 
+// Leave a note: anonymous by design — no name, email or handle is asked
+// for or accepted. Notes are stored in the NOTES KV namespace until
+// Jonathan reads them. If the namespace is not bound yet (before deploy),
+// the endpoint answers {ok:false} and the site says notes are not
+// switched on yet.
+async function handleNote(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST a JSON note to /api/note." }, 405);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"note\": \"...\" }." }, 400);
+  }
+  const note = typeof body.note === "string" ? body.note.trim() : "";
+  if (!note || note.length > 1000) {
+    return json({ error: "Write a note, up to 1000 characters." }, 400);
+  }
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (rateLimited(ip)) {
+    return json({ ok: false, reason: "resting" });
+  }
+  if (!env.NOTES) {
+    return json({ ok: false, reason: "resting" });
+  }
+  const key = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(key, JSON.stringify({ note, at: new Date().toISOString() }));
+  return json({ ok: true });
+}
+
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+    if (url.pathname.endsWith("/api/note")) {
+      return handleNote(request, env);
+    }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
     }

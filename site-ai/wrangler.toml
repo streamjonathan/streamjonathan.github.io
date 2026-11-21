@@ -26,6 +26,15 @@ binding = "AI"
 binding = "VECTORIZE"
 index_name = "jonathanmccallum-posts"
 
+# Notes KV (anonymous reader notes from /api/note). Create with:
+#   npx wrangler kv namespace create NOTES
+# then uncomment the binding below and paste the real id. Until then
+# /api/note answers {ok:false} and the site says notes are not switched
+# on yet — the chat still works without it.
+# [[kv_namespaces]]
+# binding = "NOTES"
+# id = "PASTE_REAL_ID_HERE"
+
 [vars]
 # AI Gateway id (created in the Cloudflare dashboard, AI Gateway section).
 # Guardrails (Llama Guard + Prompt Guard) live on this gateway — see

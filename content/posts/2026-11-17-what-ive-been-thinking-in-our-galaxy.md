@@ -2,7 +2,7 @@
 title: "What I've been thinking in our Galaxy"
 date: 2026-11-17
 slug: what-ive-been-thinking-in-our-galaxy
-draft: true
+draft: false
 original_url: https://jonamccallum.substack.com/p/what-ive-been-thinking-in-our-galaxy
 ---
 

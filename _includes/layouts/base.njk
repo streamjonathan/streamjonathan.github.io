@@ -3,8 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141414">
+<meta name="theme-color" content="#141414">
 <title>{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}</title>
 {% set pageDescription = site.description %}
 {% if page.url != "/" %}{% set pageDescription = content | excerpt %}{% endif %}
@@ -87,7 +86,8 @@
 {{ content | safe }}
 </main>
 <footer class="site-footer">
-  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a></p>
+  <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
+  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a></p>
 </footer>
 <script src="/js/main.js" defer></script>
 </body>

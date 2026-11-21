@@ -50,15 +50,4 @@ Time brings tide’s pull, I splash in, all I feel is new.
  The swirls along the rocks tell me that it is 
  Time to go to sea.
 
-Poem by [Jonathan McCallum](http://www.jonathanmccallum.com/) 
- [@peoplepoesia](http://peoplepoesia.wordpress.com/) 
- [Poetry Blog](http://peoplepoesia.wordpress.com/)
-
-Tags:
-[Jonathan McCallum](http://www.jonathanmccallum.com/tag/jonathan-mccallum/)
-,
-[poem](http://www.jonathanmccallum.com/tag/poem/)
-,
-[sea](http://www.jonathanmccallum.com/tag/sea/)
-,
-[Time to go to Sea](http://www.jonathanmccallum.com/tag/time-to-go-to-sea/)
+Poem by Jonathan McCallum

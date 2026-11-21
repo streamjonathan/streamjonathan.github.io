@@ -1,15 +1,13 @@
-// Theme: follow the device (auto night mode) unless the reader picks one.
-// The small Dark / Light button at the top saves the choice on this device.
+// Theme: night is the start. The small Dark / Light button at the top
+// switches to the greyish day theme and saves the choice on this device.
 (function () {
   var root = document.documentElement;
   var button = document.getElementById("theme-toggle");
   var stored = null;
   try { stored = localStorage.getItem("theme"); } catch (e) {}
-  if (stored === "dark" || stored === "light") root.setAttribute("data-theme", stored);
+  if (stored === "light") root.setAttribute("data-theme", "light");
   function effective() {
-    var chosen = root.getAttribute("data-theme");
-    if (chosen) return chosen;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return root.getAttribute("data-theme") === "light" ? "light" : "dark";
   }
   function paint() {
     if (button) button.textContent = effective() === "dark" ? "Light" : "Dark";
@@ -17,15 +15,13 @@
   if (button) {
     button.addEventListener("click", function () {
       var next = effective() === "dark" ? "light" : "dark";
-      root.setAttribute("data-theme", next);
+      if (next === "light") root.setAttribute("data-theme", "light");
+      else root.removeAttribute("data-theme");
       try { localStorage.setItem("theme", next); } catch (e) {}
       paint();
     });
   }
   paint();
-  if (window.matchMedia) {
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
-  }
 })();
 
 // Swipe between posts: on a post page, swipe left for the next post and

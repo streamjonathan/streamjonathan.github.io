@@ -2,11 +2,9 @@
 title: "The New Narnia Movie, Lewis and the nature of God"
 date: 2026-11-18
 slug: the-new-narnia-movie-lewis-and-the-nature-of-god
-draft: true
+draft: false
 original_url: https://jonamccallum.substack.com/p/the-new-narnia-movie-lewis-and-the
 ---
-
-[Video post — the video is embedded on Substack.]
 
 When I look back at my childhood, those books are key to my faith journey, following Jesus, understanding who Jesus is.
 

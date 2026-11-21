@@ -10,3 +10,4 @@
 #
 # Path redirects (same host) can be added below, one per line:
 # /old-path /new-path 301
+/feed/ /feed/index.xml 301

@@ -88,9 +88,17 @@ function chunkText(text) {
 }
 
 function postUrl(data, file) {
+  // Keep old jonathanmccallum.com addresses working; anything from
+  // elsewhere (e.g. Substack) gets the same date-based address the site
+  // itself publishes the post at — never a Substack "/p/" address.
   if (data.original_url) {
     try {
-      return new URL(data.original_url).pathname;
+      const u = new URL(data.original_url);
+      if (u.hostname === "jonathanmccallum.com" || u.hostname === "www.jonathanmccallum.com") {
+        let p = u.pathname;
+        if (!p.endsWith("/")) p += "/";
+        return p;
+      }
     } catch {
       // fall through
     }
