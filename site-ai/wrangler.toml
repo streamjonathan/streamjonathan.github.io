@@ -1,0 +1,41 @@
+# Cloudflare Worker: the site AI for jonathanmccallum.com
+#
+# NOT DEPLOYED YET — no Cloudflare account exists. Deploy only after
+# Jonathan signs into Cloudflare (free account) and creates the pieces
+# listed in site-ai/README.md. Nothing in this folder is pushed anywhere
+# and nothing here touches DNS.
+#
+# What this Worker is: a stateless question-answerer that reads ONLY the
+# Vectorize index built from the published posts (site-ai/scripts) and
+# returns short, cited, warm answers in Jonathan's voice. No tools, no
+# web, no memory, no history, no personal data anywhere — see README.md
+# for the separation rules that make that enforceable.
+
+name = "jonathanmccallum-site-ai"
+main = "src/index.js"
+compatibility_date = "2026-11-21"
+
+# Workers AI binding (free tier: 10,000 Neurons/day, hard stop, no card).
+[ai]
+binding = "AI"
+
+# Vectorize index holding ONLY the published posts. Created with:
+#   npx wrangler vectorize create jonathanmccallum-posts --dimensions=1024 --metric=cosine
+# (bge-m3 embeddings are 1024-dimensional.)
+[[vectorize]]
+binding = "VECTORIZE"
+index_name = "jonathanmccallum-posts"
+
+[vars]
+# AI Gateway id (created in the Cloudflare dashboard, AI Gateway section).
+# Guardrails (Llama Guard + Prompt Guard) live on this gateway — see
+# site-ai/ai-gateway-guardrails.md. Replace with the real gateway id at
+# deploy time; if left empty the Worker calls Workers AI directly.
+AI_GATEWAY_ID = "jonathanmccallum-site-ai"
+# Models (Workers AI, free tier). Chat model first, embeddings second.
+CHAT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8-fast"
+EMBED_MODEL = "@cf/baai/bge-m3"
+# Retrieval + answer limits.
+TOP_K = "5"
+MAX_ANSWER_TOKENS = "350"
+MAX_QUESTION_CHARS = "500"

@@ -1,0 +1,10 @@
+# Security headers for Cloudflare Pages (applied to every page).
+# Kept conservative so nothing on the site breaks: the video facades load
+# thumbnails from i.ytimg.com and iframes from youtube-nocookie.com, and the
+# search page + chat box run small same-origin scripts.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://i.ytimg.com data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'

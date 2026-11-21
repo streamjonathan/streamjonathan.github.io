@@ -1,0 +1,38 @@
+/* One small stylesheet for jonathanmccallum.com — text first, no frameworks. */
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body {
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 1rem 1.25rem 3rem;
+  font: 1.0625rem/1.65 Georgia, "Times New Roman", serif;
+  color: #1a1a1a;
+  background: #fff;
+}
+h1, h2, h3 { line-height: 1.25; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1 { font-size: 1.75rem; }
+a { color: #1a4d8f; }
+a:visited { color: #5b3a8c; }
+img, picture, video, iframe { max-width: 100%; height: auto; }
+img { display: block; }
+.site-header { border-bottom: 1px solid #ddd; padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
+.site-title { font-size: 1.25rem; font-weight: bold; margin: 0 0 0.25rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.site-title a { color: inherit; text-decoration: none; }
+.site-header nav ul, main ul { padding-left: 1.25rem; }
+.site-header nav ul { list-style: none; padding-left: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
+.site-footer { border-top: 1px solid #ddd; margin-top: 2.5rem; padding-top: 0.75rem; font-size: 0.9rem; color: #555; }
+.meta { color: #555; font-size: 0.95rem; }
+blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 1rem; color: #444; }
+code { font-size: 0.9em; }
+pre { overflow-x: auto; background: #f6f6f6; padding: 0.75rem; }
+/* Tap-to-load video facade: 16:9 box, thumbnail + play button, no iframe
+   or third-party script until the reader taps. */
+.video-facade { position: relative; aspect-ratio: 16 / 9; background: #111; margin: 1rem 0; }
+.video-facade__button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
+.video-facade__thumb { width: 100%; height: 100%; object-fit: cover; }
+.video-facade__play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 4rem; height: 2.75rem; line-height: 2.75rem; text-align: center;
+  background: rgba(0, 0, 0, 0.75); color: #fff; border-radius: 0.5rem; font-size: 1.25rem;
+}
+.video-facade iframe, .video-facade + iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }

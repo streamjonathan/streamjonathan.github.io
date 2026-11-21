@@ -1,0 +1,7 @@
+node_modules/
+_site/
+# Generated AI index chunks (rebuild with site-ai/scripts/build-index.mjs).
+site-ai/index/
+# Cloudflare / Wrangler local state — never commit.
+.dev.vars
+.wrangler/

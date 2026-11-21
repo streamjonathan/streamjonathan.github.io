@@ -1,0 +1,23 @@
+# Cloudflare Pages project configuration for jonathanmccallum.com
+#
+# Deploy: connect the GitHub repo in the Cloudflare dashboard
+# (Workers & Pages → Create → Pages → Connect to Git) and use these settings:
+#   Framework preset: None (or Eleventy)
+#   Build command:    npm run build
+#   Build output:     _site
+#   Node version:     22
+#   Root directory:   /  (the repo root IS this project)
+#
+# The settings below mirror that in code. `pages_build_output_dir` is what
+# Wrangler uses for `wrangler pages dev` / `wrangler pages deploy`; the
+# dashboard settings are the source of truth for the connected Git deploys.
+# The CNAME file in the repo root sets the custom domain to
+# jonathanmccallum.com — Cloudflare Pages honours it, and issues the free
+# HTTPS certificate automatically once DNS points at Cloudflare.
+#
+# GitHub Pages stays as the fallback: .github/workflows/deploy.yml is
+# untouched. One repo, two hosts — whichever is live, the other is the spare.
+
+name = "jonathanmccallum-site"
+compatibility_date = "2026-11-21"
+pages_build_output_dir = "_site"

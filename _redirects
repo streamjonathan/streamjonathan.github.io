@@ -1,0 +1,2 @@
+# Canonical domain: www always redirects to the apex domain.
+https://www.jonathanmccallum.com/* https://jonathanmccallum.com/:splat 301

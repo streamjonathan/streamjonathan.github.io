@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}</title>
+<meta name="description" content="{{ site.description }}">
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <p class="site-title"><a href="/">{{ site.title }}</a></p>
+  <nav aria-label="Pages">
+    <ul>
+    {% for p in collections.pages | sort(false, false, "data.title") %}
+      {% if p.data.slug != "sample-page" %}
+      <li><a href="{{ p.url }}">{{ p.data.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+      <li><a href="/search/">Search</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <p>&copy; {{ site.title }} — <a href="/feed/">RSS feed</a></p>
+</footer>
+<script>
+// Tap-to-load video facades: swap the thumbnail for the youtube-nocookie
+// iframe only when the reader taps play. This is the site's only JavaScript.
+document.addEventListener("click", function (e) {
+  var button = e.target.closest("[data-video-id]");
+  if (!button) return;
+  var id = button.getAttribute("data-video-id");
+  var holder = button.closest(".video-facade");
+  if (!holder) return;
+  var frame = document.createElement("iframe");
+  frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+  frame.title = "YouTube video";
+  frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+  frame.allowFullscreen = true;
+  frame.loading = "lazy";
+  holder.replaceWith(frame);
+});
+</script>
+</body>
+</html>

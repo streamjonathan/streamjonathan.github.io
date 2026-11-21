@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+title: Search the writing
+permalink: /search/
+eleventyExcludeFromCollections: true
+---
+
+<h1>Search the writing</h1>
+
+<p>Search everything published here. This search runs entirely in your browser — it cannot be tricked, and it works even when the AI chat is resting. It only finds posts that are already live; more appear as posts are published.</p>
+
+<div id="search"></div>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+<script src="/pagefind/pagefind-ui.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", function () {
+    new PagefindUI({ element: "#search", showSubResults: true });
+  });
+</script>
