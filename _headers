@@ -1,10 +1,24 @@
 # Security headers for Cloudflare Pages (applied to every page).
-# Kept conservative so nothing on the site breaks: the video facades load
-# thumbnails from i.ytimg.com and iframes from youtube-nocookie.com, and the
-# search page + chat box run small same-origin scripts.
+#
+# The site is static HTML/CSS with three small same-origin scripts
+# (video facades, the ask form, search) — no inline script remains, so
+# this policy needs no 'unsafe-inline' anywhere. The video facades load
+# thumbnails from i.ytimg.com and iframes from youtube-nocookie.com only
+# after the reader taps play; the chat POSTs to /api/ask on this same
+# origin; search runs entirely in the browser from same-origin files.
+#
+# HSTS is set WITHOUT preload on purpose: preload is a one-way commitment
+# for the whole domain (including subdomains) and can only be added once
+# the site has served HTTPS stably. Add `; preload` after a few weeks
+# live, and only after submitting the domain to hstspreload.org.
+#
+# NOTE: a local `python -m http.server` does NOT apply this file — these
+# headers only take effect on Cloudflare Pages. Verify them live with
+# `curl -I https://jonathanmccallum.com/` after the deploy.
 /*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://i.ytimg.com data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'

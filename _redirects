@@ -1,2 +1,12 @@
-# Canonical domain: www always redirects to the apex domain.
-https://www.jonathanmccallum.com/* https://jonathanmccallum.com/:splat 301
+# Redirects for Cloudflare Pages.
+#
+# NOTE: the www → apex redirect does NOT live here. Cloudflare Pages
+# _redirects only accepts path sources (e.g. "/old /new 301") — an
+# absolute URL as the source is rejected as an invalid line, which is
+# what the first deploy log reported. Host-specific redirects belong in
+# the Cloudflare dashboard instead: Rules → Redirect Rules →
+# "www.jonathanmccallum.com/* → https://jonathanmccallum.com/$1", 301.
+# See work/seo-security-audit.md.
+#
+# Path redirects (same host) can be added below, one per line:
+# /old-path /new-path 301

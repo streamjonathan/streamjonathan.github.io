@@ -1,7 +1,7 @@
 # Jonathan McCallum — Voice Guide
 
 *For the new jonathanmccallum.com and its site AI. Research only — nothing here has been published.*
-*Built 21 Nov 2026 from: 9 YouTube transcripts (MAIN channel @Jonathanmccallum1, ~6,000 words), 26 recovered blog posts (2013–2023), 648 Instagram captions (@jonamccallum, ~9,900 words), 12 recent Threads posts. YouTube auto-captions were rate-limited (HTTP 429), so the transcripts are faster-whisper (base) transcriptions of the audio — wording is close but not word-perfect. Transcripts live in `work/voice/transcripts/`.*
+*Built 21 Nov 2026 from: 12 YouTube transcripts (MAIN channel @Jonathanmccallum1, ~8,800 words), 26 recovered blog posts (2013–2023), 648 Instagram captions (@jonamccallum, ~9,900 words), 12 recent Threads posts. YouTube auto-captions were rate-limited (HTTP 429), so the transcripts are faster-whisper (base) transcriptions of the audio — wording is close but not word-perfect. Transcripts live in `work/voice/transcripts/`.*
 
 ## The voice in one paragraph
 
@@ -148,6 +148,9 @@ Short, plain, warm, with a question or a blessing at the end. Examples in his ma
 - "If in doubt don't paddle out." — "Dating & Thoughts on Identifying a Healthy Relationship", 2016
 - "Words can heap up and block the view of reality… That stuff is rubbish. That stuff takes the focus off Jesus." — "Beautiful Town", 2014
 - "I'm Jonathan. I live by the sea, I surf, and I make short videos about music and the positive things in life, because I think a good song and a bit of joy can lift a whole day." — Threads, 2026
+- "Nothing good was ever lost" — his favourite line from Lewis (*The Last Battle*), quoted in "My Theology Influenced by C S Lewis So Far", 2025
+- "Our faith is not dependent on our performance, it's upon the Christ that has died and rose again." — same video
+- "Have a great day. Keep on following Jesus. Look for him wherever you go and lift up other people. Peace to you." — video, "Narnia and What I'd Like Everyone To Know"
 
 ## Do / Do not — for anyone writing as him
 

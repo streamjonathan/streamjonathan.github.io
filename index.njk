@@ -7,13 +7,13 @@ eleventyExcludeFromCollections: true
 
 <h1>Jonathan McCallum</h1>
 
-<p>Writing about faith, film, the Basque Country, surfing, music and life on the coast of northern Spain.</p>
+<p>Writing about faith, film, surfing, music and life.</p>
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 
 <section aria-labelledby="ask-heading">
   <h2 id="ask-heading">Ask about the writing</h2>
-  <p>An AI guide to what Jonathan has written here. It only answers from his published posts, and every answer links to the post it came from. It is not Jonathan himself.</p>
+  <p>A guide to what Jonathan has written here. It only answers from his published posts, and every answer links to the post it came from. It is not Jonathan himself.</p>
   <form id="ask-form">
     <label for="ask-question">Your question</label>
     <input id="ask-question" name="question" type="text" maxlength="500" placeholder="e.g. What has he written about Narnia?" required>
@@ -57,67 +57,4 @@ eleventyExcludeFromCollections: true
 {% endfor %}
 </ul>
 
-<script>
-// Ask-the-writing chat: talks to the site AI Worker at /api/ask.
-// If the Worker is not deployed yet (or is resting for the day), the form
-// falls back to pointing the reader at search — nothing here ever breaks.
-(function () {
-  var form = document.getElementById("ask-form");
-  var answer = document.getElementById("ask-answer");
-  if (!form) return;
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var q = document.getElementById("ask-question").value.trim();
-    if (!q) return;
-    var button = form.querySelector("button");
-    button.disabled = true;
-    answer.textContent = "Thinking…";
-    fetch("/api/ask", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ question: q }),
-    })
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        button.disabled = false;
-        answer.innerHTML = "";
-        var p = document.createElement("p");
-        p.textContent = data.answer || "No answer came back — please try the search below.";
-        answer.appendChild(p);
-        if (data.sources && data.sources.length) {
-          var list = document.createElement("ul");
-          data.sources.forEach(function (s) {
-            var li = document.createElement("li");
-            var a = document.createElement("a");
-            a.href = s.url;
-            a.textContent = s.title;
-            li.appendChild(a);
-            list.appendChild(li);
-          });
-          answer.appendChild(list);
-        }
-      })
-      .catch(function () {
-        button.disabled = false;
-        answer.innerHTML = "";
-        var p = document.createElement("p");
-        p.textContent = "The chat isn't available right now — please use the search instead.";
-        var a = document.createElement("a");
-        a.href = "/search/";
-        a.textContent = "Search the writing";
-        answer.appendChild(p);
-        answer.appendChild(a);
-      });
-  });
-
-  // Newsletter signup is a placeholder until the mailing list is set up.
-  var news = document.getElementById("newsletter-form");
-  if (news) {
-    news.addEventListener("submit", function (e) {
-      e.preventDefault();
-      document.getElementById("newsletter-note").textContent =
-        "Newsletter signup opens soon — for now, Substack is the best place to follow along.";
-    });
-  }
-})();
-</script>
+<script src="/js/ask.js" defer></script>

@@ -34,6 +34,12 @@ const OUT_FILE = path.join(
 const CHUNK_WORDS = 400;
 const OVERLAP_WORDS = 50;
 
+// Excluded from the index, always — even if a post is published one day:
+// anything about Carl Medearis (someone else speaking, not Jonathan)
+// and anything about AI (Jonathan does not want AI talked about in posts).
+const EXCLUDED_FILES = ["carl-medearis", "chatgpt"];
+const EXCLUDED_CONTENT = ["Medearis"];
+
 // Personal-data scrub: if it ever appears in a post, it must not reach
 // the index. Public bylines and place names in the writing stay — those
 // are the published words themselves.
@@ -98,9 +104,17 @@ const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
 const chunks = [];
 let published = 0;
 let skippedDraft = 0;
+let skippedExcluded = 0;
 
 for (const file of files.sort()) {
   const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
+  if (
+    EXCLUDED_FILES.some((s) => file.includes(s)) ||
+    EXCLUDED_CONTENT.some((s) => raw.includes(s))
+  ) {
+    skippedExcluded++;
+    continue;
+  }
   const { data, body } = parseFrontMatter(raw);
   // Drafts are held back by posts.11tydata.js (draft: true) unless a post
   // opts out with `draft: false` in its own front matter.
@@ -128,7 +142,7 @@ fs.writeFileSync(
   chunks.map((c) => JSON.stringify(c)).join("\n") + (chunks.length ? "\n" : "")
 );
 
-console.log(`posts published: ${published}, drafts skipped: ${skippedDraft}`);
+console.log(`posts published: ${published}, drafts skipped: ${skippedDraft}, excluded: ${skippedExcluded}`);
 console.log(`chunks written: ${chunks.length} → ${OUT_FILE}`);
 if (chunks.length === 0) {
   console.log("NOTE: the index is empty because no posts are published yet.");

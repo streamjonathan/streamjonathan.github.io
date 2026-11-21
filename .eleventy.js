@@ -43,8 +43,32 @@ module.exports = function (eleventyConfig) {
     })
   );
 
-  // Static assets: one CSS file, recovered images, and the GitHub Pages CNAME.
+  // Plain-text excerpt from rendered HTML: the first ~150 characters of
+  // real text, never invented. The page heading and the post date line are
+  // dropped first, so the excerpt starts with the writing itself. Used
+  // for meta descriptions and JSON-LD.
+  eleventyConfig.addFilter("excerpt", (html, length = 150) => {
+    const text = String(html || "")
+      .replace(/<script[\s\S]*?<\/script>/g, " ")
+      .replace(/<style[\s\S]*?<\/style>/g, " ")
+      .replace(/<h1[^>]*>.*?<\/h1>/g, " ")
+      .replace(/<p class="meta">.*?<\/p>/g, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;|&apos;/g, "'")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (text.length <= length) return text;
+    return text.slice(0, length).replace(/\s+\S*$/, "") + "…";
+  });
+
+  // Static assets: one CSS file, three small same-origin scripts, the
+  // recovered images, and the GitHub Pages CNAME.
   eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy({ "content/images": "images" });
   eleventyConfig.addPassthroughCopy("CNAME");
   // Cloudflare Pages reads these from the build output root.

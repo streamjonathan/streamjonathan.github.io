@@ -45,8 +45,6 @@ The glass that cuts the wind and chills the light
  And the Wind woke me.
 
 Tags:
-[Carl Medearis](http://www.jonathanmccallum.com/tag/carl-medearis/)
-,
 [glass](http://www.jonathanmccallum.com/tag/glass/)
 ,
 [Jonathan McCallum](http://www.jonathanmccallum.com/tag/jonathan-mccallum/)
