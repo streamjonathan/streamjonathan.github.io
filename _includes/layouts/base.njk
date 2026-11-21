@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#141414">
 <title>{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}</title>
 {% set pageDescription = site.description %}
 {% if page.url != "/" %}{% set pageDescription = content | excerpt %}{% endif %}
@@ -80,24 +82,12 @@
 <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<header class="site-header">
-  <p class="site-title"><a href="/">{{ site.title }}</a></p>
-  <nav aria-label="Pages">
-    <ul>
-    {% for p in collections.pages | sort(false, false, "data.title") %}
-      {% if p.data.slug != "sample-page" %}
-      <li><a href="{{ p.url }}">{{ p.data.title }}</a></li>
-      {% endif %}
-    {% endfor %}
-      <li><a href="/search/">Search</a></li>
-    </ul>
-  </nav>
-</header>
+<div class="theme-row"><button id="theme-toggle" type="button">Dark</button></div>
 <main>
 {{ content | safe }}
 </main>
 <footer class="site-footer">
-  <p>&copy; {{ site.title }} — <a href="/feed/">RSS feed</a></p>
+  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a></p>
 </footer>
 <script src="/js/main.js" defer></script>
 </body>

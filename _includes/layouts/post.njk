@@ -8,3 +8,11 @@ layout: layouts/base.njk
   {% endif %}
   {{ content | safe }}
 </article>
+{% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}
+{% if prevPost or nextPost %}
+<nav class="post-nav" aria-label="More writing">
+  {% if prevPost %}<a class="post-nav__prev" href="{{ prevPost.url }}">← {{ prevPost.data.title }}</a>{% endif %}
+  {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}
+</nav>
+{% endif %}

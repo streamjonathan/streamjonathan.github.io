@@ -1,30 +1,91 @@
-/* One small stylesheet for jonathanmccallum.com — text first, no frameworks. */
-:root { color-scheme: light; }
+/* jonathanmccallum.com — one page, text first, no frameworks, no webfonts.
+   Light by day, dark by night: follows the device automatically, and the
+   reader can choose with the small Dark / Light button at the top. */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #5c5c5c;
+  --line: #dddddd;
+  --link: #1a4d8f;
+  --visited: #5b3a8c;
+  --code-bg: #f6f6f6;
+  --quote: #444444;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141414;
+    --text: #e8e6e1;
+    --muted: #a8a49c;
+    --line: #333333;
+    --link: #8fb8e8;
+    --visited: #c39bd3;
+    --code-bg: #1f1f1f;
+    --quote: #c9c5bd;
+  }
+}
+html[data-theme="dark"] {
+  --bg: #141414;
+  --text: #e8e6e1;
+  --muted: #a8a49c;
+  --line: #333333;
+  --link: #8fb8e8;
+  --visited: #c39bd3;
+  --code-bg: #1f1f1f;
+  --quote: #c9c5bd;
+}
 * { box-sizing: border-box; }
 body {
   margin: 0 auto;
-  max-width: 42rem;
+  max-width: 40rem;
   padding: 1rem 1.25rem 3rem;
   font: 1.0625rem/1.65 Georgia, "Times New Roman", serif;
-  color: #1a1a1a;
-  background: #fff;
+  color: var(--text);
+  background: var(--bg);
 }
 h1, h2, h3 { line-height: 1.25; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-h1 { font-size: 1.75rem; }
-a { color: #1a4d8f; }
-a:visited { color: #5b3a8c; }
+h1 { font-size: 1.6rem; }
+a { color: var(--link); }
+a:visited { color: var(--visited); }
+:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 img, picture, video, iframe { max-width: 100%; height: auto; }
 img { display: block; }
-.site-header { border-bottom: 1px solid #ddd; padding-bottom: 0.75rem; margin-bottom: 1.5rem; }
-.site-title { font-size: 1.25rem; font-weight: bold; margin: 0 0 0.25rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-.site-title a { color: inherit; text-decoration: none; }
-.site-header nav ul, main ul { padding-left: 1.25rem; }
-.site-header nav ul { list-style: none; padding-left: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; }
-.site-footer { border-top: 1px solid #ddd; margin-top: 2.5rem; padding-top: 0.75rem; font-size: 0.9rem; color: #555; }
-.meta { color: #555; font-size: 0.95rem; }
-blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 1rem; color: #444; }
+/* Small theme choice, top right, nothing else up there. */
+.theme-row { display: flex; justify-content: flex-end; }
+.theme-row button {
+  border: 0; background: none; padding: 0.75rem 0.25rem;
+  font: 0.95rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--muted); cursor: pointer; min-height: 2.75rem;
+}
+main ul { padding-left: 1.25rem; }
+main li { margin: 0.4rem 0; }
+main li a { padding: 0.15rem 0; }
+.site-footer { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 0.75rem; font-size: 0.9rem; color: var(--muted); }
+.meta { color: var(--muted); font-size: 0.95rem; }
+blockquote { border-left: 3px solid var(--line); margin-left: 0; padding-left: 1rem; color: var(--quote); }
 code { font-size: 0.9em; }
-pre { overflow-x: auto; background: #f6f6f6; padding: 0.75rem; }
+pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
+/* Forms: roomy tap targets, full-width fields on phones. */
+form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+input, button { font: 1rem system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 2.75rem; }
+input {
+  flex: 1 1 12rem; min-width: 0; padding: 0.5rem 0.75rem;
+  border: 1px solid var(--line); border-radius: 0.25rem;
+  color: var(--text); background: var(--bg);
+}
+button[type="submit"] {
+  padding: 0.5rem 1.25rem; border: 1px solid var(--line); border-radius: 0.25rem;
+  color: var(--text); background: var(--code-bg); cursor: pointer;
+}
+/* Previous / next post. Swipe left / right on a post does the same. */
+.post-nav {
+  display: flex; justify-content: space-between; gap: 1rem;
+  border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.95rem;
+}
+.post-nav a { padding: 0.5rem 0; }
+.post-nav__next { margin-left: auto; text-align: right; }
 /* Tap-to-load video facade: 16:9 box, thumbnail + play button, no iframe
    or third-party script until the reader taps. */
 .video-facade { position: relative; aspect-ratio: 16 / 9; background: #111; margin: 1rem 0; }

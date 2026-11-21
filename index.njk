@@ -5,15 +5,13 @@ permalink: /
 eleventyExcludeFromCollections: true
 ---
 
-<h1>Jonathan McCallum</h1>
-
 <p>Writing about faith, film, surfing, music and life.</p>
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 
 <section aria-labelledby="ask-heading">
   <h2 id="ask-heading">Ask about the writing</h2>
-  <p>A guide to what Jonathan has written here. It only answers from his published posts, and every answer links to the post it came from. It is not Jonathan himself.</p>
+  <p>It only answers from his published posts, with a link to the post each answer came from. It is not Jonathan himself.</p>
   <form id="ask-form">
     <label for="ask-question">Your question</label>
     <input id="ask-question" name="question" type="text" maxlength="500" placeholder="e.g. What has he written about Narnia?" required>
@@ -33,27 +31,12 @@ eleventyExcludeFromCollections: true
     <li><a href="https://jonamccallum.substack.com">Substack — Jonathan's writing</a></li>
     <li><a href="/feed/">RSS feed</a></li>
   </ul>
-  <form id="newsletter-form">
-    <label for="newsletter-email">Get new writing by email</label>
-    <input id="newsletter-email" name="email" type="email" placeholder="you@example.com" required>
-    <button type="submit">Sign up</button>
-  </form>
-  <p id="newsletter-note">Newsletter signup opens soon — for now, Substack is the best place to follow along.</p>
 </section>
 
 <h2>Writing</h2>
 <ul>
 {% for post in collections.publishedPosts | reverse %}
   <li><a href="{{ post.url }}">{{ post.data.title }}</a> — {{ post.date | readableDate }}</li>
-{% endfor %}
-</ul>
-
-<h2>Pages</h2>
-<ul>
-{% for p in collections.pages | sort(false, false, "data.title") %}
-  {% if p.data.slug != "sample-page" %}
-  <li><a href="{{ p.url }}">{{ p.data.title }}</a></li>
-  {% endif %}
 {% endfor %}
 </ul>
 

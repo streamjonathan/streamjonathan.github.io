@@ -1,3 +1,54 @@
+// Theme: follow the device (auto night mode) unless the reader picks one.
+// The small Dark / Light button at the top saves the choice on this device.
+(function () {
+  var root = document.documentElement;
+  var button = document.getElementById("theme-toggle");
+  var stored = null;
+  try { stored = localStorage.getItem("theme"); } catch (e) {}
+  if (stored === "dark" || stored === "light") root.setAttribute("data-theme", stored);
+  function effective() {
+    var chosen = root.getAttribute("data-theme");
+    if (chosen) return chosen;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  function paint() {
+    if (button) button.textContent = effective() === "dark" ? "Light" : "Dark";
+  }
+  if (button) {
+    button.addEventListener("click", function () {
+      var next = effective() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      paint();
+    });
+  }
+  paint();
+  if (window.matchMedia) {
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", paint);
+  }
+})();
+
+// Swipe between posts: on a post page, swipe left for the next post and
+// swipe right for the previous one. Only runs when those links exist.
+(function () {
+  var nav = document.querySelector(".post-nav");
+  if (!nav) return;
+  var startX = null, startY = null;
+  document.addEventListener("touchstart", function (e) {
+    var t = e.changedTouches[0];
+    startX = t.clientX; startY = t.clientY;
+  }, { passive: true });
+  document.addEventListener("touchend", function (e) {
+    if (startX === null) return;
+    var t = e.changedTouches[0];
+    var dx = t.clientX - startX, dy = t.clientY - startY;
+    startX = null; startY = null;
+    if (Math.abs(dx) < 60 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    var link = nav.querySelector(dx < 0 ? ".post-nav__next" : ".post-nav__prev");
+    if (link) window.location.href = link.href;
+  }, { passive: true });
+})();
+
 // Tap-to-load video facades: swap the thumbnail for the youtube-nocookie
 // iframe only when the reader taps play. This is the site's only global
 // JavaScript. No third-party script loads until that tap.
