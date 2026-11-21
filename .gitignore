@@ -5,3 +5,4 @@ site-ai/index/
 # Cloudflare / Wrangler local state — never commit.
 .dev.vars
 .wrangler/
+work/
