@@ -1,9 +1,14 @@
 # Cloudflare Worker: the site AI for jonathanmccallum.com
 #
-# NOT DEPLOYED YET — no Cloudflare account exists. Deploy only after
-# Jonathan signs into Cloudflare (free account) and creates the pieces
-# listed in site-ai/README.md. Nothing in this folder is pushed anywhere
-# and nothing here touches DNS.
+# DEPLOYED 2026-11-21 on the free Cloudflare account (mccallumhome).
+# Deployed via the Cloudflare REST API with the custom.cloudflare
+# connector (see ~/workspace/custom-connectors/custom.cloudflare/).
+# Wrangler OAuth does not work from this machine — use the API route.
+# After editing src/index.js, redeploy with:
+#   python3 ~/workspace/custom-connectors/custom.cloudflare/bin/cf.py \
+#     put-multipart /accounts/d782d5b28928c6c4187d8d276815cd6d/workers/scripts/jonathanmccallum-site-ai \
+#     <metadata.json> site-ai/src/index.js index.js
+# (metadata.json carries the bindings below; keep it out of the repo.)
 #
 # What this Worker is: a stateless question-answerer that reads ONLY the
 # Vectorize index built from the published posts (site-ai/scripts) and
@@ -26,14 +31,11 @@ binding = "AI"
 binding = "VECTORIZE"
 index_name = "jonathanmccallum-posts"
 
-# Notes KV (anonymous reader notes from /api/note). Create with:
-#   npx wrangler kv namespace create NOTES
-# then uncomment the binding below and paste the real id. Until then
-# /api/note answers {ok:false} and the site says notes are not switched
-# on yet — the chat still works without it.
-# [[kv_namespaces]]
-# binding = "NOTES"
-# id = "PASTE_REAL_ID_HERE"
+# Notes KV (anonymous reader notes from /api/note). Created 2026-11-21
+# via the API: namespace id 7ce6df1904044c79b5e797731f5bfe4b.
+[[kv_namespaces]]
+binding = "NOTES"
+id = "7ce6df1904044c79b5e797731f5bfe4b"
 
 [vars]
 # AI Gateway id (created in the Cloudflare dashboard, AI Gateway section).
