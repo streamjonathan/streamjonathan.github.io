@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
   <form id="ask-form">
     <label for="ask-question">Your question</label>
     <input id="ask-question" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
-    <button type="submit">Ask</button>
+    <button id="ask-button" type="button">Ask</button>
   </form>
   <div class="chips" role="group" aria-label="Try asking">
     <button type="button" data-q="What has he written about Narnia?">Narnia</button>
@@ -42,7 +42,7 @@ eleventyExcludeFromCollections: true
   <form id="note-form">
     <label for="note-text">Your note</label>
     <textarea id="note-text" name="note" rows="3" maxlength="1000" placeholder="Write a few words…" required></textarea>
-    <button type="submit">Leave the note</button>
+    <button id="note-button" type="button">Leave the note</button>
   </form>
   <p id="note-result" aria-live="polite"></p>
 </section>
@@ -60,4 +60,4 @@ eleventyExcludeFromCollections: true
 {% endfor %}
 </ul>
 
-<script src="/js/ask.js" defer></script>
+<script src="/js/ask.js?v=2" defer></script>
