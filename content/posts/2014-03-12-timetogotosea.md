@@ -2,6 +2,7 @@
 title: "to sea"
 date: 2014-03-12
 slug: timetogotosea
+draft: false
 original_url: http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_url: https://web.archive.org/web/20210313202717/http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_timestamp: 20210313202717

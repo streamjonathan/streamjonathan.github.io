@@ -24,6 +24,25 @@ module.exports = function (eleventyConfig) {
     new Date(date).toISOString()
   );
 
+  // Newest date in a collection (the RSS plugin's filter, defined locally
+  // so the feed works without that dependency). Empty collection -> now,
+  // so the feed stays valid before any post is published.
+  eleventyConfig.addFilter("getNewestCollectionItemDate", (collection) => {
+    if (!collection || collection.length === 0) return new Date();
+    return new Date(
+      Math.max(...collection.map((item) => new Date(item.date)))
+    );
+  });
+
+  // Human-readable dates, e.g. "12 March 2014".
+  eleventyConfig.addFilter("readableDate", (date) =>
+    new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+  );
+
   // Static assets: one CSS file, recovered images, and the GitHub Pages CNAME.
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy({ "content/images": "images" });
