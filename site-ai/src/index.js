@@ -24,6 +24,12 @@ const FIXED_REFUSAL =
 const PAUSED_MESSAGE =
   "The chat is resting until tomorrow — please try searching the writing instead.";
 
+// Only chunks scoring above this count as a real match. With six posts
+// the scores run 0.35–0.65, and the second-best chunk is usually an
+// unrelated post, so 0.5 keeps the sources list to the post the
+// question is actually about.
+const MIN_SCORE = 0.5;
+
 // The system prompt contains NO personal data: no names beyond the public
 // byline, no emails, addresses, phone numbers, family details, account
 // names, or private facts. Assume it can leak (OWASP LLM07) — a leak must
@@ -173,7 +179,7 @@ export default {
       // 2. Retrieve the top chunks from the published posts ONLY.
       const topK = Number(env.TOP_K || 5);
       const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
-      const matches = (results.matches || []).filter((m) => m.score > 0.3);
+      const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
       if (matches.length === 0) {
         return json({
           answer: FIXED_REFUSAL,
