@@ -54,7 +54,7 @@
         var p = document.createElement("p");
         p.textContent = "The chat isn't available right now — please use the search instead.";
         var a = document.createElement("a");
-        a.href = "/search/";
+        a.href = "/search/?q=" + encodeURIComponent(q);
         a.textContent = "Search the writing";
         answer.appendChild(p);
         answer.appendChild(a);

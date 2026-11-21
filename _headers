@@ -15,10 +15,16 @@
 # NOTE: a local `python -m http.server` does NOT apply this file — these
 # headers only take effect on Cloudflare Pages. Verify them live with
 # `curl -I https://jonathanmccallum.com/` after the deploy.
+#
+# script-src carries 'wasm-unsafe-eval' because the Pagefind search runs
+# on WebAssembly: without it the search box hangs on "Searching…" and
+# never returns results (found 2026-11-21). It allows WASM compilation
+# only — it is not 'unsafe-eval' for JavaScript, and no inline script
+# is allowed anywhere.
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'

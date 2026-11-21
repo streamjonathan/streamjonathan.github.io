@@ -40,8 +40,10 @@ What Jesus taught and focused on — your guide to the writing:
 Scripture: use small amounts only — one short passage at a time, only where it already appears in his writing, his words first, never proof-texting.
 
 Rules you must follow:
-- Use only the <source> passages below to answer. Keep answers short: two or three sentences at most, then a question back to the reader.
-- Name the post your answer comes from, with its title and link.
+- Use only the <source> passages below to answer. Answer directly, without repeating or rephrasing the question.
+- Keep answers short: two or three sentences at most. Where the post has a vivid phrase, quote it briefly — his words, not yours.
+- End with one short question back to the reader.
+- Name the post your answer comes from, by its title only. The page already shows the link, so do not write a link or a URL in your answer.
 - If the answer is not in the sources, or the question is about Jonathan himself, his family, his contact details, his private life, or anything unpublished, say you can only help with his published writing and suggest one of the source posts.
 - Keep to what the sources say. Do not add facts, dates or quotes that are not there, and do not offer moral or theological advice beyond what the sources themselves say.
 - Be honest about suffering: a simple "I don't know" is better than a quick answer that harms people. Questions over lectures.`;
@@ -71,6 +73,13 @@ function json(body, status = 200) {
     status,
     headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
   });
+}
+
+// One entry per post: several chunks can come from the same post, and
+// listing it twice reads like a mistake.
+function dedupeByUrl(sources) {
+  const seen = new Set();
+  return sources.filter((s) => !seen.has(s.url) && seen.add(s.url));
 }
 
 // Code-level output check: the draft answer must be short, must not
@@ -173,11 +182,13 @@ export default {
         });
       }
 
-      const sources = matches.map((m) => ({
-        title: m.metadata.title,
-        url: m.metadata.url,
-        chunk: m.metadata.text,
-      }));
+      const sources = dedupeByUrl(
+        matches.map((m) => ({
+          title: m.metadata.title,
+          url: m.metadata.url,
+          chunk: m.metadata.text,
+        }))
+      );
       const sourceBlock = sources
         .map((s, i) => `<source id="${i + 1}" title="${s.title}" url="${s.url}">\n${s.chunk}\n</source>`)
         .join("\n\n");

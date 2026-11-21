@@ -46,7 +46,10 @@ AI_GATEWAY_ID = "jonathanmccallum-site-ai"
 # Models (Workers AI, free tier). Chat model first, embeddings second.
 CHAT_MODEL = "@cf/meta/llama-3.1-8b-instruct-fp8-fast"
 EMBED_MODEL = "@cf/baai/bge-m3"
-# Retrieval + answer limits.
-TOP_K = "5"
-MAX_ANSWER_TOKENS = "350"
+# Retrieval + answer limits. TOP_K 3 keeps the prompt short (faster,
+# less noise) and the dedupe below means three distinct posts at most.
+# MAX_ANSWER_TOKENS 220 is enough for two or three short sentences plus
+# a question back, and keeps answers quick.
+TOP_K = "3"
+MAX_ANSWER_TOKENS = "220"
 MAX_QUESTION_CHARS = "500"
