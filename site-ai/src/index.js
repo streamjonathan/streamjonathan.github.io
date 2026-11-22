@@ -13,11 +13,14 @@
 // On any AI error or daily-limit hit, return the graceful "resting"
 // message and let the Pagefind search on the site do the work.
 //
-// Speed: answers stream back token by token (SSE), so the reader sees
-// words appearing within about a second instead of waiting ~3s for the
-// whole answer. Good answers are also cached in KV for 7 days, so a
-// repeated question — including the four try-it chips on the homepage —
-// comes back near-instantly with no AI call at all.
+// Speed: good answers are cached in KV for 7 days, so a repeated
+// question — including the four try-it chips on the homepage — comes
+// back near-instantly with no AI call at all. Fresh questions embed
+// direct (no gateway hop) and stream back over SSE. Note: the AI
+// Gateway's response guardrail screens the whole answer before
+// releasing it, so a streamed answer arrives as one fast burst rather
+// than token by token — the stream is kept anyway, and the cache plus
+// the direct embed are what make the chat feel fast.
 //
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
@@ -162,11 +165,16 @@ async function handleNote(request, env) {
 // fallback when streaming is unavailable, and the path that populates
 // the cache. Returns {answer, sources, paused}.
 async function answerOnce(question, env, gateway) {
-  const embedding = await env.AI.run(
-    env.EMBED_MODEL || "@cf/baai/bge-m3",
-    { text: [question] },
-    gateway
-  );
+  // The embed call goes DIRECT to Workers AI, not through the gateway:
+  // an embedding turns text into numbers and cannot produce text, leak
+  // anything, or be talked into saying anything — guardrails on it are
+  // pure overhead (measured: ~1.4s of guard time per embed). The same
+  // question text is still screened by Prompt Guard when it reaches the
+  // chat model through the gateway, and the answer is still screened by
+  // Llama Guard there, so the safety posture does not change.
+  const embedding = await env.AI.run(env.EMBED_MODEL || "@cf/baai/bge-m3", {
+    text: [question],
+  });
   const vector = embedding.data[0];
 
   const topK = Number(env.TOP_K || 5);
@@ -230,11 +238,10 @@ async function answerOnce(question, env, gateway) {
 // instant. Returns a Response, or null when streaming could not start
 // (the caller then falls back to answerOnce).
 async function answerStream(question, env, gateway) {
-  const embedding = await env.AI.run(
-    env.EMBED_MODEL || "@cf/baai/bge-m3",
-    { text: [question] },
-    gateway
-  );
+  // Embed direct, not through the gateway — see answerOnce for why.
+  const embedding = await env.AI.run(env.EMBED_MODEL || "@cf/baai/bge-m3", {
+    text: [question],
+  });
   const vector = embedding.data[0];
 
   const topK = Number(env.TOP_K || 5);
