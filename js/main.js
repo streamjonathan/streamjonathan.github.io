@@ -86,9 +86,10 @@ document.addEventListener("click", function (e) {
 
 // Featured carousel: moves slowly through the newest articles, one card
 // every seven seconds, looping back to the start. Arrow buttons and dots
-// let the reader move it by hand. After the reader touches it, the
-// auto-advance waits five seconds, then carries on. Stays still when
-// reduced motion is preferred or the tab is hidden.
+// let the reader move it by hand. It keeps moving even while the reader's
+// pointer rests over it — it only pauses while the reader is actively
+// dragging it, and starts again five seconds after the drag ends.
+// Stays still when reduced motion is preferred or the tab is hidden.
 (function () {
   var row = document.querySelector("[data-auto-carousel]");
   if (!row) return;
@@ -146,8 +147,6 @@ document.addEventListener("click", function (e) {
       dots.push(dot);
     }
   }
-  row.addEventListener("pointerenter", function () { paused = true; });
-  row.addEventListener("pointerleave", function () { paused = false; touch(); });
   row.addEventListener("pointerdown", function () { paused = true; });
   row.addEventListener("pointerup", function () { touch(); });
   row.addEventListener("wheel", function () { touch(); }, { passive: true });
