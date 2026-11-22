@@ -18,18 +18,41 @@ eleventyExcludeFromCollections: true
   <a href="https://jonamccallum.substack.com">Substack</a>
 </p>
 
+{% set featured = [] %}
+{% for post in collections.publishedPosts | reverse %}
+  {% if post.data.shareImage and featured | length < 10 %}
+    {% set _ = featured.push(post) %}
+  {% endif %}
+{% endfor %}
+{# One card: the photo with the title overlaid in gold, silver or
+   bronze, and a small JM box carrying one of the six messages.
+   The row holds two copies of the same cards so the carousel can
+   loop forever without a visible jump at the wrap; the second copy
+   is hidden from assistive tech and from keyboard tabbing. #}
+{% macro featuredCard(post, i, dup) %}
+{% set jmMessages = ["Recommended reading", "Thanks for stopping by", "A deeper country", "Nothing good was ever lost", "Jesus is for you", "Have a great day"] %}
+{% set titleColors = ["gold", "silver", "bronze"] %}
+    <li class="featured-card"{% if dup %} data-duplicate aria-hidden="true"{% endif %}>
+      <a class="featured-card__link" href="{{ post.url }}"{% if dup %} tabindex="-1"{% endif %}>
+        <span class="featured-card__image">
+          <img class="featured-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">
+          <span class="featured-overlay">
+            <span class="featured-title featured-title--{{ titleColors[i % 3] }}">{{ post.data.title }}</span>
+          </span>
+          <span class="featured-jm"><strong>JM</strong> {{ jmMessages[i % 6] }}</span>
+        </span>
+      </a>
+    </li>
+{% endmacro %}
+{% if featured | length %}
 <section class="featured" data-fade aria-labelledby="featured-heading">
   <h2 id="featured-heading">Newest writing</h2>
   <ul class="featured-row" data-auto-carousel>
-  {% for post in collections.publishedPosts | reverse %}
-    {% if loop.index <= 10 %}
-    <li class="featured-card">
-      {% if post.data.shareImage %}<img class="featured-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">{% else %}<div class="featured-image featured-image--empty" aria-hidden="true"></div>{% endif %}
-      <a href="{{ post.url }}">{{ post.data.title }}</a>
-      <span class="meta">{{ post.date | readableDate }}</span>
-      <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
-    </li>
-    {% endif %}
+  {% for post in featured %}
+{{ featuredCard(post, loop.index0, false) }}
+  {% endfor %}
+  {% for post in featured %}
+{{ featuredCard(post, loop.index0, true) }}
   {% endfor %}
   </ul>
   <div class="featured-controls">
@@ -38,6 +61,7 @@ eleventyExcludeFromCollections: true
     <button type="button" class="featured-arrow" data-carousel-next aria-label="Next article">›</button>
   </div>
 </section>
+{% endif %}
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 

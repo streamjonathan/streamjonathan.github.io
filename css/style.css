@@ -253,27 +253,45 @@ button[type="submit"] {
 .watch-card { flex: 0 0 20rem; scroll-snap-align: start; }
 .watch-card .video-facade { margin: 0; }
 .watch-title { font-size: 0.95rem; margin: 0.5rem 0 0; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; }
-/* Featured carousel: the newest articles in a slow-moving row, same
-   scroll-snap pattern as the Watch row. The reader can swipe or scroll
-   it by hand; the script below moves it along gently when left alone. */
+/* Featured carousel: picture-only cards now — each card is its photo
+   with the title overlaid in gold, silver or bronze, and a small JM
+   box carrying one of Jonathan's six messages. The row holds two
+   copies of the same ten cards so the script can loop forever
+   without a visible jump at the wrap. */
 .featured { margin-top: 1.5rem; }
-.featured-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
+.featured-row { position: relative; display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
 /* The arrows and dots are the navigation now, so the row's own
    scrollbar is hidden. The Watch row keeps its scrollbar — it has
    no arrows, so the scrollbar is its only hint that it scrolls. */
 .featured-row { scrollbar-width: none; }
 .featured-row::-webkit-scrollbar { display: none; }
-.featured-card { flex: 0 0 20rem; scroll-snap-align: start; border-top: 1px solid var(--line); padding-top: 0.9rem; }
-.featured-card a { font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; color: var(--text); transition: color .2s ease; }
-.featured-card a:hover { color: var(--link); }
-.featured-card .meta { margin-left: 0.5rem; }
-.featured-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
-.featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 0.5rem; }
+.featured-card { flex: 0 0 20rem; scroll-snap-align: start; }
+.featured-card__link { display: block; }
+.featured-card__image { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; }
+.featured-image { display: block; width: 100%; height: 100%; object-fit: cover; }
+.featured-overlay {
+  position: absolute; inset: 0; display: flex; align-items: flex-end;
+  padding: 0.75rem 0.9rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.25) 45%, rgba(0, 0, 0, 0) 65%);
+}
+.featured-title {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 700; font-size: 1.3rem; line-height: 1.2; text-wrap: balance;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+.featured-title--gold { color: #e8c87a; }
+.featured-title--silver { color: #c0c0c0; }
+.featured-title--bronze { color: #cd7f32; }
+/* The JM box: a small bordered box in the corner of the photo, like
+   the PG rating box on a thumbnail, carrying one rotating message. */
+.featured-jm {
+  position: absolute; top: 0.6rem; right: 0.6rem;
+  border: 1px solid rgba(232, 200, 122, 0.85); background: rgba(0, 0, 0, 0.55);
+  color: #faf9f6; font-size: 0.72rem; line-height: 1.35; padding: 0.25rem 0.5rem;
+}
+.featured-jm strong { color: #e8c87a; }
 /* Featured carousel controls: arrows and dots, only shown once the
-   carousel script has set the section ready. Cards without a photo get
-   a quiet 16:9 block, so every card is the same height and the row
-   never jumps as it moves. */
-.featured-image--empty { background: var(--chip-bg); border: 1px solid var(--line); }
+   carousel script has set the section ready. */
 .featured-controls { display: none; align-items: center; gap: 0.75rem; margin: 0.75rem 0 0; }
 .featured.is-ready .featured-controls { display: flex; }
 .featured-arrow {

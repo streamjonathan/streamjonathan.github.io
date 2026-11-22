@@ -84,64 +84,98 @@ document.addEventListener("click", function (e) {
   items.forEach(function (item) { observer.observe(item); });
 })();
 
-// Featured carousel: moves slowly through the newest articles, one card
-// every seven seconds, looping back to the start. Arrow buttons and dots
-// let the reader move it by hand. It keeps moving even while the reader's
-// pointer rests over it — it only pauses while the reader is actively
-// dragging it, and starts again five seconds after the drag ends.
-// Stays still when reduced motion is preferred or the tab is hidden.
+// Featured carousel: an endless loop through the newest articles
+// with pictures, one card every seven seconds. The row holds two
+// copies of the same cards; when the reader reaches the end of the
+// first copy, the script slips back to the matching card in the
+// first copy — the two look identical, so the loop has no visible
+// jump. Arrow buttons and dots let the reader move it by hand. It
+// keeps moving even while the reader's pointer rests over it — it
+// only pauses while the reader is actively dragging it, and starts
+// again five seconds after the drag ends. Stays still when reduced
+// motion is preferred or the tab is hidden.
 (function () {
   var row = document.querySelector("[data-auto-carousel]");
   if (!row) return;
-  var cards = row.children;
-  if (cards.length < 2) return;
+  var cards = Array.prototype.slice.call(row.children);
+  var count = 0;
+  cards.forEach(function (card) {
+    if (!card.hasAttribute("data-duplicate")) count++;
+  });
+  if (count < 2) return;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var section = row.closest(".featured");
   var dotsWrap = section ? section.querySelector(".featured-dots") : null;
   var prev = section ? section.querySelector("[data-carousel-prev]") : null;
   var next = section ? section.querySelector("[data-carousel-next]") : null;
   var dots = [];
-  var index = 0, timer = null, paused = false, resumeAt = 0;
+  var index = 0, timer = null, paused = false, resumeAt = 0, inWrap = false;
 
-  function nearestIndex() {
-    var rowRect = row.getBoundingClientRect();
+  function scrollToCard(i, smooth) {
+    row.scrollTo({ left: cards[i].offsetLeft, behavior: smooth && !reduceMotion ? "smooth" : "auto" });
+  }
+  function nearestDomIndex() {
     var best = 0, bestDist = Infinity;
-    Array.prototype.forEach.call(cards, function (card, i) {
-      var dist = Math.abs(card.getBoundingClientRect().left - rowRect.left);
+    cards.forEach(function (card, i) {
+      var dist = Math.abs(card.offsetLeft - row.scrollLeft);
       if (dist < bestDist) { bestDist = dist; best = i; }
     });
     return best;
   }
+  function realIndex() { return nearestDomIndex() % count; }
   function markDot() {
     dots.forEach(function (dot, i) {
       if (i === index) dot.setAttribute("aria-current", "true");
       else dot.removeAttribute("aria-current");
     });
   }
-  function show(i) {
-    index = ((i % cards.length) + cards.length) % cards.length;
-    var card = cards[index];
-    var rowRect = row.getBoundingClientRect();
-    var cardRect = card.getBoundingClientRect();
-    row.scrollTo({ left: row.scrollLeft + (cardRect.left - rowRect.left), behavior: reduceMotion ? "auto" : "smooth" });
+  function show(i, dir) {
+    i = ((i % count) + count) % count;
+    var from = index;
+    index = i;
     markDot();
+    if (dir > 0 && from === count - 1 && i === 0) {
+      // Forward wrap: glide onto the duplicate of card 0, then slip
+      // back to the real card 0. Both look the same, so no jump shows.
+      inWrap = true;
+      scrollToCard(count, true);
+      setTimeout(function () { scrollToCard(0, false); inWrap = false; }, 700);
+    } else if (dir < 0 && from === 0 && i === count - 1) {
+      // Backward wrap: jump (invisibly, same view) to the duplicate
+      // of card 0, glide back onto the duplicate of the last card,
+      // then slip to the real last card.
+      inWrap = true;
+      scrollToCard(count, false);
+      setTimeout(function () {
+        scrollToCard(2 * count - 1, true);
+        setTimeout(function () { scrollToCard(count - 1, false); inWrap = false; }, 700);
+      }, 60);
+    } else {
+      scrollToCard(i, true);
+    }
   }
   function step() {
     if (paused || document.hidden || Date.now() < resumeAt) return;
-    show(nearestIndex() + 1);
+    show(realIndex() + 1, 1);
   }
   function start() { if (!timer) timer = setInterval(step, 7000); }
   function touch() { paused = false; resumeAt = Date.now() + 5000; }
 
   if (dotsWrap) {
-    for (var d = 0; d < cards.length; d++) {
+    for (var d = 0; d < count; d++) {
       var dot = document.createElement("button");
       dot.type = "button";
       dot.className = "featured-dot";
       dot.setAttribute("role", "tab");
       dot.setAttribute("aria-label", "Go to article " + (d + 1));
       (function (i) {
-        dot.addEventListener("click", function () { show(i); touch(); });
+        dot.addEventListener("click", function () {
+          var dir = 0;
+          if (index === count - 1 && i === 0) dir = 1;
+          else if (index === 0 && i === count - 1) dir = -1;
+          show(i, dir);
+          touch();
+        });
       })(d);
       dotsWrap.appendChild(dot);
       dots.push(dot);
@@ -151,14 +185,23 @@ document.addEventListener("click", function (e) {
   row.addEventListener("pointerup", function () { touch(); });
   row.addEventListener("wheel", function () { touch(); }, { passive: true });
   row.addEventListener("touchend", function () { touch(); }, { passive: true });
-  if (prev) prev.addEventListener("click", function () { show(nearestIndex() - 1); touch(); });
-  if (next) next.addEventListener("click", function () { show(nearestIndex() + 1); touch(); });
+  if (prev) prev.addEventListener("click", function () { show(realIndex() - 1, -1); touch(); });
+  if (next) next.addEventListener("click", function () { show(realIndex() + 1, 1); touch(); });
   var scrollTimer = null;
   row.addEventListener("scroll", function () {
     if (scrollTimer) return;
     scrollTimer = setTimeout(function () {
       scrollTimer = null;
-      index = nearestIndex();
+      if (inWrap) return;
+      var d = nearestDomIndex();
+      if (d >= count) {
+        // The reader scrolled by hand into the duplicate copy; slip
+        // back to the matching real card. Identical view, no jump.
+        scrollToCard(d - count, false);
+        index = d - count;
+      } else {
+        index = d;
+      }
       markDot();
     }, 150);
   }, { passive: true });
