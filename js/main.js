@@ -84,29 +84,86 @@ document.addEventListener("click", function (e) {
   items.forEach(function (item) { observer.observe(item); });
 })();
 
-// Featured carousel: move slowly through the newest articles, one card
-// every seven seconds, looping back to the start. Pauses while the
-// reader hovers or focuses it, and stays still when reduced motion is
-// preferred or the tab is hidden.
+// Featured carousel: moves slowly through the newest articles, one card
+// every seven seconds, looping back to the start. Arrow buttons and dots
+// let the reader move it by hand. After the reader touches it, the
+// auto-advance waits five seconds, then carries on. Stays still when
+// reduced motion is preferred or the tab is hidden.
 (function () {
   var row = document.querySelector("[data-auto-carousel]");
   if (!row) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   var cards = row.children;
   if (cards.length < 2) return;
-  var index = 0, timer = null, paused = false;
-  function step() {
-    if (paused || document.hidden) return;
-    index = (index + 1) % cards.length;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var section = row.closest(".featured");
+  var dotsWrap = section ? section.querySelector(".featured-dots") : null;
+  var prev = section ? section.querySelector("[data-carousel-prev]") : null;
+  var next = section ? section.querySelector("[data-carousel-next]") : null;
+  var dots = [];
+  var index = 0, timer = null, paused = false, resumeAt = 0;
+
+  function nearestIndex() {
+    var rowRect = row.getBoundingClientRect();
+    var best = 0, bestDist = Infinity;
+    Array.prototype.forEach.call(cards, function (card, i) {
+      var dist = Math.abs(card.getBoundingClientRect().left - rowRect.left);
+      if (dist < bestDist) { bestDist = dist; best = i; }
+    });
+    return best;
+  }
+  function markDot() {
+    dots.forEach(function (dot, i) {
+      if (i === index) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  }
+  function show(i) {
+    index = ((i % cards.length) + cards.length) % cards.length;
     var card = cards[index];
     var rowRect = row.getBoundingClientRect();
     var cardRect = card.getBoundingClientRect();
-    row.scrollTo({ left: row.scrollLeft + (cardRect.left - rowRect.left), behavior: "smooth" });
+    row.scrollTo({ left: row.scrollLeft + (cardRect.left - rowRect.left), behavior: reduceMotion ? "auto" : "smooth" });
+    markDot();
+  }
+  function step() {
+    if (paused || document.hidden || Date.now() < resumeAt) return;
+    show(nearestIndex() + 1);
   }
   function start() { if (!timer) timer = setInterval(step, 7000); }
+  function touch() { paused = false; resumeAt = Date.now() + 5000; }
+
+  if (dotsWrap) {
+    for (var d = 0; d < cards.length; d++) {
+      var dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "featured-dot";
+      dot.setAttribute("role", "tab");
+      dot.setAttribute("aria-label", "Go to article " + (d + 1));
+      (function (i) {
+        dot.addEventListener("click", function () { show(i); touch(); });
+      })(d);
+      dotsWrap.appendChild(dot);
+      dots.push(dot);
+    }
+  }
   row.addEventListener("pointerenter", function () { paused = true; });
-  row.addEventListener("pointerleave", function () { paused = false; });
-  row.addEventListener("focusin", function () { paused = true; });
-  row.addEventListener("focusout", function () { paused = false; });
-  start();
+  row.addEventListener("pointerleave", function () { paused = false; touch(); });
+  row.addEventListener("pointerdown", function () { paused = true; });
+  row.addEventListener("pointerup", function () { touch(); });
+  row.addEventListener("wheel", function () { touch(); }, { passive: true });
+  row.addEventListener("touchend", function () { touch(); }, { passive: true });
+  if (prev) prev.addEventListener("click", function () { show(nearestIndex() - 1); touch(); });
+  if (next) next.addEventListener("click", function () { show(nearestIndex() + 1); touch(); });
+  var scrollTimer = null;
+  row.addEventListener("scroll", function () {
+    if (scrollTimer) return;
+    scrollTimer = setTimeout(function () {
+      scrollTimer = null;
+      index = nearestIndex();
+      markDot();
+    }, 150);
+  }, { passive: true });
+  if (section) section.classList.add("is-ready");
+  markDot();
+  if (!reduceMotion) start();
 })();

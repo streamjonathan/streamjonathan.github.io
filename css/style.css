@@ -264,6 +264,32 @@ button[type="submit"] {
 .featured-card .meta { margin-left: 0.5rem; }
 .featured-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
 .featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 0.5rem; }
+/* Featured carousel controls: arrows and dots, only shown once the
+   carousel script has set the section ready. Cards without a photo get
+   a quiet 16:9 block, so every card is the same height and the row
+   never jumps as it moves. */
+.featured-image--empty { background: var(--chip-bg); border: 1px solid var(--line); }
+.featured-controls { display: none; align-items: center; gap: 0.75rem; margin: 0.75rem 0 0; }
+.featured.is-ready .featured-controls { display: flex; }
+.featured-arrow {
+  width: 2.75rem; height: 2.75rem; min-height: 2.75rem; padding: 0;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: var(--chip-bg); color: var(--text);
+  font: 1.5rem/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  cursor: pointer;
+}
+.featured-arrow:hover { color: var(--link); border-color: var(--link); }
+.featured-dots { display: flex; gap: 0.25rem; flex: 1; justify-content: center; }
+.featured-dot {
+  width: 1.5rem; height: 1.5rem; min-height: 1.5rem; padding: 0;
+  border: 0; background: none; cursor: pointer;
+}
+.featured-dot::before {
+  content: ""; display: block; width: 0.55rem; height: 0.55rem;
+  margin: 0 auto; border-radius: 999px; background: var(--muted);
+  transition: background .2s ease;
+}
+.featured-dot[aria-current="true"]::before { background: var(--link); }
 /* Gentle fade-in as sections enter view. Only when JavaScript adds
    .js-fade to <html>, so without JS everything is simply visible.
    Off entirely when the reader prefers reduced motion. */

@@ -24,7 +24,7 @@ eleventyExcludeFromCollections: true
   {% for post in collections.publishedPosts | reverse %}
     {% if loop.index <= 10 %}
     <li class="featured-card">
-      {% if post.data.shareImage %}<img class="featured-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">{% endif %}
+      {% if post.data.shareImage %}<img class="featured-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">{% else %}<div class="featured-image featured-image--empty" aria-hidden="true"></div>{% endif %}
       <a href="{{ post.url }}">{{ post.data.title }}</a>
       <span class="meta">{{ post.date | readableDate }}</span>
       <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
@@ -32,6 +32,11 @@ eleventyExcludeFromCollections: true
     {% endif %}
   {% endfor %}
   </ul>
+  <div class="featured-controls">
+    <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous article">‹</button>
+    <div class="featured-dots" role="tablist" aria-label="Newest articles"></div>
+    <button type="button" class="featured-arrow" data-carousel-next aria-label="Next article">›</button>
+  </div>
 </section>
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
