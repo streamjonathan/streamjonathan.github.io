@@ -2,7 +2,7 @@
 title: "Narnia and What I'd Like Everyone To Know"
 date: 2026-10-31
 slug: narnia-and-what-id-like-everyone-to-know
-draft: true
+draft: false
 shareImage: /images/narnia-what-id-like-everyone-to-know.jpg
 source_video: https://www.youtube.com/watch?v=U9BSyBTn6AY
 source_transcript: transcripts/U9BSyBTn6AY.md
