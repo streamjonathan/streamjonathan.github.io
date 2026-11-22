@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#141414">
+<meta name="theme-color" content="#121212">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#faf9f6");}}catch(e){}</script>
 <title>{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}</title>
 {% set pageDescription = site.description %}
 {% if page.url != "/" %}{% set pageDescription = content | excerpt %}{% endif %}
@@ -78,8 +79,8 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=3" as="style">
-<link rel="stylesheet" href="/css/style.css?v=3">
+<link rel="preload" href="/css/style.css?v=4" as="style">
+<link rel="stylesheet" href="/css/style.css?v=4">
 </head>
 <body>
 <div class="theme-row"><button id="theme-toggle" type="button">Dark</button></div>
@@ -89,6 +90,7 @@
 <footer class="site-footer">
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
   <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a></p>
+  <p>Set in Georgia. Built with Eleventy, hosted on Cloudflare Pages.</p>
 </footer>
 <button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
 <div id="ask-overlay" hidden>
@@ -107,7 +109,7 @@
     <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
   </div>
 </div>
-<script src="/js/main.js?v=2" defer></script>
+<script src="/js/main.js?v=3" defer></script>
 <script src="/js/ask.js?v=3" defer></script>
 </body>
 </html>

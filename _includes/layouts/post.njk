@@ -6,7 +6,9 @@ layout: layouts/base.njk
   {% if page.date %}
   <p class="meta"><time datetime="{{ page.date.toISOString() }}">{{ page.date.toISOString().slice(0, 10) }}</time></p>
   {% endif %}
+  <div class="post-body">
   {{ content | safe }}
+  </div>
 </article>
 {% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}

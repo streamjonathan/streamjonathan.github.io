@@ -1,11 +1,18 @@
 # Security headers for Cloudflare Pages (applied to every page).
 #
 # The site is static HTML/CSS with three small same-origin scripts
-# (video facades, the ask form, search) — no inline script remains, so
-# this policy needs no 'unsafe-inline' anywhere. The video facades load
-# thumbnails from i.ytimg.com and iframes from youtube-nocookie.com only
-# after the reader taps play; the chat POSTs to /api/ask on this same
-# origin; search runs entirely in the browser from same-origin files.
+# (video facades, the ask form, search) and ONE inline script: the tiny
+# theme script in _includes/layouts/base.njk that applies the saved
+# theme before first paint, so light-theme readers never see a dark
+# flash. That script is allowed by its SHA-256 hash only — never by
+# 'unsafe-inline'. If its text changes by even one character, recompute
+# the hash from the exact bytes between <script> and </script> in
+# base.njk (save them to script.txt, then run:
+# python3 -c "import hashlib,base64; print('sha256-'+base64.b64encode(hashlib.sha256(open('script.txt','rb').read()).digest()).decode())")
+# and replace the hash below. The video facades load thumbnails from
+# i.ytimg.com and iframes from youtube-nocookie.com only after the
+# reader taps play; the chat POSTs to /api/ask on this same origin;
+# search runs entirely in the browser from same-origin files.
 #
 # HSTS is set WITHOUT preload on purpose: preload is a one-way commitment
 # for the whole domain (including subdomains) and can only be added once
@@ -19,15 +26,16 @@
 # script-src carries 'wasm-unsafe-eval' because the Pagefind search runs
 # on WebAssembly: without it the search box hangs on "Searching…" and
 # never returns results (found 2026-11-21). It allows WASM compilation
-# only — it is not 'unsafe-eval' for JavaScript, and no inline script
-# is allowed anywhere.
+# only — it is not 'unsafe-eval' for JavaScript. The 'sha256-…' entry is
+# the theme-before-paint script (see the header comment); no other
+# inline script is allowed anywhere.
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval' 'sha256-B+K4sG2SBX6iawIG/pWI4u/Xe5oHjEhmf5NmrwfDbxI='; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
   # Edge-cache HTML for 5 minutes: browsers still revalidate every
   # navigation (max-age=0), the edge serves from cache and refreshes
   # in the background. A deploy is at most 5 minutes stale.

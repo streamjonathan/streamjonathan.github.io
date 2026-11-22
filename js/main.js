@@ -12,7 +12,7 @@
   var themeColor = document.querySelector('meta[name="theme-color"]');
   function paint() {
     if (button) button.textContent = effective() === "dark" ? "Light" : "Dark";
-    if (themeColor) themeColor.setAttribute("content", effective() === "dark" ? "#141414" : "#e9e7e2");
+    if (themeColor) themeColor.setAttribute("content", effective() === "dark" ? "#121212" : "#faf9f6");
   }
   if (button) {
     button.addEventListener("click", function () {
