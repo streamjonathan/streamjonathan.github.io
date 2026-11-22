@@ -61,3 +61,15 @@ eleventyExcludeFromCollections: true
   </li>
 {% endfor %}
 </ul>
+
+<section class="watch-section" aria-labelledby="watch-heading">
+  <h2 id="watch-heading">Watch</h2>
+  <ul class="watch-row">
+  {% for video in videos %}
+    <li class="watch-card">
+      <a href="https://www.youtube.com/watch?v={{ video.id }}">{{ video.title }}</a>
+      <p class="watch-title">{{ video.title }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
