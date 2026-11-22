@@ -1,52 +1,56 @@
 /* jonathanmccallum.com — one page, text first, no frameworks, no webfonts.
-   Night is the start: dark by default, with a greyish light day option the
+   Night is the start: dark by default, with a warm light day option the
    reader can choose at the top. The chat box is the entrance — the first
-   thing to use, no clicking through to reach it. */
+   thing to use, no clicking through to reach it.
+   Palettes are warm, never pure black or white. Gold is the one accent. */
 :root {
   color-scheme: dark;
-  --bg: #141414;
-  --text: #e8e6e1;
+  --bg: #121212;
+  --text: #faf9f6;
   --muted: #a8a49c;
   --line: #2e2e2e;
-  --link: #9dbfe9;
-  --visited: #c39bd3;
+  --link: #e8c87a;
+  --visited: #cbb27a;
   --code-bg: #1f1f1f;
-  --quote: #c9c5bd;
+  --quote: #d8d2c4;
   --field-bg: #1f1f1f;
   --chip-bg: rgba(255, 255, 255, 0.06);
-  --btn-bg: #e8e6e1;
-  --btn-text: #141414;
+  --btn-bg: #faf9f6;
+  --btn-text: #121212;
 }
-/* Day: greyish and light, never white. */
+/* Day: warm paper, never white. */
 html[data-theme="light"] {
   color-scheme: light;
-  --bg: #e9e7e2;
-  --text: #232220;
+  --bg: #faf9f6;
+  --text: #1a1815;
   --muted: #6d6960;
   --line: #cfccc3;
-  --link: #14457e;
-  --visited: #5b3a8c;
-  --code-bg: #dbd8cf;
+  --link: #7a5a10;
+  --visited: #6b5a2e;
+  --code-bg: #e8e4da;
   --quote: #55524a;
-  --field-bg: #f2f0eb;
+  --field-bg: #f2efe8;
   --chip-bg: rgba(0, 0, 0, 0.05);
-  --btn-bg: #232220;
-  --btn-text: #e9e7e2;
+  --btn-bg: #1a1815;
+  --btn-text: #faf9f6;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0 auto;
   max-width: 40rem;
   padding: 1rem 1.25rem 3rem;
-  font: 1.0625rem/1.65 Georgia, "Times New Roman", serif;
+  font: 1.0625rem/1.65 Georgia, "Iowan Old Style", "Times New Roman", serif;
   color: var(--text);
   background: var(--bg);
 }
-h1, h2, h3 { line-height: 1.25; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+p { text-wrap: pretty; }
+h1, h2, h3 { line-height: 1.25; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; letter-spacing: -0.01em; text-wrap: balance; }
 h1 { font-size: 2rem; }
 h2 { font-size: 1.25rem; margin-top: 2rem; }
 a { color: var(--link); }
 a:visited { color: var(--visited); }
+a:hover { color: var(--link); }
+::selection { background: var(--link); color: var(--bg); }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 img, picture, video, iframe { max-width: 100%; height: auto; }
 img { display: block; }
@@ -57,7 +61,9 @@ img { display: block; }
   font: 0.95rem system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--muted); cursor: pointer; min-height: 2.75rem;
 }
-.intro { font-family: Georgia, "Times New Roman", serif; font-size: 1.35rem; line-height: 1.5; margin: 0.5rem 0 1rem; }
+.site-title { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 2rem; margin: 0.5rem 0 0; }
+.rule-gold { border: 0; border-top: 2px solid var(--link); width: 4rem; margin: 0.75rem 0 1rem; }
+.intro { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 1.35rem; line-height: 1.5; margin: 0.5rem 0 1rem; }
 /* Social links: one row, easy to reach, easy to tap. */
 .social { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1rem; }
 .social a { padding: 0.6rem 0; }
@@ -65,8 +71,15 @@ main ul { padding-left: 1.25rem; }
 main li { margin: 0.4rem 0; }
 main li a { padding: 0.15rem 0; }
 .site-footer { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 0.75rem; font-size: 0.9rem; color: var(--muted); }
-.meta { color: var(--muted); font-size: 0.95rem; }
-blockquote { border-left: 3px solid var(--line); margin-left: 0; padding-left: 1rem; color: var(--quote); }
+.meta { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
+blockquote { border-left: 3px solid var(--link); margin-left: 0; padding-left: 1rem; color: var(--quote); }
+/* Drop cap on the first paragraph of each essay. */
+.post-body > p:first-of-type::first-letter {
+  font-size: 3.2em; float: left; line-height: 0.85;
+  padding-right: 0.12em; padding-top: 0.05em;
+  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  color: var(--link);
+}
 code { font-size: 0.9em; }
 pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* The chat is the entrance: big box, one clear button, try-it chips. */
@@ -113,7 +126,8 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }
-.article-list li a { font-size: 1.12rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.article-list li a { font-size: 1.12rem; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; color: var(--text); }
+.article-list li a:hover { color: var(--link); }
 .article-list .meta { margin-left: 0.5rem; }
 .article-list .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
 /* Forms elsewhere: roomy tap targets, full-width fields on phones. */
