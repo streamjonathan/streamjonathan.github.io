@@ -89,6 +89,7 @@ module.exports = function (eleventyConfig) {
   // /PUBLISHING/ and /VOICE/ until 22 Nov 2026).
   eleventyConfig.ignores.add("PUBLISHING.md");
   eleventyConfig.ignores.add("VOICE.md");
+  eleventyConfig.ignores.add("AGENTS.md");
   // The fetcher's scratch files (raw HTML snapshots, logs, scripts).
   eleventyConfig.ignores.add("work/**");
   // The site-AI Worker lives in its own folder and is never part of the
