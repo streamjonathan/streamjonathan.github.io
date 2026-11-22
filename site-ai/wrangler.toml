@@ -1,14 +1,12 @@
 # Cloudflare Worker: the site AI for jonathanmccallum.com
 #
-# DEPLOYED 2026-11-21 on the free Cloudflare account (mccallumhome).
+# DEPLOYED 2026-11-21 on the free Cloudflare account.
 # Deployed via the Cloudflare REST API with the custom.cloudflare
-# connector (see ~/workspace/custom-connectors/custom.cloudflare/).
-# Wrangler OAuth does not work from this machine — use the API route.
-# After editing src/index.js, redeploy with:
-#   python3 ~/workspace/custom-connectors/custom.cloudflare/bin/cf.py \
-#     put-multipart /accounts/d782d5b28928c6c4187d8d276815cd6d/workers/scripts/jonathanmccallum-site-ai \
-#     <metadata.json> site-ai/src/index.js index.js
-# (metadata.json carries the bindings below; keep it out of the repo.)
+# connector. Wrangler OAuth does not work from this machine — use the
+# API route. After editing src/index.js, redeploy with the cf.py
+# put-multipart command in the connector doc (the account id and the
+# metadata.json with the bindings below live outside this repo — never
+# paste account ids or local paths into a public file).
 #
 # What this Worker is: a stateless question-answerer that reads ONLY the
 # Vectorize index built from the published posts (site-ai/scripts) and

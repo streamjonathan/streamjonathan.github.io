@@ -69,7 +69,7 @@ Rules you must follow:
 
 const PII_PATTERNS = [
   /[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/, // email address
-  /\+?\d[\d\s().-]{7,}\d/, // phone-like number
+  /(?:\+\d{1,3}[\s.-]?)?\(?\d{2,4}\)?[\s.-]\d{3,4}[\s.-]\d{3,4}\b|\b\d{9,15}\b/, // phone-like number (stricter: year ranges like 1914-1918 and dates like 2013-10-27 must NOT match)
   /\b\d{1,5}\s+[A-Za-zÀ-ÿ'’-]+(?:\s+[A-Za-zÀ-ÿ'’-]+){0,3}\s+(?:street|road|avenue|lane|drive|plaza|calle|kalea)\b/i, // street address
 ];
 
@@ -215,7 +215,7 @@ async function answerOnce(question, env, gateway) {
         { role: "system", content: SYSTEM_PROMPT },
         {
           role: "user",
-          content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title and linking to it.`,
+          content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title only. Do not write any link.`,
         },
       ],
       temperature: 0.2,
@@ -282,7 +282,7 @@ async function answerStream(question, env, gateway) {
           { role: "system", content: SYSTEM_PROMPT },
           {
             role: "user",
-            content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title and linking to it.`,
+            content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title only. Do not write any link.`,
           },
         ],
         temperature: 0.2,

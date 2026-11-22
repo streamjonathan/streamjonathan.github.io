@@ -14,7 +14,7 @@ Static site for jonathanmccallum.com, built with [Eleventy](https://www.11ty.dev
 
 ## Posts are held back as drafts
 
-All 179 posts are drafts for now: `content/posts/posts.11tydata.js` sets `draft: true`, so no post pages are built yet. The site launches with the homepage and pages only.
+Most posts are still drafts: `content/posts/posts.11tydata.js` sets `draft: true` by default, so only published posts get pages. Six posts are live so far (see PUBLISHING.md) — one at a time, only when Jonathan says so.
 
 - **To publish one post:** add `draft: false` to that post's front matter, rebuild, and it appears at its original URL, in the RSS feed and the sitemap.
 - **To publish all posts:** change `draft: true` to `draft: false` in `content/posts/posts.11tydata.js`.
@@ -45,15 +45,15 @@ Push to the `main` branch of `streamjonathan/streamjonathan.github.io`. The GitH
 
 Do **not** change DNS until the preview at `https://streamjonathan.github.io` has been checked.
 
-## Site AI (not deployed yet)
+## Site AI (deployed 21 Nov 2026)
 
 `site-ai/` holds the chat Worker: it answers visitors only from the
 published posts, through Cloudflare Workers AI + Vectorize + AI Gateway
 Guardrails, all on the free tier. It is a separate agent from his
 personal assistant (Muse/Bobby) — separate account, separate knowledge,
 no personal data. See `site-ai/README.md` for the deploy steps, the
-separation rules, and the audit checklist. Deploy only after signing
-into Cloudflare.
+separation rules, and the audit checklist. It went live 21 Nov 2026;
+redeploys go through the Cloudflare API, not `wrangler deploy`.
 
 ## Maintenance
 
