@@ -2,7 +2,7 @@
 title: "Faith from C S Lewis Perspective"
 date: 2025-03-23
 slug: faith-from-c-s-lewis-perspective
-draft: true
+draft: false
 shareImage: /images/faith-from-c-s-lewis-perspective.jpg
 source_video: https://www.youtube.com/watch?v=UxgZNuYSxh4
 source_transcript: transcripts/UxgZNuYSxh4.md

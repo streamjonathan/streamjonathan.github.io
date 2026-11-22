@@ -2,7 +2,7 @@
 title: "C.S.Lewis & The Wonder of Knowing God"
 date: 2024-02-01
 slug: c-s-lewis-and-the-wonder-of-knowing-god
-draft: true
+draft: false
 shareImage: /images/c-s-lewis-and-the-wonder-of-knowing-god.jpg
 source_video: https://www.youtube.com/watch?v=6lj8L5rfrT4
 source_transcript: transcripts/6lj8L5rfrT4.md

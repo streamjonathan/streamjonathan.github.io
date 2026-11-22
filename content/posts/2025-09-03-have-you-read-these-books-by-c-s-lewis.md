@@ -2,7 +2,7 @@
 title: "Have you read these books by C S Lewis?"
 date: 2025-09-03
 slug: have-you-read-these-books-by-c-s-lewis
-draft: true
+draft: false
 shareImage: /images/have-you-read-these-books-by-c-s-lewis.jpg
 source_video: https://www.youtube.com/watch?v=RFBk-OhhmWk
 source_transcript: transcripts/RFBk-OhhmWk.md

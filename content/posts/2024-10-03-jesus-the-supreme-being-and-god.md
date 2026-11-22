@@ -2,7 +2,7 @@
 title: "Jesus The Supreme Being and God"
 date: 2024-10-03
 slug: jesus-the-supreme-being-and-god
-draft: true
+draft: false
 shareImage: /images/jesus-the-supreme-being-and-god.jpg
 source_video: https://www.youtube.com/watch?v=YefAbng2k_I
 source_transcript: transcripts/YefAbng2k_I.md

@@ -2,7 +2,7 @@
 title: "How A Stable Holds More Than We Could Ever Imagine. Lewis and The Last Battle."
 date: 2023-12-15
 slug: how-a-stable-holds-more-than-we-could-ever-imagine
-draft: true
+draft: false
 shareImage: /images/how-a-stable-holds-more-than-we-could-ever-imagine.jpg
 source_video: https://www.youtube.com/watch?v=n60kziisn6Y
 source_transcript: transcripts/n60kziisn6Y.md

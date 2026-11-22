@@ -2,7 +2,7 @@
 title: "C S Lewis believed in Heaven & Hell. He condensed much Christian Theology into The Great Divorce"
 date: 2025-09-05
 slug: c-s-lewis-believed-in-heaven-and-hell
-draft: true
+draft: false
 shareImage: /images/c-s-lewis-believed-in-heaven-and-hell.jpg
 source_video: https://www.youtube.com/watch?v=7kKnTs28fYo
 source_transcript: transcripts/7kKnTs28fYo.md

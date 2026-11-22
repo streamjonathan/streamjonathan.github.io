@@ -2,7 +2,7 @@
 title: "Experiencing God's Love"
 date: 2023-12-13
 slug: experiencing-gods-love
-draft: true
+draft: false
 shareImage: /images/experiencing-gods-love.jpg
 source_video: https://www.youtube.com/watch?v=zvtpeDCwBeo
 source_transcript: transcripts/zvtpeDCwBeo.md

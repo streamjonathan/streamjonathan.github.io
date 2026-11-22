@@ -2,7 +2,7 @@
 title: "Be Like Jesus and Not Proud, Nor Loud Nor Over Confident"
 date: 2026-10-19
 slug: be-like-jesus-and-not-proud-nor-loud-nor-over-confident
-draft: true
+draft: false
 shareImage: /images/be-like-jesus-and-not-proud-nor-loud-nor-over-confident.jpg
 source_video: https://www.youtube.com/watch?v=_onSddMhIMM
 source_transcript: transcripts/_onSddMhIMM.md

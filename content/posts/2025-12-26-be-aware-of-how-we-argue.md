@@ -2,7 +2,7 @@
 title: "Be Aware of How We Argue or Interact in Debates and Discussions as Followers of Jesus"
 date: 2025-12-26
 slug: be-aware-of-how-we-argue
-draft: true
+draft: false
 shareImage: /images/be-aware-of-how-we-argue.jpg
 source_video: https://www.youtube.com/watch?v=OCpLeSyZOy0
 source_transcript: transcripts/OCpLeSyZOy0.md

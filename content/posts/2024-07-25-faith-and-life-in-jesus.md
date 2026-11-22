@@ -2,7 +2,7 @@
 title: "Faith and Life in Jesus"
 date: 2024-07-25
 slug: faith-and-life-in-jesus
-draft: true
+draft: false
 shareImage: /images/faith-and-life-in-jesus.jpg
 source_video: https://www.youtube.com/watch?v=4xaWQtUBHFU
 source_transcript: transcripts/4xaWQtUBHFU.md
