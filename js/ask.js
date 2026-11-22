@@ -196,7 +196,7 @@ function bootAsk() {
         .then(function (data) {
           noteButton.disabled = false;
           if (data.ok) {
-            result.textContent = "Thank you — your note is with Jonathan.";
+            result.innerHTML = "Thank you — your note is with Jonathan.<br>Want a personal reply? Find me on <a href=\"https://www.instagram.com/jonamccallum\">Instagram @jonamccallum</a> or <a href=\"https://www.threads.com/@jonamccallum\">Threads @jonamccallum</a>.";
             document.getElementById("note-text").value = "";
           } else {
             result.textContent = "Notes aren't switched on yet — the quickest way to reach Jonathan is a message on Instagram or Threads.";
