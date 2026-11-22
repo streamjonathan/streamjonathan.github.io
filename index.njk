@@ -18,6 +18,45 @@ eleventyExcludeFromCollections: true
   <a href="https://jonamccallum.substack.com">Substack</a>
 </p>
 
+<section class="featured" aria-labelledby="featured-heading">
+  <h2 id="featured-heading">Newest writing</h2>
+  <ul class="featured-row" data-auto-carousel>
+  {% for post in collections.publishedPosts | reverse %}
+    {% if loop.index <= 5 %}
+    <li class="featured-card">
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <span class="meta">{{ post.date | readableDate }}</span>
+      <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
+    </li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+</section>
+
+<p>The posts from the archive are being reviewed and will return here one by one.</p>
+
+<h2>Writing</h2>
+<ul class="article-list">
+{% for post in collections.publishedPosts | reverse %}
+  <li>
+    <a href="{{ post.url }}">{{ post.data.title }}</a>
+    <span class="meta">{{ post.date | readableDate }}</span>
+    <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
+  </li>
+{% endfor %}
+</ul>
+
+<section class="note-section" aria-labelledby="note-heading">
+  <h2 id="note-heading">Leave a note</h2>
+  <p>If something here spoke to you, leave a note for Jonathan. No name or email needed — notes are anonymous. If you would like a reply, the quickest way is a message on <a href="https://www.instagram.com/jonamccallum">Instagram</a> or <a href="https://www.threads.com/@jonamccallum">Threads</a>.</p>
+  <form id="note-form">
+    <label for="note-text">Your note</label>
+    <textarea id="note-text" name="note" rows="3" maxlength="1000" placeholder="Write a few words…" required></textarea>
+    <button id="note-button" type="button">Leave the note</button>
+  </form>
+  <p id="note-result" aria-live="polite"></p>
+</section>
+
 <section class="ask-hero" aria-labelledby="ask-heading">
   <h2 id="ask-heading">Interact with Jonathan's writing</h2>
   <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
@@ -37,30 +76,6 @@ eleventyExcludeFromCollections: true
   <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
   <p class="ai-note">An AI answers from Jonathan's writing only. It is not Jonathan, and it can get things wrong.</p>
 </section>
-
-<section class="note-section" aria-labelledby="note-heading">
-  <h2 id="note-heading">Leave a note</h2>
-  <p>If something here spoke to you, leave a note for Jonathan. No name or email needed — notes are anonymous. If you would like a reply, the quickest way is a message on <a href="https://www.instagram.com/jonamccallum">Instagram</a> or <a href="https://www.threads.com/@jonamccallum">Threads</a>.</p>
-  <form id="note-form">
-    <label for="note-text">Your note</label>
-    <textarea id="note-text" name="note" rows="3" maxlength="1000" placeholder="Write a few words…" required></textarea>
-    <button id="note-button" type="button">Leave the note</button>
-  </form>
-  <p id="note-result" aria-live="polite"></p>
-</section>
-
-<p>The posts from the archive are being reviewed and will return here one by one.</p>
-
-<h2>Writing</h2>
-<ul class="article-list">
-{% for post in collections.publishedPosts | reverse %}
-  <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <span class="meta">{{ post.date | readableDate }}</span>
-    <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
-  </li>
-{% endfor %}
-</ul>
 
 <hr class="rule-gold">
 <section class="watch-section" aria-labelledby="watch-heading">

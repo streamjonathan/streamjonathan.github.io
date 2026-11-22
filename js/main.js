@@ -64,3 +64,27 @@ document.addEventListener("click", function (e) {
   frame.loading = "lazy";
   holder.replaceWith(frame);
 });
+
+// Featured carousel: move slowly through the newest articles, one card
+// every seven seconds, looping back to the start. Pauses while the
+// reader hovers or focuses it, and stays still when reduced motion is
+// preferred or the tab is hidden.
+(function () {
+  var row = document.querySelector("[data-auto-carousel]");
+  if (!row) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var cards = row.children;
+  if (cards.length < 2) return;
+  var index = 0, timer = null, paused = false;
+  function step() {
+    if (paused || document.hidden) return;
+    index = (index + 1) % cards.length;
+    cards[index].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+  }
+  function start() { if (!timer) timer = setInterval(step, 7000); }
+  row.addEventListener("pointerenter", function () { paused = true; });
+  row.addEventListener("pointerleave", function () { paused = false; });
+  row.addEventListener("focusin", function () { paused = true; });
+  row.addEventListener("focusout", function () { paused = false; });
+  start();
+})();
