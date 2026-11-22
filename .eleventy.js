@@ -90,6 +90,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("PUBLISHING.md");
   eleventyConfig.ignores.add("VOICE.md");
   eleventyConfig.ignores.add("AGENTS.md");
+  // Transcript extracts and draft short posts live in the repo as the
+  // source of truth, but they are never published as pages.
+  eleventyConfig.ignores.add("transcripts/**");
+  eleventyConfig.ignores.add("drafts/**");
   // The fetcher's scratch files (raw HTML snapshots, logs, scripts).
   eleventyConfig.ignores.add("work/**");
   // The site-AI Worker lives in its own folder and is never part of the
