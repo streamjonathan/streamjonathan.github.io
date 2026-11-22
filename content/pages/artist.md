@@ -7,4 +7,4 @@ wayback_timestamp: 20210121013036
 ---
 # Artist
 
-[![](/images/2017-04-Artist.jpg)](/images/2017-04-Artist.jpg)
+The artwork for this page was not recovered from the archive.

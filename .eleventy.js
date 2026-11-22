@@ -69,7 +69,11 @@ module.exports = function (eleventyConfig) {
   // recovered images, and the GitHub Pages CNAME.
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy({ "content/images": "images" });
+  // No passthrough for content/images: the 47 recovered originals
+  // (~121 MB) are not referenced by any published page. The image
+  // transform writes WebP/AVIF derivatives into _site/images itself,
+  // and the share image is written there by the postbuild script.
+  // Copying the originals would only bloat the deploy.
   eleventyConfig.addPassthroughCopy("CNAME");
   // Cloudflare Pages reads these from the build output root.
   eleventyConfig.addPassthroughCopy("_headers");
@@ -81,6 +85,10 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.ignores.add("README.md");
   eleventyConfig.ignores.add("MAINTENANCE.md");
   eleventyConfig.ignores.add("RECOVERY-REPORT.md");
+  // Internal docs must never publish as pages (they were live at
+  // /PUBLISHING/ and /VOICE/ until 22 Nov 2026).
+  eleventyConfig.ignores.add("PUBLISHING.md");
+  eleventyConfig.ignores.add("VOICE.md");
   // The fetcher's scratch files (raw HTML snapshots, logs, scripts).
   eleventyConfig.ignores.add("work/**");
   // The site-AI Worker lives in its own folder and is never part of the
