@@ -1,8 +1,24 @@
-/* jonathanmccallum.com — one page, text first, no frameworks, no webfonts.
-   Night is the start: dark by default, with a warm light day option the
-   reader can choose at the top. The chat box is the entrance — the first
-   thing to use, no clicking through to reach it.
+/* jonathanmccallum.com — one page, text first, no frameworks.
+   Two self-hosted variable fonts (Fraunces for display, Newsreader for
+   body), latin subsets only, font-display: swap, so the text never waits
+   on a font. Night is the start: dark by default, with a warm light day
+   option the reader can choose at the top. The chat box is the entrance —
+   the first thing to use, no clicking through to reach it.
    Palettes are warm, never pure black or white. Gold is the one accent. */
+@font-face {
+  font-family: "Fraunces";
+  src: url("/css/fonts/fraunces-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/css/fonts/newsreader-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
 :root {
   color-scheme: dark;
   --bg: #121212;
@@ -39,13 +55,13 @@ body {
   margin: 0 auto;
   max-width: 40rem;
   padding: 1rem 1.25rem 3rem;
-  font: 1.0625rem/1.65 Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font: 1.0625rem/1.65 "Newsreader", Georgia, "Iowan Old Style", "Times New Roman", serif;
   color: var(--text);
   background: var(--bg);
 }
 p { text-wrap: pretty; }
-h1, h2, h3 { line-height: 1.25; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; letter-spacing: -0.01em; text-wrap: balance; }
-h1 { font-size: 2rem; }
+h1, h2, h3 { line-height: 1.25; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance; }
+h1 { font-size: 2.25rem; }
 h2 { font-size: 1.25rem; margin-top: 2rem; }
 a { color: var(--link); }
 a:visited { color: var(--visited); }
@@ -66,9 +82,9 @@ img { display: block; }
 /* Skip link: invisible until tabbed to, then it appears at the top. */
 .skip-link { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .skip-link:focus { position: absolute; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; background: var(--bg); color: var(--link); padding: 0.75rem 1rem; z-index: 10; }
-.site-title { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 2rem; margin: 0.5rem 0 0; }
+.site-title { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 2rem; margin: 0.5rem 0 0; }
 .rule-gold { border: 0; border-top: 2px solid var(--link); width: 4rem; margin: 0.75rem 0 1rem; }
-.intro { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 1.35rem; line-height: 1.5; margin: 0.5rem 0 1rem; }
+.intro { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 500; font-size: 1.6rem; line-height: 1.45; margin: 0.5rem 0 1rem; }
 /* Social links: one row, easy to reach, easy to tap. */
 .social { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1rem; }
 .social a { padding: 0.6rem 0; }
@@ -82,7 +98,8 @@ blockquote { border-left: 3px solid var(--link); margin-left: 0; padding-left: 1
 .post-body > p:first-of-type::first-letter {
   font-size: 3.2em; float: left; line-height: 0.85;
   padding-right: 0.12em; padding-top: 0.05em;
-  font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
   color: var(--link);
 }
 code { font-size: 0.9em; }
@@ -118,7 +135,7 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 .note-section form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .note-section textarea {
   flex: 1 1 100%; padding: 0.75rem 1rem; resize: vertical;
-  font: 1.05rem/1.5 Georgia, "Times New Roman", serif;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
   border: 1px solid var(--line); border-radius: 0.75rem;
   color: var(--text); background: var(--field-bg);
 }
@@ -131,7 +148,7 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }
-.article-list li a { font-size: 1.12rem; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; color: var(--text); }
+.article-list li a { font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; color: var(--text); transition: color .2s ease; }
 .article-list li a:hover { color: var(--link); }
 .article-list .meta { margin-left: 0.5rem; }
 .article-list .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
@@ -235,15 +252,23 @@ button[type="submit"] {
 .watch-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
 .watch-card { flex: 0 0 20rem; scroll-snap-align: start; }
 .watch-card .video-facade { margin: 0; }
-.watch-title { font-size: 0.95rem; margin: 0.5rem 0 0; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; }
+.watch-title { font-size: 0.95rem; margin: 0.5rem 0 0; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; }
 /* Featured carousel: the newest articles in a slow-moving row, same
    scroll-snap pattern as the Watch row. The reader can swipe or scroll
    it by hand; the script below moves it along gently when left alone. */
 .featured { margin-top: 1.5rem; }
 .featured-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
 .featured-card { flex: 0 0 20rem; scroll-snap-align: start; border-top: 1px solid var(--line); padding-top: 0.9rem; }
-.featured-card a { font-size: 1.12rem; font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; color: var(--text); }
+.featured-card a { font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; color: var(--text); transition: color .2s ease; }
 .featured-card a:hover { color: var(--link); }
 .featured-card .meta { margin-left: 0.5rem; }
 .featured-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
 .featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 0.5rem; }
+/* Gentle fade-in as sections enter view. Only when JavaScript adds
+   .js-fade to <html>, so without JS everything is simply visible.
+   Off entirely when the reader prefers reduced motion. */
+.js-fade [data-fade] { opacity: 0; transform: translateY(8px); transition: opacity .6s ease, transform .6s ease; }
+.js-fade [data-fade].is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .js-fade [data-fade] { opacity: 1; transform: none; transition: none; }
+}

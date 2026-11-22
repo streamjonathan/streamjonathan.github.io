@@ -65,6 +65,25 @@ document.addEventListener("click", function (e) {
   holder.replaceWith(frame);
 });
 
+// Gentle fade-in as sections enter view. Skipped entirely when the
+// reader prefers reduced motion. The .js-fade class on <html> is what
+// lets the CSS hide sections first; without JS nothing is hidden.
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var items = document.querySelectorAll("[data-fade]");
+  if (!items.length || !("IntersectionObserver" in window)) return;
+  document.documentElement.classList.add("js-fade");
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  items.forEach(function (item) { observer.observe(item); });
+})();
+
 // Featured carousel: move slowly through the newest articles, one card
 // every seven seconds, looping back to the start. Pauses while the
 // reader hovers or focuses it, and stays still when reduced motion is

@@ -18,7 +18,7 @@ eleventyExcludeFromCollections: true
   <a href="https://jonamccallum.substack.com">Substack</a>
 </p>
 
-<section class="featured" aria-labelledby="featured-heading">
+<section class="featured" data-fade aria-labelledby="featured-heading">
   <h2 id="featured-heading">Newest writing</h2>
   <ul class="featured-row" data-auto-carousel>
   {% for post in collections.publishedPosts | reverse %}
@@ -37,7 +37,7 @@ eleventyExcludeFromCollections: true
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 
 <h2>Writing</h2>
-<ul class="article-list">
+<ul class="article-list" data-fade>
 {% for post in collections.publishedPosts | reverse %}
   <li>
     <a href="{{ post.url }}">{{ post.data.title }}</a>
@@ -47,7 +47,7 @@ eleventyExcludeFromCollections: true
 {% endfor %}
 </ul>
 
-<section class="note-section" aria-labelledby="note-heading">
+<section class="note-section" data-fade aria-labelledby="note-heading">
   <h2 id="note-heading">Leave a note</h2>
   <p>If something here spoke to you, leave a note for Jonathan. No name or email needed — notes are anonymous. If you would like a reply, the quickest way is a message on <a href="https://www.instagram.com/jonamccallum">Instagram</a> or <a href="https://www.threads.com/@jonamccallum">Threads</a>.</p>
   <form id="note-form">
@@ -58,7 +58,7 @@ eleventyExcludeFromCollections: true
   <p id="note-result" aria-live="polite"></p>
 </section>
 
-<section class="ask-hero" aria-labelledby="ask-heading">
+<section class="ask-hero" data-fade aria-labelledby="ask-heading">
   <h2 id="ask-heading">Interact with Jonathan's writing</h2>
   <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
   <p>Jonathan reads the questions people ask here, takes on board what people say, and does his best to reply where he can.</p>
@@ -79,7 +79,7 @@ eleventyExcludeFromCollections: true
 </section>
 
 <hr class="rule-gold">
-<section class="watch-section" aria-labelledby="watch-heading">
+<section class="watch-section" data-fade aria-labelledby="watch-heading">
   <h2 id="watch-heading">Watch</h2>
   <ul class="watch-row">
   {% set shown = [] %}
