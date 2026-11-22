@@ -22,8 +22,9 @@ eleventyExcludeFromCollections: true
   <h2 id="featured-heading">Newest writing</h2>
   <ul class="featured-row" data-auto-carousel>
   {% for post in collections.publishedPosts | reverse %}
-    {% if loop.index <= 5 %}
+    {% if loop.index <= 10 %}
     <li class="featured-card">
+      {% if post.data.shareImage %}<img class="featured-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">{% endif %}
       <a href="{{ post.url }}">{{ post.data.title }}</a>
       <span class="meta">{{ post.date | readableDate }}</span>
       <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>

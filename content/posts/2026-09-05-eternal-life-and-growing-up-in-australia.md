@@ -2,7 +2,7 @@
 title: "Eternal life and Growing Up in Australia"
 date: 2026-09-05
 slug: eternal-life-and-growing-up-in-australia
-draft: false
+draft: true
 original_url: https://jonamccallum.substack.com/p/eternal-life-and-growing-up-in-australia
 ---
 

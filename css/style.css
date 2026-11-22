@@ -246,3 +246,4 @@ button[type="submit"] {
 .featured-card a:hover { color: var(--link); }
 .featured-card .meta { margin-left: 0.5rem; }
 .featured-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
+.featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 0.5rem; }
