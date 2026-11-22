@@ -1,0 +1,30 @@
+{# Comments under an article. Readers sign in with Google (the same
+   login as YouTube) and comment with their real name and photo — no
+   anonymous comments, no made-up names. The section is driven by
+   /js/comments.js: it fetches the thread from the comments API and
+   renders it. data-comments-api is the API base — empty means the
+   same origin (/api on jonathanmccallum.com); the preview branch sets
+   it to the test Worker. data-comments-client-id is the Google OAuth
+   client id; empty means sign-in is not set up yet and the list still
+   shows, with a short note instead of the sign-in button. #}
+<section class="comments-section" data-fade aria-labelledby="comments-heading"
+  data-comments
+  data-comments-post="{{ page.fileSlug }}"
+  data-comments-lang="{{ site.language }}"
+  data-comments-api="{{ site.commentsApi }}"
+  data-comments-client-id="{{ site.googleClientId }}">
+  <h2 id="comments-heading">Comments</h2>
+  <p class="comments-note" id="comments-note">Sign in with Google to join the conversation.</p>
+  <div id="comments-signin"></div>
+  <ul class="comments-list" id="comments-list" aria-live="polite"></ul>
+  <form id="comments-form" hidden>
+    <p class="comments-as" id="comments-as"></p>
+    <label for="comments-text">Your comment</label>
+    <textarea id="comments-text" name="text" rows="3" maxlength="1000" required placeholder="Write a comment…"></textarea>
+    <label for="comments-video">Video reply (optional)</label>
+    <input id="comments-video" name="video" type="url" inputmode="url" placeholder="YouTube link — pasting a video makes it a video reply">
+    <button type="submit">Post comment</button>
+  </form>
+  <p class="comments-result" id="comments-result" aria-live="polite"></p>
+  <noscript><p>Comments need JavaScript enabled.</p></noscript>
+</section>

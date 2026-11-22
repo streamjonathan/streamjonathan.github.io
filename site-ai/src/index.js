@@ -25,7 +25,12 @@
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
 //   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
+//   jonathanmccallum.com/api/comments and /api/comment → this Worker
+//     (signed-in reader comments, Google login — see src/comments.js).
+//     The mirrors call these two on the main domain, cross-origin.
 // Everything else on the site is served by Cloudflare Pages.
+
+import { handleComments } from "./comments.js";
 
 const FIXED_REFUSAL =
   "I can only help with Jonathan's published writing — here's a post you might like:";
@@ -375,6 +380,11 @@ export default {
     if (url.pathname.endsWith("/api/note")) {
       return handleNote(request, env);
     }
+    // Signed-in comments live in src/comments.js. The check sits here,
+    // before the ask-only POST gate below, because listing comments is
+    // a GET and the mirrors call it cross-origin.
+    const commentsResponse = await handleComments(request, env);
+    if (commentsResponse) return commentsResponse;
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
     }

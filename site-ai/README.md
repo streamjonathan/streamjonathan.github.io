@@ -122,3 +122,40 @@ and the worst outcome is one bad answer that still links to a real post.
 The safest fallback is always live: Pagefind search + related posts,
 which cannot be jailbroken at all. If abuse is ever detected, disable
 the `/api/ask` route and the site carries on with search alone.
+
+## Comments (branch site-comments, 2026-11-22)
+
+Signed-in comments under each article. Readers sign in with Google
+(the same login as YouTube) and comment with their real name and
+photo. Server code is `src/comments.js`, routed from `src/index.js`.
+Front end is `_includes/comments.njk` + `js/comments.js`.
+
+Before merging to main, revert the preview settings:
+- `_data/site.json`: set `commentsApi` back to `""` (same origin).
+- `_headers`: in `connect-src`, remove the test Worker origin.
+  Production needs only `'self'` plus the two Google origins.
+- Mirrors: same two reverts, and add `https://jonathanmccallum.com`
+  to `connect-src` in their `_headers` (mirrors call the comments API
+  on the main domain, cross-origin).
+
+Google OAuth client (Jonathan's job, or a browser task): no client id
+exists yet, so sign-in shows "coming soon" until this is done. In
+Google Cloud Console, create an OAuth client ID (Web application) and
+add these Authorised JavaScript origins: `https://jonathanmccallum.com`
+plus each mirror's pages.dev domain and any preview domains. Copy the
+Client ID into `googleClientId` in `_data/site.json` (main site and
+every mirror) and set the same value as the `GOOGLE_CLIENT_ID` Worker
+var at deploy.
+
+Deploying (after merge): deploy this Worker with the API route,
+adding two plain-text vars to the metadata — set at deploy time, never
+committed: `ADMIN_EMAIL` (the site owner's Google address, the only
+account that can delete a comment) and `GOOGLE_CLIENT_ID`.
+
+Test Worker: `jonathanmccallum-comments-test` was only for preview
+testing. Once the real Worker is deployed with the comments code,
+delete the test Worker and retire the preview projects.
+
+Threads: one per article per language, `<lang>:<slug>`. Limits: 1000
+characters, 5 comments per 10 minutes per IP. A comment may carry one
+YouTube link, rendered as the same tap-to-load facade the articles use.

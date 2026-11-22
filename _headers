@@ -35,7 +35,7 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval' 'sha256-B+K4sG2SBX6iawIG/pWI4u/Xe5oHjEhmf5NmrwfDbxI='; style-src 'self'; img-src 'self' https://i.ytimg.com; font-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval' 'sha256-B+K4sG2SBX6iawIG/pWI4u/Xe5oHjEhmf5NmrwfDbxI=' https://accounts.google.com; style-src 'self'; img-src 'self' https://i.ytimg.com https://lh3.googleusercontent.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://accounts.google.com; connect-src 'self' https://accounts.google.com https://apis.google.com https://jonathanmccallum-comments-test.mccallumhome.workers.dev; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
   # Edge-cache HTML for 5 minutes: browsers still revalidate every
   # navigation (max-age=0), the edge serves from cache and refreshes
   # in the background. A deploy is at most 5 minutes stale.
