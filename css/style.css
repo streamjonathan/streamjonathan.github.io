@@ -54,13 +54,18 @@ a:hover { color: var(--link); }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 img, picture, video, iframe { max-width: 100%; height: auto; }
 img { display: block; }
-/* Small theme choice, top right, nothing else up there. */
-.theme-row { display: flex; justify-content: flex-end; }
-.theme-row button {
+/* Slim header on every page: the site title links home, theme choice at right. */
+.site-header { display: flex; justify-content: space-between; align-items: baseline; }
+.site-header__title { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-variant-numeric: tabular-nums; text-decoration: none; padding: 0.75rem 0.25rem; min-height: 2.75rem; display: inline-block; }
+.site-header__title:hover { color: var(--link); }
+.site-header button {
   border: 0; background: none; padding: 0.75rem 0.25rem;
   font: 0.95rem system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--muted); cursor: pointer; min-height: 2.75rem;
 }
+/* Skip link: invisible until tabbed to, then it appears at the top. */
+.skip-link { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.skip-link:focus { position: absolute; width: auto; height: auto; overflow: visible; clip: auto; white-space: normal; background: var(--bg); color: var(--link); padding: 0.75rem 1rem; z-index: 10; }
 .site-title { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 2rem; margin: 0.5rem 0 0; }
 .rule-gold { border: 0; border-top: 2px solid var(--link); width: 4rem; margin: 0.75rem 0 1rem; }
 .intro { font-family: Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 1.35rem; line-height: 1.5; margin: 0.5rem 0 1rem; }

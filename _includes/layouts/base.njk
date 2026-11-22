@@ -17,13 +17,15 @@
 <meta property="og:url" content="{{ site.url }}{{ page.url }}">
 <meta property="og:type" content="{% if tags and 'posts' in tags %}article{% else %}website{% endif %}">
 {% if tags and 'posts' in tags and page.date %}<meta property="article:published_time" content="{{ page.date.toISOString() }}">{% endif %}
-<meta property="og:image" content="{{ site.url }}/images/share.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+{# A post can set shareImage in front matter to use its own photo; otherwise the wave photo. #}
+{% set pageShareImage = shareImage or "/images/share.jpg" %}
+<meta property="og:image" content="{{ site.url }}{{ pageShareImage }}">
+{% if not shareImage %}<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">{% endif %}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}">
 <meta name="twitter:description" content="{{ pageDescription }}">
-<meta name="twitter:image" content="{{ site.url }}/images/share.jpg">
+<meta name="twitter:image" content="{{ site.url }}{{ pageShareImage }}">
 {% if page.url == "/" %}
 <script type="application/ld+json">
 {
@@ -58,7 +60,7 @@
   "headline": {{ title | dump | safe }},
   "description": {{ pageDescription | dump | safe }},
   "url": {{ (site.url + page.url) | dump | safe }},
-  "image": {{ (site.url + "/images/share.jpg") | dump | safe }},
+  "image": {{ (site.url + pageShareImage) | dump | safe }},
 {% if page.date %}  "datePublished": {{ page.date.toISOString().slice(0, 10) | dump | safe }},
   "dateModified": {{ page.date.toISOString().slice(0, 10) | dump | safe }},
 {% endif %}  "author": { "@type": "Person", "name": {{ site.author | dump | safe }}, "url": {{ site.url | dump | safe }} },
@@ -79,17 +81,22 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=5" as="style">
-<link rel="stylesheet" href="/css/style.css?v=5">
+<link rel="preload" href="/css/style.css?v=6" as="style">
+<link rel="stylesheet" href="/css/style.css?v=6">
 </head>
 <body>
-<div class="theme-row"><button id="theme-toggle" type="button">Dark</button></div>
-<main>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <a class="site-header__title" href="/">Jonathan McCallum</a>
+  <button id="theme-toggle" type="button">Dark</button>
+</header>
+<main id="main">
 {{ content | safe }}
 </main>
 <footer class="site-footer">
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
   <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a></p>
+  <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
   <p>Set in Georgia. Built with Eleventy, hosted on Cloudflare Pages.</p>
 </footer>
 <button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
@@ -110,6 +117,6 @@
   </div>
 </div>
 <script src="/js/main.js?v=3" defer></script>
-<script src="/js/ask.js?v=3" defer></script>
+<script src="/js/ask.js?v=4" defer></script>
 </body>
 </html>
