@@ -2,7 +2,7 @@
 title: "The Magicians Nephew that new Narnia Movie"
 date: 2026-11-04
 slug: the-magicians-nephew-that-new-narnia-movie
-draft: true
+draft: false
 shareImage: /images/the-magicians-nephew-that-new-narnia-movie.jpg
 source_video: https://www.youtube.com/watch?v=LOAuNNf0eVs
 source_transcript: transcripts/LOAuNNf0eVs.md

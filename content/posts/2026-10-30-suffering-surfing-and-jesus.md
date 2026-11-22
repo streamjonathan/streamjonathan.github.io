@@ -2,7 +2,7 @@
 title: "Suffering, Surfing and Jesus"
 date: 2026-10-30
 slug: suffering-surfing-and-jesus
-draft: true
+draft: false
 shareImage: /images/suffering-surfing-and-jesus.jpg
 source_video: https://www.youtube.com/watch?v=Ps3ZLzixWww
 source_transcript: transcripts/Ps3ZLzixWww.md

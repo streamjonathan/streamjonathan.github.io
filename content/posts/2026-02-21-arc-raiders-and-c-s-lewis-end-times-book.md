@@ -2,7 +2,7 @@
 title: "Arc Raiders and C S Lewis End Times Book"
 date: 2026-02-21
 slug: arc-raiders-and-c-s-lewis-end-times-book
-draft: true
+draft: false
 shareImage: /images/arc-raiders-and-c-s-lewis-end-times-book.jpg
 source_video: https://www.youtube.com/watch?v=sjVuhFmwjCs
 source_transcript: transcripts/sjVuhFmwjCs.md

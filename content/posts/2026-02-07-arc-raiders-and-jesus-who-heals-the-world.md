@@ -2,7 +2,7 @@
 title: "Arc Raiders and Jesus Who Heals The World"
 date: 2026-02-07
 slug: arc-raiders-and-jesus-who-heals-the-world
-draft: true
+draft: false
 shareImage: /images/arc-raiders-and-jesus-who-heals-the-world.jpg
 source_video: https://www.youtube.com/watch?v=9oUr0ZnWjC8
 source_transcript: transcripts/9oUr0ZnWjC8.md

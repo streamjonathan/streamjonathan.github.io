@@ -2,7 +2,7 @@
 title: "Free will and Jesus"
 date: 2026-10-14
 slug: free-will-and-jesus
-draft: true
+draft: false
 shareImage: /images/free-will-and-jesus.jpg
 source_video: https://www.youtube.com/watch?v=2IbJ8CwQSQI
 source_transcript: transcripts/2IbJ8CwQSQI.md

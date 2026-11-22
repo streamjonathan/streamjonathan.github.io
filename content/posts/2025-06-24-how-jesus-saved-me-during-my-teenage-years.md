@@ -2,7 +2,7 @@
 title: "How Jesus Saved Me During My Teenage Years / Ai Reality Check"
 date: 2025-06-24
 slug: how-jesus-saved-me-during-my-teenage-years
-draft: true
+draft: false
 shareImage: /images/how-jesus-saved-me-during-my-teenage-years.jpg
 source_video: https://www.youtube.com/watch?v=l5p-x8vz4l8
 source_transcript: transcripts/l5p-x8vz4l8.md

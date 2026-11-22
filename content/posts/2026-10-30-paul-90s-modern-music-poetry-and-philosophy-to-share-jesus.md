@@ -2,7 +2,7 @@
 title: "Paul, 90s, Modern Music, Poetry and Philosophy To Share Jesus"
 date: 2026-10-30
 slug: paul-90s-modern-music-poetry-and-philosophy-to-share-jesus
-draft: true
+draft: false
 shareImage: /images/paul-90s-modern-music-poetry-and-philosophy-to-share-jesus.jpg
 source_video: https://www.youtube.com/watch?v=-0vnp9w5caU
 source_transcript: transcripts/-0vnp9w5caU.md

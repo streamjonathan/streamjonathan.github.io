@@ -2,7 +2,7 @@
 title: "Arc Raiders & Jesus Christ"
 date: 2026-02-12
 slug: arc-raiders-and-jesus-christ
-draft: true
+draft: false
 shareImage: /images/arc-raiders-and-jesus-christ.jpg
 source_video: https://www.youtube.com/watch?v=EcJMT4Y24a4
 source_transcript: transcripts/EcJMT4Y24a4.md

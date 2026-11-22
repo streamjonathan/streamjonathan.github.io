@@ -2,7 +2,7 @@
 title: "“To believe in the One He has sent.” Jesus and belief."
 date: 2024-04-28
 slug: to-believe-in-the-one-he-has-sent
-draft: true
+draft: false
 shareImage: /images/to-believe-in-the-one-he-has-sent.jpg
 source_video: https://www.youtube.com/watch?v=W54dscrSuH4
 source_transcript: transcripts/W54dscrSuH4.md

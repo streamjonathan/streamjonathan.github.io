@@ -2,7 +2,7 @@
 title: "Heaven is Possible Because of Jesus"
 date: 2026-11-02
 slug: heaven-is-possible-because-of-jesus
-draft: true
+draft: false
 shareImage: /images/heaven-is-possible-because-of-jesus.jpg
 source_video: https://www.youtube.com/watch?v=_PUk447Xda0
 source_transcript: transcripts/_PUk447Xda0.md
