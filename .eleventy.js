@@ -162,7 +162,7 @@ module.exports = function (eleventyConfig) {
         // Original-size pass first, so we know the intrinsic width and never upscale.
         const original = await Image(localPath, {
           widths: [null],
-          formats: ["webp"],
+          formats: ["avif", "webp"],
           outputDir: path.join(OUTPUT_DIR, "images"),
           urlPath: "/images/",
           filenameFormat: (id, srcPath, width, format) => {
@@ -174,7 +174,7 @@ module.exports = function (eleventyConfig) {
         const widths = [...new Set([320, 640, 960].filter((w) => w < intrinsicWidth))];
         const metadata = await Image(localPath, {
           widths: widths.length ? [...widths, null] : [null],
-          formats: ["webp"],
+          formats: ["avif", "webp"],
           outputDir: path.join(OUTPUT_DIR, "images"),
           urlPath: "/images/",
           filenameFormat: (id, srcPath, width, format) => {

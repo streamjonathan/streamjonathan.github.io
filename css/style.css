@@ -43,7 +43,7 @@ body {
   background: var(--bg);
 }
 h1, h2, h3 { line-height: 1.25; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-h1 { font-size: 1.6rem; }
+h1 { font-size: 2rem; }
 h2 { font-size: 1.25rem; margin-top: 2rem; }
 a { color: var(--link); }
 a:visited { color: var(--visited); }
@@ -57,7 +57,7 @@ img { display: block; }
   font: 0.95rem system-ui, -apple-system, "Segoe UI", sans-serif;
   color: var(--muted); cursor: pointer; min-height: 2.75rem;
 }
-.intro { font-size: 1.2rem; line-height: 1.5; margin: 0.5rem 0 1rem; }
+.intro { font-size: 1.35rem; line-height: 1.5; margin: 0.5rem 0 1rem; }
 /* Social links: one row, easy to reach, easy to tap. */
 .social { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1rem; }
 .social a { padding: 0.6rem 0; }
@@ -70,7 +70,7 @@ blockquote { border-left: 3px solid var(--line); margin-left: 0; padding-left: 1
 code { font-size: 0.9em; }
 pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* The chat is the entrance: big box, one clear button, try-it chips. */
-.ask-hero { margin: 1.5rem 0 2rem; }
+.ask-hero { margin: clamp(2rem, 5vw, 3rem) 0; }
 .ask-hero h2 { margin-top: 0; }
 .ask-hero form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .ask-hero label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -96,7 +96,7 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 .ask-fallback { color: var(--muted); font-size: 0.95rem; }
 .ai-note { color: var(--muted); font-size: 0.9rem; }
 /* Leave a note: one anonymous box, no name or email asked for. */
-.note-section { margin: 2rem 0; }
+.note-section { margin: clamp(2rem, 5vw, 3rem) 0; }
 .note-section form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .note-section textarea {
   flex: 1 1 100%; padding: 0.75rem 1rem; resize: vertical;
