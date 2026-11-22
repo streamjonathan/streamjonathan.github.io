@@ -79,7 +79,10 @@ document.addEventListener("click", function (e) {
   function step() {
     if (paused || document.hidden) return;
     index = (index + 1) % cards.length;
-    cards[index].scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+    var card = cards[index];
+    var rowRect = row.getBoundingClientRect();
+    var cardRect = card.getBoundingClientRect();
+    row.scrollTo({ left: row.scrollLeft + (cardRect.left - rowRect.left), behavior: "smooth" });
   }
   function start() { if (!timer) timer = setInterval(step, 7000); }
   row.addEventListener("pointerenter", function () { paused = true; });
