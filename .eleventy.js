@@ -171,6 +171,8 @@ module.exports = function (eleventyConfig) {
       }
       const altMatch = tag.match(/alt="([^"]*)"/);
       const alt = altMatch ? altMatch[1] : "";
+      const classMatch = tag.match(/class="([^"]*)"/);
+      const cls = classMatch ? classMatch[1] : "";
       try {
         // Original-size pass first, so we know the intrinsic width and never upscale.
         const original = await Image(localPath, {
@@ -200,6 +202,7 @@ module.exports = function (eleventyConfig) {
           sizes: "(max-width: 640px) 100vw, 640px",
           loading: "lazy",
           decoding: "async",
+          ...(cls ? { class: cls } : {}),
         });
         content = content.replace(tag, replacement);
       } catch (err) {

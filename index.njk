@@ -82,11 +82,15 @@ eleventyExcludeFromCollections: true
 <section class="watch-section" aria-labelledby="watch-heading">
   <h2 id="watch-heading">Watch</h2>
   <ul class="watch-row">
-  {% for video in videos %}
+  {% set shown = [] %}
+  {% for post in collections.publishedPosts | reverse %}
+    {% if post.data.source_video and shown | length < 6 %}
+      {% set _ = shown.push(post) %}
     <li class="watch-card">
-      <a href="https://www.youtube.com/watch?v={{ video.id }}">{{ video.title }}</a>
-      <p class="watch-title">{{ video.title }}</p>
+      <a href="{{ post.data.source_video }}">{{ post.data.title }}</a>
+      <p class="watch-title"><a href="{{ post.url }}">Read the article: {{ post.data.title }}</a></p>
     </li>
+    {% endif %}
   {% endfor %}
   </ul>
 </section>
