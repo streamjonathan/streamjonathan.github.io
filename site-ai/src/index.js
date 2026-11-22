@@ -7,11 +7,17 @@
 // assistant (Muse/Bobby). If it is not in a published post, it cannot
 // answer it — by construction, not by promise.
 //
-// Flow: embed the question → retrieve the top 5 chunks → ask a small
+// Flow: embed the question → retrieve the top chunks → ask a small
 // Workers AI model to answer ONLY from those chunks, with citations →
 // check the draft answer in code → return it, or a fixed warm refusal.
 // On any AI error or daily-limit hit, return the graceful "resting"
 // message and let the Pagefind search on the site do the work.
+//
+// Speed: answers stream back token by token (SSE), so the reader sees
+// words appearing within about a second instead of waiting ~3s for the
+// whole answer. Good answers are also cached in KV for 7 days, so a
+// repeated question — including the four try-it chips on the homepage —
+// comes back near-instantly with no AI call at all.
 //
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
@@ -29,6 +35,10 @@ const PAUSED_MESSAGE =
 // unrelated post, so 0.5 keeps the sources list to the post the
 // question is actually about.
 const MIN_SCORE = 0.5;
+
+// Good answers are cached for a week. Refusals and resting messages are
+// never cached: a new post could turn a no-match into a match.
+const CACHE_TTL_SECONDS = 604800;
 
 // The system prompt contains NO personal data: no names beyond the public
 // byline, no emails, addresses, phone numbers, family details, account
@@ -79,6 +89,21 @@ function json(body, status = 200) {
     status,
     headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
   });
+}
+
+// Cache key: SHA-256 of the normalised question, so "What is Narnia?"
+// and "what is  narnia?" hit the same entry. Keys live in the NOTES KV
+// namespace under a cache- prefix, separate from the note- keys.
+async function cacheKey(question) {
+  const norm = question.toLowerCase().replace(/\s+/g, " ").trim();
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(norm));
+  const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+  return `cache-${hex}`;
+}
+
+// One SSE frame for the streamed answer.
+function sse(data) {
+  return new TextEncoder().encode(`data: ${JSON.stringify(data)}\n\n`);
 }
 
 // One entry per post: several chunks can come from the same post, and
@@ -133,6 +158,201 @@ async function handleNote(request, env) {
   return json({ ok: true });
 }
 
+// Non-streaming answer: the original whole-answer path, kept as the
+// fallback when streaming is unavailable, and the path that populates
+// the cache. Returns {answer, sources, paused}.
+async function answerOnce(question, env, gateway) {
+  const embedding = await env.AI.run(
+    env.EMBED_MODEL || "@cf/baai/bge-m3",
+    { text: [question] },
+    gateway
+  );
+  const vector = embedding.data[0];
+
+  const topK = Number(env.TOP_K || 5);
+  const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
+  const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
+  if (matches.length === 0) {
+    return { answer: FIXED_REFUSAL, sources: [], paused: false, noMatch: true };
+  }
+
+  const sources = dedupeByUrl(
+    matches.map((m) => ({
+      title: m.metadata.title,
+      url: m.metadata.url,
+      chunk: m.metadata.text,
+    }))
+  );
+  const sourceBlock = sources
+    .map((s, i) => `<source id="${i + 1}" title="${s.title}" url="${s.url}">\n${s.chunk}\n</source>`)
+    .join("\n\n");
+  const sourceList = sources.map((s) => ({ title: s.title, url: s.url }));
+
+  // Guardrails run on the AI Gateway (Prompt Guard on the prompt,
+  // Llama Guard on the response): a block comes back as an error and
+  // lands in the caller's catch, which returns the warm refusal.
+  const completion = await env.AI.run(
+    env.CHAT_MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+    {
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        {
+          role: "user",
+          content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title and linking to it.`,
+        },
+      ],
+      temperature: 0.2,
+      max_tokens: Number(env.MAX_ANSWER_TOKENS || 350),
+    },
+    gateway
+  );
+
+  const draft = (completion.response || "").trim();
+  if (!answerIsSafe(draft, sourceList)) {
+    return {
+      answer: `${FIXED_REFUSAL} ${sourceList[0].title} — ${sourceList[0].url}`,
+      sources: sourceList,
+      paused: false,
+      unsafe: true,
+    };
+  }
+  return { answer: draft, sources: sourceList, paused: false };
+}
+
+// Streaming answer: same retrieval, but the model's tokens flow to the
+// reader as SSE events ({delta}) as they arrive, with a final event
+// carrying the sources ({sources, done:true}). Safety runs as the text
+// accumulates: personal data appearing mid-stream aborts the stream and
+// the reader is told to show the fixed refusal instead ({refusal}).
+// The citation check still runs on the finished text before the final
+// event, so an answer that never cites its source is replaced too.
+// A good streamed answer is cached, so the next identical question is
+// instant. Returns a Response, or null when streaming could not start
+// (the caller then falls back to answerOnce).
+async function answerStream(question, env, gateway) {
+  const embedding = await env.AI.run(
+    env.EMBED_MODEL || "@cf/baai/bge-m3",
+    { text: [question] },
+    gateway
+  );
+  const vector = embedding.data[0];
+
+  const topK = Number(env.TOP_K || 5);
+  const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
+  const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
+  if (matches.length === 0) {
+    return json({ answer: FIXED_REFUSAL, sources: [], paused: false });
+  }
+
+  const sources = dedupeByUrl(
+    matches.map((m) => ({
+      title: m.metadata.title,
+      url: m.metadata.url,
+      chunk: m.metadata.text,
+    }))
+  );
+  const sourceBlock = sources
+    .map((s, i) => `<source id="${i + 1}" title="${s.title}" url="${s.url}">\n${s.chunk}\n</source>`)
+    .join("\n\n");
+  const sourceList = sources.map((s) => ({ title: s.title, url: s.url }));
+  const refusalText = `${FIXED_REFUSAL} ${sourceList[0].title} — ${sourceList[0].url}`;
+
+  let stream;
+  try {
+    stream = await env.AI.run(
+      env.CHAT_MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
+      {
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          {
+            role: "user",
+            content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title and linking to it.`,
+          },
+        ],
+        temperature: 0.2,
+        max_tokens: Number(env.MAX_ANSWER_TOKENS || 350),
+        stream: true,
+      },
+      gateway
+    );
+  } catch {
+    // Streaming not available through this route — caller falls back.
+    return null;
+  }
+  if (!stream || typeof stream.getReader !== "function") return null;
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const key = env.NOTES ? await cacheKey(question) : null;
+
+  (async () => {
+    const reader = stream.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let full = "";
+    let aborted = false;
+    try {
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split("\n");
+        buffer = lines.pop();
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith("data:")) continue;
+          const payload = trimmed.slice(5).trim();
+          if (payload === "[DONE]") continue;
+          let parsed;
+          try {
+            parsed = JSON.parse(payload);
+          } catch {
+            continue;
+          }
+          const piece = parsed.response || "";
+          if (!piece) continue;
+          full += piece;
+          if (PII_PATTERNS.some((re) => re.test(full))) {
+            aborted = true;
+            await writer.write(sse({ refusal: refusalText, sources: sourceList }));
+            await writer.close();
+            try {
+              reader.cancel();
+            } catch {}
+            return;
+          }
+          await writer.write(sse({ delta: piece }));
+        }
+      }
+      const draft = full.trim();
+      if (!answerIsSafe(draft, sourceList)) {
+        await writer.write(sse({ refusal: refusalText, sources: sourceList }));
+      } else {
+        if (env.NOTES && key) {
+          await env.NOTES
+            .put(key, JSON.stringify({ answer: draft, sources: sourceList }), {
+              expirationTtl: CACHE_TTL_SECONDS,
+            })
+            .catch(() => {});
+        }
+        await writer.write(sse({ sources: sourceList, done: true }));
+      }
+      await writer.close();
+    } catch {
+      if (!aborted) {
+        try {
+          await writer.write(sse({ refusal: FIXED_REFUSAL, sources: [] }));
+          await writer.close();
+        } catch {}
+      }
+    }
+  })();
+
+  return new Response(readable, {
+    headers: { "Content-Type": "text/event-stream", "Cache-Control": "no-store" },
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -167,71 +387,32 @@ export default {
 
     const gateway = env.AI_GATEWAY_ID ? { gateway: { id: env.AI_GATEWAY_ID } } : undefined;
 
+    // Repeated questions come straight from the cache — no AI call.
+    const key = env.NOTES ? await cacheKey(question) : null;
+    if (env.NOTES && key) {
+      try {
+        const hit = await env.NOTES.get(key, "json");
+        if (hit && hit.answer && hit.sources) {
+          return json({ answer: hit.answer, sources: hit.sources, paused: false, cached: true });
+        }
+      } catch {}
+    }
+
     try {
-      // 1. Embed the question (same model as the index was built with).
-      const embedding = await env.AI.run(
-        env.EMBED_MODEL || "@cf/baai/bge-m3",
-        { text: [question] },
-        gateway
-      );
-      const vector = embedding.data[0];
+      // Fast path: stream the answer as it is written.
+      const streamed = await answerStream(question, env, gateway);
+      if (streamed) return streamed;
 
-      // 2. Retrieve the top chunks from the published posts ONLY.
-      const topK = Number(env.TOP_K || 5);
-      const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
-      const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
-      if (matches.length === 0) {
-        return json({
-          answer: FIXED_REFUSAL,
-          sources: [],
-          paused: false,
-        });
+      // Fallback: whole-answer path (also populates the cache).
+      const result = await answerOnce(question, env, gateway);
+      if (!result.noMatch && !result.unsafe && !result.paused && env.NOTES && key) {
+        await env.NOTES
+          .put(key, JSON.stringify({ answer: result.answer, sources: result.sources }), {
+            expirationTtl: CACHE_TTL_SECONDS,
+          })
+          .catch(() => {});
       }
-
-      const sources = dedupeByUrl(
-        matches.map((m) => ({
-          title: m.metadata.title,
-          url: m.metadata.url,
-          chunk: m.metadata.text,
-        }))
-      );
-      const sourceBlock = sources
-        .map((s, i) => `<source id="${i + 1}" title="${s.title}" url="${s.url}">\n${s.chunk}\n</source>`)
-        .join("\n\n");
-      const sourceList = sources.map((s) => ({ title: s.title, url: s.url }));
-
-      // 3. Ask the model — grounded, low temperature, capped output.
-      // Guardrails run on the AI Gateway (Prompt Guard on the prompt,
-      // Llama Guard on the response): a block comes back as an error and
-      // lands in the catch below, which returns the warm refusal.
-      const completion = await env.AI.run(
-        env.CHAT_MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
-        {
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            {
-              role: "user",
-              content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title and linking to it.`,
-            },
-          ],
-          temperature: 0.2,
-          max_tokens: Number(env.MAX_ANSWER_TOKENS || 350),
-        },
-        gateway
-      );
-
-      const draft = (completion.response || "").trim();
-
-      // 4. Code-level output check. Any failure → fixed refusal, whole answer.
-      if (!answerIsSafe(draft, sourceList)) {
-        return json({
-          answer: `${FIXED_REFUSAL} ${sourceList[0].title} — ${sourceList[0].url}`,
-          sources: sourceList,
-          paused: false,
-        });
-      }
-
-      return json({ answer: draft, sources: sourceList, paused: false });
+      return json({ answer: result.answer, sources: result.sources, paused: result.paused });
     } catch (err) {
       // Daily neuron allowance used up, gateway block, or any AI error:
       // never show an error page. The chat rests; search keeps working.

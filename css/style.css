@@ -137,6 +137,66 @@ button[type="submit"] {
 }
 .post-nav a { padding: 0.5rem 0; }
 .post-nav__next { margin-left: auto; text-align: right; }
+/* Floating Ask button + pop-up chat panel: one tap from any page.
+   Full-screen bottom sheet on phones, centred panel on larger screens.
+   Inputs stay at 16px or above so iOS never zooms the page on focus. */
+#ask-fab {
+  position: fixed;
+  right: 1rem;
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  z-index: 50;
+  width: 3.5rem; height: 3.5rem; min-height: 3.5rem;
+  border: 0; border-radius: 999px;
+  background: var(--btn-bg); color: var(--btn-text);
+  font: 600 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+#ask-overlay {
+  position: fixed; inset: 0; z-index: 60;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex; align-items: flex-end; justify-content: center;
+}
+#ask-overlay[hidden] { display: none; }
+.ask-panel {
+  width: 100%; max-height: 92dvh; overflow-y: auto;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--line); border-bottom: 0;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+}
+.ask-panel__head {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+}
+.ask-panel__head h2 { margin: 0; }
+#ask-close {
+  border: 0; background: none; color: var(--muted);
+  font: 1.5rem/1 system-ui, -apple-system, "Segoe UI", sans-serif;
+  min-width: 2.75rem; min-height: 2.75rem; cursor: pointer;
+}
+.ask-panel__note { color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0 0; }
+.ask-panel form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+.ask-panel label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.ask-panel input {
+  flex: 1 1 12rem; min-width: 0; padding: 0.75rem 1rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg); min-height: 3.25rem;
+}
+.ask-panel button[type="button"] {
+  padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
+}
+#ask-answer-overlay { margin-top: 1rem; }
+#ask-answer-overlay ul { padding-left: 1.25rem; }
+@media (min-width: 40rem) {
+  #ask-overlay { align-items: center; padding: 1rem; }
+  .ask-panel {
+    max-width: 36rem; border-bottom: 1px solid var(--line);
+    border-radius: 1rem;
+  }
+}
 /* Tap-to-load video facade: 16:9 box, thumbnail + play button, no iframe
    or third-party script until the reader taps. */
 .video-facade { position: relative; aspect-ratio: 16 / 9; background: #111; margin: 1rem 0; }

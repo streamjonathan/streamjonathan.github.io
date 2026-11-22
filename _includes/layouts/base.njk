@@ -89,6 +89,24 @@
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
   <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a></p>
 </footer>
+<button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
+<div id="ask-overlay" hidden>
+  <div class="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-overlay-heading">
+    <div class="ask-panel__head">
+      <h2 id="ask-overlay-heading">Ask the writing</h2>
+      <button id="ask-close" type="button" aria-label="Close">×</button>
+    </div>
+    <p class="ask-panel__note">An AI answers from Jonathan's published writing only. It is not Jonathan, and it can get things wrong.</p>
+    <form id="ask-form-overlay">
+      <label for="ask-question-overlay">Your question</label>
+      <input id="ask-question-overlay" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
+      <button id="ask-button-overlay" type="button">Ask</button>
+    </form>
+    <div id="ask-answer-overlay" aria-live="polite"></div>
+    <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
+  </div>
+</div>
 <script src="/js/main.js" defer></script>
+<script src="/js/ask.js?v=3" defer></script>
 </body>
 </html>
