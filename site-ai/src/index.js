@@ -95,10 +95,19 @@ function json(body, status = 200) {
 }
 
 // Cache key: SHA-256 of the normalised question, so "What is Narnia?"
-// and "what is  narnia?" hit the same entry. Keys live in the NOTES KV
-// namespace under a cache- prefix, separate from the note- keys.
+// and "what is  narnia?" hit the same entry. Curly quotes become
+// straight ones and trailing punctuation is dropped, so the homepage
+// chip "Tell me about the poem “to sea”." matches a typed "Tell me
+// about the poem 'to sea'". Keys live in the NOTES KV namespace under a
+// cache- prefix, separate from the note- keys.
 async function cacheKey(question) {
-  const norm = question.toLowerCase().replace(/\s+/g, " ").trim();
+  const norm = question
+    .toLowerCase()
+    .replace(/[‘’]/g, "'")
+    .replace(/[“”]/g, '"')
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/[?.!]+$/, "");
   const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(norm));
   const hex = [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
   return `cache-${hex}`;
