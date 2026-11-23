@@ -69,6 +69,24 @@ function bootSuggest() {
     e.preventDefault();
     doSuggest();
   });
+
+  // Carousel picks: tapping a circle photo fills the form in with that
+  // artist's name and profile link, then moves the reader to the "why"
+  // box. Nothing is sent until they press "Send the suggestion".
+  var picks = document.querySelectorAll(".suggest-pick");
+  picks.forEach(function (pick) {
+    pick.addEventListener("click", function () {
+      var artist = document.getElementById("suggest-artist");
+      var link = document.getElementById("suggest-link");
+      var why = document.getElementById("suggest-why");
+      if (!artist || !link || !why) return;
+      artist.value = pick.getAttribute("data-artist") || "";
+      link.value = pick.getAttribute("data-link") || "";
+      result.textContent = "Suggesting " + artist.value + " — just add a few words about why them, and send.";
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
+      why.focus({ preventScroll: true });
+    });
+  });
 }
 
 if (document.readyState === "loading") {

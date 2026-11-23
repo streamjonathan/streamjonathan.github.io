@@ -7,6 +7,20 @@ I love hearing about musicians and artists who follow Jesus. If you know someone
 
 A name and a link is enough — and a few words about why them. I read everything that comes in. Thanks so much.
 
+Know someone already? Tap their photo and the form fills itself in — then just add a few words about why them, and send.
+
+<div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest">
+{% for artist in suggest_carousel %}
+  <button type="button" class="suggest-pick" role="listitem" data-artist="{{ artist.name }}" data-link="{{ artist.profile }}" title="Suggest {{ artist.name }}">
+    <img src="{{ artist.img }}" alt="{{ artist.name }}" loading="lazy" width="150" height="150">
+    <span class="suggest-pick__name">{{ artist.name }}</span>
+    <span class="suggest-pick__note">{{ artist.note }}</span>
+  </button>
+{% endfor %}
+</div>
+
+<p class="suggest-carousel__more">Or suggest someone new below — anyone you think I should hear.</p>
+
 <form id="suggest-form" class="suggest-form">
   <label for="suggest-artist">Artist's name</label>
   <input id="suggest-artist" name="artist" type="text" maxlength="200" placeholder="Who should I look up?" required>
