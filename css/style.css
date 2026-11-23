@@ -325,3 +325,9 @@ button[type="submit"] {
 .ig-card picture img, .ig-card__img { width: 100%; height: 100%; object-fit: cover; }
 .ig-card__name { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 1.05rem; }
 .ig-card__note { display: block; color: var(--muted); font-size: 0.95rem; margin-top: 0.15rem; }
+/* Footer language list: every language version of the site, A–Z, flag + name. */
+.site-languages { border-top: 1px solid var(--line); margin-top: 1.5rem; padding-top: 1rem; }
+.site-languages h2 { font-size: 1rem; margin: 0 0 0.5rem; }
+.site-languages ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+.site-languages a { text-decoration: none; white-space: nowrap; }
+.site-languages a:hover { text-decoration: underline; }
