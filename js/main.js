@@ -84,8 +84,10 @@ document.addEventListener("click", function (e) {
   items.forEach(function (item) { observer.observe(item); });
 })();
 
-// Featured carousel: moves slowly through the newest articles, one card
-// every seven seconds, looping back to the start. Arrow buttons and dots
+// Featured carousel: moves through the newest articles, one card every
+// four seconds, looping back to the start. The first card moves about a
+// second after the page loads, so it is moving from the start — it does
+// not sit still for a whole interval first. Arrow buttons and dots
 // let the reader move it by hand. It keeps moving even while the reader's
 // pointer rests over it — it only pauses while the reader is actively
 // dragging it, and starts again five seconds after the drag ends.
@@ -130,7 +132,11 @@ document.addEventListener("click", function (e) {
     if (paused || document.hidden || Date.now() < resumeAt) return;
     show(nearestIndex() + 1);
   }
-  function start() { if (!timer) timer = setInterval(step, 7000); }
+  function start() {
+    if (timer) return;
+    timer = setInterval(step, 4000);
+    setTimeout(step, 1200);
+  }
   function touch() { paused = false; resumeAt = Date.now() + 5000; }
 
   if (dotsWrap) {
