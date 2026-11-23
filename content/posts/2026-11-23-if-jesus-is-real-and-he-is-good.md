@@ -3,6 +3,7 @@ title: "If Jesus Is Real, and He Is Good"
 date: 2026-11-23
 slug: if-jesus-is-real-and-he-is-good
 draft: false
+shareImage: /images/narnia-what-id-like-everyone-to-know.jpg
 ---
 
 I know this is being translated, and I hope it will be helpful and interesting as we talk about the most wonderful person — and more than a person. This is for my friends in Poland.
