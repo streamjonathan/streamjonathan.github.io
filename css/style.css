@@ -145,6 +145,33 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
   color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
 }
 #note-result { color: var(--muted); }
+/* Suggest an artist: one short form, roomy fields, checkboxes in a row. */
+.suggest-form { display: flex; flex-direction: column; gap: 0.5rem; margin: 1rem 0; max-width: 36rem; }
+.suggest-form label { width: 100%; }
+.suggest-form .optional { color: var(--muted); font-size: 0.9rem; }
+.suggest-form input[type="text"],
+.suggest-form input[type="url"] { flex: none; width: 100%; }
+.suggest-form textarea {
+  width: 100%; padding: 0.75rem 1rem; resize: vertical;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.suggest-form fieldset.suggest-kinds {
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  padding: 0.75rem 1rem; margin: 0.25rem 0;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+}
+.suggest-form fieldset.suggest-kinds legend { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; padding: 0 0.25rem; }
+.suggest-form fieldset.suggest-kinds label { width: auto; display: flex; align-items: center; gap: 0.4rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.suggest-form fieldset.suggest-kinds input[type="checkbox"] { min-height: 0; width: 1.1rem; height: 1.1rem; accent-color: var(--link); }
+.suggest-form button[type="button"] {
+  align-self: flex-start; padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
+}
+.suggest-form button[type="button"]:disabled { opacity: 0.6; cursor: default; }
+#suggest-result { color: var(--muted); }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }

@@ -25,6 +25,7 @@
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
 //   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
+//   jonathanmccallum.com/api/suggest → this Worker (reader artist suggestions)
 // Everything else on the site is served by Cloudflare Pages.
 
 const FIXED_REFUSAL =
@@ -167,6 +168,107 @@ async function handleNote(request, env) {
   }
   const key = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await env.NOTES.put(key, JSON.stringify({ note, at: new Date().toISOString() }));
+  return json({ ok: true });
+}
+
+// Social profile links the site accepts: the five places Jonathan is.
+// A bare domain with no profile path (just instagram.com) is not a
+// link to a person, so it is refused. Anything else is refused too.
+const SOCIAL_HOSTS = new Set([
+  "instagram.com",
+  "www.instagram.com",
+  "x.com",
+  "twitter.com",
+  "threads.com",
+  "www.threads.com",
+  "threads.net",
+  "youtube.com",
+  "www.youtube.com",
+  "youtu.be",
+  "facebook.com",
+  "www.facebook.com",
+]);
+
+function isSocialLink(value) {
+  if (typeof value !== "string" || !value.trim()) return false;
+  let url;
+  try {
+    url = new URL(value.trim());
+  } catch {
+    return false;
+  }
+  if (url.protocol !== "https:") return false;
+  if (!SOCIAL_HOSTS.has(url.hostname.toLowerCase())) return false;
+  // A real profile path: more than just "/" (and not a bare /@ with
+  // nothing after it).
+  const path = url.pathname.replace(/\/+$/, "");
+  return path.length > 1;
+}
+
+// Suggest an artist: a short reader form, no sign-in. The artist's
+// name and social link are required so Jonathan can find them; the
+// suggester's name and link are optional, so he can thank them.
+// Stored in the NOTES KV namespace under suggest- keys until Jonathan
+// reads them (the digest emails new ones, tagged [ARTIST IDEA]).
+// Nothing is ever published from a suggestion — it only reaches him.
+async function handleSuggest(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/suggest." }, 405);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"artist\": \"...\", \"link\": \"...\", \"kinds\": [\"write\"] }." }, 400);
+  }
+  const artist = typeof body.artist === "string" ? body.artist.trim() : "";
+  if (!artist || artist.length > 200) {
+    return json({ error: "Give the artist's name, up to 200 characters." }, 400);
+  }
+  const link = typeof body.link === "string" ? body.link.trim() : "";
+  if (!isSocialLink(link)) {
+    return json({ error: "Give the artist's social profile link (Instagram, X, Threads, YouTube or Facebook)." }, 400);
+  }
+  const kinds = Array.isArray(body.kinds) ? body.kinds : [];
+  const allowedKinds = new Set(["write", "interview", "reaction"]);
+  if (
+    kinds.length === 0 ||
+    kinds.some((k) => typeof k !== "string" || !allowedKinds.has(k))
+  ) {
+    return json({ error: "Pick at least one: write, interview, or reaction." }, 400);
+  }
+  const why = typeof body.why === "string" ? body.why.trim() : "";
+  if (why.length > 500) {
+    return json({ error: "Keep the why to 500 characters." }, 400);
+  }
+  const fromName = typeof body.fromName === "string" ? body.fromName.trim() : "";
+  if (fromName.length > 100) {
+    return json({ error: "Keep your name to 100 characters." }, 400);
+  }
+  const fromLink = typeof body.fromLink === "string" ? body.fromLink.trim() : "";
+  if (fromLink && !isSocialLink(fromLink)) {
+    return json({ error: "Your social link must be an Instagram, X, Threads, YouTube or Facebook profile." }, 400);
+  }
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (rateLimited(ip)) {
+    return json({ ok: false, reason: "resting" });
+  }
+  if (!env.NOTES) {
+    return json({ ok: false, reason: "resting" });
+  }
+  const key = `suggest-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(
+    key,
+    JSON.stringify({
+      artist,
+      link,
+      kinds: [...new Set(kinds)],
+      why,
+      fromName,
+      fromLink,
+      at: new Date().toISOString(),
+    })
+  );
   return json({ ok: true });
 }
 
@@ -374,6 +476,9 @@ export default {
     const url = new URL(request.url);
     if (url.pathname.endsWith("/api/note")) {
       return handleNote(request, env);
+    }
+    if (url.pathname.endsWith("/api/suggest")) {
+      return handleSuggest(request, env);
     }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
