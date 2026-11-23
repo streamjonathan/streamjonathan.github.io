@@ -17,6 +17,10 @@ That is the thread through her songs now. God can use every piece of a life, eve
 
 Her second album, Sophomore Year, came out this month. It is a coming-of-age story about feeling things and letting them go. She also hosts a podcast about music, faith and mental health, and writes devotionals with YouVersion.
 
+Her website is worth a look — here is a quick scroll through it.
+
+[![Grace Graber's website](/images/grace-graber-website.gif)](https://www.gracegraber.com/)
+
 You can hear her tell it herself here:
 
 [Watch Grace Graber introduce herself](https://www.youtube.com/watch?v=J29tbtrsfPk)
