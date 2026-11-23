@@ -43,6 +43,29 @@ eleventyExcludeFromCollections: true
   <p class="suggest-optout">If you're featured here and would rather not be, please <a href="https://www.instagram.com/jonamccallum/">message Jonathan on Instagram</a> and he'll remove you.</p>
 </section>
 
+<section class="lang-taster" data-fade aria-labelledby="lang-taster-heading">
+  <h2 id="lang-taster-heading">Have a listen in another language</h2>
+  <p>I am still learning about music — all kinds of it, from all over the world. Have a listen in another language.</p>
+  <div class="lang-taster__row" role="list" aria-label="Languages to listen in" data-auto-carousel>
+  {% for lang in lang_taster %}
+    <a class="lang-taster__card" role="listitem" href="{{ lang.url }}">
+      {% if lang.img %}
+      <img class="lang-taster__img" src="{{ lang.img }}" alt="{{ lang.artist }} — a {{ lang.name }} musician" loading="lazy" width="150" height="150">
+      <span class="lang-taster__name">{{ lang.name }}</span>
+      <span class="lang-taster__native" lang="{{ lang.code }}">{{ lang.native }}</span>
+      {% else %}
+      <span class="lang-taster__script" lang="{{ lang.code }}">{{ lang.native }}</span>
+      <span class="lang-taster__name">{{ lang.name }}</span>
+      {% endif %}
+    </a>
+  {% endfor %}
+  </div>
+  <div class="featured-controls">
+    <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous languages">‹</button>
+    <button type="button" class="featured-arrow" data-carousel-next aria-label="Next languages">›</button>
+  </div>
+</section>
+
 <section class="featured" data-fade aria-labelledby="featured-heading">
   <h2 id="featured-heading">Newest writing</h2>
   <ul class="featured-row" data-auto-carousel>
