@@ -413,6 +413,7 @@ button[type="submit"] {
 .get-involved__card:hover { border-color: var(--link); }
 .get-involved__card strong { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 1.15rem; margin-bottom: 0.25rem; }
 .get-involved__card span { color: var(--muted); font-size: 0.95rem; }
+.get-involved__email { display: block; margin-top: 0.35rem; font-weight: 600; color: var(--link); }
 
 .featured { margin-top: 1.5rem; }
 .featured-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }

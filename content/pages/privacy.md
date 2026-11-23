@@ -8,7 +8,7 @@ original_url: https://jonathanmccallum.com/privacy/
 
 This site is run by Jonathan McCallum, who lives in Getaria, Spain. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts to create here, no tracking, no advertising, and nothing for sale.
 
-If you need to ask about anything on this page, the way to reach Jonathan is a message on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
+If you need to ask about anything on this page, or about your personal data, write to Jonathan at <a href="#" data-contact-email data-contact-email-text>Email me</a>. You can also message him on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
 
 ## Who is responsible for your data
 
@@ -47,7 +47,7 @@ If you suggest an artist, the site keeps the artist's name and profile link, wha
 
 ### Leave a note
 
-Notes are anonymous. The site asks for no name, no email, and no social media handle — please don't put personal details in a note. A note is kept until Jonathan has read it and deleted it. If you would like a reply, message him on social media instead. The legal basis is your consent: you choose to leave one.
+Notes are anonymous. The site asks for no name, no email, and no social media handle — please don't put personal details in a note. A note is kept until Jonathan has read it and deleted it. If you would like a reply, write to him at <a href="#" data-contact-email data-contact-email-text>Email me</a> or message him on social media instead. The legal basis is your consent: you choose to leave one.
 
 ### Comments
 
@@ -97,7 +97,7 @@ This site follows the EU's General Data Protection Regulation (GDPR) as its stan
 - You can withdraw your consent at any time — for example, by signing out, or by asking Jonathan to delete what you sent.
 - You can complain to your local data protection authority. Jonathan lives in Spain, where the authority is the AEPD (Agencia Española de Protección de Datos, aepd.es).
 
-Because the site stores so little, there is usually nothing to show or delete. Ask anyway and he will answer. To ask, message Jonathan on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
+Because the site stores so little, there is usually nothing to show or delete. Ask anyway and he will answer. To ask, write to Jonathan at <a href="#" data-contact-email data-contact-email-text>Email me</a>, or message him on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
 
 ## Children
 

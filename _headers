@@ -1,7 +1,7 @@
 # Security headers for Cloudflare Pages (applied to every page).
 #
-# The site is static HTML/CSS with three small same-origin scripts
-# (video facades, the ask form, search) and ONE inline script: the tiny
+# The site is static HTML/CSS with small same-origin scripts
+# (video facades, the ask form, search, the contact-email link) and ONE inline script: the tiny
 # theme script in _includes/layouts/base.njk that applies the saved
 # theme before first paint, so light-theme readers never see a dark
 # flash. That script is allowed by its SHA-256 hash only — never by
