@@ -130,7 +130,18 @@ document.addEventListener("click", function (e) {
   }
   function step() {
     if (paused || document.hidden || Date.now() < resumeAt) return;
-    show(nearestIndex() + 1);
+    // Loop back to the first card at the end. The row's maximum scroll
+    // stops short of bringing the last card to the left edge (two cards
+    // are visible), so nearestIndex() never returns the last card — it
+    // keeps returning the second-to-last one, and show(last) scrolls to
+    // the same clamped position forever. Detect the end by the scroll
+    // position itself (within a couple of pixels of maximum scroll), with
+    // the last-card check as well for narrow viewports where only one
+    // card is visible and the last card does reach the left edge.
+    var current = nearestIndex();
+    var atEnd = current >= cards.length - 1 || row.scrollLeft >= row.scrollWidth - row.clientWidth - 2;
+    if (atEnd) show(0);
+    else show(current + 1);
   }
   function start() {
     if (timer) return;
