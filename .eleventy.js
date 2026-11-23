@@ -169,6 +169,14 @@ module.exports = function (eleventyConfig) {
         console.log(`[images] not yet recovered, leaving as-is: ${src}`);
         continue;
       }
+      // Animated GIFs are left as-is: converting them to AVIF/WebP stills
+      // would kill the animation. Copy the original through instead.
+      if (/\.gif$/i.test(src)) {
+        const dest = path.join(OUTPUT_DIR, "images", path.basename(src));
+        fs.mkdirSync(path.dirname(dest), { recursive: true });
+        fs.copyFileSync(localPath, dest);
+        continue;
+      }
       const altMatch = tag.match(/alt="([^"]*)"/);
       const alt = altMatch ? altMatch[1] : "";
       const classMatch = tag.match(/class="([^"]*)"/);
