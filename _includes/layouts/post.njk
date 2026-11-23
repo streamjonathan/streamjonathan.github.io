@@ -29,3 +29,4 @@ layout: layouts/base.njk
   {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}
 </nav>
 {% endif %}
+{% include "comments.njk" %}

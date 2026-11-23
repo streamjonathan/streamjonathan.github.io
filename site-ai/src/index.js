@@ -32,7 +32,12 @@
 //     /api/interview/auth/email/request, /api/interview/auth/email/verify,
 //     /api/interview/me, /api/interview/auth/signout)
 //   jonathanmccallum.com/api/suggest → this Worker (reader artist suggestions)
+//   jonathanmccallum.com/api/comments and /api/comment → this Worker
+//     (signed-in reader comments — see src/comments.js).
+//     The mirrors call these two on the main domain, cross-origin.
 // Everything else on the site is served by Cloudflare Pages.
+
+import { handleComments } from "./comments.js";
 
 const FIXED_REFUSAL =
   "I can only help with Jonathan's published writing — here's a post you might like:";
@@ -464,14 +469,21 @@ async function verifyGoogleToken(token, env) {
 // Identity only: scope instagram_business_basic (profile info). The
 // short-lived access token is used once to fetch the profile, then
 // discarded. Endpoints (Meta docs, current flow): authorize
-// https://www.instagram.com/oauth/authorize, token exchange POST
+// https://www.facebook.com/dialog/oauth with the app's Instagram Login
+// configuration ID, token exchange POST
 // https://api.instagram.com/oauth/access_token, profile GET
 // https://graph.instagram.com/v21.0/me?fields=id,username. The client
 // id is the Instagram App ID (not the Meta App ID). The redirect URI
 // must exactly match one registered in the Meta app, so this only works
 // on the live domain — never on a Pages preview.
+// NOTE (2026-11-23): the old authorize endpoint
+// https://www.instagram.com/oauth/authorize returned Instagram's
+// "Sorry, this page isn't available" once the app was configured for
+// Instagram Login (Unified Login). The Facebook dialog endpoint with
+// config_id is the correct one for that configuration.
 
-const IG_AUTHORIZE_URL = "https://www.instagram.com/oauth/authorize";
+const IG_AUTHORIZE_URL = "https://www.facebook.com/dialog/oauth";
+const IG_CONFIG_ID = "1156044717381097"; // Instagram Login configuration, "Instagram API (Unified Login)"
 const IG_TOKEN_URL = "https://api.instagram.com/oauth/access_token";
 const IG_PROFILE_URL = "https://graph.instagram.com/v21.0/me?fields=id,username";
 
@@ -509,9 +521,8 @@ async function handleInstagramAuthStart(request, env) {
   const params = new URLSearchParams({
     client_id: env.INSTAGRAM_APP_ID,
     redirect_uri: redirectUri,
-    scope: "instagram_business_basic",
     response_type: "code",
-    enable_fb_login: "0",
+    config_id: IG_CONFIG_ID,
     state,
   });
   return Response.redirect(`${IG_AUTHORIZE_URL}?${params}`, 302);
@@ -1265,6 +1276,11 @@ export default {
     if (url.pathname.endsWith("/api/note")) {
       return handleNote(request, env);
     }
+    // Signed-in comments live in src/comments.js. The check sits here,
+    // before the ask-only POST gate below, because listing comments is
+    // a GET and the mirrors call it cross-origin.
+    const commentsResponse = await handleComments(request, env);
+    if (commentsResponse) return commentsResponse;
     if (url.pathname.endsWith("/api/interview/auth/instagram/callback")) {
       return handleInstagramAuthCallback(request, env);
     }
