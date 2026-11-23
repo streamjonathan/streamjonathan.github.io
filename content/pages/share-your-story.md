@@ -8,6 +8,8 @@ I enjoy hearing the stories of people from all walks of life including Jesus fol
 
 Three questions below. Click each one to open it, and take your time — there is plenty of room. When you send this, you give me permission to share your answers as an article on this site. Nothing is published until I have read it and said yes.
 
+This site is not for people under 18.
+
 <section class="interview-signin" id="interview-signin" data-google-client-id="{{ site.googleClientId }}">
   <h2>First, sign in</h2>
   <p>Please sign in with one of your accounts, so I know the story is really from you. Signing in only confirms your name and profile — it lets the site check you are who you say you are. It cannot post anything for you, read your messages, or see anything private. Your login stays between you and Instagram, Google, LINE or your email provider; this site never sees your password, and an email code works once and then stops working.</p>

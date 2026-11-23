@@ -8,7 +8,11 @@ wayback_timestamp: 20131009142214
 
 Thank you for reading. I would love to hear from you.
 
-The best way to reach me is on social media. I read everything that comes in.
+You can write to me at <a href="#" data-contact-email data-contact-email-text>Email me</a> — I read every message.
+
+This site is not for people under 18.
+
+I'm also on social media. I read everything that comes in.
 
 - [Instagram — @jonamccallum](https://www.instagram.com/jonamccallum)
 - [Threads — @jonamccallum](https://www.threads.com/@jonamccallum)
