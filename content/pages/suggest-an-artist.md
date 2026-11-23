@@ -21,6 +21,8 @@ Know someone already? Tap their photo and the form fills itself in — then just
 
 <p class="suggest-carousel__more">Or suggest someone new below — anyone you think I should hear.</p>
 
+This site is not for people under 18.
+
 <form id="suggest-form" class="suggest-form">
   <label for="suggest-artist">Artist's name</label>
   <input id="suggest-artist" name="artist" type="text" maxlength="200" placeholder="Who should I look up?" required>

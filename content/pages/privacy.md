@@ -101,7 +101,9 @@ Because the site stores so little, there is usually nothing to show or delete. A
 
 ## Children
 
-This site is not aimed at children. In Spain, a child under 14 needs a parent or guardian to agree before sharing personal data online. If you are under 16, please ask a parent or guardian before writing anything here.
+This site is not for people under 18. It talks about faith in Jesus, and that is religious content, so it is written for adults. If you are under 18, please do not share personal information here, and do not write to Jonathan.
+
+In Spain, the law says a child under 14 needs a parent or guardian to agree before sharing personal data online. This site's own rule is stricter than that: under 18, this site is not for you.
 
 ## Legal notice
 

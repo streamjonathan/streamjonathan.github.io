@@ -10,6 +10,8 @@ Thank you for reading. I would love to hear from you.
 
 You can write to me at <a href="#" data-contact-email data-contact-email-text>Email me</a> — I read every message.
 
+This site is not for people under 18.
+
 I'm also on social media. I read everything that comes in.
 
 - [Instagram — @jonamccallum](https://www.instagram.com/jonamccallum)
