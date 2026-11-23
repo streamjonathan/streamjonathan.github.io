@@ -453,6 +453,25 @@ button[type="submit"] {
   transition: background .2s ease;
 }
 .featured-dot[aria-current="true"]::before { background: var(--link); }
+/* Writing carousel: the full list of articles in a slow-moving row, two
+   cards at a time, so the page no longer runs on forever. Same
+   auto-scroll, arrows and dots as the featured carousel above, and the
+   same pause-while-dragging behaviour. Each card has a circle photo. */
+.writing { margin-top: 1.5rem; }
+.writing-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
+.writing-row { scrollbar-width: none; }
+.writing-row::-webkit-scrollbar { display: none; }
+.writing-card { flex: 0 0 calc(50% - 0.5rem); scroll-snap-align: start; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+.writing-card a { font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; color: var(--text); transition: color .2s ease; }
+.writing-card a:hover { color: var(--link); }
+.writing-card .meta { margin-left: 0.5rem; }
+.writing-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
+.writing-image { display: block; width: 5rem; height: 5rem; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
+.writing-image--empty { background: var(--chip-bg); border: 1px solid var(--line); }
+.writing.is-ready .featured-controls { display: flex; }
+@media (max-width: 40rem) {
+  .writing-card { flex-basis: 100%; }
+}
 /* Gentle fade-in as sections enter view. Only when JavaScript adds
    .js-fade to <html>, so without JS everything is simply visible.
    Off entirely when the reader prefers reduced motion. */

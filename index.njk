@@ -43,16 +43,24 @@ eleventyExcludeFromCollections: true
 
 <p>The posts from the archive are being reviewed and will return here one by one.</p>
 
-<h2>Writing</h2>
-<ul class="article-list" data-fade>
-{% for post in collections.publishedPosts | reverse %}
-  <li>
-    <a href="{{ post.url }}">{{ post.data.title }}</a>
-    <span class="meta">{{ post.date | readableDate }}</span>
-    <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
-  </li>
-{% endfor %}
-</ul>
+<section class="writing" data-fade aria-labelledby="writing-heading">
+  <h2 id="writing-heading">Writing</h2>
+  <ul class="writing-row" data-auto-carousel>
+  {% for post in collections.publishedPosts | reverse %}
+    <li class="writing-card">
+      {% if post.data.shareImage %}<img class="writing-image" src="{{ post.data.shareImage }}" alt="" loading="lazy">{% else %}<div class="writing-image writing-image--empty" aria-hidden="true"></div>{% endif %}
+      <a href="{{ post.url }}">{{ post.data.title }}</a>
+      <span class="meta">{{ post.date | readableDate }}</span>
+      <p class="excerpt">{{ post.templateContent | excerpt(140) }}</p>
+    </li>
+  {% endfor %}
+  </ul>
+  <div class="featured-controls">
+    <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous article">‹</button>
+    <div class="featured-dots" role="tablist" aria-label="All articles"></div>
+    <button type="button" class="featured-arrow" data-carousel-next aria-label="Next article">›</button>
+  </div>
+</section>
 
 <section class="note-section" data-fade aria-labelledby="note-heading">
   <h2 id="note-heading">Leave a note</h2>

@@ -84,21 +84,22 @@ document.addEventListener("click", function (e) {
   items.forEach(function (item) { observer.observe(item); });
 })();
 
-// Featured carousel: moves through the newest articles, one card every
-// four seconds, looping back to the start. The first card moves about a
-// second after the page loads, so it is moving from the start — it does
-// not sit still for a whole interval first. Arrow buttons and dots
-// let the reader move it by hand. It keeps moving even while the reader's
-// pointer rests over it — it only pauses while the reader is actively
-// dragging it, and starts again five seconds after the drag ends.
+// Auto carousels (featured + writing): each row moves through its cards,
+// one card every four seconds, looping back to the start. The first card
+// moves about a second after the page loads, so it is moving from the
+// start — it does not sit still for a whole interval first. Arrow buttons
+// and dots let the reader move it by hand. It keeps moving even while the
+// reader's pointer rests over it — it only pauses while the reader is
+// actively dragging it, and starts again five seconds after the drag ends.
 // Stays still when reduced motion is preferred or the tab is hidden.
 (function () {
-  var row = document.querySelector("[data-auto-carousel]");
-  if (!row) return;
+  var rows = document.querySelectorAll("[data-auto-carousel]");
+  if (!rows.length) return;
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  Array.prototype.forEach.call(rows, function (row) {
   var cards = row.children;
   if (cards.length < 2) return;
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var section = row.closest(".featured");
+  var section = row.closest("section");
   var dotsWrap = section ? section.querySelector(".featured-dots") : null;
   var prev = section ? section.querySelector("[data-carousel-prev]") : null;
   var next = section ? section.querySelector("[data-carousel-next]") : null;
@@ -182,6 +183,7 @@ document.addEventListener("click", function (e) {
   if (section) section.classList.add("is-ready");
   markDot();
   if (!reduceMotion) start();
+  });
 })();
 
 // Share: copy the post link to the clipboard.
