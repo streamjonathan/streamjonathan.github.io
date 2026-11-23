@@ -1,5 +1,5 @@
 ---
-title: "The Magicians Nephew that new Narnia Movie"
+title: "The Magician's Nephew, that new Narnia movie"
 date: 2026-11-04
 slug: the-magicians-nephew-that-new-narnia-movie
 draft: false

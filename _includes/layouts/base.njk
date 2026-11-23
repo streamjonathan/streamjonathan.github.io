@@ -97,12 +97,14 @@
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
   <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a> · <a href="#" id="cookie-settings">Cookie settings</a> · <a href="/share-your-story/">Share your story</a></p>
   <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
-  <p>Set in Georgia. Built with Eleventy, hosted on Cloudflare Pages.</p>
+  <p>Set in Fraunces and Newsreader. Built with Eleventy, hosted on Cloudflare Pages.</p>
   <nav class="site-languages" aria-label="Languages">
     <h2>Read in other languages</h2>
     <ul>
     {% for lang in languages %}
+      {% if lang.live %}
       <li><a href="{% if lang.code == "en" %}https://jonathanmccallum.com/{% else %}https://jonathanmccallum-{{ lang.code }}.pages.dev/{% endif %}" hreflang="{{ lang.code }}">{{ lang.flag }} {{ lang.name }}</a></li>
+      {% endif %}
     {% endfor %}
     </ul>
   </nav>

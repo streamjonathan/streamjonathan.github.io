@@ -7,15 +7,15 @@ source_video: https://www.youtube.com/watch?v=J29tbtrsfPk
 shareImage: /images/music-faith/gracegrabermusic.jpg
 ---
 
-[Grace Graber](https://www.instagram.com/gracegrabermusic/) is a Christian pop punk artist from Nashville. I came across a short video where she tells her story in her own words, and it resonates deeply with me.
+[Grace Graber](https://www.instagram.com/gracegrabermusic/) is a Christian pop punk artist. I came across a short video where she tells her story in her own words, and it resonates deeply with me.
 
-When she was twelve, she was bullied for her faith. At thirteen she was diagnosed with PTSD and depression, and she nearly took her own life. Then a Hawk Nelson song came into her head at just the right moment. It told her she was not alone.
+As a young teenager, she was bullied for her faith. Soon after, she was diagnosed with PTSD and depression, and she nearly took her own life. Then a Hawk Nelson song came into her head at just the right moment. It told her she was not alone.
 
 Her parents took her to Christian rock concerts to help her heal. The people who knew her had hurt her, but the bands she met there loved her so well. That is how she discovered who Jesus was. Not through an argument. Through people being kind.
 
 That is the thread through her songs now. God can use every piece of a life, even the broken pieces. Nothing goes unused. She says God turns things around just because He is good. And she wants the people listening to feel seen — to know they are not alone, and to stay, because God has not finished with them yet.
 
-Her second album, Sophomore Year, came out this month. It is a coming-of-age story about feeling things and letting them go. She also hosts a podcast about music, faith and mental health, and writes devotionals with YouVersion.
+Her second album, Sophomore Year, came out in November 2026. It is a coming-of-age story about feeling things and letting them go. She also hosts a podcast about music, faith and mental health, and writes devotionals with YouVersion.
 
 Her website is worth a look — here is a quick scroll through it.
 
