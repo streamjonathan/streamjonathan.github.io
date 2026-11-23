@@ -303,3 +303,15 @@ button[type="submit"] {
 @media (prefers-reduced-motion: reduce) {
   .js-fade [data-fade] { opacity: 1; transform: none; transition: none; }
 }
+/* Instagram musician cards (music-and-faith): a plain link with a small
+   local photo — no Instagram embed, no third-party script, nothing loads
+   from Instagram until the reader taps a card. Append to css/style.css
+   (near the Watch-row card styles) and bump style.css?v= in
+   _includes/layouts/base.njk. */
+.ig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1rem 1.5rem; margin: 1.5rem 0; }
+.ig-card { display: flex; gap: 0.75rem; align-items: flex-start; border-top: 1px solid var(--line); padding-top: 0.9rem; text-decoration: none; color: var(--text); }
+.ig-card:hover .ig-card__name { color: var(--link); }
+.ig-card picture, .ig-card__img { flex: 0 0 5.5rem; width: 5.5rem; height: 5.5rem; border-radius: 50%; overflow: hidden; }
+.ig-card picture img, .ig-card__img { width: 100%; height: 100%; object-fit: cover; }
+.ig-card__name { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 1.05rem; }
+.ig-card__note { display: block; color: var(--muted); font-size: 0.95rem; margin-top: 0.15rem; }
