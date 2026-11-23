@@ -99,7 +99,7 @@ document.addEventListener("click", function (e) {
   Array.prototype.forEach.call(rows, function (row) {
   var cards = row.children;
   if (cards.length < 2) return;
-  var section = row.closest("section");
+  var section = row.closest("section, article");
   var dotsWrap = section ? section.querySelector(".featured-dots") : null;
   var prev = section ? section.querySelector("[data-carousel-prev]") : null;
   var next = section ? section.querySelector("[data-carousel-next]") : null;

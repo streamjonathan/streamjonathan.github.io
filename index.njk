@@ -23,7 +23,7 @@ eleventyExcludeFromCollections: true
 <section class="suggest-home" data-fade aria-labelledby="suggest-home-heading">
   <h2 id="suggest-home-heading">Who should I write about next?</h2>
   <p>Musicians and artists who follow Jesus — tap a photo to suggest one.</p>
-  <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-progressive>
+  <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-progressive data-auto-carousel>
   {% for artist in suggest_carousel %}
     {% if loop.index <= 30 %}
     <button type="button" class="suggest-pick" role="listitem" data-artist="{{ artist.name }}" data-link="{{ artist.profile }}" title="Suggest {{ artist.name }}">
@@ -33,6 +33,10 @@ eleventyExcludeFromCollections: true
     </button>
     {% endif %}
   {% endfor %}
+  </div>
+  <div class="featured-controls">
+    <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous artists">‹</button>
+    <button type="button" class="featured-arrow" data-carousel-next aria-label="Next artists">›</button>
   </div>
   <script type="application/json" id="suggest-carousel-data">{{ suggest_carousel | dump | replace("</", "<\\/") | safe }}</script>
   <p class="suggest-carousel__more"><a href="/suggest-an-artist/">Suggest someone else</a> — anyone you think I should hear.</p>

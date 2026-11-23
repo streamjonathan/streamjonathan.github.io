@@ -9,7 +9,7 @@ A name and a link is enough — and a few words about why them. I read everythin
 
 Know someone already? Tap their photo and the form fills itself in — then just add a few words about why them, and send.
 
-<div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest">
+<div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-auto-carousel>
 {% for artist in suggest_carousel %}
   <button type="button" class="suggest-pick" role="listitem" data-artist="{{ artist.name }}" data-link="{{ artist.profile }}" title="Suggest {{ artist.name }}">
     <img src="{{ artist.img }}" alt="{{ artist.name }}" loading="lazy" width="150" height="150">
@@ -17,6 +17,10 @@ Know someone already? Tap their photo and the form fills itself in — then just
     <span class="suggest-pick__note">{{ artist.note }}</span>
   </button>
 {% endfor %}
+</div>
+<div class="featured-controls">
+  <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous artists">‹</button>
+  <button type="button" class="featured-arrow" data-carousel-next aria-label="Next artists">›</button>
 </div>
 
 <p class="suggest-carousel__more">Or suggest someone new below — anyone you think I should hear.</p>
