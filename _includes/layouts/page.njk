@@ -5,3 +5,6 @@ layout: layouts/base.njk
   <h1>{{ title }}</h1>
   {{ content | safe }}
 </article>
+{% if page.url != "/suggest-an-artist/" and page.url != "/share-your-story/" %}
+{% include "get-involved.njk" %}
+{% endif %}
