@@ -17,7 +17,7 @@ She is nineteen, from Kentucky, and she found her faith the slow way. No big you
 
 Here is a little of how the song looks and sounds:
 
-[![Mary Beth Dawson — moments from Adoration Lullaby](/images/marybeth-verse-images.gif)](https://www.youtube.com/watch?v=t7cbyZZT7t4)
+[![Mary Beth Dawson — moments from Adoration Lullaby](/images/marybeth-verse-images.gif)](https://www.instagram.com/marybethmusic_/)
 
 And this is the picture she posted one year on, roses and a few plain words:
 
