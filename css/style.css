@@ -145,6 +145,45 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
   color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
 }
 #note-result { color: var(--muted); }
+/* Collab with me: proposal + takedown forms — big textareas, plenty of room. */
+.collab-form { display: block; }
+.collab-form label { display: block; margin: 1.25rem 0 0.4rem; font-weight: 600; }
+.collab-form input[type="text"],
+.collab-form input[type="url"] {
+  width: 100%; padding: 0.75rem 1rem;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.collab-form textarea {
+  width: 100%; min-height: 6rem; padding: 0.75rem 1rem; resize: vertical;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.collab-form .field-note { color: var(--muted); font-size: 0.9rem; margin: 0.3rem 0 0; }
+.collab-form .permission {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  margin: 1.5rem 0; font-weight: 400;
+}
+.collab-form input[type="checkbox"] { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; margin-top: 0.2rem; }
+.collab-form button[type="submit"] {
+  padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
+}
+.collab-kinds { border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem 1.25rem; margin: 1.25rem 0; }
+.collab-kinds legend { font-weight: 600; padding: 0 0.5rem; }
+.collab-kinds label { display: flex; gap: 0.6rem; align-items: flex-start; margin: 0.6rem 0; font-weight: 400; }
+.collab-code {
+  display: inline-block; margin: 0.5rem 0; padding: 0.5rem 1rem;
+  font: 700 1.75rem/1.2 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  letter-spacing: 0.25em; border: 1px solid var(--line); border-radius: 0.75rem;
+}
+/* Co-authored article byline: both names, both links, what each brought. */
+.collab-byline { border: 1px solid var(--line); border-radius: 0.75rem; padding: 1rem 1.25rem; margin: 0 0 1.5rem; }
+.collab-byline__title { font-size: 1.1rem; margin: 0 0 0.5rem; }
+.collab-byline p { margin: 0.4rem 0; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }

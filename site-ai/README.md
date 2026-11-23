@@ -60,6 +60,66 @@ whole point, and it is enforced in the code below, not just promised.
 | `ai-gateway-guardrails.md` | Dashboard setup: gateway, guardrail policy, rate limits, logging |
 | `index/chunks.jsonl` | Generated chunks (git-ignored; rebuild any time) |
 
+## Collabs — `/collab-with-me/`
+
+Musicians and artists can propose making something together with
+Jonathan — a co-written article, a guest post, a joint interview, a
+reaction video + article, a cross-post, a Q&A exchange, a song feature,
+or a shared photo/video post. The full list, prioritised, lives in
+`work/collabs.md` (on disk, git-ignored like the translation registry).
+
+- **Page:** `content/pages/collab-with-me.md` — the kinds of collabs,
+  the plain-language terms, the proposal form, and a takedown request
+  form. Footer link added in `base.njk`. Front end: `js/collab.js?v=1`
+  (posts to the API base in `data-collab-api`, from
+  `collabApi` in `_data/site.json` — empty means same origin, i.e. the
+  live site; this branch sets it to the test Worker for the preview).
+- **Endpoints:** `POST /api/collab` → `handleCollab()` and
+  `POST /api/collab/takedown` → `handleCollabTakedown()` in
+  `src/index.js`. A proposal needs a name, a real social profile link
+  (Instagram, X, Threads, YouTube, Facebook or TikTok — allowlisted),
+  at least one collab kind, what they would bring, their idea, an 18+
+  tick, and the permission tick. A takedown request needs a name, the
+  linked social profile, and which collab should come down.
+- **Consent record:** the stored proposal in the NOTES KV namespace,
+  keys `collab-<ts>-<rand>` — name, social link(s), kinds, what they
+  bring, their idea, `age18: true`, `permission: true`,
+  `termsVersion: "1"`, `agreedAt`, `status: "pending"`,
+  `verified: false`. That record IS the paper trail: who agreed, what
+  they agreed to, when, and what it covers. It is never deleted — a
+  takedown flips its status to `"removed"`.
+- **Verification:** the Worker returns a short random code (6 chars,
+  ~1 billion possibilities). The artist sends it in a DM to
+  @jonamccallum from the linked account (or puts it in that account's
+  bio for a day). Only someone logged into that account can do that, so
+  a matching code proves ownership. There is **no** automatic check of
+  DMs or bios — the site cannot do that, and nothing here claims it.
+- **Takedown:** requests are stored under `collab-takedown-<ts>-<rand>`
+  and emailed to Jonathan by the digest with a `[COLLAB TAKEDOWN]`
+  subject. The removal itself is a human job — see the procedure in
+  `work/collabs.md` (English first, then every language version,
+  images, comments, consent record flipped to `"removed"`).
+- **Notification:** the notes digest (`work/notes-digest.py`, cron every
+  6 hours) also emails new `collab-` keys to Jonathan with a `[COLLAB]`
+  tag, with the full proposal and the code.
+- **Approval:** nothing is ever auto-published. Jonathan checks his DMs
+  for the code, and if it matches he approves — Bobby then drafts the
+  article (`draft: true`, layout `layouts/collab.njk`, front matter in
+  `work/collab-article-template.md`) for Jonathan to review before
+  anything goes live. A proposal that is never verified or never
+  approved simply stays in KV, unpublished.
+- **Age:** collabs are 18+ only. A guardian's written consent cannot be
+  checked online — anyone can type a name — so under-18s are not
+  accepted here at all. The page says so plainly.
+- **Not legal advice:** the terms are plain-language consent, and the
+  page says so. If a dispute ever needed more than this record, that is
+  the point to get a lawyer — not to make the form longer now.
+- **Deploy note:** pushing to GitHub does NOT update the Worker. After
+  this branch merges, redeploy the Worker by hand (bundle first — see
+  below), or the forms will answer "not switched on yet". Before
+  merging, set `collabApi` back to `""` in `_data/site.json` (same as
+  the comments branch's `commentsApi`).
+
 ## Deploy (after Jonathan signs into Cloudflare — free account)
 
 1. Dashboard → Workers & Pages → Create → Pages → connect the GitHub

@@ -25,6 +25,11 @@
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
 //   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
+//   jonathanmccallum.com/api/collab → this Worker (collab proposals —
+//     see handleCollab below; /api/collab/takedown takes removal requests)
+//   jonathanmccallum.com/api/comments and /api/comment → this Worker
+//     (signed-in reader comments, Google login — see src/comments.js).
+//     The mirrors call these two on the main domain, cross-origin.
 // Everything else on the site is served by Cloudflare Pages.
 
 const FIXED_REFUSAL =
@@ -167,6 +172,202 @@ async function handleNote(request, env) {
   }
   const key = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await env.NOTES.put(key, JSON.stringify({ note, at: new Date().toISOString() }));
+  return json({ ok: true });
+}
+
+// Collabs: an artist proposes making something together with Jonathan,
+// and either side can later ask for it to be taken down.
+//
+// The consent record IS the stored proposal: who agreed (name + social
+// profile), what they agreed to (the plain-language terms on
+// /collab-with-me/, version 1), when (agreedAt), and what it covers
+// (the collab kinds + their idea). Nothing is published from here — a
+// proposal is stored pending + unverified, Jonathan is emailed about it
+// by the digest, and it only ever becomes an article if he approves it
+// and Bobby drafts it (draft:true) for review. The record stays in KV
+// as the paper trail even after a takedown — its status flips to
+// "removed", it is never deleted.
+//
+// Verification (why it proves the account is really theirs): the same
+// code as the interview form. On submit the Worker returns a short
+// random code. The artist sends it in a DM to @jonamccallum from the
+// social account they linked (or puts it in that account's bio for a
+// day). Only someone logged into that account can do either of those.
+// The code is 6 chars from a 32-char alphabet (no 0/O/1/I), so ~1
+// billion possibilities — it cannot be guessed. Jonathan compares the
+// code in his DMs with the code in the digest email; a match from the
+// linked account means the proposal is verified. There is NO automatic
+// check of Instagram DMs or bios — the site cannot do that (no API
+// access) and this code does not claim to.
+//
+// Age: collabs are 18+ only. A guardian's written consent cannot be
+// checked online — anyone can type a name — so under-18s are not
+// accepted here at all. They can still read the site and suggest an
+// artist through the feedback form, which publishes nothing of theirs.
+//
+// This is plain-language consent, not legal advice. The terms on the
+// page say so, and Jonathan can have a lawyer glance at them if he
+// wants. If a dispute ever needed more than this record, that is the
+// point to get a lawyer — not to make the form longer now.
+const COLLAB_KINDS = {
+  "co-written": "We write an article together",
+  "guest-post": "You write a guest post",
+  "joint-interview": "We interview each other",
+  "reaction": "I react to your song or video",
+  "cross-post": "We cross-post",
+  "qa": "We answer questions together",
+  "song-feature": "A song feature, in your own words",
+  "shared-post": "A shared photo or video post",
+};
+
+const COLLAB_SOCIAL_HOSTS = new Set([
+  "instagram.com", "www.instagram.com",
+  "x.com", "www.x.com", "twitter.com", "www.twitter.com",
+  "threads.com", "www.threads.com", "threads.net", "www.threads.net",
+  "youtube.com", "www.youtube.com", "youtu.be",
+  "facebook.com", "www.facebook.com",
+  "tiktok.com", "www.tiktok.com",
+]);
+
+// A real social profile link: a URL on an allowlisted social host with
+// a path (a bare domain is not a profile).
+function collabSocialUrl(value) {
+  if (typeof value !== "string") return "";
+  const v = value.trim();
+  if (!v || v.length > 300) return "";
+  let u;
+  try {
+    u = new URL(v);
+  } catch {
+    return "";
+  }
+  if (u.protocol !== "http:" && u.protocol !== "https:") return "";
+  if (!COLLAB_SOCIAL_HOSTS.has(u.hostname.toLowerCase())) return "";
+  if (!u.pathname || u.pathname === "/") return "";
+  return v;
+}
+
+function collabCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const bytes = new Uint8Array(6);
+  crypto.getRandomValues(bytes);
+  return [...bytes].map((b) => chars[b % chars.length]).join("");
+}
+
+async function handleCollab(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/collab." }, 405);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"name\": \"...\", \"social\": \"...\", \"kinds\": [...], \"bring\": \"...\", \"idea\": \"...\", \"age18\": true, \"permission\": true }." }, 400);
+  }
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  if (!name || name.length > 100) {
+    return json({ error: "Please give your name (up to 100 characters)." }, 400);
+  }
+  const social = collabSocialUrl(body.social);
+  if (!social) {
+    return json({ error: "Please paste a link to your social profile — Instagram, X, Threads, YouTube, Facebook or TikTok." }, 400);
+  }
+  const social2 = body.social2 ? collabSocialUrl(body.social2) : "";
+  if (body.social2 && !social2) {
+    return json({ error: "That second social link does not look like a profile link — check it, or leave it blank." }, 400);
+  }
+  const kinds = Array.isArray(body.kinds) ? body.kinds.filter((k) => COLLAB_KINDS[k]) : [];
+  if (!kinds.length || kinds.length > 8) {
+    return json({ error: "Please tick at least one kind of collab." }, 400);
+  }
+  const bring = typeof body.bring === "string" ? body.bring.trim() : "";
+  if (bring.length < 10 || bring.length > 2000) {
+    return json({ error: "Please say what you would bring to the collab — a few sentences is plenty." }, 400);
+  }
+  const idea = typeof body.idea === "string" ? body.idea.trim() : "";
+  if (idea.length < 10 || idea.length > 2000) {
+    return json({ error: "Please share your idea in a few sentences — what would we make together?" }, 400);
+  }
+  if (body.age18 !== true) {
+    return json({ error: "Collabs are for people 18 or older — please tick the age box if that is you." }, 400);
+  }
+  if (body.permission !== true) {
+    return json({ error: "Please tick the permission box — without it a collab cannot go ahead." }, 400);
+  }
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (rateLimited(ip)) {
+    return json({ ok: false, reason: "resting" });
+  }
+  if (!env.NOTES) {
+    return json({ ok: false, reason: "resting" });
+  }
+  const code = collabCode();
+  const at = new Date().toISOString();
+  const key = `collab-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(
+    key,
+    JSON.stringify({
+      name,
+      social,
+      social2: social2 || "",
+      kinds,
+      bring,
+      idea,
+      age18: true,
+      permission: true,
+      termsVersion: "1",
+      agreedAt: at,
+      status: "pending",
+      verified: false,
+      at,
+    })
+  );
+  return json({ ok: true, code });
+}
+
+// Takedown request: a collaborator (or Jonathan) asks for a collab to
+// come down. The request is stored and emailed to Jonathan by the
+// digest — the removal itself is a human job (see work/collabs.md for
+// the procedure: English first, then every language version, images,
+// comments, and the consent record flipped to "removed"). No reason is
+// needed, and no proof beyond the linked social account is asked for
+// here — if the name + social match the collab's consent record, that
+// is the check; Jonathan confirms it before anything comes down.
+async function handleCollabTakedown(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/collab/takedown." }, 405);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"name\": \"...\", \"social\": \"...\", \"target\": \"...\" }." }, 400);
+  }
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  if (!name || name.length > 100) {
+    return json({ error: "Please give your name (up to 100 characters)." }, 400);
+  }
+  const social = collabSocialUrl(body.social);
+  if (!social) {
+    return json({ error: "Please paste a link to your social profile — the one linked on the piece." }, 400);
+  }
+  const target = typeof body.target === "string" ? body.target.trim() : "";
+  if (!target || target.length > 300) {
+    return json({ error: "Please say which collab should come down — its title or link." }, 400);
+  }
+  const reason = typeof body.reason === "string" ? body.reason.trim().slice(0, 1000) : "";
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (rateLimited(ip)) {
+    return json({ ok: false, reason: "resting" });
+  }
+  if (!env.NOTES) {
+    return json({ ok: false, reason: "resting" });
+  }
+  const key = `collab-takedown-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(
+    key,
+    JSON.stringify({ name, social, target, reason, status: "requested", at: new Date().toISOString() })
+  );
   return json({ ok: true });
 }
 
@@ -374,6 +575,12 @@ export default {
     const url = new URL(request.url);
     if (url.pathname.endsWith("/api/note")) {
       return handleNote(request, env);
+    }
+    if (url.pathname.endsWith("/api/collab/takedown")) {
+      return handleCollabTakedown(request, env);
+    }
+    if (url.pathname.endsWith("/api/collab")) {
+      return handleCollab(request, env);
     }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
