@@ -25,6 +25,7 @@
   var form = document.getElementById("comments-form");
   var asLine = document.getElementById("comments-as");
   var textField = document.getElementById("comments-text");
+  var socialField = document.getElementById("comments-social");
   var videoField = document.getElementById("comments-video");
   var result = document.getElementById("comments-result");
   var token = null;
@@ -93,7 +94,14 @@
     }
     comments.forEach(function (c) {
       var li = document.createElement("li");
-      li.className = "comment";
+      li.className = "comment" + (c.kind === "update" ? " comment--update" : "") + (c.pending ? " comment--pending" : "");
+
+      if (c.kind === "update") {
+        var updateLabel = document.createElement("p");
+        updateLabel.className = "comment__update-label";
+        updateLabel.textContent = "Update from Jonathan's social media";
+        li.appendChild(updateLabel);
+      }
 
       var head = document.createElement("div");
       head.className = "comment__head";
@@ -115,6 +123,15 @@
       name.className = "comment__name";
       name.textContent = c.name || "A reader";
       head.appendChild(name);
+      if (c.social) {
+        var social = document.createElement("a");
+        social.className = "comment__social";
+        social.href = c.social;
+        social.target = "_blank";
+        social.rel = "noopener";
+        social.textContent = "on " + (c.socialLabel || "social media");
+        head.appendChild(social);
+      }
       if (c.author) {
         var badge = document.createElement("span");
         badge.className = "comment__author";
@@ -129,11 +146,41 @@
       body.appendChild(textEl(c.text));
       li.appendChild(body);
 
+      if (c.kind === "update" && c.source) {
+        var source = document.createElement("p");
+        source.className = "comment__source";
+        var sourceLink = document.createElement("a");
+        sourceLink.href = c.source;
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noopener";
+        sourceLink.textContent = "See the post on " + (c.sourceLabel || "social media");
+        source.appendChild(sourceLink);
+        li.appendChild(source);
+      }
+
       if (c.videoId) {
         var videoWrap = document.createElement("div");
         videoWrap.className = "comment__video";
         videoWrap.appendChild(facadeEl(c.videoId));
         li.appendChild(videoWrap);
+      }
+
+      if (c.pending) {
+        var waiting = document.createElement("p");
+        waiting.className = "comment__waiting";
+        waiting.textContent = "Waiting for approval — only you can see this.";
+        li.appendChild(waiting);
+      }
+
+      if (c.canApprove) {
+        var approve = document.createElement("button");
+        approve.type = "button";
+        approve.className = "comment__approve";
+        approve.textContent = "Approve";
+        approve.addEventListener("click", function () {
+          approveComment(c.id);
+        });
+        li.appendChild(approve);
       }
 
       if (c.canDelete) {
@@ -181,6 +228,21 @@
         load();
       })
       .catch(function (err) { say(err.message || "That comment could not be deleted."); });
+  }
+
+  function approveComment(id) {
+    if (!token) return;
+    fetch(api("/api/comment/approve"), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ credential: token, id: id }),
+    })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.error) throw new Error(data.error);
+        load();
+      })
+      .catch(function (err) { say(err.message || "That comment could not be approved."); });
   }
 
   function decodePayload(jwt) {
@@ -239,6 +301,7 @@
         return;
       }
       var text = textField.value.trim();
+      var social = socialField ? socialField.value.trim() : "";
       var video = videoField.value.trim();
       if (!text) {
         say("Write a comment first.");
@@ -248,14 +311,17 @@
       fetch(api("/api/comment"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ credential: token, post: thread, text: text, video: video }),
+        body: JSON.stringify({ credential: token, post: thread, text: text, social: social, video: video }),
       })
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data.error) throw new Error(data.error);
           textField.value = "";
+          if (socialField) socialField.value = "";
           videoField.value = "";
-          say("Posted — thank you.");
+          say(data.comment && data.comment.status === "pending"
+            ? "Posted — it will show here once Jonathan has had a look at it."
+            : "Posted — thank you.");
           load();
         })
         .catch(function (err) { say(err.message || "That comment did not post — please try again."); });

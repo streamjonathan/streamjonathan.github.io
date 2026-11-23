@@ -148,14 +148,76 @@ every mirror) and set the same value as the `GOOGLE_CLIENT_ID` Worker
 var at deploy.
 
 Deploying (after merge): deploy this Worker with the API route,
-adding two plain-text vars to the metadata — set at deploy time, never
-committed: `ADMIN_EMAIL` (the site owner's Google address, the only
-account that can delete a comment) and `GOOGLE_CLIENT_ID`.
+adding the three plain-text vars listed under "Helper updates" below
+— set at deploy time, never committed: `ADMIN_EMAIL`,
+`GOOGLE_CLIENT_ID`, and `HELPER_SECRET`.
 
 Test Worker: `jonathanmccallum-comments-test` was only for preview
 testing. Once the real Worker is deployed with the comments code,
 delete the test Worker and retire the preview projects.
 
+Two findings from the 2026-11-22 late-night fix (Bobby):
+- The single-file deploy (`cf.py put-multipart ... index.js`) cannot
+  resolve the `./comments.js` import (deploy fails 10021, and a
+  comments.js-only upload has no fetch handler). Bundle first:
+  `python3 work/bundle-comments-worker.py` writes
+  `work/test-worker-bundle.js` — deploy THAT as `index.js`. This
+  applies to the production deploy after merge too.
+- The test Worker is unreachable at its workers.dev address (404 /
+  "error code: 1042"), and the production Worker 404s there as well
+  while answering fine on jonathanmccallum.com — so it is a routing
+  switch, not the code. Enable workers.dev for the test Worker in the
+  dashboard (Workers & Pages -> the Worker -> Settings), or give it a
+  custom domain. API attempts to flip it (settings PUT/PATCH,
+  `workers_dev` in upload metadata) did not work with the current
+  token, so this is a dashboard step.
+
 Threads: one per article per language, `<lang>:<slug>`. Limits: 1000
 characters, 5 comments per 10 minutes per IP. A comment may carry one
 YouTube link, rendered as the same tap-to-load facade the articles use.
+
+Social profile links (branch article-comments-social, 2026-11-23): a
+comment may also carry ONE optional link to the reader's own social
+profile — Instagram, X, Threads, YouTube or Facebook. The Worker
+(`socialLink` in `src/comments.js`) only accepts https URLs on those
+five hosts with a real profile path, and the front end shows it as a
+plain "on Instagram" link next to the name — never fetched, never
+embedded. Anything else is refused with a plain error.
+
+Moderation (same branch): reader comments are stored `pending` and do
+NOT show publicly until Jonathan approves them. The public list
+returns only approved comments; older comments stored before
+moderation have no status field and are treated as approved, so the
+seeded test comments still show. Signed in as the site owner (Google
+token, email = `ADMIN_EMAIL`), the list also returns pending comments
+with an Approve button, and `POST /api/comment/approve` flips one to
+approved. Refusing one is the existing DELETE. If the Worker is ever
+unreachable, the fallback is the Cloudflare dashboard: KV → NOTES →
+find the `comment-<lang>:<slug>-…` key, edit its JSON so
+`"status": "approved"`, save. No admin UI beyond the Approve button.
+
+Helper updates (same branch): Jonathan's helpers post an update from
+his social media onto an article with `POST /api/update`
+`{ "secret": "...", "post": "en:slug", "text": "...",
+"source": "https://www.instagram.com/p/..." }`. The secret is the
+Worker secret `HELPER_SECRET` — set at deploy time, never committed,
+shared only with Walkbare, Beyond and Clubhouse. Without it set, the
+endpoint answers 503. An update is his own already-public post, so it
+shows straight away, labelled "Update from Jonathan's social media"
+with a link back to the original post. The source link must be one of
+the same five social hosts. Rate limit: 5 per 10 minutes per IP, same
+as comments.
+
+Deploying (after merge): deploy this Worker with the API route,
+adding three plain-text vars to the metadata — set at deploy time,
+never committed: `ADMIN_EMAIL` (the site owner's Google address, the
+only account that can delete or approve a comment),
+`GOOGLE_CLIENT_ID`, and `HELPER_SECRET` (a long random string; make
+one with `openssl rand -hex 32`). The test Worker needs the same
+three vars to preview the new routes.
+
+What this deliberately does NOT do: full OAuth for every social
+provider (each one is its own login flow — a much bigger job; the
+single Google sign-in plus an optional social link covers what was
+asked). No admin UI beyond approve/delete buttons in the list. No
+reply threading — comments are a flat list per article.

@@ -6,16 +6,42 @@
 // ID token server-side (RS256 against Google's JWKS) before storing
 // anything, and the front end only ever shows what the server stored.
 //
+// A comment may also carry ONE optional social profile link — the
+// reader's own Instagram, X, Threads, YouTube or Facebook profile —
+// shown next to their name as "on Instagram" (or whichever it is).
+// Only those five hosts are accepted, and only https profile URLs;
+// anything else is refused. The link is the reader's own to give, and
+// it is shown as a plain link, never fetched or embedded.
+//
+// Moderation: a reader comment is stored "pending" and does NOT show
+// publicly until Jonathan approves it. The public list returns only
+// approved comments (plus older ones stored before moderation, which
+// have no status field and are treated as approved). Signed in as the
+// site owner, the list also returns pending comments with an Approve
+// button. Approval is POST /api/comment/approve with a fresh Google
+// token from the owner's account; deleting is the way to refuse one.
+//
+// Helper updates: Jonathan's own helper Muses (Walkbare, Beyond,
+// Clubhouse) can post an update from his social media onto an article
+// with POST /api/update { secret, post, text, source }. The secret is
+// the Worker secret HELPER_SECRET — set at deploy time, never in the
+// repo — and without it the endpoint is switched off. An update is
+// Jonathan's own already-public social post, so it shows straight
+// away, clearly labelled "Update from Jonathan's social media" with a
+// link back to the original post. Nothing else can post this way: the
+// secret is the whole check, so it is shared only with his helpers.
+//
 // Storage: the NOTES KV namespace, keys `comment-<thread>-<ts>-<rand>`.
 // A thread is `<lang>:<slug>` — one thread per article per language,
 // so the Japanese article has its own conversation and the English one
 // has its own. Nothing personal is stored: no email address, no Google
 // id — only the public name, avatar URL, text, an optional YouTube
-// video, and whether the writer is the site owner.
+// video, an optional social profile link, and whether the writer is
+// the site owner.
 //
 // Admin: the Worker var ADMIN_EMAIL holds the site owner's Google
 // address (set at deploy time, never in the repo). Only that account
-// can delete a comment, with its own fresh ID token.
+// can delete or approve a comment, with its own fresh ID token.
 //
 // Mirrors have no Worker of their own: they call this API on the main
 // domain, cross-origin. CORS below allows the main domain, its
@@ -27,6 +53,43 @@
 // the preview site can be tested without touching the live AI Worker.
 
 const COMMENTS_MAX_CHARS = 1000;
+
+// Social profiles a reader (or a helper update) may link to. Only
+// these hosts, only https, and only a real profile path — a bare
+// domain with no username is refused.
+const SOCIAL_HOSTS = {
+  "instagram.com": "Instagram",
+  "www.instagram.com": "Instagram",
+  "x.com": "X",
+  "twitter.com": "X",
+  "www.twitter.com": "X",
+  "threads.net": "Threads",
+  "www.threads.net": "Threads",
+  "youtube.com": "YouTube",
+  "www.youtube.com": "YouTube",
+  "facebook.com": "Facebook",
+  "www.facebook.com": "Facebook",
+};
+
+// Returns { url, label } for a good social profile link, or null.
+function socialLink(raw) {
+  if (typeof raw !== "string") return null;
+  const url = raw.trim();
+  if (!url) return null;
+  let parsed;
+  try {
+    parsed = new URL(url);
+  } catch {
+    return null;
+  }
+  if (parsed.protocol !== "https:") return null;
+  const label = SOCIAL_HOSTS[parsed.hostname.toLowerCase()];
+  if (!label) return null;
+  // A profile link needs a path with something in it — "/username",
+  // "/@handle", "/channel/..." — not just the bare domain.
+  if (!parsed.pathname || parsed.pathname === "/" || parsed.pathname.length < 2) return null;
+  return { url, label };
+}
 
 // YouTube IDs: same shapes as the site's videoFacade transform —
 // watch?v=, /shorts/, /embed/, youtu.be/.
@@ -172,11 +235,24 @@ function bearerToken(request) {
   return m ? m[1] : "";
 }
 
+// Constant-time comparison, so the helper secret is not leaked by
+// how long a wrong guess takes to fail.
+function secretsEqual(a, b) {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const ab = new TextEncoder().encode(a);
+  const bb = new TextEncoder().encode(b);
+  if (ab.length !== bb.length) return false;
+  let diff = 0;
+  for (let i = 0; i < ab.length; i++) diff |= ab[i] ^ bb[i];
+  return diff === 0;
+}
+
 // --- Handlers ------------------------------------------------------------
 
-// GET /api/comments?post=<lang>:<slug> — public. With a valid admin
-// token, each comment also carries canDelete so the owner sees a
-// delete button; everyone else gets the plain list.
+// GET /api/comments?post=<lang>:<slug> — public. Only approved
+// comments are listed. With a valid admin token, pending comments are
+// listed too, each carrying canApprove so the owner sees an Approve
+// button; everyone else gets the plain approved list.
 async function handleListComments(request, env, url) {
   const post = (url.searchParams.get("post") || "").trim();
   if (!THREAD_RE.test(post)) {
@@ -197,6 +273,10 @@ async function handleListComments(request, env, url) {
     try {
       const c = await env.NOTES.get(k.name, "json");
       if (c && c.post === post) {
+        // No status field means stored before moderation existed
+        // (the seeded test comments) — those stay visible.
+        const pending = c.status === "pending";
+        if (pending && !isAdmin) continue;
         comments.push({
           id: k.name,
           name: c.name,
@@ -204,9 +284,15 @@ async function handleListComments(request, env, url) {
           text: c.text,
           video: c.video || "",
           videoId: c.videoId || "",
+          social: c.social || "",
+          socialLabel: c.socialLabel || "",
+          kind: c.kind || "comment",
+          source: c.source || "",
+          sourceLabel: c.sourceLabel || "",
           author: !!c.author,
           at: c.at,
-          ...(isAdmin ? { canDelete: true } : {}),
+          ...(pending ? { pending: true } : {}),
+          ...(isAdmin ? { canDelete: true, ...(pending ? { canApprove: true } : {}) } : {}),
         });
       }
     } catch {}
@@ -215,9 +301,11 @@ async function handleListComments(request, env, url) {
   return commentJson(request, { comments });
 }
 
-// POST /api/comment { credential, post, text, video? } — signed-in
-// readers only. The name and photo come from the verified token, never
-// from the request body, so nobody can post as someone else.
+// POST /api/comment { credential, post, text, video?, social? } —
+// signed-in readers only. The name and photo come from the verified
+// token, never from the request body, so nobody can post as someone
+// else. The comment is stored pending and only shows after Jonathan
+// approves it.
 async function handlePostComment(request, env) {
   if (!env.NOTES) return commentJson(request, { error: "Comments are not switched on yet." }, 503);
   if (!env.GOOGLE_CLIENT_ID) {
@@ -260,6 +348,20 @@ async function handlePostComment(request, env) {
     video = body.video.trim();
   }
 
+  // An optional link to the reader's own social profile — Instagram,
+  // X, Threads, YouTube or Facebook. Anything else is refused, and
+  // the link is only ever shown as a plain link to that profile.
+  let social = "";
+  let socialLabel = "";
+  if (typeof body.social === "string" && body.social.trim()) {
+    const link = socialLink(body.social);
+    if (!link) {
+      return commentJson(request, { error: "That social link has to be your Instagram, X, Threads, YouTube or Facebook profile." }, 400);
+    }
+    social = link.url;
+    socialLabel = link.label;
+  }
+
   const name = String(payload.name || "A reader").slice(0, 100);
   const avatar =
     typeof payload.picture === "string" && payload.picture.startsWith("https://lh3.googleusercontent.com/")
@@ -268,17 +370,110 @@ async function handlePostComment(request, env) {
   const at = new Date().toISOString();
   const comment = {
     post,
+    kind: "comment",
+    status: payload.email === env.ADMIN_EMAIL ? "approved" : "pending",
     name,
     avatar,
     text,
     video,
     videoId,
+    social,
+    socialLabel,
     author: payload.email === env.ADMIN_EMAIL,
     at,
   };
   const key = `comment-${post}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await env.NOTES.put(key, JSON.stringify(comment));
   return commentJson(request, { ok: true, comment: { id: key, ...comment } });
+}
+
+// POST /api/comment/approve { credential, id } — the site owner only.
+// Flips a pending comment to approved so it shows publicly. Refusing
+// one is the existing DELETE — no separate reject step.
+async function handleApproveComment(request, env) {
+  if (!env.ADMIN_EMAIL) return commentJson(request, { error: "Comments are not switched on yet." }, 503);
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return commentJson(request, { error: "Send JSON like { \"credential\": \"...\", \"id\": \"comment-...\" }." }, 400);
+  }
+  const payload = body.credential ? await verifyGoogleToken(body.credential, env) : null;
+  if (!payload || payload.email !== env.ADMIN_EMAIL) {
+    return commentJson(request, { error: "Only the site owner can approve a comment." }, 403);
+  }
+  const id = typeof body.id === "string" ? body.id : "";
+  if (!id.startsWith("comment-")) {
+    return commentJson(request, { error: "That is not a comment." }, 400);
+  }
+  if (!env.NOTES) return commentJson(request, { error: "Comments are not switched on yet." }, 503);
+  const c = await env.NOTES.get(id, "json");
+  if (!c) return commentJson(request, { error: "That comment is not there any more." }, 404);
+  c.status = "approved";
+  await env.NOTES.put(id, JSON.stringify(c));
+  return commentJson(request, { ok: true });
+}
+
+// POST /api/update { secret, post, text, source } — Jonathan's helper
+// Muses only. Posts an update from his social media onto an article:
+// the text of his social post plus a link back to it. The shared
+// secret HELPER_SECRET is the whole check — set it as a Worker secret
+// at deploy time, never in the repo, and share it only with his
+// helpers. Without it set, this endpoint is switched off. An update
+// is his own already-public post, so it shows straight away.
+async function handleHelperUpdate(request, env) {
+  if (!env.NOTES) return commentJson(request, { error: "Comments are not switched on yet." }, 503);
+  if (!env.HELPER_SECRET) {
+    return commentJson(request, { error: "Helper updates are not switched on yet." }, 503);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return commentJson(request, { error: "Send JSON like { \"secret\": \"...\", \"post\": \"en:slug\", \"text\": \"...\", \"source\": \"https://...\" }." }, 400);
+  }
+  if (!secretsEqual(body.secret, env.HELPER_SECRET)) {
+    return commentJson(request, { error: "That secret did not check out." }, 401);
+  }
+
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (commentRateLimited(ip)) {
+    return commentJson(request, { error: "Slow down — a few updates at a time." }, 429);
+  }
+
+  const post = typeof body.post === "string" ? body.post.trim() : "";
+  if (!THREAD_RE.test(post)) {
+    return commentJson(request, { error: "That post does not exist." }, 400);
+  }
+  const text = typeof body.text === "string" ? body.text.trim() : "";
+  if (!text || text.length > COMMENTS_MAX_CHARS) {
+    return commentJson(request, { error: `Write an update, up to ${COMMENTS_MAX_CHARS} characters.` }, 400);
+  }
+  const link = socialLink(body.source);
+  if (!link) {
+    return commentJson(request, { error: "The source has to be a link to Jonathan's Instagram, X, Threads, YouTube or Facebook post." }, 400);
+  }
+
+  const at = new Date().toISOString();
+  const update = {
+    post,
+    kind: "update",
+    status: "approved",
+    name: "Jonathan McCallum",
+    avatar: "",
+    text,
+    video: "",
+    videoId: "",
+    social: "",
+    socialLabel: "",
+    source: link.url,
+    sourceLabel: link.label,
+    author: true,
+    at,
+  };
+  const key = `comment-${post}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(key, JSON.stringify(update));
+  return commentJson(request, { ok: true, comment: { id: key, ...update } });
 }
 
 // DELETE /api/comment?id=<key> — the site owner only, with a fresh
@@ -306,7 +501,9 @@ export async function handleComments(request, env) {
   const path = url.pathname;
   const isList = path.endsWith("/api/comments");
   const isItem = path.endsWith("/api/comment");
-  if (!isList && !isItem) return null;
+  const isApprove = path.endsWith("/api/comment/approve");
+  const isUpdate = path.endsWith("/api/update");
+  if (!isList && !isItem && !isApprove && !isUpdate) return null;
 
   if (request.method === "OPTIONS") {
     const origin = allowedOrigin(request);
@@ -325,6 +522,18 @@ export async function handleComments(request, env) {
       return commentJson(request, { error: "GET /api/comments?post=<lang>:<slug> lists a post's comments." }, 405);
     }
     return handleListComments(request, env, url);
+  }
+  if (isApprove) {
+    if (request.method !== "POST") {
+      return commentJson(request, { error: "POST to /api/comment/approve to approve a comment." }, 405);
+    }
+    return handleApproveComment(request, env);
+  }
+  if (isUpdate) {
+    if (request.method !== "POST") {
+      return commentJson(request, { error: "POST to /api/update to post an update from Jonathan's social media." }, 405);
+    }
+    return handleHelperUpdate(request, env);
   }
   if (request.method === "POST") return handlePostComment(request, env);
   if (request.method === "DELETE") return handleDeleteComment(request, env, url);
