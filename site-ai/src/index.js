@@ -469,9 +469,13 @@ const IG_PROFILE_URL = "https://graph.instagram.com/v21.0/me?fields=id,username"
 // Response.redirect needs an absolute URL — a relative path throws
 // (Worker error 1101). Every interview redirect goes through here.
 // Found live 2026-11-23: sign-out and the Instagram callback both
-// crashed with 1101 until this helper was added.
-function redirectTo(request, path) {
-  return Response.redirect(new URL(path, new URL(request.url).origin), 302);
+// crashed with 1101 until this helper was added. Built by hand, not
+// Response.redirect, because a redirect response has immutable headers
+// and sign-out needs to add a Set-Cookie to it.
+function redirectTo(request, path, extraHeaders) {
+  const headers = { Location: new URL(path, new URL(request.url).origin).toString() };
+  if (extraHeaders) Object.assign(headers, extraHeaders);
+  return new Response(null, { status: 302, headers });
 }
 
 async function handleInstagramAuthStart(request, env) {
@@ -601,9 +605,7 @@ async function handleInterviewSignOut(request, env) {
   const cookie = request.headers.get("Cookie") || "";
   const m = cookie.match(/(?:^|;\s*)interview_session=([A-Za-z0-9]+)/);
   if (m && env.NOTES) await env.NOTES.delete(`isession-${m[1]}`);
-  const r = redirectTo(request, "/share-your-story/");
-  r.headers.set("Set-Cookie", clearSessionCookie());
-  return r;
+  return redirectTo(request, "/share-your-story/", { "Set-Cookie": clearSessionCookie() });
 }
 
 // POST /api/interview — signed-in artists only. The identity comes from
