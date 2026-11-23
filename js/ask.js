@@ -334,9 +334,24 @@ function bootAsk() {
       updateCopy();
     }
 
+    // Google's sign-in button loads a script from Google, and Google
+    // may set its own cookies — so it only loads after the visitor
+    // accepts cookies (see js/consent.js). Instagram, LINE and email
+    // sign-in load nothing from a third party, so they work either way.
+    // If the visitor accepts later, the "cookie-consent" event loads
+    // the button then.
+    function googleConsent() {
+      if (window.JMConsent && window.JMConsent.choice) return window.JMConsent.choice();
+      try { return localStorage.getItem("cookie-consent"); } catch (e) { return null; }
+    }
+
     function loadGoogleButton() {
       if (!googleClientId) {
         if (googleNote) googleNote.textContent = "Google sign-in is being set up — check back soon.";
+        return;
+      }
+      if (googleConsent() !== "accepted") {
+        if (googleNote) googleNote.textContent = "Google sign-in needs cookies — accept cookies to use it, or sign in with Instagram, LINE or email instead. You can change your mind with “Cookie settings” at the bottom of the page.";
         return;
       }
       if (window.google && window.google.accounts && window.google.accounts.id) {
@@ -353,6 +368,13 @@ function bootAsk() {
       };
       document.head.appendChild(s);
     }
+
+    window.addEventListener("cookie-consent", function (e) {
+      if (e.detail !== "accepted" || !signinBox) return;
+      if (signedinLine && !signedinLine.hidden) return; // already signed in
+      if (googleBox && googleBox.children.length) return; // button already there
+      loadGoogleButton();
+    });
 
     function showGoogleButton() {
       if (!window.google || !window.google.accounts || !window.google.accounts.id) return;

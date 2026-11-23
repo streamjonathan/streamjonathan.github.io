@@ -81,8 +81,8 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=19" as="style">
-<link rel="stylesheet" href="/css/style.css?v=19">
+<link rel="preload" href="/css/style.css?v=20" as="style">
+<link rel="stylesheet" href="/css/style.css?v=20">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -95,7 +95,7 @@
 </main>
 <footer class="site-footer">
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
-  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a> · <a href="/share-your-story/">Share your story</a></p>
+  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a> · <a href="#" id="cookie-settings">Cookie settings</a> · <a href="/share-your-story/">Share your story</a></p>
   <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
   <p>Set in Georgia. Built with Eleventy, hosted on Cloudflare Pages.</p>
   <nav class="site-languages" aria-label="Languages">
@@ -125,7 +125,15 @@
   </div>
 </div>
 <script src="/js/main.js?v=11" defer></script>
-<script src="/js/ask.js?v=8" defer></script>
+<script src="/js/ask.js?v=9" defer></script>
 <script src="/js/suggest.js?v=2" defer></script>
+<script src="/js/consent.js?v=1" defer></script>
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookies" hidden>
+  <p><strong>Cookies.</strong> This site uses a few: one to keep you signed in, one to remember your light or dark theme, and one to remember this choice. If you accept, Google's sign-in button can load too. Nothing here tracks you. <a href="/privacy/">Read the privacy page</a>.</p>
+  <p class="cookie-banner__buttons">
+    <button id="cookie-accept" type="button">Accept</button>
+    <button id="cookie-reject" type="button">Reject</button>
+  </p>
+</div>
 </body>
 </html>

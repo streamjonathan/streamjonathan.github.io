@@ -6,28 +6,86 @@ original_url: https://jonathanmccallum.com/privacy/
 
 # Privacy
 
-This site is run by Jonathan McCallum. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts, no tracking, no advertising, and nothing for sale.
+This site is run by Jonathan McCallum, who lives in Getaria, Spain. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts to create here, no tracking, no advertising, and nothing for sale.
 
 If you need to ask about anything on this page, the way to reach Jonathan is a message on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
 
-## The chat: "Interact with Jonathan's writing"
+## Who is responsible for your data
+
+Jonathan McCallum is the data controller for this site. That means he decides what is collected and why. He is not a company, and there is no data protection officer — a small personal site like this does not need one.
+
+## What is collected, and why
+
+### The chat: "Interact with Jonathan's writing"
 
 When you type a question, it is sent to Cloudflare — the company that hosts this site — so its AI can look through Jonathan's published writing and draft an answer. The answer comes only from his writing, with a link to the post it came from.
 
-- The site does not store your questions.
+- Your question itself is not stored. It is turned into a one-way code (a hash) so the site can find a saved answer if someone asks the same thing again. Good answers are kept for 7 days, then deleted.
 - The chat is not Jonathan. It is an AI, and it can get things wrong.
-- Cloudflare is a US company, so your question may be processed outside Europe. That transfer is part of running the chat.
+- The legal basis for the chat is legitimate interest: running a small site that answers questions from published writing.
 
-## Leave a note
+### Signing in
 
-Notes are anonymous. The site asks for no name, no email, and no social media handle — please don't put personal details in a note. A note is stored on Cloudflare until Jonathan has read it, then it is deleted. If you would like a reply, message him on social media instead.
+You can sign in with Google, Instagram, LINE, or by email, so Jonathan knows a story, suggestion or comment is really from you. Signing in only proves who you are. It cannot post anything for you, read your messages, or see anything private. Your login stays between you and Google, Instagram, LINE or your email provider — this site never sees your password.
 
-## What is not collected
+What each sign-in shares with the site:
 
-- No cookies, no tracking, no analytics, no advertising.
-- Search runs entirely on your own device.
-- A YouTube video only loads if you tap play on it.
-- The site never asks for your email address or social media details. If you ever see a form here asking for them, it is not part of this site — please don't fill it in.
+- Google: your name and your verified email address.
+- Instagram: your username and your profile link.
+- LINE: the name you show on LINE.
+- Email: your email address, proved by a 6-digit code that works once and expires after 10 minutes.
+
+Your sign-in details are shown to Jonathan only, so he can check you are real and reply to you. They are never shown publicly on the site. The legal basis is your consent: you choose to sign in.
+
+### Share your story (interviews)
+
+If you share your story, the site keeps your name, your social profile link, and your answers to the three questions, plus a note of which sign-in you used and whether your profile was verified. Nothing is published without Jonathan first checking it and talking with you. The legal basis is your consent: you choose to send it, and you tick the permission box.
+
+### Suggest an artist
+
+If you suggest an artist, the site keeps the artist's name and profile link, what you would like Jonathan to do with them, why them, and your name and link if you give them. No sign-in is needed. The legal basis is your consent.
+
+### Leave a note
+
+Notes are anonymous. The site asks for no name, no email, and no social media handle — please don't put personal details in a note. A note is kept until Jonathan has read it and deleted it. If you would like a reply, message him on social media instead. The legal basis is your consent: you choose to leave one.
+
+### Comments
+
+If you comment on an article, the site keeps your name, your comment, and a link to your social profile or a video if you add one. Comments are checked by Jonathan before they appear. The legal basis is your consent.
+
+### Search
+
+Search runs entirely on your own device. Nothing you search for is sent anywhere.
+
+### Videos
+
+A YouTube video only loads if you tap play on it. Until then, no video is loaded and nothing is sent to YouTube.
+
+## Cookies
+
+This site uses very few cookies. None of them track you.
+
+| Cookie or storage | What it does | How long it lasts |
+|---|---|---|
+| `interview_session` | Keeps you signed in while you share your story or comment. | 1 hour |
+| `theme` (saved on your device) | Remembers whether you chose the light or dark theme. | Until you change it |
+| `cookie-consent` (saved on your device) | Remembers whether you accepted or rejected cookies, so the banner does not ask again. | Until you change it |
+| Google sign-in | Only if you accept cookies: Google's own sign-in button loads from Google, and Google may set its own cookies. See [Google's privacy policy](https://policies.google.com/privacy). | Set by Google |
+
+You will see a cookie banner on your first visit. It has two buttons, Accept and Reject, side by side. Both do the same job — there is no trick. If you reject, the site still works: you can read everything, use the chat, and sign in with Instagram, LINE or email. Only the Google sign-in button stays off, because it needs Google's cookies to load. You can change your mind at any time with the "Cookie settings" link at the bottom of any page.
+
+## Where your data lives
+
+The site is hosted by Cloudflare, a US company. Pages, the chat, sign-in and the stored notes live on Cloudflare's network, in the United States and in Europe. Email sign-in codes are sent by Resend, also a US company: the emails are sent from Ireland, but Resend stores the email and delivery details in the United States for 30 days. The emails Jonathan receives about new notes, stories and suggestions go to his own Gmail account.
+
+Transfers outside Europe are covered by the standard contractual clauses in Cloudflare's and Resend's data processing agreements, and by the EU–US Data Privacy Framework, which both companies take part in.
+
+## How long things are kept
+
+- Sign-in sessions: 1 hour. Sign-in codes: 10 minutes.
+- Chat answers: 7 days, then deleted.
+- Notes, stories, suggestions and comments: kept until Jonathan has dealt with them and deleted them.
+- Sign-in codes from Resend: kept by Resend for 30 days.
 
 ## Your rights under European law (GDPR)
 
@@ -35,15 +93,20 @@ This site follows the EU's General Data Protection Regulation (GDPR) as its stan
 
 - You can ask what personal data, if any, this site holds about you.
 - You can ask for it to be corrected or deleted, or for its use to be restricted.
-- You can object to its use, and you can complain to your local data protection authority. Jonathan lives in Spain, where the authority is the AEPD (Agencia Española de Protección de Datos).
-- Because the site stores nothing that identifies you — no accounts, no emails, no tracking — there is usually nothing to show or delete. Ask anyway and he will answer.
+- You can ask for a copy of it, and you can object to its use.
+- You can withdraw your consent at any time — for example, by signing out, or by asking Jonathan to delete what you sent.
+- You can complain to your local data protection authority. Jonathan lives in Spain, where the authority is the AEPD (Agencia Española de Protección de Datos, aepd.es).
 
-The legal basis for the chat is legitimate interest: running a small site that answers questions from published writing. The legal basis for a note is your consent: you choose to leave one.
+Because the site stores so little, there is usually nothing to show or delete. Ask anyway and he will answer. To ask, message Jonathan on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
 
 ## Children
 
-This site is not aimed at children. If you are under 16, please ask a parent or guardian before writing anything here.
+This site is not aimed at children. In Spain, a child under 14 needs a parent or guardian to agree before sharing personal data online. If you are under 16, please ask a parent or guardian before writing anything here.
+
+## Legal notice
+
+This is a personal website. Everything here is Jonathan's own writing and his own views. It is not professional advice of any kind — not medical, legal, financial or otherwise. The chat answers only from his published writing, and it can get things wrong. If something on this site is wrong or out of date, tell him and he will put it right.
 
 ## Changes
 
-This page will be updated if anything about the site changes. Last updated 21 November 2026.
+This page will be updated if anything about the site changes. Last updated 23 November 2026.
