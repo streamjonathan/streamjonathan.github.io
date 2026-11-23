@@ -685,6 +685,9 @@ async function handleGoogleAuth(request, env) {
     username: "",
     name: payload.name || "",
     profileUrl: "",
+    // The verified Google email, server-side only — same as email sign-ins:
+    // Jonathan can reply to a Google signer, and /me never returns it.
+    email: payload.email || "",
   });
   return new Response(JSON.stringify({ ok: true, provider: "google", name: payload.name || "" }), {
     headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "Set-Cookie": sessionCookie(id) },
@@ -1041,11 +1044,11 @@ async function handleInterview(request, env) {
         username: session.username || "",
         name: session.name || "",
         profileUrl: session.profileUrl || "",
-        // Email sessions only: the verified address, so Jonathan can
-        // reply. For Google/Instagram it stays blank — their identity
-        // is the profile, not an address. For Jonathan only: never
+        // Email and Google sessions: the verified address, so Jonathan can
+        // reply. For Instagram/LINE it stays blank — their identity is
+        // the profile, not an address. For Jonathan only: never
         // shown publicly, never returned to the frontend.
-        email: session.provider === "email" ? (session.email || "") : "",
+        email: session.provider === "email" || session.provider === "google" ? (session.email || "") : "",
       },
       verifiedBy,
       handleVerified,
