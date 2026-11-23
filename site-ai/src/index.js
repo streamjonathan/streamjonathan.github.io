@@ -29,6 +29,7 @@
 //     submissions — see handleInterview below; sign-in at
 //     /api/interview/auth/instagram, /api/interview/auth/line,
 //     /api/interview/auth/google,
+//     /api/interview/auth/email/request, /api/interview/auth/email/verify,
 //     /api/interview/me, /api/interview/auth/signout)
 //   jonathanmccallum.com/api/suggest → this Worker (reader artist suggestions)
 // Everything else on the site is served by Cloudflare Pages.
@@ -294,17 +295,19 @@ async function handleSuggest(request, env) {
 // keeps no ongoing access to anyone's account.
 //
 // Sessions: `isession-<rand>` in KV (1 hour), HttpOnly Secure cookie.
-// Instagram credentials (INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET)
-// and GOOGLE_CLIENT_ID are Worker secrets/vars set at deploy — never in
-// the repo. The names matter: the secrets in the dashboard are
-// INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET (not CLIENT_ID /
-// CLIENT_SECRET), so the code must read those exact names.
+// Instagram credentials (INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET),
+// GOOGLE_CLIENT_ID and the email sender key (RESEND_API_KEY) are Worker
+// secrets/vars set at deploy — never in the repo. The names matter: the
+// secrets in the dashboard are INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET
+// (not CLIENT_ID / CLIENT_SECRET), so the code must read those exact names.
 // Instagram login only works on the live domain (the redirect
 // URI registered in the Meta app) and only for Business/Creator
 // accounts; personal Instagram accounts cannot use it, which is why
-// Google sign-in is offered too. LINE Login works the same way (see
-// the LINE section below) with its own channel secrets
-// LINE_CHANNEL_ID / LINE_CHANNEL_SECRET.
+// Google and email sign-in are offered too. LINE Login works the same
+// way (see the LINE section below) with its own channel secrets
+// LINE_CHANNEL_ID / LINE_CHANNEL_SECRET. Email sign-in needs no app at
+// all: a 6-digit code proves the reader owns the address (see the
+// email section below).
 //
 // Deploy note: this file is deployed single-file via cf.py put-multipart,
 // so the Google token check below is inlined here (the comments branch
@@ -688,10 +691,265 @@ async function handleGoogleAuth(request, env) {
   });
 }
 
+// --- Email sign-in (code by email) ---------------------------------------
+// No password, no account to create: the reader types their email, the
+// site sends a 6-digit code, and the code proves they own that address.
+// The code is the whole check — it works once, for 10 minutes, then
+// stops working. The email address is the verified identity here, so it
+// is stored with the session (KV, server-side only) and attached to
+// anything the reader submits, so Jonathan can reply to them. It is
+// NEVER sent to the frontend: /api/interview/me returns no email, and
+// no email address is ever rendered into a page or a public list. The
+// interview form still asks for their main social profile, exactly as
+// for Google sign-in, so the social link is preserved too.
+//
+// Sending: Resend (POST https://api.resend.com/emails), free tier 3,000
+// emails a month / 100 a day, no card. The API key is the Worker secret
+// RESEND_API_KEY (Sending access, restricted to jonathanmccallum.com) —
+// set at deploy, never in the repo. The sending domain must be verified
+// in Resend first (DNS records Resend shows in its dashboard: DKIM +
+// SPF). Until the key is set, the request endpoint answers that email
+// sign-in is not switched on yet, and the page hides the email form.
+//
+// MailChannels was NOT used: its free API for Cloudflare Workers ended
+// 30 June 2024, so it no longer sends. Resend is the replacement. If
+// sending ever needs to change, only sendSigninCodeEmail below changes —
+// the request/verify handlers stay the same.
+//
+// Rate limits: 3 codes per email per hour, 10 code requests per IP per
+// hour (KV-backed for the email, in-memory for the IP — the same
+// best-effort pattern as the ask rate limit). Wrong codes: 3 failed
+// attempts and the code is deleted. Codes are compared in constant time.
+
+const EMAIL_CODE_TTL_SECONDS = 600; // a code works for 10 minutes
+const EMAIL_CODE_MAX_REQUESTS_PER_HOUR = 3;
+const EMAIL_VERIFY_MAX_ATTEMPTS = 3;
+const EMAIL_IP_MAX_REQUESTS_PER_HOUR = 10;
+
+// Plain, strict-enough shape: local@domain.tld, no spaces, one @.
+// Returns the normalised address, or "".
+function validEmail(value) {
+  if (typeof value !== "string") return "";
+  const email = value.trim().toLowerCase();
+  if (!email || email.length > 254) return "";
+  if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) return "";
+  return email;
+}
+
+// A display name from the address itself: "mary.jane_doe" becomes
+// "Mary Jane Doe". Only for the "Signed in as…" line — the name on a
+// submission is the one the reader types into the form.
+function emailDisplayName(email) {
+  const local = String(email || "").split("@")[0] || "";
+  const words = local.split(/[._-]+/).filter(Boolean).slice(0, 4);
+  if (!words.length) return "";
+  return words
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ")
+    .slice(0, 100);
+}
+
+// Constant-time string comparison, so a wrong code is not leaked by how
+// long it takes to fail. (Same shape as the comments module's
+// secretsEqual — kept local here because this file deploys on its own.)
+function codesEqual(a, b) {
+  if (typeof a !== "string" || typeof b !== "string") return false;
+  const ab = new TextEncoder().encode(a);
+  const bb = new TextEncoder().encode(b);
+  if (ab.length !== bb.length) return false;
+  let diff = 0;
+  for (let i = 0; i < ab.length; i++) diff |= ab[i] ^ bb[i];
+  return diff === 0;
+}
+
+// The KV keys for a code record are hashes, not the address itself —
+// the address never appears in a key. The code and the rate limit live
+// in separate records on purpose: a code is deleted when it is used or
+// after 3 wrong tries, but the rate limit must survive that, or wrong
+// guesses could reset the hourly limit.
+async function emailHash(email) {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(`emailcode:${email}`));
+  return [...new Uint8Array(digest)].map((b) => b.toString(16).padStart(2, "0")).join("");
+}
+
+// Best-effort per-IP limit for code requests (in-memory; resets when
+// the Worker restarts — the per-email limit in KV is the real one).
+const emailIpHits = new Map();
+function emailIpRateLimited(ip) {
+  const now = Date.now();
+  const hits = (emailIpHits.get(ip) || []).filter((t) => now - t < 3600_000);
+  hits.push(now);
+  emailIpHits.set(ip, hits);
+  return hits.length > EMAIL_IP_MAX_REQUESTS_PER_HOUR;
+}
+
+// Send the sign-in code with Resend. Returns true when Resend accepted
+// it. The from address is on the verified domain; there is no reply-to —
+// the site never asks for anything by email, and replies go nowhere.
+// No tracking, no links except the site itself.
+async function sendSigninCodeEmail(env, email, code) {
+  if (!env.RESEND_API_KEY) return false;
+  const text = [
+    `Your sign-in code for jonathanmccallum.com is: ${code}`,
+    ``,
+    `It works once, and it expires in 10 minutes. Just type it into the sign-in box on the site.`,
+    ``,
+    `If you did not ask for this code, you can ignore this email — nothing has changed.`,
+    ``,
+    `Jonathan never asks for passwords by email.`,
+    ``,
+    `https://jonathanmccallum.com`,
+  ].join("\n");
+  let res;
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Jonathan McCallum <hello@jonathanmccallum.com>",
+        to: email,
+        subject: "Your sign-in code for jonathanmccallum.com",
+        text,
+      }),
+    });
+  } catch {
+    return false;
+  }
+  return res.ok;
+}
+
+// POST /api/interview/auth/email/request { email } — send a 6-digit
+// sign-in code to that address. Answers { ok: true } when the address
+// is well-formed and the limits allow it, without saying whether the
+// address was seen before.
+async function handleEmailCodeRequest(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/interview/auth/email/request." }, 405);
+  }
+  if (!env.NOTES) return json({ ok: false, reason: "resting" });
+  if (!env.RESEND_API_KEY) {
+    return json({ error: "Email sign-in is not switched on yet — please sign in with Google or Instagram instead." }, 503);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"email\": \"you@example.com\" }." }, 400);
+  }
+  const email = validEmail(body.email);
+  if (!email) {
+    return json({ error: "Please give a real email address." }, 400);
+  }
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (emailIpRateLimited(ip)) {
+    return json({ error: "Too many codes asked for just now — please try again in an hour." }, 429);
+  }
+  const hash = await emailHash(email);
+  const codeKey = `emailcode-${hash}`;
+  const rlKey = `emailrl-${hash}`;
+  const now = Date.now();
+  let rl = null;
+  try {
+    rl = await env.NOTES.get(rlKey, "json");
+  } catch {}
+  // Per-email limit: 3 codes an hour. The window restarts an hour after
+  // the first code in it was asked for.
+  const inWindow = rl && now - (rl.windowStart || 0) < 3600_000;
+  if (inWindow && (rl.requests || 0) >= EMAIL_CODE_MAX_REQUESTS_PER_HOUR) {
+    return json({ error: "Too many codes for this address just now — please try again in an hour." }, 429);
+  }
+  const code = String(crypto.getRandomValues(new Uint32Array(1))[0] % 1000000).padStart(6, "0");
+  await env.NOTES.put(
+    codeKey,
+    JSON.stringify({ code, codeExpiresAt: now + EMAIL_CODE_TTL_SECONDS * 1000, attempts: 0 }),
+    { expirationTtl: EMAIL_CODE_TTL_SECONDS }
+  );
+  await env.NOTES.put(
+    rlKey,
+    JSON.stringify({
+      requests: inWindow ? (rl.requests || 0) + 1 : 1,
+      windowStart: inWindow ? rl.windowStart : now,
+    }),
+    { expirationTtl: 3600 }
+  );
+  const sent = await sendSigninCodeEmail(env, email, code);
+  if (!sent) {
+    // The code is stored, but the email did not go out — say so plainly
+    // rather than leaving the reader waiting for a code that never comes.
+    return json({ error: "That code did not send — please try again in a minute." }, 502);
+  }
+  return json({ ok: true });
+}
+
+// POST /api/interview/auth/email/verify { email, code } — the code
+// proves the reader owns the address. On success the code is deleted
+// (single-use) and a session is created exactly like the Google and
+// Instagram ones: same cookie, same 1-hour expiry, provider "email".
+// The verified address rides in the session (server-side only) so
+// Jonathan can reply — it is never returned to the frontend.
+async function handleEmailCodeVerify(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/interview/auth/email/verify." }, 405);
+  }
+  if (!env.NOTES) return json({ ok: false, reason: "resting" });
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"email\": \"you@example.com\", \"code\": \"123456\" }." }, 400);
+  }
+  const email = validEmail(body.email);
+  const code = typeof body.code === "string" ? body.code.trim() : "";
+  if (!email || !/^\d{6}$/.test(code)) {
+    return json({ error: "That code did not check out — please try again." }, 401);
+  }
+  const key = `emailcode-${await emailHash(email)}`;
+  let rec = null;
+  try {
+    rec = await env.NOTES.get(key, "json");
+  } catch {}
+  // No record, an expired code, or too many wrong tries: the same plain
+  // answer, so nothing is leaked about which one it was.
+  const wrong = json({ error: "That code did not check out — please try again, or ask for a new code." }, 401);
+  if (!rec || !rec.code || Date.now() > (rec.codeExpiresAt || 0)) {
+    if (rec) await env.NOTES.delete(key).catch(() => {});
+    return wrong;
+  }
+  if (!codesEqual(code, rec.code)) {
+    rec.attempts = (rec.attempts || 0) + 1;
+    if (rec.attempts >= EMAIL_VERIFY_MAX_ATTEMPTS) {
+      await env.NOTES.delete(key).catch(() => {});
+    } else {
+      // Put it back with only the time it had left — a wrong guess
+      // must not stretch a code's life.
+      const remaining = Math.max(1, Math.floor(((rec.codeExpiresAt || 0) - Date.now()) / 1000));
+      await env.NOTES.put(key, JSON.stringify(rec), { expirationTtl: remaining }).catch(() => {});
+    }
+    return wrong;
+  }
+  await env.NOTES.delete(key).catch(() => {});
+  const id = await createInterviewSession(env, {
+    provider: "email",
+    username: "",
+    name: emailDisplayName(email),
+    profileUrl: "",
+    email,
+  });
+  return new Response(JSON.stringify({ ok: true, provider: "email" }), {
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "Set-Cookie": sessionCookie(id) },
+  });
+}
+
 // GET /api/interview/me — who is signed in, if anyone, and whether
 // Instagram and LINE sign-in are configured on this Worker.
 async function handleInterviewMe(request, env) {
   const s = await getInterviewSession(request, env);
+  // Deliberately no email here: an email session carries the verified
+  // address server-side only, so Jonathan can reply. The frontend never
+  // needs it, and it must never reach a page.
   return json({
     signedIn: !!s,
     provider: s ? s.provider : "",
@@ -700,6 +958,7 @@ async function handleInterviewMe(request, env) {
     profileUrl: s ? s.profileUrl : "",
     instagramConfigured: !!env.INSTAGRAM_APP_ID,
     lineConfigured: !!env.LINE_CHANNEL_ID,
+    emailConfigured: !!env.RESEND_API_KEY,
   });
 }
 
@@ -782,6 +1041,11 @@ async function handleInterview(request, env) {
         username: session.username || "",
         name: session.name || "",
         profileUrl: session.profileUrl || "",
+        // Email sessions only: the verified address, so Jonathan can
+        // reply. For Google/Instagram it stays blank — their identity
+        // is the profile, not an address. For Jonathan only: never
+        // shown publicly, never returned to the frontend.
+        email: session.provider === "email" ? (session.email || "") : "",
       },
       verifiedBy,
       handleVerified,
@@ -1012,6 +1276,12 @@ export default {
     }
     if (url.pathname.endsWith("/api/interview/auth/google")) {
       return handleGoogleAuth(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/email/request")) {
+      return handleEmailCodeRequest(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/email/verify")) {
+      return handleEmailCodeVerify(request, env);
     }
     if (url.pathname.endsWith("/api/interview/auth/signout")) {
       return handleInterviewSignOut(request, env);

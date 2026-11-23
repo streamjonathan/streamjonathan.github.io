@@ -200,6 +200,21 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
   font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif; text-decoration: none;
   color: var(--btn-text); background: var(--btn-bg); min-height: 3.25rem;
 }
+/* Email sign-in: same plain inputs as the interview form. */
+.interview-signin label { display: block; margin: 0.75rem 0 0.4rem; font-weight: 600; }
+.interview-signin input[type="email"],
+.interview-signin input[type="text"] {
+  width: 100%; padding: 0.75rem 1rem;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.interview-signin button[type="button"] {
+  margin-top: 0.5rem; padding: 0.6rem 1.25rem; border: 1px solid var(--line); border-radius: 0.75rem;
+  font: 1rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text); background: var(--field-bg); cursor: pointer;
+}
+.interview-signin button[type="button"]:disabled { opacity: 0.6; cursor: default; }
 /* Interview questions: collapsed headings, click to open and answer. */
 .interview-question {
   margin: 1rem 0; padding: 0.75rem 1rem;
