@@ -166,3 +166,30 @@ document.addEventListener("click", function (e) {
   markDot();
   if (!reduceMotion) start();
 })();
+
+// Share: copy the post link to the clipboard.
+(function () {
+  var btn = document.getElementById("copy-link");
+  if (!btn) return;
+  btn.addEventListener("click", function () {
+    var url = btn.getAttribute("data-url");
+    function done() {
+      btn.textContent = "Copied";
+      var note = document.getElementById("copy-feedback");
+      if (note) note.hidden = false;
+    }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = url;
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) {}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(done, fallback);
+    } else {
+      fallback();
+    }
+  });
+})();

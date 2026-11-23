@@ -173,6 +173,16 @@ button[type="submit"] {
 }
 .post-nav a { padding: 0.5rem 0; }
 .post-nav__next { margin-left: auto; text-align: right; }
+/* Share this post: X, Facebook, WhatsApp, copy link. On every post. */
+.share { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1rem; }
+.share__label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.95rem; margin: 0 0 0.5rem; }
+.share__buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.share__btn {
+  padding: 0.4rem 0.9rem; border: 1px solid var(--line); border-radius: 0.25rem;
+  color: var(--text); background: var(--code-bg); cursor: pointer;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.95rem; text-decoration: none;
+}
+.share__copied { margin: 0.5rem 0 0; font-size: 0.95rem; }
 /* Floating Ask button + pop-up chat panel: one tap from any page.
    Full-screen bottom sheet on phones, centred panel on larger screens.
    Inputs stay at 16px or above so iOS never zooms the page on focus. */
