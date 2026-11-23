@@ -225,12 +225,12 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 #interview-copy-result { color: var(--muted); margin-left: 0.5rem; }
 .suggest-form fieldset.suggest-kinds {
   border: 1px solid var(--line); border-radius: 0.75rem;
-  padding: 0.75rem 1rem; margin: 0.25rem 0;
-  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  padding: 0.75rem 1rem 1rem; margin: 0.25rem 0;
+  display: flex; flex-direction: column; gap: 0.6rem;
 }
-.suggest-form fieldset.suggest-kinds legend { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; padding: 0 0.25rem; }
-.suggest-form fieldset.suggest-kinds label { width: auto; display: flex; align-items: center; gap: 0.4rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
-.suggest-form fieldset.suggest-kinds input[type="checkbox"] { min-height: 0; width: 1.1rem; height: 1.1rem; accent-color: var(--link); }
+.suggest-form fieldset.suggest-kinds legend { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 600; padding: 0 0.25rem; }
+.suggest-form fieldset.suggest-kinds label { width: 100%; display: flex; align-items: center; gap: 0.6rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; cursor: pointer; }
+.suggest-form fieldset.suggest-kinds input[type="checkbox"] { min-height: 0; width: 1.15rem; height: 1.15rem; flex: none; accent-color: var(--link); }
 .suggest-form button[type="button"] {
   align-self: flex-start; padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem;
   font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
