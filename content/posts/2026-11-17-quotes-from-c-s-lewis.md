@@ -21,8 +21,6 @@ I keep coming back to these books by C. S. Lewis. They are really helpful pieces
 
 "I suppose there are two views about everything. There are a dozen views about everything until you know the answer. Then there's never more than one."
 
-Opps i included the Spanish version yet that is ok you get it…
-
 ## That Hideous Strength
 
 ![Cover of That Hideous Strength by C. S. Lewis](/images/quotes-from-c-s-lewis-that-hideous-strength.jpg)
@@ -35,6 +33,6 @@ This one may seem pretty heavy? I want to know what you think though.
 
 ![Cover of The Great Divorce by C. S. Lewis](/images/quotes-from-c-s-lewis-the-great-divorce.jpg)
 
-If you have not read them, I would really recommend starting with one of these. Also if you found something object-tion-able (sorry I cant spell that) what was it? I mean about the books? Or about my writing also i guess.
+If you have not read them, I would really recommend starting with one of these. What did you think of them?
 
 Jonathan

@@ -60,6 +60,7 @@ human. Match it in everything written for the site.
 - Learn from Jonathan's writing style (short, plain, direct, warm, questions over lectures — VOICE.md and his posts are the model). The site carries a disclaimer that it is for him to learn more about the variety of music — he is still learning, all kinds of music from all over the world, and the site is where he keeps what he finds. (Stated by Jonathan 2026-11-23; on the Music and Faith article.)
 - Translations: never make intentional mistakes to be funny. Keep it casual and honest instead — e.g. "I really hope the translation is OK (probably has some mistakes)". (Stated by Jonathan 2026-11-23.)
 - Privacy page: keep the full page as the whole-service page (one page covering everything, even if some features only live on the English site). Do what is fastest and simple — do not trim each language's page down. (Decided by Jonathan 2026-11-23.)
+- Always choose clarity. When in doubt, take out anything confusing or unclear, even if it is casual. (Stated by Jonathan 2026-11-23; the Quotes article's two draft asides were removed the same day.)
 
 ## Sources of truth
 
