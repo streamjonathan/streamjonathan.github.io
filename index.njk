@@ -22,7 +22,7 @@ eleventyExcludeFromCollections: true
 
 <section class="suggest-home" data-fade aria-labelledby="suggest-home-heading">
   <h2 id="suggest-home-heading">Who should I write about next?</h2>
-  <p>Musicians and artists who follow Jesus — tap a photo to suggest one.</p>
+  <p>Musicians and artists from all walks of life, including Jesus followers — tap a photo to suggest one.</p>
   <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-progressive data-auto-carousel>
   {% for artist in suggest_carousel %}
     {% if loop.index <= 30 %}
@@ -100,7 +100,6 @@ eleventyExcludeFromCollections: true
 <section class="ask-hero" data-fade aria-labelledby="ask-heading">
   <h2 id="ask-heading">Interact with Jonathan's writing</h2>
   <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
-  <p>Jonathan reads the questions people ask here, takes on board what people say, and does his best to reply where he can.</p>
   <form id="ask-form">
     <label for="ask-question">Your question</label>
     <input id="ask-question" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>

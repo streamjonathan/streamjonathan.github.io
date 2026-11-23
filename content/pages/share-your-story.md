@@ -16,7 +16,7 @@ This site is not for people under 18.
   <p>
     <a class="interview-ig-button" id="interview-ig-signin" href="/api/interview/auth/instagram">Sign in with Instagram</a>
   </p>
-  <p class="field-note" id="interview-ig-note">Instagram sign-in is the simplest way — it also confirms your Instagram profile in one step. It works for Business and Creator accounts.</p>
+  <p class="field-note" id="interview-ig-note">Instagram sign-in is being set up — check back soon, or sign in with Google below.</p>
   <p>
     <a class="interview-ig-button" id="interview-line-signin" href="/api/interview/auth/line">Sign in with LINE</a>
   </p>

@@ -1,849 +1,730 @@
 [
-{
-"handle": "mikeposner",
-"img": "/images/suggest-carousel/mikeposner.jpg",
-"name": "Mike Posner",
-"note": "A man who had the hit song, then walked away from it, and came home to Jesus.",
-"profile": "https://www.instagram.com/mikeposner/"
-},
-{
-"handle": "tashalayton",
-"img": "/images/suggest-carousel/tashalayton.jpg",
-"name": "Tasha Layton",
-"note": "A song that says God has done something in a broken life, and means it.",
-"profile": "https://www.instagram.com/tashalayton/"
-},
-{
-"handle": "sonreal",
-"img": "/images/music-faith/sonreal.jpg",
-"name": "SonReal",
-"note": "A funny, hopeful rap about knowing good music when you hear it.",
-"profile": "https://www.instagram.com/sonreal/"
-},
-{
-"handle": "tamzene",
-"img": "/images/music-faith/tamzene.jpg",
-"name": "Tamzene",
-"note": "\"I'll save you a seat.\" A gentle song, and an open chair.",
-"profile": "https://www.instagram.com/tamzene/"
-},
-{
-"handle": "lukasgraham",
-"img": "/images/suggest-carousel/lukasgraham.jpg",
-"name": "Lukas Graham",
-"note": "\"7 Years\" — a whole life in one song, from a boy to a father.",
-"profile": "https://www.instagram.com/lukasgraham/"
-},
-{
-"handle": "lilyfittsmusic",
-"img": "/images/music-faith/lilyfittsmusic.jpg",
-"name": "Lily Fitts",
-"note": "Her song \"Notice\" is finally out, more than a year after she first played it.",
-"profile": "https://www.instagram.com/lilyfittsmusic/"
-},
-{
-"handle": "tedashii",
-"img": "/images/suggest-carousel/tedashii.jpg",
-"name": "Tedashii",
-"note": "A rapper who has walked through real grief and still points to Jesus in his songs.",
-"profile": "https://www.instagram.com/tedashii/"
-},
-{
-"handle": "clairelesliesings",
-"img": "/images/suggest-carousel/clairelesliesings.jpg",
-"name": "Claire Leslie",
-"note": "A fun, upbeat Jesus song, written on the keyboard in her bedroom.",
-"profile": "https://www.instagram.com/clairelesliesings/"
-},
-{
-"handle": "anees",
-"img": "/images/suggest-carousel/anees.jpg",
-"name": "anees",
-"note": "A gentle song about the sun and the moon, and waiting for the right person.",
-"profile": "https://www.instagram.com/anees/"
-},
-{
-"handle": "gracegrabermusic",
-"img": "/images/music-faith/gracegrabermusic.jpg",
-"name": "Grace Graber",
-"note": "Songs about her mental health journey. And they are also pop punk.",
-"profile": "https://www.instagram.com/gracegrabermusic/"
-},
-{
-"handle": "jmcvinnie",
-"img": "/images/suggest-carousel/jmcvinnie.jpg",
-"name": "James McVinnie",
-"note": "An organ in a quiet church, and three centuries of music in one pair of hands.",
-"profile": "https://www.instagram.com/jmcvinnie/"
-},
-{
-"handle": "kaorimurajiofficial",
-"img": "/images/suggest-carousel/kaorimurajiofficial.jpg",
-"name": "Kaori Muraji",
-"note": "A guitar played since she was three, and every note still sounds like it matters.",
-"profile": "https://www.instagram.com/kaorimurajiofficial/"
-},
-{
-"handle": "naterosemusic",
-"img": "/images/music-faith/naterosemusic.jpg",
-"name": "Nate Rose",
-"note": "He gave his life to God last year. Now he wants to tell his story.",
-"profile": "https://www.instagram.com/naterosemusic/"
-},
-{
-"handle": "allison_eide",
-"img": "/images/music-faith/allison_eide.jpg",
-"name": "Allison Eide",
-"note": "\"Jesus is kind. Tour is a gift.\" Her songs, played back home.",
-"profile": "https://www.instagram.com/allison_eide/"
-},
-{
-"handle": "kenta_dedachi",
-"img": "/images/music-faith/kenta_dedachi.jpg",
-"name": "Kenta Dedachi",
-"note": "\"Secret Fort\" — childhood days behind the church, evening bells, best friends.",
-"profile": "https://www.instagram.com/kenta_dedachi/"
-},
-{
-"handle": "rachelpurcellmusic",
-"img": "/images/music-faith/rachelpurcellmusic.jpg",
-"name": "Rachel Purcell",
-"note": "Her song \"keep going\" — dreamy retro Jesus music, out now.",
-"profile": "https://www.instagram.com/rachelpurcellmusic/"
-},
-{
-"handle": "jeffarrandale",
-"img": "/images/music-faith/jeffarrandale.jpg",
-"name": "Jeff Arrandale",
-"note": "A new song from Luke 15, the prodigal son. \"Let Me Go\".",
-"profile": "https://www.instagram.com/jeffarrandale/"
-},
-{
-"handle": "haleyjonesofficial",
-"img": "/images/music-faith/haleyjonesofficial.jpg",
-"name": "Haley Jones",
-"note": "\"Everybody knows somebody who needs to hear about Jesus.\"",
-"profile": "https://www.instagram.com/haleyjonesofficial/"
-},
-{
-"handle": "larkinpoe",
-"img": "/images/suggest-carousel/larkinpoe.jpg",
-"name": "Larkin Poe",
-"note": "Two sisters, two guitars, and songs that sound like home and the road at once.",
-"profile": "https://www.instagram.com/larkinpoe/"
-},
-{
-"handle": "fatheringstarlings",
-"img": "/images/music-faith/fatheringstarlings.jpg",
-"name": "Fathering Starlings",
-"note": "\"Your Heart in the Fire\" — lo-fi folk from the North, honest, weathered, raw.",
-"profile": "https://www.instagram.com/fatheringstarlings/"
-},
-{
-"handle": "ostonmusic",
-"img": "/images/music-faith/ostonmusic.jpg",
-"name": "OSTON",
-"note": "His new song \"Not Alone\", and a room in San Francisco singing every word.",
-"profile": "https://www.instagram.com/ostonmusic/"
-},
-{
-"handle": "sayaka__714",
-"img": "/images/suggest-carousel/sayaka__714.jpg",
-"name": "Sayaka Yamamoto",
-"note": "Songs written plainly from her own life, guitar in hand — easy to sit with.",
-"profile": "https://www.instagram.com/sayaka__714/"
-},
-{
-"handle": "marybethmusic_",
-"img": "/images/music-faith/marybethmusic_.jpg",
-"name": "Mary Beth Dawson",
-"note": "Songs written in a notebook, sung at the piano. A lullaby that says you are mine.",
-"profile": "https://www.instagram.com/marybethmusic_/"
-},
-{
-"handle": "jonforeman",
-"img": "/images/suggest-carousel/jonforeman.jpg",
-"name": "Jon Foreman",
-"note": "Switchfoot frontman and solo folk-rock singer-songwriter; hopeful, faith-shaped songs for everyone, not just church audiences.",
-"profile": "https://www.instagram.com/jonforeman/"
-},
-{
-"handle": "joshgarrels",
-"img": "/images/suggest-carousel/joshgarrels.jpg",
-"name": "Josh Garrels",
-"note": "Pastoral indie-folk singer-songwriter weaving Christian themes into earthy, soulful songs about home, hope and faith.",
-"profile": "https://www.instagram.com/joshgarrels/"
-},
-{
-"handle": "andrewpetersonmusic",
-"img": "/images/suggest-carousel/andrewpetersonmusic.jpg",
-"name": "Andrew Peterson",
-"note": "Folk-rock singer-songwriter and author whose storytelling songs and hymns are warm, literary and rooted in faith.",
-"profile": "https://www.instagram.com/andrewpetersonmusic/"
-},
-{
-"handle": "lauren_daigle",
-"img": "/images/suggest-carousel/lauren_daigle.jpg",
-"name": "Lauren Daigle",
-"note": "Soulful Christian pop singer-songwriter known for uplifting songs about trust, hope and identity.",
-"profile": "https://www.instagram.com/lauren_daigle/"
-},
-{
-"handle": "hiforrest",
-"img": "/images/suggest-carousel/hiforrest.jpg",
-"name": "Forrest Frank",
-"note": "Upbeat Christian alt-pop singer-songwriter, formerly of Surfaces; joyful, sunny songs about faith and gratitude.",
-"profile": "https://www.instagram.com/hiforrest/"
-},
-{
-"handle": "benrector",
-"img": "/images/suggest-carousel/benrector.jpg",
-"name": "Ben Rector",
-"note": "Nashville pop-Americana singer-songwriter; bright, piano-led songs about family, gratitude and faith seen through everyday life.",
-"profile": "https://www.instagram.com/benrector/"
-},
-{
-"handle": "josiahqueenmusic",
-"img": "/images/suggest-carousel/josiahqueenmusic.jpg",
-"name": "Josiah Queen",
-"note": "Young folk-pop singer-songwriter telling Bible-shaped stories with acoustic guitars, mandolin and anthemic choruses.",
-"profile": "https://www.instagram.com/josiahqueenmusic/"
-},
-{
-"handle": "chrisrenzema",
-"img": "/images/suggest-carousel/chrisrenzema.jpg",
-"name": "Chris Renzema",
-"note": "Indie-folk singer-songwriter with atmospheric, honest songs about faith, doubt and longing, quoting C.S. Lewis in his posts.",
-"profile": "https://www.instagram.com/chrisrenzema/"
-},
-{
-"handle": "ellieholcomb",
-"img": "/images/suggest-carousel/ellieholcomb.jpg",
-"name": "Ellie Holcomb",
-"note": "Folk-pop singer-songwriter and author writing hopeful songs about faith, family and finding your way home.",
-"profile": "https://www.instagram.com/ellieholcomb/"
-},
-{
-"handle": "grovesroad",
-"img": "/images/suggest-carousel/grovesroad.jpg",
-"name": "Sara Groves",
-"note": "Thoughtful folk-pop singer-songwriter known for honest, confessional songs about faith, marriage and community.",
-"profile": "https://www.instagram.com/grovesroad/"
-},
-{
-"handle": "amygrantofficial",
-"img": "/images/suggest-carousel/amygrantofficial.jpg",
-"name": "Amy Grant",
-"note": "Pioneering Christian pop singer-songwriter who crossed over to mainstream pop with warm, faith-rooted songs.",
-"profile": "https://www.instagram.com/amygrantofficial/"
-},
-{
-"handle": "annewilsonmusic",
-"img": "/images/suggest-carousel/annewilsonmusic.jpg",
-"name": "Anne Wilson",
-"note": "Christian country-pop singer-songwriter blending heartfelt country storytelling with songs about Jesus and hope after loss.",
-"profile": "https://www.instagram.com/annewilsonmusic/"
-},
-{
-"handle": "johnmarkmcmillan",
-"img": "/images/suggest-carousel/johnmarkmcmillan.jpg",
-"name": "John Mark McMillan",
-"note": "Poetic indie-folk singer-songwriter behind honest, raw songs about faith, grief and returning to God.",
-"profile": "https://www.instagram.com/johnmarkmcmillan/"
-},
-{
-"handle": "drewholcombmusic",
-"img": "/images/suggest-carousel/drewholcombmusic.jpg",
-"name": "Drew Holcomb",
-"note": "Americana singer-songwriter fronting Drew Holcomb & the Neighbors; literate, warm folk songs with a spiritually conscious streak.",
-"profile": "https://www.instagram.com/drewholcombmusic/"
-},
-{
-"handle": "lecrae",
-"img": "/images/suggest-carousel/lecrae.jpg",
-"name": "Lecrae",
-"note": "Christian hip-hop artist and songwriter blending rap with positive, faith-driven messages about hope and purpose.",
-"profile": "https://www.instagram.com/lecrae/"
-},
-{
-"handle": "katynicholemusic",
-"img": "/images/suggest-carousel/katynicholemusic.jpg",
-"name": "Katy Nichole",
-"note": "Young Christian pop singer-songwriter whose honest songs about healing, prayer and trusting God became breakout hits.",
-"profile": "https://www.instagram.com/katynicholemusic/"
-},
-{
-"handle": "madisonryannward",
-"img": "/images/suggest-carousel/madisonryannward.jpg",
-"name": "Madison Ryann Ward",
-"note": "Soulful folk-R&B singer-songwriter blending gospel, blues and pop into warm songs about faith and new beginnings.",
-"profile": "https://www.instagram.com/madisonryannward/"
-},
-{
-"handle": "forkingandcountry",
-"img": "/images/suggest-carousel/forkingandcountry.jpg",
-"name": "For King & Country",
-"note": "Australian-born brothers Joel and Luke Smallbone making anthemic Christian pop with big choruses about hope and love.",
-"profile": "https://www.instagram.com/forkingandcountry/"
-},
-{
-"handle": "francescamusic",
-"img": "/images/suggest-carousel/francescamusic.jpg",
-"name": "Francesca Battistelli",
-"note": "Christian pop singer-songwriter returning with warm, faith-centred songs about family, home and new seasons.",
-"profile": "https://www.instagram.com/francescamusic/"
-},
-{
-"handle": "rileyclemmons",
-"img": "/images/suggest-carousel/rileyclemmons.jpg",
-"name": "Riley Clemmons",
-"note": "Christian pop singer-songwriter and pianist writing honest songs about prayer, forgiveness and hope in hard seasons.",
-"profile": "https://www.instagram.com/rileyclemmons/"
-},
-{
-"handle": "rebeccast.james",
-"img": "/images/suggest-carousel/rebeccast.james.jpg",
-"name": "Rebecca St. James",
-"note": "Australian Christian pop-rock singer-songwriter and author, older sister of For King & Country, back with new faith-filled music.",
-"profile": "https://www.instagram.com/rebeccast.james/"
-},
-{
-"handle": "philippahanna",
-"img": "/images/suggest-carousel/philippahanna.jpg",
-"name": "Philippa Hanna",
-"note": "English singer-songwriter from Sheffield making Americana-flavoured Christian songs about faith, hope and coming back fighting.",
-"profile": "https://www.instagram.com/philippahanna/"
-},
-{
-"handle": "sarahreevesmusic",
-"img": "/images/suggest-carousel/sarahreevesmusic.jpg",
-"name": "Sarah Reeves",
-"note": "Christian pop singer-songwriter making vibey, wholesome pop about faith, healing and standing up again.",
-"profile": "https://www.instagram.com/sarahreevesmusic/"
-},
-{
-"handle": "danbremnes",
-"img": "/images/suggest-carousel/danbremnes.jpg",
-"name": "Dan Bremnes",
-"note": "Canadian Christian singer-songwriter and multi-instrumentalist with upbeat folk-pop songs about light, hope and getting up again.",
-"profile": "https://www.instagram.com/danbremnes/"
-},
-{
-"handle": "andymineo",
-"img": "/images/suggest-carousel/andymineo.jpg",
-"name": "Andy Mineo",
-"note": "New York Christian hip-hop artist blending rap, pop and humour with honest songs about faith, doubt and identity.",
-"profile": "https://www.instagram.com/andymineo/"
-},
-{
-"handle": "sohyang_kleis",
-"img": "/images/suggest-carousel/sohyang_kleis.jpg",
-"name": "Sohyang",
-"note": "Korean CCM and gospel singer with a powerful voice, long known for worship songs and Christian albums.",
-"profile": "https://www.instagram.com/sohyang_kleis/"
-},
-{
-"handle": "aileeonline",
-"img": "/images/suggest-carousel/aileeonline.jpg",
-"name": "Ailee",
-"note": "Korean-American R&B and pop singer with big, soulful vocals, open about her Christian faith.",
-"profile": "https://www.instagram.com/aileeonline/"
-},
-{
-"handle": "tiffanyyoungofficial",
-"img": "/images/suggest-carousel/tiffanyyoungofficial.jpg",
-"name": "Tiffany Young",
-"note": "Korean-American pop singer, former Girls' Generation member, now a solo artist and a Protestant Christian.",
-"profile": "https://www.instagram.com/tiffanyyoungofficial/"
-},
-{
-"handle": "gem0816",
-"img": "/images/suggest-carousel/gem0816.jpg",
-"name": "G.E.M.",
-"note": "Hong Kong Mandopop star whose album Revelation tells her conversation with God; her bio reads 'Daughter of God'.",
-"profile": "https://www.instagram.com/gem0816/"
-},
-{
-"handle": "moiradelatorre",
-"img": "/images/suggest-carousel/moiradelatorre.jpg",
-"name": "Moira Dela Torre",
-"note": "Filipino singer-songwriter of gentle pop ballads who calls writing and singing worship songs her passion.",
-"profile": "https://www.instagram.com/moiradelatorre/"
-},
-{
-"handle": "justsarahgph",
-"img": "/images/suggest-carousel/justsarahgph.jpg",
-"name": "Sarah Geronimo",
-"note": "Filipino pop star, a born-again Christian whose faith was renewed through Gary Valenciano's ministry.",
-"profile": "https://www.instagram.com/justsarahgph/"
-},
-{
-"handle": "yengconstantino",
-"img": "/images/suggest-carousel/yengconstantino.jpg",
-"name": "Yeng Constantino",
-"note": "Filipino pop-rock singer-songwriter raised in a born-again Christian family, married to a worship director.",
-"profile": "https://www.instagram.com/yengconstantino/"
-},
-{
-"handle": "kztandingan",
-"img": "/images/suggest-carousel/kztandingan.jpg",
-"name": "KZ Tandingan",
-"note": "Filipino soul and R&B singer who speaks openly about her blessings coming from the Lord and God's timing.",
-"profile": "https://www.instagram.com/kztandingan/"
-},
-{
-"handle": "agnezmo",
-"img": "/images/suggest-carousel/agnezmo.jpg",
-"name": "Agnez Mo",
-"note": "Indonesian pop and R&B star who grew up singing in church and still speaks of her Christian faith.",
-"profile": "https://www.instagram.com/agnezmo/"
-},
-{
-"handle": "jaclynvictor",
-"img": "/images/suggest-carousel/jaclynvictor.jpg",
-"name": "Jaclyn Victor",
-"note": "Malaysian pop and R&B singer who started in her church choir and has recorded gospel and Christian albums.",
-"profile": "https://www.instagram.com/jaclynvictor/"
-},
-{
-"handle": "lalabarchannel",
-"img": "/images/suggest-carousel/lalabarchannel.jpg",
-"name": "Lala Hsu",
-"note": "Taiwanese singer-songwriter of warm, heartfelt pop who was baptised in 2013 and says she sings for God.",
-"profile": "https://www.instagram.com/lalabarchannel/"
-},
-{
-"handle": "mamauthe",
-"img": "/images/suggest-carousel/mamauthe.jpg",
-"name": "Ruth Sahanaya",
-"note": "Indonesian singer known as Mama Uthe, with gospel albums and worship concerts alongside her pop career.",
-"profile": "https://www.instagram.com/mamauthe/"
-},
-{
-"handle": "clarabeninmusic",
-"img": "/images/suggest-carousel/clarabeninmusic.jpg",
-"name": "Clara Benin",
-"note": "Filipino indie folk singer-songwriter who went on a mission trip at 17 and led worship in churches around Southeast Asia.",
-"profile": "https://www.instagram.com/clarabeninmusic/"
-},
-{
-"handle": "ericnam",
-"img": "/images/suggest-carousel/ericnam.jpg",
-"name": "Eric Nam",
-"note": "Korean-American pop singer who grew up singing in church and talks openly about his faith carrying him through dark times.",
-"profile": "https://www.instagram.com/ericnam/"
-},
-{
-"handle": "jjlin",
-"img": "/images/suggest-carousel/jjlin.jpg",
-"name": "JJ Lin",
-"note": "Singaporean Mandopop star with a strong Christian faith, known for the song 'The Key' about God opening heaven's door.",
-"profile": "https://www.instagram.com/jjlin/"
-},
-{
-"handle": "jaychou",
-"img": "/images/suggest-carousel/jaychou.jpg",
-"name": "Jay Chou",
-"note": "Taiwanese Mandopop king who became a Christian in 2012 and wrote the hymn 'Jesus Fashion' for his church.",
-"profile": "https://www.instagram.com/jaychou/"
-},
-{
-"handle": "davidtaochi",
-"img": "/images/suggest-carousel/davidtaochi.jpg",
-"name": "David Tao",
-"note": "Taiwanese R&B pioneer and firm believer whose songs 'Butterfly' and 'Dear God' are about his relationship with God.",
-"profile": "https://www.instagram.com/davidtaochi/"
-},
-{
-"handle": "vannesswu",
-"img": "/images/suggest-carousel/vannesswu.jpg",
-"name": "Vanness Wu",
-"note": "Taiwanese singer and actor, former F4 member, a devout Christian since his baptism in 2007 who weaves faith into his music.",
-"profile": "https://www.instagram.com/vannesswu/"
-},
-{
-"handle": "garyvalenciano",
-"img": "/images/suggest-carousel/garyvalenciano.jpg",
-"name": "Gary Valenciano",
-"note": "Filipino music icon behind inspirational and Christian albums, including Out of the Dark and songs for Billy Graham's ministry.",
-"profile": "https://www.instagram.com/garyvalenciano/"
-},
-{
-"handle": "xtianbautista",
-"img": "/images/suggest-carousel/xtianbautista.jpg",
-"name": "Christian Bautista",
-"note": "Filipino balladeer who sang in his church choir from the age of seven and studied at an international Christian school.",
-"profile": "https://www.instagram.com/xtianbautista/"
-},
-{
-"handle": "jud1ka",
-"img": "/images/suggest-carousel/jud1ka.jpg",
-"name": "Judika",
-"note": "Indonesian rock and pop powerhouse who honed his voice in church choirs and married in a Batak Protestant church.",
-"profile": "https://www.instagram.com/jud1ka/"
-},
-{
-"handle": "parkhyoshin.official",
-"img": "/images/suggest-carousel/parkhyoshin.official.jpg",
-"name": "Park Hyo-shin",
-"note": "Korean ballad singer with one of the country's most loved voices, a Catholic with the baptismal name Rafael.",
-"profile": "https://www.instagram.com/parkhyoshin.official/"
-},
-{
-"handle": "kevinwoo_official",
-"img": "/images/suggest-carousel/kevinwoo_official.jpg",
-"name": "Kevin Woo",
-"note": "Korean-American singer, former U-KISS main vocalist, who sang in his church praise band and voiced Mystery Saja in KPop Demon Hunters.",
-"profile": "https://www.instagram.com/kevinwoo_official/"
-},
-{
-"handle": "tatsuyashioya",
-"img": "/images/suggest-carousel/tatsuyashioya.jpg",
-"name": "Tatsuya Shioya",
-"note": "Japanese gospel singer and pastor whose bio reads 'Jesus, Gospel Singer'; worship director and evangelist in Tokyo.",
-"profile": "https://www.instagram.com/tatsuyashioya/"
-},
-{
-"handle": "gospelliondk",
-"img": "/images/suggest-carousel/gospelliondk.jpg",
-"name": "Daisuke Yokoyama",
-"note": "Japanese gospel singer-songwriter and music missionary who has toured all 47 prefectures sharing songs of hope and healing.",
-"profile": "https://www.instagram.com/gospelliondk/"
-},
-{
-"handle": "kikepavon",
-"img": "/images/suggest-carousel/kikepavon.jpg",
-"name": "Kike Pavón",
-"note": "Spanish pop-rock singer-songwriter from Burgos whose hopeful Christian songs move between pop, rock and acoustic ballads.",
-"profile": "https://www.instagram.com/kikepavon/"
-},
-{
-"handle": "camposalex",
-"img": "/images/suggest-carousel/camposalex.jpg",
-"name": "Alex Campos",
-"note": "Colombian singer-songwriter, one of the best-known voices in Latin Christian pop-rock, singing about faith, hope and everyday life.",
-"profile": "https://www.instagram.com/camposalex/"
-},
-{
-"handle": "daddyyankee",
-"img": "/images/suggest-carousel/daddyyankee.jpg",
-"name": "Daddy Yankee",
-"note": "Puerto Rican reggaeton pioneer who publicly gave his life to Christ on stage in December 2023 and now makes faith-centred music; his bio reads 'Disciple of Christ'.",
-"profile": "https://www.instagram.com/daddyyankee/"
-},
-{
-"handle": "realredimi2",
-"img": "/images/suggest-carousel/realredimi2.jpg",
-"name": "Redimi2",
-"note": "Dominican Christian rapper who blends hip-hop, reggaeton and Latin pop with open, upbeat messages about faith and hope.",
-"profile": "https://www.instagram.com/realredimi2/"
-},
-{
-"handle": "farruko",
-"img": "/images/suggest-carousel/farruko.jpg",
-"name": "Farruko",
-"note": "Puerto Rican reggaeton star who embraced Christianity in 2022 and now records faith-based songs alongside his urban pop.",
-"profile": "https://www.instagram.com/farruko/"
-},
-{
-"handle": "samuelharfst",
-"img": "/images/suggest-carousel/samuelharfst.jpg",
-"name": "Samuel Harfst",
-"note": "German singer-songwriter and former street musician whose gentle pop songs weave together love, doubt, faith and hope.",
-"profile": "https://www.instagram.com/samuelharfst/"
-},
-{
-"handle": "francesco.lorenzi_thesun",
-"img": "/images/suggest-carousel/francesco.lorenzi_thesun.jpg",
-"name": "Francesco Lorenzi",
-"note": "Frontman of Italian Catholic rock band The Sun, a former punk band whose songs now carry an open, joyful Christian message.",
-"profile": "https://www.instagram.com/francesco.lorenzi_thesun/"
-},
-{
-"handle": "chrisduranofficial",
-"img": "/images/suggest-carousel/chrisduranofficial.jpg",
-"name": "Chris Durán",
-"note": "Franco-Brazilian pop singer and evangelical pastor who moved from 1990s pop stardom in Brazil to gospel ballads and Latin pop about faith.",
-"profile": "https://www.instagram.com/chrisduranofficial/"
-},
-{
-"handle": "alexzurdomusic",
-"img": "/images/suggest-carousel/alexzurdomusic.jpg",
-"name": "Alex Zurdo",
-"note": "Puerto Rican Christian rapper and songwriter mixing rap, reggae and urban pop with warm, faith-filled lyrics.",
-"profile": "https://www.instagram.com/alexzurdomusic/"
-},
-{
-"handle": "jaimesalmoreno",
-"img": "/images/suggest-carousel/jaimesalmoreno.jpg",
-"name": "Jaime Salmoreno",
-"note": "Spanish Catholic priest and singer, a former architect in New York, whose gentle pop ballads about light and surrender went viral in 2026.",
-"profile": "https://www.instagram.com/jaimesalmoreno/"
-},
-{
-"handle": "inigoquintero",
-"img": "/images/suggest-carousel/inigoquintero.jpg",
-"name": "Íñigo Quintero",
-"note": "Young Spanish singer-songwriter from A Coruña whose global hit 'Si no estás' is widely read as a song to God, written from his Catholic faith.",
-"profile": "https://www.instagram.com/inigoquintero/"
-},
-{
-"handle": "guvnab",
-"img": "/images/suggest-carousel/guvnab.jpg",
-"name": "Guvna B",
-"note": "London rapper, author and broadcaster whose uplifting grime and gospel-infused hip-hop puts faith, family and honesty front and centre.",
-"profile": "https://www.instagram.com/guvnab/"
-},
-{
-"handle": "goodmanlilly",
-"img": "/images/suggest-carousel/goodmanlilly.jpg",
-"name": "Lilly Goodman",
-"note": "Dominican gospel and R&B singer with a warm, joyful voice, singing in Spanish about God's love and freedom.",
-"profile": "https://www.instagram.com/goodmanlilly/"
-},
-{
-"handle": "isadorapompeo",
-"img": "/images/suggest-carousel/isadorapompeo.jpg",
-"name": "Isadora Pompeo",
-"note": "Young Brazilian gospel singer and vlogger whose heartfelt worship-pop songs and covers reach a wide, young audience.",
-"profile": "https://www.instagram.com/isadorapompeo/"
-},
-{
-"handle": "_apriscilla_",
-"img": "/images/suggest-carousel/_apriscilla_.jpg",
-"name": "Priscilla Alcântara",
-"note": "Brazilian pop singer who grew up in gospel music and now makes bright indie-pop with her faith still woven through it.",
-"profile": "https://www.instagram.com/_apriscilla_/"
-},
-{
-"handle": "mara.sattei",
-"img": "/images/suggest-carousel/mara.sattei.jpg",
-"name": "Mara Sattei",
-"note": "Italian singer-songwriter raised in an evangelical family who made the gospel-pop album 'Casa Gospel' with her brother Thasup.",
-"profile": "https://www.instagram.com/mara.sattei/"
-},
-{
-"handle": "marcela_gandara",
-"img": "/images/suggest-carousel/marcela_gandara.jpg",
-"name": "Marcela Gándara",
-"note": "Mexican Christian singer-songwriter whose warm Latin pop songs about peace and trust in God have run since the mid-2000s.",
-"profile": "https://www.instagram.com/marcela_gandara/"
-},
-{
-"handle": "deboravezzani_official",
-"img": "/images/suggest-carousel/deboravezzani_official.jpg",
-"name": "Debora Vezzani",
-"note": "Italian singer-songwriter who converted to Catholicism in 2014 and now tours Italy with testimony concerts built around her song 'Come un prodigio'.",
-"profile": "https://www.instagram.com/deboravezzani_official/"
-},
-{
-"handle": "brunakarla",
-"img": "/images/suggest-carousel/brunakarla.jpg",
-"name": "Bruna Karla",
-"note": "Brazilian gospel singer who has sung in church since childhood and now makes joyful contemporary Christian pop in Portuguese.",
-"profile": "https://www.instagram.com/brunakarla/"
-},
-{
-"handle": "sarahfariasoficial",
-"img": "/images/suggest-carousel/sarahfariasoficial.jpg",
-"name": "Sarah Farias",
-"note": "Brazilian gospel singer with a powerful voice and a string of worship-pop albums, singing in Portuguese about renewal and trust in God.",
-"profile": "https://www.instagram.com/sarahfariasoficial/"
-},
-{
-"handle": "majosolisgzz",
-"img": "/images/suggest-carousel/majosolisgzz.jpg",
-"name": "Majo Solís",
-"note": "Mexican singer from Monterrey, half of the husband-and-wife duo Majo y Dan, making gentle contemporary Christian music in Spanish.",
-"profile": "https://www.instagram.com/majosolisgzz/"
-},
-{
-"handle": "seforanelson",
-"img": "/images/suggest-carousel/seforanelson.jpg",
-"name": "Sefora Nelson",
-"note": "Italo-German singer-songwriter and pianist who studied sacred music and theology and tours Germany, Austria and Switzerland with warm, reflective Christian songs.",
-"profile": "https://www.instagram.com/seforanelson/"
-},
-{
-"handle": "lucygrimble",
-"img": "/images/suggest-carousel/lucygrimble.jpg",
-"name": "Lucy Grimble",
-"note": "Devon-based English worship singer-songwriter who records intimate, folk-tinged worship songs at home with friends.",
-"profile": "https://www.instagram.com/lucygrimble/"
-},
-{
-"handle": "paulinebetuel",
-"img": "/images/suggest-carousel/paulinebetuel.jpg",
-"name": "Pauline Bétuel",
-"note": "French pop-louange singer from the Var who chose to follow God through music at 16 and now releases soul- and jazz-tinged songs of hope.",
-"profile": "https://www.instagram.com/paulinebetuel/"
-},
-{
-"handle": "therealsinach",
-"img": "/images/suggest-carousel/therealsinach.jpg",
-"name": "Sinach",
-"note": "Nigerian gospel singer behind 'Way Maker', joyful worship songs sung in churches worldwide.",
-"profile": "https://www.instagram.com/therealsinach/"
-},
-{
-"handle": "mercychinwo",
-"img": "/images/suggest-carousel/mercychinwo.jpg",
-"name": "Mercy Chinwo",
-"note": "Nigerian gospel singer with a warm, powerful voice and hopeful songs like 'Excess Love'.",
-"profile": "https://www.instagram.com/mercychinwo/"
-},
-{
-"handle": "adaehimoses",
-"img": "/images/suggest-carousel/adaehimoses.jpg",
-"name": "Ada Ehi",
-"note": "Nigerian gospel singer and worship leader, bright and upbeat songs such as 'Only You Jesus'.",
-"profile": "https://www.instagram.com/adaehimoses/"
-},
-{
-"handle": "mercymasikamuguro",
-"img": "/images/suggest-carousel/mercymasikamuguro.jpg",
-"name": "Mercy Masika",
-"note": "Kenyan gospel singer and worship minister, a long-running voice of East African gospel.",
-"profile": "https://www.instagram.com/mercymasikamuguro/"
-},
-{
-"handle": "kambuamuziki",
-"img": "/images/suggest-carousel/kambuamuziki.jpg",
-"name": "Kambua",
-"note": "Kenyan gospel singer and TV host, joyful praise songs in English and Swahili.",
-"profile": "https://www.instagram.com/kambuamuziki/"
-},
-{
-"handle": "judithsephuma",
-"img": "/images/suggest-carousel/judithsephuma.jpg",
-"name": "Judith Sephuma",
-"note": "South African jazz and Afro-pop singer, also records gospel, with a smooth, warm voice.",
-"profile": "https://www.instagram.com/judithsephuma/"
-},
-{
-"handle": "tope_alabi_",
-"img": "/images/suggest-carousel/tope_alabi_.jpg",
-"name": "Tope Alabi",
-"note": "Nigerian gospel singer known for Yoruba-language worship songs and film music.",
-"profile": "https://www.instagram.com/tope_alabi_/"
-},
-{
-"handle": "violincase",
-"img": "/images/suggest-carousel/violincase.jpg",
-"name": "Hilary Hahn",
-"note": "American violinist, one of the leading classical soloists, sharing practice and performance online.",
-"profile": "https://www.instagram.com/violincase/"
-},
-{
-"handle": "isatakannehmason",
-"img": "/images/suggest-carousel/isatakannehmason.jpg",
-"name": "Isata Kanneh-Mason",
-"note": "British concert pianist from the Kanneh-Mason family, known for expressive classical playing.",
-"profile": "https://www.instagram.com/isatakannehmason/"
-},
-{
-"handle": "esperanzaspalding",
-"img": "/images/suggest-carousel/esperanzaspalding.jpg",
-"name": "Esperanza Spalding",
-"note": "American jazz bassist, singer and composer, playful and inventive jazz with a joyful spirit.",
-"profile": "https://www.instagram.com/esperanzaspalding/"
-},
-{
-"handle": "cecewinans",
-"img": "/images/suggest-carousel/cecewinans.jpg",
-"name": "CeCe Winans",
-"note": "American gospel singer, one of the most loved voices in gospel, with songs of faith and hope.",
-"profile": "https://www.instagram.com/cecewinans/"
-},
-{
-"handle": "tashacobbsleonard",
-"img": "/images/suggest-carousel/tashacobbsleonard.jpg",
-"name": "Tasha Cobbs Leonard",
-"note": "American gospel singer and worship leader, known for 'Break Every Chain' and joyful praise.",
-"profile": "https://www.instagram.com/tashacobbsleonard/"
-},
-{
-"handle": "nathanielblow",
-"img": "/images/suggest-carousel/nathanielblow.jpg",
-"name": "Nathaniel Bassey",
-"note": "Nigerian gospel singer, trumpeter and pastor, known for worship songs and the Hallelujah Challenge.",
-"profile": "https://www.instagram.com/nathanielblow/"
-},
-{
-"handle": "dunsinoyekan",
-"img": "/images/suggest-carousel/dunsinoyekan.jpg",
-"name": "Dunsin Oyekan",
-"note": "Nigerian gospel singer and multi-instrumentalist, energetic worship leader and guitarist.",
-"profile": "https://www.instagram.com/dunsinoyekan/"
-},
-{
-"handle": "mosesbliss",
-"img": "/images/suggest-carousel/mosesbliss.jpg",
-"name": "Moses Bliss",
-"note": "Nigerian gospel singer and worship leader, upbeat songs such as 'Too Faithful' and 'Bigger Everyday'.",
-"profile": "https://www.instagram.com/mosesbliss/"
-},
-{
-"handle": "joemettle",
-"img": "/images/suggest-carousel/joemettle.jpg",
-"name": "Joe Mettle",
-"note": "Ghanaian gospel singer and worship leader, warm praise songs with a live-band feel.",
-"profile": "https://www.instagram.com/joemettle/"
-},
-{
-"handle": "drtumisang",
-"img": "/images/suggest-carousel/drtumisang.jpg",
-"name": "Dr Tumi",
-"note": "South African gospel singer who is also a medical doctor, known for joyful stadium worship gatherings.",
-"profile": "https://www.instagram.com/drtumisang/"
-},
-{
-"handle": "timgodfreyworld",
-"img": "/images/suggest-carousel/timgodfreyworld.jpg",
-"name": "Tim Godfrey",
-"note": "Nigerian gospel singer and choir leader, high-energy praise songs like 'Nara'.",
-"profile": "https://www.instagram.com/timgodfreyworld/"
-},
-{
-"handle": "yoyoma",
-"img": "/images/suggest-carousel/yoyoma.jpg",
-"name": "Yo-Yo Ma",
-"note": "Cellist who plays classical music and folk from many cultures, known for warm, generous performances.",
-"profile": "https://www.instagram.com/yoyoma/"
-},
-{
-"handle": "langlangpiano",
-"img": "/images/suggest-carousel/langlangpiano.jpg",
-"name": "Lang Lang",
-"note": "Chinese concert pianist, expressive and charismatic classical performer on stages worldwide.",
-"profile": "https://www.instagram.com/langlangpiano/"
-},
-{
-"handle": "shekukannehmason",
-"img": "/images/suggest-carousel/shekukannehmason.jpg",
-"name": "Sheku Kanneh-Mason",
-"note": "British cellist who played at the 2018 royal wedding, warm and lively classical performer.",
-"profile": "https://www.instagram.com/shekukannehmason/"
-},
-{
-"handle": "jonbatiste",
-"img": "/images/suggest-carousel/jonbatiste.jpg",
-"name": "Jon Batiste",
-"note": "American pianist, singer and bandleader, joyful jazz and soul with gospel roots.",
-"profile": "https://www.instagram.com/jonbatiste/"
-},
-{
-"handle": "kirkfranklin",
-"img": "/images/suggest-carousel/kirkfranklin.jpg",
-"name": "Kirk Franklin",
-"note": "American gospel singer, choir leader and producer, blending gospel with hip-hop and R&B.",
-"profile": "https://www.instagram.com/kirkfranklin/"
-},
-{
-"handle": "jonmcreynolds",
-"img": "/images/suggest-carousel/jonmcreynolds.jpg",
-"name": "Jonathan McReynolds",
-"note": "American gospel singer-songwriter and guitarist, gentle and honest songs about faith and life.",
-"profile": "https://www.instagram.com/jonmcreynolds/"
-}
+  {
+    "handle": "mikeposner",
+    "img": "/images/suggest-carousel/mikeposner.jpg",
+    "name": "Mike Posner",
+    "note": "A man who had the hit song, then walked away from it, and came home to Jesus.",
+    "profile": "https://www.instagram.com/mikeposner/"
+  },
+  {
+    "handle": "tashalayton",
+    "img": "/images/suggest-carousel/tashalayton.jpg",
+    "name": "Tasha Layton",
+    "note": "A song that says God has done something in a broken life, and means it.",
+    "profile": "https://www.instagram.com/tashalayton/"
+  },
+  {
+    "handle": "tedashii",
+    "img": "/images/suggest-carousel/tedashii.jpg",
+    "name": "Tedashii",
+    "note": "A rapper who has walked through real grief and still points to Jesus in his songs.",
+    "profile": "https://www.instagram.com/tedashii/"
+  },
+  {
+    "handle": "clairelesliesings",
+    "img": "/images/suggest-carousel/clairelesliesings.jpg",
+    "name": "Claire Leslie",
+    "note": "A fun, upbeat Jesus song, written on the keyboard in her bedroom.",
+    "profile": "https://www.instagram.com/clairelesliesings/"
+  },
+  {
+    "handle": "anees",
+    "img": "/images/suggest-carousel/anees.jpg",
+    "name": "anees",
+    "note": "A gentle song about the sun and the moon, and waiting for the right person.",
+    "profile": "https://www.instagram.com/anees/"
+  },
+  {
+    "handle": "gracegrabermusic",
+    "img": "/images/music-faith/gracegrabermusic.jpg",
+    "name": "Grace Graber",
+    "note": "Songs about her mental health journey. And they are also pop punk.",
+    "profile": "https://www.instagram.com/gracegrabermusic/"
+  },
+  {
+    "handle": "naterosemusic",
+    "img": "/images/music-faith/naterosemusic.jpg",
+    "name": "Nate Rose",
+    "note": "He gave his life to God last year. Now he wants to tell his story.",
+    "profile": "https://www.instagram.com/naterosemusic/"
+  },
+  {
+    "handle": "allison_eide",
+    "img": "/images/music-faith/allison_eide.jpg",
+    "name": "Allison Eide",
+    "note": "\"Jesus is kind. Tour is a gift.\" Her songs, played back home.",
+    "profile": "https://www.instagram.com/allison_eide/"
+  },
+  {
+    "handle": "kenta_dedachi",
+    "img": "/images/music-faith/kenta_dedachi.jpg",
+    "name": "Kenta Dedachi",
+    "note": "\"Secret Fort\" — childhood days behind the church, evening bells, best friends.",
+    "profile": "https://www.instagram.com/kenta_dedachi/"
+  },
+  {
+    "handle": "rachelpurcellmusic",
+    "img": "/images/music-faith/rachelpurcellmusic.jpg",
+    "name": "Rachel Purcell",
+    "note": "Her song \"keep going\" — dreamy retro Jesus music, out now.",
+    "profile": "https://www.instagram.com/rachelpurcellmusic/"
+  },
+  {
+    "handle": "jeffarrandale",
+    "img": "/images/music-faith/jeffarrandale.jpg",
+    "name": "Jeff Arrandale",
+    "note": "A new song from Luke 15, the prodigal son. \"Let Me Go\".",
+    "profile": "https://www.instagram.com/jeffarrandale/"
+  },
+  {
+    "handle": "haleyjonesofficial",
+    "img": "/images/music-faith/haleyjonesofficial.jpg",
+    "name": "Haley Jones",
+    "note": "\"Everybody knows somebody who needs to hear about Jesus.\"",
+    "profile": "https://www.instagram.com/haleyjonesofficial/"
+  },
+  {
+    "handle": "marybethmusic_",
+    "img": "/images/music-faith/marybethmusic_.jpg",
+    "name": "Mary Beth Dawson",
+    "note": "Songs written in a notebook, sung at the piano. A lullaby that says you are mine.",
+    "profile": "https://www.instagram.com/marybethmusic_/"
+  },
+  {
+    "handle": "jonforeman",
+    "img": "/images/suggest-carousel/jonforeman.jpg",
+    "name": "Jon Foreman",
+    "note": "Switchfoot frontman and solo folk-rock singer-songwriter; hopeful, faith-shaped songs for everyone, not just church audiences.",
+    "profile": "https://www.instagram.com/jonforeman/"
+  },
+  {
+    "handle": "joshgarrels",
+    "img": "/images/suggest-carousel/joshgarrels.jpg",
+    "name": "Josh Garrels",
+    "note": "Pastoral indie-folk singer-songwriter weaving Christian themes into earthy, soulful songs about home, hope and faith.",
+    "profile": "https://www.instagram.com/joshgarrels/"
+  },
+  {
+    "handle": "andrewpetersonmusic",
+    "img": "/images/suggest-carousel/andrewpetersonmusic.jpg",
+    "name": "Andrew Peterson",
+    "note": "Folk-rock singer-songwriter and author whose storytelling songs and hymns are warm, literary and rooted in faith.",
+    "profile": "https://www.instagram.com/andrewpetersonmusic/"
+  },
+  {
+    "handle": "lauren_daigle",
+    "img": "/images/suggest-carousel/lauren_daigle.jpg",
+    "name": "Lauren Daigle",
+    "note": "Soulful Christian pop singer-songwriter known for uplifting songs about trust, hope and identity.",
+    "profile": "https://www.instagram.com/lauren_daigle/"
+  },
+  {
+    "handle": "hiforrest",
+    "img": "/images/suggest-carousel/hiforrest.jpg",
+    "name": "Forrest Frank",
+    "note": "Upbeat Christian alt-pop singer-songwriter, formerly of Surfaces; joyful, sunny songs about faith and gratitude.",
+    "profile": "https://www.instagram.com/hiforrest/"
+  },
+  {
+    "handle": "benrector",
+    "img": "/images/suggest-carousel/benrector.jpg",
+    "name": "Ben Rector",
+    "note": "Nashville pop-Americana singer-songwriter; bright, piano-led songs about family, gratitude and faith seen through everyday life.",
+    "profile": "https://www.instagram.com/benrector/"
+  },
+  {
+    "handle": "josiahqueenmusic",
+    "img": "/images/suggest-carousel/josiahqueenmusic.jpg",
+    "name": "Josiah Queen",
+    "note": "Young folk-pop singer-songwriter telling Bible-shaped stories with acoustic guitars, mandolin and anthemic choruses.",
+    "profile": "https://www.instagram.com/josiahqueenmusic/"
+  },
+  {
+    "handle": "chrisrenzema",
+    "img": "/images/suggest-carousel/chrisrenzema.jpg",
+    "name": "Chris Renzema",
+    "note": "Indie-folk singer-songwriter with atmospheric, honest songs about faith, doubt and longing, quoting C.S. Lewis in his posts.",
+    "profile": "https://www.instagram.com/chrisrenzema/"
+  },
+  {
+    "handle": "ellieholcomb",
+    "img": "/images/suggest-carousel/ellieholcomb.jpg",
+    "name": "Ellie Holcomb",
+    "note": "Folk-pop singer-songwriter and author writing hopeful songs about faith, family and finding your way home.",
+    "profile": "https://www.instagram.com/ellieholcomb/"
+  },
+  {
+    "handle": "grovesroad",
+    "img": "/images/suggest-carousel/grovesroad.jpg",
+    "name": "Sara Groves",
+    "note": "Thoughtful folk-pop singer-songwriter known for honest, confessional songs about faith, marriage and community.",
+    "profile": "https://www.instagram.com/grovesroad/"
+  },
+  {
+    "handle": "amygrantofficial",
+    "img": "/images/suggest-carousel/amygrantofficial.jpg",
+    "name": "Amy Grant",
+    "note": "Pioneering Christian pop singer-songwriter who crossed over to mainstream pop with warm, faith-rooted songs.",
+    "profile": "https://www.instagram.com/amygrantofficial/"
+  },
+  {
+    "handle": "annewilsonmusic",
+    "img": "/images/suggest-carousel/annewilsonmusic.jpg",
+    "name": "Anne Wilson",
+    "note": "Christian country-pop singer-songwriter blending heartfelt country storytelling with songs about Jesus and hope after loss.",
+    "profile": "https://www.instagram.com/annewilsonmusic/"
+  },
+  {
+    "handle": "johnmarkmcmillan",
+    "img": "/images/suggest-carousel/johnmarkmcmillan.jpg",
+    "name": "John Mark McMillan",
+    "note": "Poetic indie-folk singer-songwriter behind honest, raw songs about faith, grief and returning to God.",
+    "profile": "https://www.instagram.com/johnmarkmcmillan/"
+  },
+  {
+    "handle": "drewholcombmusic",
+    "img": "/images/suggest-carousel/drewholcombmusic.jpg",
+    "name": "Drew Holcomb",
+    "note": "Americana singer-songwriter fronting Drew Holcomb & the Neighbors; literate, warm folk songs with a spiritually conscious streak.",
+    "profile": "https://www.instagram.com/drewholcombmusic/"
+  },
+  {
+    "handle": "lecrae",
+    "img": "/images/suggest-carousel/lecrae.jpg",
+    "name": "Lecrae",
+    "note": "Christian hip-hop artist and songwriter blending rap with positive, faith-driven messages about hope and purpose.",
+    "profile": "https://www.instagram.com/lecrae/"
+  },
+  {
+    "handle": "katynicholemusic",
+    "img": "/images/suggest-carousel/katynicholemusic.jpg",
+    "name": "Katy Nichole",
+    "note": "Young Christian pop singer-songwriter whose honest songs about healing, prayer and trusting God became breakout hits.",
+    "profile": "https://www.instagram.com/katynicholemusic/"
+  },
+  {
+    "handle": "madisonryannward",
+    "img": "/images/suggest-carousel/madisonryannward.jpg",
+    "name": "Madison Ryann Ward",
+    "note": "Soulful folk-R&B singer-songwriter blending gospel, blues and pop into warm songs about faith and new beginnings.",
+    "profile": "https://www.instagram.com/madisonryannward/"
+  },
+  {
+    "handle": "forkingandcountry",
+    "img": "/images/suggest-carousel/forkingandcountry.jpg",
+    "name": "For King & Country",
+    "note": "Australian-born brothers Joel and Luke Smallbone making anthemic Christian pop with big choruses about hope and love.",
+    "profile": "https://www.instagram.com/forkingandcountry/"
+  },
+  {
+    "handle": "francescamusic",
+    "img": "/images/suggest-carousel/francescamusic.jpg",
+    "name": "Francesca Battistelli",
+    "note": "Christian pop singer-songwriter returning with warm, faith-centred songs about family, home and new seasons.",
+    "profile": "https://www.instagram.com/francescamusic/"
+  },
+  {
+    "handle": "rileyclemmons",
+    "img": "/images/suggest-carousel/rileyclemmons.jpg",
+    "name": "Riley Clemmons",
+    "note": "Christian pop singer-songwriter and pianist writing honest songs about prayer, forgiveness and hope in hard seasons.",
+    "profile": "https://www.instagram.com/rileyclemmons/"
+  },
+  {
+    "handle": "rebeccast.james",
+    "img": "/images/suggest-carousel/rebeccast.james.jpg",
+    "name": "Rebecca St. James",
+    "note": "Australian Christian pop-rock singer-songwriter and author, older sister of For King & Country, back with new faith-filled music.",
+    "profile": "https://www.instagram.com/rebeccast.james/"
+  },
+  {
+    "handle": "philippahanna",
+    "img": "/images/suggest-carousel/philippahanna.jpg",
+    "name": "Philippa Hanna",
+    "note": "English singer-songwriter from Sheffield making Americana-flavoured Christian songs about faith, hope and coming back fighting.",
+    "profile": "https://www.instagram.com/philippahanna/"
+  },
+  {
+    "handle": "sarahreevesmusic",
+    "img": "/images/suggest-carousel/sarahreevesmusic.jpg",
+    "name": "Sarah Reeves",
+    "note": "Christian pop singer-songwriter making vibey, wholesome pop about faith, healing and standing up again.",
+    "profile": "https://www.instagram.com/sarahreevesmusic/"
+  },
+  {
+    "handle": "danbremnes",
+    "img": "/images/suggest-carousel/danbremnes.jpg",
+    "name": "Dan Bremnes",
+    "note": "Canadian Christian singer-songwriter and multi-instrumentalist with upbeat folk-pop songs about light, hope and getting up again.",
+    "profile": "https://www.instagram.com/danbremnes/"
+  },
+  {
+    "handle": "andymineo",
+    "img": "/images/suggest-carousel/andymineo.jpg",
+    "name": "Andy Mineo",
+    "note": "New York Christian hip-hop artist blending rap, pop and humour with honest songs about faith, doubt and identity.",
+    "profile": "https://www.instagram.com/andymineo/"
+  },
+  {
+    "handle": "sohyang_kleis",
+    "img": "/images/suggest-carousel/sohyang_kleis.jpg",
+    "name": "Sohyang",
+    "note": "Korean CCM and gospel singer with a powerful voice, long known for worship songs and Christian albums.",
+    "profile": "https://www.instagram.com/sohyang_kleis/"
+  },
+  {
+    "handle": "aileeonline",
+    "img": "/images/suggest-carousel/aileeonline.jpg",
+    "name": "Ailee",
+    "note": "Korean-American R&B and pop singer with big, soulful vocals, open about her Christian faith.",
+    "profile": "https://www.instagram.com/aileeonline/"
+  },
+  {
+    "handle": "tiffanyyoungofficial",
+    "img": "/images/suggest-carousel/tiffanyyoungofficial.jpg",
+    "name": "Tiffany Young",
+    "note": "Korean-American pop singer, former Girls' Generation member, now a solo artist and a Protestant Christian.",
+    "profile": "https://www.instagram.com/tiffanyyoungofficial/"
+  },
+  {
+    "handle": "gem0816",
+    "img": "/images/suggest-carousel/gem0816.jpg",
+    "name": "G.E.M.",
+    "note": "Hong Kong Mandopop star whose album Revelation tells her conversation with God; her bio reads 'Daughter of God'.",
+    "profile": "https://www.instagram.com/gem0816/"
+  },
+  {
+    "handle": "moiradelatorre",
+    "img": "/images/suggest-carousel/moiradelatorre.jpg",
+    "name": "Moira Dela Torre",
+    "note": "Filipino singer-songwriter of gentle pop ballads who calls writing and singing worship songs her passion.",
+    "profile": "https://www.instagram.com/moiradelatorre/"
+  },
+  {
+    "handle": "justsarahgph",
+    "img": "/images/suggest-carousel/justsarahgph.jpg",
+    "name": "Sarah Geronimo",
+    "note": "Filipino pop star, a born-again Christian whose faith was renewed through Gary Valenciano's ministry.",
+    "profile": "https://www.instagram.com/justsarahgph/"
+  },
+  {
+    "handle": "yeng",
+    "img": "/images/suggest-carousel/yeng.jpg",
+    "name": "Yeng Constantino",
+    "note": "Filipino pop-rock singer-songwriter raised in a born-again Christian family, married to a worship director.",
+    "profile": "https://www.instagram.com/yeng/"
+  },
+  {
+    "handle": "kztandingan",
+    "img": "/images/suggest-carousel/kztandingan.jpg",
+    "name": "KZ Tandingan",
+    "note": "Filipino soul and R&B singer who speaks openly about her blessings coming from the Lord and God's timing.",
+    "profile": "https://www.instagram.com/kztandingan/"
+  },
+  {
+    "handle": "agnezmo",
+    "img": "/images/suggest-carousel/agnezmo.jpg",
+    "name": "Agnez Mo",
+    "note": "Indonesian pop and R&B star who grew up singing in church and still speaks of her Christian faith.",
+    "profile": "https://www.instagram.com/agnezmo/"
+  },
+  {
+    "handle": "lalabarchannel",
+    "img": "/images/suggest-carousel/lalabarchannel.jpg",
+    "name": "Lala Hsu",
+    "note": "Taiwanese singer-songwriter of warm, heartfelt pop who was baptised in 2013 and says she sings for God.",
+    "profile": "https://www.instagram.com/lalabarchannel/"
+  },
+  {
+    "handle": "mamauthe",
+    "img": "/images/suggest-carousel/mamauthe.jpg",
+    "name": "Ruth Sahanaya",
+    "note": "Indonesian singer known as Mama Uthe, with gospel albums and worship concerts alongside her pop career.",
+    "profile": "https://www.instagram.com/mamauthe/"
+  },
+  {
+    "handle": "clarabeninmusic",
+    "img": "/images/suggest-carousel/clarabeninmusic.jpg",
+    "name": "Clara Benin",
+    "note": "Filipino indie folk singer-songwriter who went on a mission trip at 17 and led worship in churches around Southeast Asia.",
+    "profile": "https://www.instagram.com/clarabeninmusic/"
+  },
+  {
+    "handle": "ericnam",
+    "img": "/images/suggest-carousel/ericnam.jpg",
+    "name": "Eric Nam",
+    "note": "Korean-American pop singer who grew up singing in church and talks openly about his faith carrying him through dark times.",
+    "profile": "https://www.instagram.com/ericnam/"
+  },
+  {
+    "handle": "jjlin",
+    "img": "/images/suggest-carousel/jjlin.jpg",
+    "name": "JJ Lin",
+    "note": "Singaporean Mandopop star with a strong Christian faith, known for the song 'The Key' about God opening heaven's door.",
+    "profile": "https://www.instagram.com/jjlin/"
+  },
+  {
+    "handle": "jaychou",
+    "img": "/images/suggest-carousel/jaychou.jpg",
+    "name": "Jay Chou",
+    "note": "Taiwanese Mandopop king who became a Christian in 2012 and wrote the hymn 'Jesus Fashion' for his church.",
+    "profile": "https://www.instagram.com/jaychou/"
+  },
+  {
+    "handle": "davidztao",
+    "img": "/images/suggest-carousel/davidztao.jpg",
+    "name": "David Tao",
+    "note": "Taiwanese R&B pioneer and firm believer whose songs 'Butterfly' and 'Dear God' are about his relationship with God.",
+    "profile": "https://www.instagram.com/davidztao/"
+  },
+  {
+    "handle": "vannesswu",
+    "img": "/images/suggest-carousel/vannesswu.jpg",
+    "name": "Vanness Wu",
+    "note": "Taiwanese singer and actor, former F4 member, a devout Christian since his baptism in 2007 who weaves faith into his music.",
+    "profile": "https://www.instagram.com/vannesswu/"
+  },
+  {
+    "handle": "garyvalenciano",
+    "img": "/images/suggest-carousel/garyvalenciano.jpg",
+    "name": "Gary Valenciano",
+    "note": "Filipino music icon behind inspirational and Christian albums, including Out of the Dark and songs for Billy Graham's ministry.",
+    "profile": "https://www.instagram.com/garyvalenciano/"
+  },
+  {
+    "handle": "xtianbautista",
+    "img": "/images/suggest-carousel/xtianbautista.jpg",
+    "name": "Christian Bautista",
+    "note": "Filipino balladeer who sang in his church choir from the age of seven and studied at an international Christian school.",
+    "profile": "https://www.instagram.com/xtianbautista/"
+  },
+  {
+    "handle": "jud1ka",
+    "img": "/images/suggest-carousel/jud1ka.jpg",
+    "name": "Judika",
+    "note": "Indonesian rock and pop powerhouse who honed his voice in church choirs and married in a Batak Protestant church.",
+    "profile": "https://www.instagram.com/jud1ka/"
+  },
+  {
+    "handle": "parkhyoshin.official",
+    "img": "/images/suggest-carousel/parkhyoshin.official.jpg",
+    "name": "Park Hyo-shin",
+    "note": "Korean ballad singer with one of the country's most loved voices, a Catholic with the baptismal name Rafael.",
+    "profile": "https://www.instagram.com/parkhyoshin.official/"
+  },
+  {
+    "handle": "kevinwoo_official",
+    "img": "/images/suggest-carousel/kevinwoo_official.jpg",
+    "name": "Kevin Woo",
+    "note": "Korean-American singer, former U-KISS main vocalist, who sang in his church praise band and voiced Mystery Saja in KPop Demon Hunters.",
+    "profile": "https://www.instagram.com/kevinwoo_official/"
+  },
+  {
+    "handle": "tatsuyashioya",
+    "img": "/images/suggest-carousel/tatsuyashioya.jpg",
+    "name": "Tatsuya Shioya",
+    "note": "Japanese gospel singer and pastor whose bio reads 'Jesus, Gospel Singer'; worship director and evangelist in Tokyo.",
+    "profile": "https://www.instagram.com/tatsuyashioya/"
+  },
+  {
+    "handle": "gospelliondk",
+    "img": "/images/suggest-carousel/gospelliondk.jpg",
+    "name": "Daisuke Yokoyama",
+    "note": "Japanese gospel singer-songwriter and music missionary who has toured all 47 prefectures sharing songs of hope and healing.",
+    "profile": "https://www.instagram.com/gospelliondk/"
+  },
+  {
+    "handle": "kikepavon",
+    "img": "/images/suggest-carousel/kikepavon.jpg",
+    "name": "Kike Pavón",
+    "note": "Spanish pop-rock singer-songwriter from Burgos whose hopeful Christian songs move between pop, rock and acoustic ballads.",
+    "profile": "https://www.instagram.com/kikepavon/"
+  },
+  {
+    "handle": "camposalex",
+    "img": "/images/suggest-carousel/camposalex.jpg",
+    "name": "Alex Campos",
+    "note": "Colombian singer-songwriter, one of the best-known voices in Latin Christian pop-rock, singing about faith, hope and everyday life.",
+    "profile": "https://www.instagram.com/camposalex/"
+  },
+  {
+    "handle": "daddyyankee",
+    "img": "/images/suggest-carousel/daddyyankee.jpg",
+    "name": "Daddy Yankee",
+    "note": "Puerto Rican reggaeton pioneer who publicly gave his life to Christ on stage in December 2023 and now makes faith-centred music; his bio reads 'Disciple of Christ'.",
+    "profile": "https://www.instagram.com/daddyyankee/"
+  },
+  {
+    "handle": "realredimi2",
+    "img": "/images/suggest-carousel/realredimi2.jpg",
+    "name": "Redimi2",
+    "note": "Dominican Christian rapper who blends hip-hop, reggaeton and Latin pop with open, upbeat messages about faith and hope.",
+    "profile": "https://www.instagram.com/realredimi2/"
+  },
+  {
+    "handle": "farruko",
+    "img": "/images/suggest-carousel/farruko.jpg",
+    "name": "Farruko",
+    "note": "Puerto Rican reggaeton star who embraced Christianity in 2022 and now records faith-based songs alongside his urban pop.",
+    "profile": "https://www.instagram.com/farruko/"
+  },
+  {
+    "handle": "samuelharfst",
+    "img": "/images/suggest-carousel/samuelharfst.jpg",
+    "name": "Samuel Harfst",
+    "note": "German singer-songwriter and former street musician whose gentle pop songs weave together love, doubt, faith and hope.",
+    "profile": "https://www.instagram.com/samuelharfst/"
+  },
+  {
+    "handle": "francesco.lorenzi_thesun",
+    "img": "/images/suggest-carousel/francesco.lorenzi_thesun.jpg",
+    "name": "Francesco Lorenzi",
+    "note": "Frontman of Italian Catholic rock band The Sun, a former punk band whose songs now carry an open, joyful Christian message.",
+    "profile": "https://www.instagram.com/francesco.lorenzi_thesun/"
+  },
+  {
+    "handle": "chrisduranofficial",
+    "img": "/images/suggest-carousel/chrisduranofficial.jpg",
+    "name": "Chris Durán",
+    "note": "Franco-Brazilian pop singer and evangelical pastor who moved from 1990s pop stardom in Brazil to gospel ballads and Latin pop about faith.",
+    "profile": "https://www.instagram.com/chrisduranofficial/"
+  },
+  {
+    "handle": "alexzurdomusic",
+    "img": "/images/suggest-carousel/alexzurdomusic.jpg",
+    "name": "Alex Zurdo",
+    "note": "Puerto Rican Christian rapper and songwriter mixing rap, reggae and urban pop with warm, faith-filled lyrics.",
+    "profile": "https://www.instagram.com/alexzurdomusic/"
+  },
+  {
+    "handle": "jaimesalmoreno",
+    "img": "/images/suggest-carousel/jaimesalmoreno.jpg",
+    "name": "Jaime Salmoreno",
+    "note": "Spanish Catholic priest and singer, a former architect in New York, whose gentle pop ballads about light and surrender went viral in 2026.",
+    "profile": "https://www.instagram.com/jaimesalmoreno/"
+  },
+  {
+    "handle": "inigoquintero",
+    "img": "/images/suggest-carousel/inigoquintero.jpg",
+    "name": "Íñigo Quintero",
+    "note": "Young Spanish singer-songwriter from A Coruña whose global hit 'Si no estás' is widely read as a song to God, written from his Catholic faith.",
+    "profile": "https://www.instagram.com/inigoquintero/"
+  },
+  {
+    "handle": "guvnab",
+    "img": "/images/suggest-carousel/guvnab.jpg",
+    "name": "Guvna B",
+    "note": "London rapper, author and broadcaster whose uplifting grime and gospel-infused hip-hop puts faith, family and honesty front and centre.",
+    "profile": "https://www.instagram.com/guvnab/"
+  },
+  {
+    "handle": "goodmanlilly",
+    "img": "/images/suggest-carousel/goodmanlilly.jpg",
+    "name": "Lilly Goodman",
+    "note": "Dominican gospel and R&B singer with a warm, joyful voice, singing in Spanish about God's love and freedom.",
+    "profile": "https://www.instagram.com/goodmanlilly/"
+  },
+  {
+    "handle": "isadorapompeo",
+    "img": "/images/suggest-carousel/isadorapompeo.jpg",
+    "name": "Isadora Pompeo",
+    "note": "Young Brazilian gospel singer and vlogger whose heartfelt worship-pop songs and covers reach a wide, young audience.",
+    "profile": "https://www.instagram.com/isadorapompeo/"
+  },
+  {
+    "handle": "_apriscilla_",
+    "img": "/images/suggest-carousel/_apriscilla_.jpg",
+    "name": "Priscilla Alcântara",
+    "note": "Brazilian pop singer who grew up in gospel music and now makes bright indie-pop with her faith still woven through it.",
+    "profile": "https://www.instagram.com/_apriscilla_/"
+  },
+  {
+    "handle": "mara.sattei",
+    "img": "/images/suggest-carousel/mara.sattei.jpg",
+    "name": "Mara Sattei",
+    "note": "Italian singer-songwriter raised in an evangelical family who made the gospel-pop album 'Casa Gospel' with her brother Thasup.",
+    "profile": "https://www.instagram.com/mara.sattei/"
+  },
+  {
+    "handle": "marcela_gandara",
+    "img": "/images/suggest-carousel/marcela_gandara.jpg",
+    "name": "Marcela Gándara",
+    "note": "Mexican Christian singer-songwriter whose warm Latin pop songs about peace and trust in God have run since the mid-2000s.",
+    "profile": "https://www.instagram.com/marcela_gandara/"
+  },
+  {
+    "handle": "deboravezzani_official",
+    "img": "/images/suggest-carousel/deboravezzani_official.jpg",
+    "name": "Debora Vezzani",
+    "note": "Italian singer-songwriter who converted to Catholicism in 2014 and now tours Italy with testimony concerts built around her song 'Come un prodigio'.",
+    "profile": "https://www.instagram.com/deboravezzani_official/"
+  },
+  {
+    "handle": "brunakarla",
+    "img": "/images/suggest-carousel/brunakarla.jpg",
+    "name": "Bruna Karla",
+    "note": "Brazilian gospel singer who has sung in church since childhood and now makes joyful contemporary Christian pop in Portuguese.",
+    "profile": "https://www.instagram.com/brunakarla/"
+  },
+  {
+    "handle": "sarahfariasoficial",
+    "img": "/images/suggest-carousel/sarahfariasoficial.jpg",
+    "name": "Sarah Farias",
+    "note": "Brazilian gospel singer with a powerful voice and a string of worship-pop albums, singing in Portuguese about renewal and trust in God.",
+    "profile": "https://www.instagram.com/sarahfariasoficial/"
+  },
+  {
+    "handle": "majosolisgzz",
+    "img": "/images/suggest-carousel/majosolisgzz.jpg",
+    "name": "Majo Solís",
+    "note": "Mexican singer from Monterrey, half of the husband-and-wife duo Majo y Dan, making gentle contemporary Christian music in Spanish.",
+    "profile": "https://www.instagram.com/majosolisgzz/"
+  },
+  {
+    "handle": "seforanelson",
+    "img": "/images/suggest-carousel/seforanelson.jpg",
+    "name": "Sefora Nelson",
+    "note": "Italo-German singer-songwriter and pianist who studied sacred music and theology and tours Germany, Austria and Switzerland with warm, reflective Christian songs.",
+    "profile": "https://www.instagram.com/seforanelson/"
+  },
+  {
+    "handle": "lucygrimble",
+    "img": "/images/suggest-carousel/lucygrimble.jpg",
+    "name": "Lucy Grimble",
+    "note": "Devon-based English worship singer-songwriter who records intimate, folk-tinged worship songs at home with friends.",
+    "profile": "https://www.instagram.com/lucygrimble/"
+  },
+  {
+    "handle": "paulinebetuel",
+    "img": "/images/suggest-carousel/paulinebetuel.jpg",
+    "name": "Pauline Bétuel",
+    "note": "French pop-louange singer from the Var who chose to follow God through music at 16 and now releases soul- and jazz-tinged songs of hope.",
+    "profile": "https://www.instagram.com/paulinebetuel/"
+  },
+  {
+    "handle": "therealsinach",
+    "img": "/images/suggest-carousel/therealsinach.jpg",
+    "name": "Sinach",
+    "note": "Nigerian gospel singer behind 'Way Maker', joyful worship songs sung in churches worldwide.",
+    "profile": "https://www.instagram.com/therealsinach/"
+  },
+  {
+    "handle": "mercychinwo",
+    "img": "/images/suggest-carousel/mercychinwo.jpg",
+    "name": "Mercy Chinwo",
+    "note": "Nigerian gospel singer with a warm, powerful voice and hopeful songs like 'Excess Love'.",
+    "profile": "https://www.instagram.com/mercychinwo/"
+  },
+  {
+    "handle": "adaehimoses",
+    "img": "/images/suggest-carousel/adaehimoses.jpg",
+    "name": "Ada Ehi",
+    "note": "Nigerian gospel singer and worship leader, bright and upbeat songs such as 'Only You Jesus'.",
+    "profile": "https://www.instagram.com/adaehimoses/"
+  },
+  {
+    "handle": "mercymasikamuguro",
+    "img": "/images/suggest-carousel/mercymasikamuguro.jpg",
+    "name": "Mercy Masika",
+    "note": "Kenyan gospel singer and worship minister, a long-running voice of East African gospel.",
+    "profile": "https://www.instagram.com/mercymasikamuguro/"
+  },
+  {
+    "handle": "kambuamuziki",
+    "img": "/images/suggest-carousel/kambuamuziki.jpg",
+    "name": "Kambua",
+    "note": "Kenyan gospel singer and TV host, joyful praise songs in English and Swahili.",
+    "profile": "https://www.instagram.com/kambuamuziki/"
+  },
+  {
+    "handle": "judithsephuma",
+    "img": "/images/suggest-carousel/judithsephuma.jpg",
+    "name": "Judith Sephuma",
+    "note": "South African jazz and Afro-pop singer, also records gospel, with a smooth, warm voice.",
+    "profile": "https://www.instagram.com/judithsephuma/"
+  },
+  {
+    "handle": "tope_alabi_",
+    "img": "/images/suggest-carousel/tope_alabi_.jpg",
+    "name": "Tope Alabi",
+    "note": "Nigerian gospel singer known for Yoruba-language worship songs and film music.",
+    "profile": "https://www.instagram.com/tope_alabi_/"
+  },
+  {
+    "handle": "cecewinans",
+    "img": "/images/suggest-carousel/cecewinans.jpg",
+    "name": "CeCe Winans",
+    "note": "American gospel singer, one of the most loved voices in gospel, with songs of faith and hope.",
+    "profile": "https://www.instagram.com/cecewinans/"
+  },
+  {
+    "handle": "tashacobbsleonard",
+    "img": "/images/suggest-carousel/tashacobbsleonard.jpg",
+    "name": "Tasha Cobbs Leonard",
+    "note": "American gospel singer and worship leader, known for 'Break Every Chain' and joyful praise.",
+    "profile": "https://www.instagram.com/tashacobbsleonard/"
+  },
+  {
+    "handle": "nathanielblow",
+    "img": "/images/suggest-carousel/nathanielblow.jpg",
+    "name": "Nathaniel Bassey",
+    "note": "Nigerian gospel singer, trumpeter and pastor, known for worship songs and the Hallelujah Challenge.",
+    "profile": "https://www.instagram.com/nathanielblow/"
+  },
+  {
+    "handle": "dunsinoyekan",
+    "img": "/images/suggest-carousel/dunsinoyekan.jpg",
+    "name": "Dunsin Oyekan",
+    "note": "Nigerian gospel singer and multi-instrumentalist, energetic worship leader and guitarist.",
+    "profile": "https://www.instagram.com/dunsinoyekan/"
+  },
+  {
+    "handle": "mosesbliss",
+    "img": "/images/suggest-carousel/mosesbliss.jpg",
+    "name": "Moses Bliss",
+    "note": "Nigerian gospel singer and worship leader, upbeat songs such as 'Too Faithful' and 'Bigger Everyday'.",
+    "profile": "https://www.instagram.com/mosesbliss/"
+  },
+  {
+    "handle": "joemettle",
+    "img": "/images/suggest-carousel/joemettle.jpg",
+    "name": "Joe Mettle",
+    "note": "Ghanaian gospel singer and worship leader, warm praise songs with a live-band feel.",
+    "profile": "https://www.instagram.com/joemettle/"
+  },
+  {
+    "handle": "drtumisang",
+    "img": "/images/suggest-carousel/drtumisang.jpg",
+    "name": "Dr Tumi",
+    "note": "South African gospel singer who is also a medical doctor, known for joyful stadium worship gatherings.",
+    "profile": "https://www.instagram.com/drtumisang/"
+  },
+  {
+    "handle": "timgodfreyworld",
+    "img": "/images/suggest-carousel/timgodfreyworld.jpg",
+    "name": "Tim Godfrey",
+    "note": "Nigerian gospel singer and choir leader, high-energy praise songs like 'Nara'.",
+    "profile": "https://www.instagram.com/timgodfreyworld/"
+  },
+  {
+    "handle": "jonbatiste",
+    "img": "/images/suggest-carousel/jonbatiste.jpg",
+    "name": "Jon Batiste",
+    "note": "American pianist, singer and bandleader, joyful jazz and soul with gospel roots.",
+    "profile": "https://www.instagram.com/jonbatiste/"
+  },
+  {
+    "handle": "kirkfranklin",
+    "img": "/images/suggest-carousel/kirkfranklin.jpg",
+    "name": "Kirk Franklin",
+    "note": "American gospel singer, choir leader and producer, blending gospel with hip-hop and R&B.",
+    "profile": "https://www.instagram.com/kirkfranklin/"
+  },
+  {
+    "handle": "jonmcreynolds",
+    "img": "/images/suggest-carousel/jonmcreynolds.jpg",
+    "name": "Jonathan McReynolds",
+    "note": "American gospel singer-songwriter and guitarist, gentle and honest songs about faith and life.",
+    "profile": "https://www.instagram.com/jonmcreynolds/"
+  }
 ]
