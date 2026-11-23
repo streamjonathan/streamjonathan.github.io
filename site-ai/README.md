@@ -146,6 +146,28 @@ sign-ins.
   will answer "not switched on yet". The Instagram and Google secrets
   are set as Worker secrets/vars at deploy time, never in the repo.
 
+## Reader notes and artist suggestions (no AI involved)
+
+Two small POST endpoints in `src/index.js` store reader input in the
+NOTES KV namespace until Jonathan reads it. Neither publishes anything.
+
+- `POST /api/note` — the anonymous "Leave a note" box on the homepage.
+  Body `{ "note": "..." }`, up to 1000 chars. Stored as `note-<ts>-<rand>`.
+- `POST /api/suggest` — the "Suggest an artist" form
+  (`/suggest-an-artist/`, `js/suggest.js`). Body:
+  `{ "artist", "link", "kinds": ["write"|"interview"|"reaction"],
+     "why", "fromName", "fromLink" }`. Artist name and social link are
+  required; the link must be a real profile on Instagram, X, Threads,
+  YouTube or Facebook. At least one kind is required. The suggester's
+  name and link are optional. Stored as `suggest-<ts>-<rand>`.
+
+Both are rate-limited per IP (10/minute, same as the chat) and answer
+`{ok:false, reason:"resting"}` when the NOTES binding is missing, so the
+site falls back to pointing readers at Instagram/Threads. A digest
+script (`work/notes-digest.py`, run by cron every 6 hours, not in git)
+emails new notes and suggestions to Jonathan's own mccallumhome
+account — suggestions carry the `[ARTIST IDEA]` tag in the subject.
+
 ## Deploy (after Jonathan signs into Cloudflare — free account)
 
 1. Dashboard → Workers & Pages → Create → Pages → connect the GitHub
