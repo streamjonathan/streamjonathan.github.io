@@ -25,6 +25,10 @@
 // Routes (set in the Cloudflare dashboard after sign-in):
 //   jonathanmccallum.com/api/ask   →  this Worker (chat)
 //   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
+//   jonathanmccallum.com/api/interview → this Worker (artist interview
+//     submissions — see handleInterview below; sign-in at
+//     /api/interview/auth/instagram, /api/interview/auth/google,
+//     /api/interview/me, /api/interview/auth/signout)
 // Everything else on the site is served by Cloudflare Pages.
 
 const FIXED_REFUSAL =
@@ -167,6 +171,410 @@ async function handleNote(request, env) {
   }
   const key = `note-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await env.NOTES.put(key, JSON.stringify({ note, at: new Date().toISOString() }));
+  return json({ ok: true });
+}
+
+// --- Artist interviews: real sign-in, no anonymous submissions --------------
+// A musician or artist signs in with a social account (Instagram or
+// Google), answers three questions, and submits. The sign-in IS the
+// verification — the site only ever learns the name and public profile
+// from it, never a password, never permission to post, never messages.
+// Instagram proves the handle itself; Google proves the person, and
+// the handle is then checked against the DM the artist is asked to send
+// (see the /share-your-story/ page). A pasted profile link on its own
+// is never accepted as proof.
+//
+// Storage: the NOTES KV namespace, keys `interview-<ts>-<rand>`,
+// status "pending" until Jonathan approves and Bobby drafts the article
+// (scripts/build-interview-draft.py). Nothing is ever auto-published.
+// Access tokens are discarded right after the profile fetch — the site
+// keeps no ongoing access to anyone's account.
+//
+// Sessions: `isession-<rand>` in KV (1 hour), HttpOnly Secure cookie.
+// Instagram credentials (INSTAGRAM_CLIENT_ID / INSTAGRAM_CLIENT_SECRET)
+// and GOOGLE_CLIENT_ID are Worker secrets/vars set at deploy — never in
+// the repo. Instagram login only works on the live domain (the redirect
+// URI registered in the Meta app) and only for Business/Creator
+// accounts; personal Instagram accounts cannot use it, which is why
+// Google sign-in is offered too.
+//
+// Deploy note: this file is deployed single-file via cf.py put-multipart,
+// so the Google token check below is inlined here (the comments branch
+// carries its own copy in site-ai/src/comments.js — reconcile the two
+// into one shared module when that branch merges).
+
+const INTERVIEW_SOCIAL_HOSTS = new Set([
+  "instagram.com", "www.instagram.com",
+  "x.com", "www.x.com", "twitter.com", "www.twitter.com",
+  "threads.com", "www.threads.com", "threads.net", "www.threads.net",
+  "youtube.com", "www.youtube.com", "youtu.be",
+  "facebook.com", "www.facebook.com",
+  "tiktok.com", "www.tiktok.com",
+]);
+
+// A real social profile link: a URL on an allowlisted social host with
+// a path (a bare domain is not a profile).
+function socialProfileUrl(value) {
+  if (typeof value !== "string") return "";
+  const v = value.trim();
+  if (!v || v.length > 300) return "";
+  let u;
+  try {
+    u = new URL(v);
+  } catch {
+    return "";
+  }
+  if (u.protocol !== "http:" && u.protocol !== "https:") return "";
+  if (!INTERVIEW_SOCIAL_HOSTS.has(u.hostname.toLowerCase())) return "";
+  if (!u.pathname || u.pathname === "/") return "";
+  return v;
+}
+
+function randomHex(n) {
+  return [...crypto.getRandomValues(new Uint8Array(n))]
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
+function sessionCookie(id) {
+  return `interview_session=${id}; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=3600`;
+}
+
+function clearSessionCookie() {
+  return "interview_session=; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=0";
+}
+
+async function createInterviewSession(env, identity) {
+  const id = randomHex(24);
+  await env.NOTES.put(
+    `isession-${id}`,
+    JSON.stringify({ ...identity, at: new Date().toISOString() }),
+    { expirationTtl: 3600 }
+  );
+  return id;
+}
+
+async function getInterviewSession(request, env) {
+  if (!env.NOTES) return null;
+  const cookie = request.headers.get("Cookie") || "";
+  const m = cookie.match(/(?:^|;\s*)interview_session=([A-Za-z0-9]+)/);
+  if (!m) return null;
+  try {
+    return await env.NOTES.get(`isession-${m[1]}`, "json");
+  } catch {
+    return null;
+  }
+}
+
+function interviewHtml(message) {
+  return `<!doctype html><meta charset="utf-8"><title>Share your story</title><body style="font-family:Georgia,serif;max-width:34rem;margin:3rem auto;padding:0 1rem;line-height:1.6"><p>${message}</p><p><a href="/share-your-story/">Back to Share your story</a></p></body>`;
+}
+
+// --- Google ID token verification (RS256 against Google's JWKS) --------
+// Same check as the comments feature. Returns the token payload when
+// the signature and claims check out, or null. Never throws for a bad
+// token — a bad token is a 401.
+let jwksCache = null;
+
+async function getJwks() {
+  const now = Date.now();
+  if (jwksCache && now - jwksCache.at < 3600_000) return jwksCache.keys;
+  const res = await fetch("https://www.googleapis.com/oauth2/v3/certs");
+  if (!res.ok) throw new Error("jwks fetch failed");
+  const data = await res.json();
+  jwksCache = { keys: data.keys || [], at: now };
+  return jwksCache.keys;
+}
+
+function b64urlToBytes(s) {
+  const b64 = s.replace(/-/g, "+").replace(/_/g, "/") + "===".slice(0, (4 - (s.length % 4)) % 4);
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes;
+}
+
+function b64urlToJson(s) {
+  const bytes = b64urlToBytes(s);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+async function verifyGoogleToken(token, env) {
+  try {
+    if (!token || typeof token !== "string") return null;
+    const parts = token.split(".");
+    if (parts.length !== 3) return null;
+    const header = b64urlToJson(parts[0]);
+    const payload = b64urlToJson(parts[1]);
+    if (!header.kid || header.alg !== "RS256") return null;
+
+    let keys = await getJwks();
+    let jwk = keys.find((k) => k.kid === header.kid);
+    if (!jwk) {
+      jwksCache = null;
+      keys = await getJwks();
+      jwk = keys.find((k) => k.kid === header.kid);
+      if (!jwk) return null;
+    }
+    const key = await crypto.subtle.importKey(
+      "jwk",
+      jwk,
+      { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
+      false,
+      ["verify"]
+    );
+    const ok = await crypto.subtle.verify(
+      "RSASSA-PKCS1-v1_5",
+      key,
+      b64urlToBytes(parts[2]),
+      new TextEncoder().encode(`${parts[0]}.${parts[1]}`)
+    );
+    if (!ok) return null;
+
+    // Claims: issued by Google, for this site's OAuth client, still
+    // valid, and the email address verified. The audience check is
+    // what ties the token to this site — without a client id set at
+    // deploy, sign-in stays switched off rather than open.
+    if (!env.GOOGLE_CLIENT_ID) return null;
+    if (payload.aud !== env.GOOGLE_CLIENT_ID) return null;
+    if (payload.iss !== "https://accounts.google.com" && payload.iss !== "accounts.google.com") return null;
+    const now = Math.floor(Date.now() / 1000);
+    if (typeof payload.exp !== "number" || payload.exp < now - 60) return null;
+    if (typeof payload.iat === "number" && payload.iat > now + 60) return null;
+    if (!payload.email_verified) return null;
+    if (typeof payload.email !== "string" || !payload.email) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+// --- Instagram OAuth (Instagram API with Instagram Login) ---------------
+// Identity only: scope instagram_business_basic (profile info). The
+// short-lived access token is used once to fetch the profile, then
+// discarded. Endpoints (Meta docs, current flow): authorize
+// https://www.instagram.com/oauth/authorize, token exchange POST
+// https://api.instagram.com/oauth/access_token, profile GET
+// https://graph.instagram.com/v21.0/me?fields=id,username. The client
+// id is the Instagram App ID (not the Meta App ID). The redirect URI
+// must exactly match one registered in the Meta app, so this only works
+// on the live domain — never on a Pages preview.
+
+const IG_AUTHORIZE_URL = "https://www.instagram.com/oauth/authorize";
+const IG_TOKEN_URL = "https://api.instagram.com/oauth/access_token";
+const IG_PROFILE_URL = "https://graph.instagram.com/v21.0/me?fields=id,username";
+
+async function handleInstagramAuthStart(request, env) {
+  const origin = new URL(request.url).origin;
+  if (origin !== "https://jonathanmccallum.com") {
+    return new Response(
+      interviewHtml("Instagram sign-in only works on the live site, jonathanmccallum.com — a preview link cannot finish the login."),
+      { headers: { "Content-Type": "text/html" } }
+    );
+  }
+  if (!env.INSTAGRAM_CLIENT_ID || !env.INSTAGRAM_CLIENT_SECRET) {
+    return new Response(
+      interviewHtml("Instagram sign-in is not set up yet — Jonathan is still setting it up. Please check back soon, or sign in with Google instead."),
+      { headers: { "Content-Type": "text/html" } }
+    );
+  }
+  const state = randomHex(16);
+  if (env.NOTES) {
+    await env.NOTES.put(`istate-${state}`, JSON.stringify({ at: new Date().toISOString() }), { expirationTtl: 600 });
+  }
+  const redirectUri = `${origin}/api/interview/auth/instagram/callback`;
+  const params = new URLSearchParams({
+    client_id: env.INSTAGRAM_CLIENT_ID,
+    redirect_uri: redirectUri,
+    scope: "instagram_business_basic",
+    response_type: "code",
+    enable_fb_login: "0",
+    state,
+  });
+  return Response.redirect(`${IG_AUTHORIZE_URL}?${params}`, 302);
+}
+
+async function handleInstagramAuthCallback(request, env) {
+  const url = new URL(request.url);
+  const code = url.searchParams.get("code") || "";
+  const state = url.searchParams.get("state") || "";
+  if (url.searchParams.get("error") || !code || !state) {
+    return Response.redirect("/share-your-story/?signin=failed", 302);
+  }
+  const stored = env.NOTES ? await env.NOTES.get(`istate-${state}`, "json") : null;
+  if (!stored) return Response.redirect("/share-your-story/?signin=failed", 302);
+  await env.NOTES.delete(`istate-${state}`);
+  const redirectUri = `${url.origin}/api/interview/auth/instagram/callback`;
+  let tok;
+  try {
+    const res = await fetch(IG_TOKEN_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        client_id: env.INSTAGRAM_CLIENT_ID,
+        client_secret: env.INSTAGRAM_CLIENT_SECRET,
+        grant_type: "authorization_code",
+        redirect_uri: redirectUri,
+        code,
+      }),
+    });
+    tok = await res.json();
+  } catch {
+    return Response.redirect("/share-your-story/?signin=failed", 302);
+  }
+  if (!tok || !tok.access_token) return Response.redirect("/share-your-story/?signin=failed", 302);
+  let profile;
+  try {
+    const res = await fetch(`${IG_PROFILE_URL}&access_token=${encodeURIComponent(tok.access_token)}`);
+    profile = await res.json();
+  } catch {
+    return Response.redirect("/share-your-story/?signin=failed", 302);
+  }
+  if (!profile || !profile.username) return Response.redirect("/share-your-story/?signin=failed", 302);
+  // The access token is deliberately NOT stored — identity only.
+  const id = await createInterviewSession(env, {
+    provider: "instagram",
+    username: profile.username,
+    name: profile.username,
+    profileUrl: `https://www.instagram.com/${profile.username}`,
+  });
+  const r = Response.redirect("/share-your-story/?signedin=instagram", 302);
+  r.headers.set("Set-Cookie", sessionCookie(id));
+  return r;
+}
+
+// POST /api/interview/auth/google { credential } — Google ID token from
+// Google Identity Services on the page. Verified server-side; on success
+// a session is created exactly like the Instagram one.
+async function handleGoogleAuth(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/interview/auth/google." }, 405);
+  }
+  if (!env.NOTES) return json({ ok: false, reason: "resting" });
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"credential\": \"...\" }." }, 400);
+  }
+  const payload = await verifyGoogleToken(body.credential || "", env);
+  if (!payload) {
+    return json({ error: "That Google sign-in did not check out — please try again." }, 401);
+  }
+  const id = await createInterviewSession(env, {
+    provider: "google",
+    username: "",
+    name: payload.name || "",
+    profileUrl: "",
+  });
+  return new Response(JSON.stringify({ ok: true, provider: "google", name: payload.name || "" }), {
+    headers: { "Content-Type": "application/json", "Cache-Control": "no-store", "Set-Cookie": sessionCookie(id) },
+  });
+}
+
+// GET /api/interview/me — who is signed in, if anyone, and whether
+// Instagram sign-in is configured on this Worker.
+async function handleInterviewMe(request, env) {
+  const s = await getInterviewSession(request, env);
+  return json({
+    signedIn: !!s,
+    provider: s ? s.provider : "",
+    username: s ? s.username : "",
+    name: s ? s.name : "",
+    profileUrl: s ? s.profileUrl : "",
+    instagramConfigured: !!env.INSTAGRAM_CLIENT_ID,
+  });
+}
+
+// GET /api/interview/auth/signout — clears the session and the cookie.
+async function handleInterviewSignOut(request, env) {
+  const cookie = request.headers.get("Cookie") || "";
+  const m = cookie.match(/(?:^|;\s*)interview_session=([A-Za-z0-9]+)/);
+  if (m && env.NOTES) await env.NOTES.delete(`isession-${m[1]}`);
+  const r = Response.redirect("/share-your-story/", 302);
+  r.headers.set("Set-Cookie", clearSessionCookie());
+  return r;
+}
+
+// POST /api/interview — signed-in artists only. The identity comes from
+// the session, never from the request body, so nobody can submit as
+// someone else. Instagram sessions lock the social link to the verified
+// handle; Google sessions take the pasted link (allowlisted), and the
+// handle is then checked against the DM the artist is asked to send.
+async function handleInterview(request, env) {
+  if (request.method !== "POST") {
+    return json({ error: "Method not allowed. POST JSON to /api/interview." }, 405);
+  }
+  if (!env.NOTES) return json({ ok: false, reason: "resting" });
+  const session = await getInterviewSession(request, env);
+  if (!session) {
+    return json({ error: "Please sign in first — that is how the site knows the account is really yours." }, 401);
+  }
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return json({ error: "Send JSON like { \"name\": \"...\", \"social\": \"...\", \"q1\": \"...\", \"q2\": \"...\", \"q3\": \"...\", \"permission\": true }." }, 400);
+  }
+  const name = typeof body.name === "string" ? body.name.trim() : "";
+  if (!name || name.length > 100) {
+    return json({ error: "Please give your name (up to 100 characters)." }, 400);
+  }
+  let social = "";
+  let handleVerified = false;
+  let verifiedBy = session.provider;
+  if (session.provider === "instagram") {
+    social = session.profileUrl;
+    handleVerified = true;
+  } else {
+    social = socialProfileUrl(body.social);
+    if (!social) {
+      return json({ error: "Please paste a link to your social profile — Instagram, X, Threads, YouTube, Facebook or TikTok." }, 400);
+    }
+  }
+  const social2 = body.social2 ? socialProfileUrl(body.social2) : "";
+  if (body.social2 && !social2) {
+    return json({ error: "That second social link does not look like a profile link — check it, or leave it blank." }, 400);
+  }
+  const answers = {};
+  for (const q of ["q1", "q2", "q3"]) {
+    const a = typeof body[q] === "string" ? body[q].trim() : "";
+    if (a.length < 10 || a.length > 5000) {
+      return json({ error: "Please answer all three questions — a few sentences each is plenty, up to 5000 characters per answer." }, 400);
+    }
+    answers[q] = a;
+  }
+  if (body.permission !== true) {
+    return json({ error: "Please tick the permission box — without it your story cannot be shared." }, 400);
+  }
+  const ip = request.headers.get("CF-Connecting-IP") || "unknown";
+  if (rateLimited(ip)) {
+    return json({ ok: false, reason: "resting" });
+  }
+  const key = `interview-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
+  await env.NOTES.put(
+    key,
+    JSON.stringify({
+      name,
+      social,
+      social2: social2 || "",
+      q1: answers.q1,
+      q2: answers.q2,
+      q3: answers.q3,
+      permission: true,
+      identity: {
+        provider: session.provider,
+        username: session.username || "",
+        name: session.name || "",
+        profileUrl: session.profileUrl || "",
+      },
+      verifiedBy,
+      handleVerified,
+      verified: handleVerified,
+      status: "pending",
+      at: new Date().toISOString(),
+    })
+  );
   return json({ ok: true });
 }
 
@@ -374,6 +782,24 @@ export default {
     const url = new URL(request.url);
     if (url.pathname.endsWith("/api/note")) {
       return handleNote(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/instagram/callback")) {
+      return handleInstagramAuthCallback(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/instagram")) {
+      return handleInstagramAuthStart(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/google")) {
+      return handleGoogleAuth(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/signout")) {
+      return handleInterviewSignOut(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/me")) {
+      return handleInterviewMe(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview")) {
+      return handleInterview(request, env);
     }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
