@@ -384,6 +384,9 @@ function bootAsk() {
       if (googleBox) {
         window.google.accounts.id.renderButton(googleBox, { theme: "outline", size: "large" });
       }
+      // The note says cookies are needed — once the button is showing,
+      // that no longer applies, so clear it.
+      if (googleNote) googleNote.textContent = "";
     }
 
     function onGoogleSignedIn(resp) {
