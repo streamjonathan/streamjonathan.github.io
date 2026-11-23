@@ -21,7 +21,7 @@ Know someone already? Tap their photo and the form fills itself in — then just
 
 <p class="suggest-carousel__more">Or suggest someone new below — anyone you think I should hear.</p>
 
-<p class="suggest-optout">If you're featured here and would rather not be, please <a href="/suggest-an-artist/">contact Jonathan</a> and he'll remove you.</p>
+<p class="suggest-optout">If you're featured here and would rather not be, please <a href="https://www.instagram.com/jonamccallum/">message Jonathan on Instagram</a> and he'll remove you.</p>
 
 <form id="suggest-form" class="suggest-form">
   <label for="suggest-artist">Artist's name</label>
