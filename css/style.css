@@ -276,6 +276,21 @@ article.is-ready .featured-controls { display: flex; }
 .suggest-home { margin: 1.5rem 0; }
 .suggest-home .suggest-carousel { margin-bottom: 0.25rem; }
 .suggest-optout { color: var(--muted); font-size: 0.9rem; }
+/* Languages taster: a taste of another language and music style. Same
+   sideways auto-scrolling row as the suggest carousel. Photo cards show
+   a musician from that language; where there is no photo yet, the native
+   name itself, in large type, is the picture. */
+.lang-taster { margin: 1.5rem 0; }
+.lang-taster__row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.5rem 0.25rem 1rem; margin: 0.5rem 0; -webkit-overflow-scrolling: touch; scrollbar-width: none; mask-image: linear-gradient(to right, #000 92%, transparent 99%); -webkit-mask-image: linear-gradient(to right, #000 92%, transparent 99%); }
+.lang-taster__row::-webkit-scrollbar { display: none; }
+.lang-taster__card { scroll-snap-align: start; flex: 0 0 7rem; width: 7rem; text-align: center; color: var(--text); text-decoration: none; }
+.lang-taster__img { width: 5.5rem; height: 5.5rem; border-radius: 50%; object-fit: cover; display: block; margin: 0 auto; }
+.lang-taster__card:hover .lang-taster__img, .lang-taster__card:focus-visible .lang-taster__img { outline: 2px solid var(--link); outline-offset: 2px; }
+.lang-taster__script { width: 5.5rem; height: 5.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-align: center; margin: 0 auto; padding: 0.5rem; background: var(--chip-bg); border: 1px solid var(--line); color: var(--text); font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-size: 1.05rem; font-weight: 600; line-height: 1.25; overflow-wrap: anywhere; }
+.lang-taster__card:hover .lang-taster__script, .lang-taster__card:focus-visible .lang-taster__script { outline: 2px solid var(--link); outline-offset: 2px; }
+.lang-taster__name { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 0.95rem; margin-top: 0.4rem; }
+.lang-taster__native { display: block; color: var(--muted); font-size: 0.9rem; margin-top: 0.1rem; }
+.lang-taster.is-ready .featured-controls { display: flex; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }
