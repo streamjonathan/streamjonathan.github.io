@@ -2,7 +2,7 @@
 title: "Mary Beth Dawson and the Lullaby That Says You Are Mine"
 date: 2026-11-23
 slug: mary-beth-dawson
-draft: true
+draft: false
 source_video: https://www.youtube.com/watch?v=t7cbyZZT7t4
 shareImage: /images/music-faith/marybethmusic_.jpg
 ---
