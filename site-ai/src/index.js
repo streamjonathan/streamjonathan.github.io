@@ -106,6 +106,33 @@ function json(body, status = 200) {
   });
 }
 
+// CORS for the language sites: the lang mirrors (jonathanmccallum-<code>.pages.dev)
+// submit suggestions to this Worker's /api/suggest from their own origin, so the
+// Worker must answer the browser's preflight (OPTIONS) and include
+// Access-Control-Allow-Origin on the response. Only our own origins are allowed:
+// the main site and the lang mirrors. No credentials are involved (the suggest
+// form needs no sign-in), so the origin is echoed, never "*".
+function corsOrigin(request) {
+  const origin = request.headers.get("Origin") || "";
+  if (
+    origin === "https://jonathanmccallum.com" ||
+    origin === "https://www.jonathanmccallum.com" ||
+    /^https:\/\/jonathanmccallum-[a-z]{2,3}\.pages\.dev$/.test(origin)
+  ) {
+    return origin;
+  }
+  return null;
+}
+
+function withCors(request, response) {
+  const origin = corsOrigin(request);
+  if (!origin) return response;
+  const headers = new Headers(response.headers);
+  headers.set("Access-Control-Allow-Origin", origin);
+  headers.set("Vary", "Origin");
+  return new Response(response.body, { status: response.status, headers });
+}
+
 // Cache key: SHA-256 of the normalised question, so "What is Narnia?"
 // and "what is  narnia?" hit the same entry. Curly quotes become
 // straight ones and trailing punctuation is dropped, so the homepage
@@ -1312,7 +1339,23 @@ export default {
       return handleInterview(request, env);
     }
     if (url.pathname.endsWith("/api/suggest")) {
-      return handleSuggest(request, env);
+      if (request.method === "OPTIONS") {
+        const origin = corsOrigin(request);
+        if (!origin) {
+          return json({ error: "Method not allowed. POST JSON to /api/suggest." }, 405);
+        }
+        return new Response(null, {
+          status: 204,
+          headers: {
+            "Access-Control-Allow-Origin": origin,
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "86400",
+            Vary: "Origin",
+          },
+        });
+      }
+      return withCors(request, await handleSuggest(request, env));
     }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
