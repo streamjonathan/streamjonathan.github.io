@@ -291,6 +291,7 @@ article.is-ready .featured-controls { display: flex; }
 .lang-taster__name { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 0.95rem; margin-top: 0.4rem; }
 .lang-taster__native { display: block; color: var(--muted); font-size: 0.9rem; margin-top: 0.1rem; }
 .lang-taster.is-ready .featured-controls { display: flex; }
+.suggest-home.is-ready .featured-controls { display: flex; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }
