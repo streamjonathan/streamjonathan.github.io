@@ -8,12 +8,6 @@ shareImage: /images/japanese-artists/kenta_dedachi.jpg
 
 I keep coming back to Japanese musicians on Instagram. I find a new song most weeks, and it stays with me. These are the people I have been listening to lately.
 
-A good song and a little joy can lift a whole day. I know that sounds simple, and I mean it simply. Three minutes can hold more than a lecture ever will — hope, sorrow, faith, all of it, in the time it takes to make a cup of tea. What has been playing for you lately?
-
-Paul did something like this in Athens. He listened to the poems people already loved, and he talked about God in the words they already used. He started where they were. I think a song does the same thing. It comes to where people are, and it meets them there. Have you ever heard God in a song that was never written for church?
-
-Most people do not sing worship songs. They sing about life — about growing up, about friends, about the world changing around them. And faith is in there, right in the middle of it. That is what I love about it. Tap a card and you can hear the song on Instagram.
-
 <div class="ig-grid">
 <a class="ig-card" href="https://www.instagram.com/reel/Df1qtokoyBh/" target="_blank" rel="noopener">
 <img class="ig-card__img" src="/images/japanese-artists/kenta_dedachi.jpg" alt="Kenta Dedachi" loading="lazy" width="150" height="150">

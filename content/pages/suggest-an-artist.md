@@ -3,7 +3,7 @@ title: "Suggest an artist"
 slug: suggest-an-artist
 ---
 
-I love hearing about musicians and artists who follow Jesus. If you know someone I should write about, interview, or make a reaction video about, tell me here.
+I enjoy hearing about musicians and artists from all walks of life including Jesus followers. If you know someone I should write about, interview, or make a reaction video about, tell me here.
 
 A name and a link is enough — and a few words about why them. I read everything that comes in. Thanks so much.
 

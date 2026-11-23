@@ -4,7 +4,7 @@ slug: share-your-story
 original_url: https://www.jonathanmccallum.com/share-your-story/
 ---
 
-I love hearing from people who follow Jesus and make things — music, art, poems, films, anything creative. This site has no advertising. It is here so we can learn from each other about following Jesus in creative areas of life. If that is you, I would love to hear from you.
+I enjoy hearing the stories of people from all walks of life including Jesus followers, who make things — music, art, poems, films, anything creative. This site has no advertising. It is here so we can learn from each other about following Jesus in creative areas of life. If that is you, I would love to hear from you.
 
 Three questions below. Click each one to open it, and take your time — there is plenty of room. When you send this, you give me permission to share your answers as an article on this site. Nothing is published until I have read it and said yes.
 
