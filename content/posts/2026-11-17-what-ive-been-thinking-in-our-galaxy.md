@@ -4,6 +4,7 @@ date: 2026-11-17
 slug: what-ive-been-thinking-in-our-galaxy
 draft: false
 original_url: https://jonamccallum.substack.com/p/what-ive-been-thinking-in-our-galaxy
+shareImage: /images/what-ive-been-thinking-in-our-galaxy.jpg
 ---
 
 Sitting at home in Europe, looking back at this note I wrote in a US carpark a few months ago.
@@ -20,4 +21,4 @@ Thanks for saying hi and many thanks for reading (back in the day when I went to
 
 *Photo from Kyoto I snapped*
 
-[Photo: Kyoto — image from the Substack post, not yet copied to the site.]
+![The Yasaka pagoda in Kyoto](/images/kyoto-yasaka-pagoda.jpg)
