@@ -9,11 +9,11 @@ shareImage: /images/music-faith/marybethmusic_.jpg
 
 [Mary Beth Dawson](https://www.instagram.com/marybethmusic_) posts like she is handing you something quiet. Old paintings of roses. A few plain words in a serif font. A song written out by hand in a notebook. Nothing shouts. That is what stopped me scrolling.
 
-Her first song is called "Adoration Lullaby". She wrote it in a year she spent as a missionary with Regnum Christi, and recorded it in Nashville with their music collective. It came out on the feast of St Therese of Lisieux, the saint of the little way. It sounds like her: small, surrendered, sure.
+Her first song is called "Adoration Lullaby". She wrote it in a year she spent staying with Regnum Christi in Atlanta, and recorded it in Nashville with their music collective. It came out on the feast of St Therese of Lisieux, the saint of the little way. It sounds like her: small, surrendered, sure.
 
 The song is sung as if Jesus is speaking to you. "Daughter, you are mine, and that's all you need to be." It is about knowing your worth, not earning it. She calls it a lullaby from Jesus, about surrender and gratitude over great actions. I think that is a good line to carry around.
 
-She is nineteen, from Kentucky, and she found her faith the slow way. No big youth group growing up, just a year away with a community that became like family. She says what makes her flourish is the people: lay people, consecrated, priests, friends her own age, walking together one step at a time.
+She found her faith the slow way. No big youth group growing up, just a year away with a community that became like family. She says what makes her flourish is the people: lay people, consecrated, priests, friends her own age, walking together one step at a time.
 
 Here is a little of how the song looks and sounds:
 
