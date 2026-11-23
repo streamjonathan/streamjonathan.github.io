@@ -2,7 +2,7 @@
 title: "Grace Graber and the Song That Said You're Not Alone"
 date: 2026-11-23
 slug: grace-graber
-draft: true
+draft: false
 source_video: https://www.youtube.com/watch?v=J29tbtrsfPk
 shareImage: /images/music-faith/gracegrabermusic.jpg
 ---
