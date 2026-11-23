@@ -8,6 +8,8 @@ shareImage: /images/music-faith/sonreal.jpg
 
 I spend a lot of time listening to musicians across Instagram. These are some I have been listening to lately.
 
+I am still learning about music — all kinds of it, from all over the world. This site is where I keep what I find, and what I am learning.
+
 A good song and a bit of joy can lift a whole day. I think that is true. A song can carry what a lecture never could. It can hold hope, and grief, and faith, all in three minutes. What have you been listening to lately?
 
 Paul did something like this in Athens. He used their poetry and their language, the way they already understood God. He started where people already were. I think music does that too. It meets people where they are. Have you ever heard God in a song that was not a worship song?
