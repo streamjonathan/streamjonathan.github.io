@@ -18,26 +18,18 @@ function youtubeId(url) {
   return m ? m[1] : null;
 }
 
-// Video IDs verified vertical (height > width) with yt-dlp, 23 Nov 2026.
-// A /shorts/ link is detected from the URL automatically; a vertical video
-// linked with a watch?v= URL (e.g. LOAuNNf0eVs) needs its ID here, or the
-// player renders in a 16:9 box and the video plays as a narrow strip.
-const VERTICAL_VIDEOS = new Set([
-  "2IbJ8CwQSQI",
-  "7kKnTs28fYo",
-  "LOAuNNf0eVs",
-  "RFBk-OhhmWk",
-  "W54dscrSuH4",
-  "YefAbng2k_I",
-  "_PUk447Xda0",
-  "n60kziisn6Y",
-  "sjVuhFmwjCs",
-  "wePjZMr6beE",
-  "zvtpeDCwBeo",
-]);
-
-function isVerticalVideo(href, id) {
-  return /\/shorts\//.test(href) || VERTICAL_VIDEOS.has(id);
+// Portrait player ONLY for /shorts/ links. YouTube serves its Shorts player
+// for actual Shorts, but a vertical video uploaded as a regular video
+// (e.g. LOAuNNf0eVs, 1080x1920, 3:44) gets the standard 16:9 player —
+// verified 23 Nov 2026: the LOAuNNf0eVs embed config has empty
+// embeddedPlayerFlags, while the SonReal Short (wePjZMr6beE) has
+// isShortsExperienceEligible: true. Forcing the standard player into a
+// 9:16 box makes it render the video twice, stacked. So pixel dimensions
+// do NOT decide this; the URL form does. A watch?v= link always gets the
+// standard 16:9 player, and YouTube letterboxes the vertical video inside
+// it — one clean player.
+function isVerticalVideo(href) {
+  return /\/shorts\//.test(href);
 }
 
 module.exports = function (eleventyConfig) {
@@ -154,7 +146,7 @@ module.exports = function (eleventyConfig) {
       /<a\b[^>]*href="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>.*?<\/a>/gs,
       (match, href) => {
         const id = youtubeId(href);
-        return id ? facade(id, isVerticalVideo(href, id)) : match;
+        return id ? facade(id, isVerticalVideo(href)) : match;
       }
     );
     // Raw <iframe> embeds pointing at YouTube (none in the archive today,
@@ -163,7 +155,7 @@ module.exports = function (eleventyConfig) {
       /<iframe\b[^>]*src="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>(?:<\/iframe>)?/g,
       (match, src) => {
         const id = youtubeId(src);
-        return id ? facade(id, isVerticalVideo(src, id)) : match;
+        return id ? facade(id, isVerticalVideo(src)) : match;
       }
     );
     return content;
