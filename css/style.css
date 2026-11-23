@@ -236,6 +236,16 @@ button[type="submit"] {
 /* Tap-to-load video facade: 16:9 box, thumbnail + play button, no iframe
    or third-party script until the reader taps. */
 .video-facade { position: relative; aspect-ratio: 16 / 9; background: #111; margin: 1rem 0; }
+/* Vertical videos (Shorts and vertical watch links) get a portrait box,
+   centred, so the player is full-size instead of a narrow strip in a
+   16:9 frame. The thumbnail is object-fit: cover, so the side pillars
+   of the 4:3 YouTube thumbnail are cropped away. */
+.video-facade--portrait { aspect-ratio: 9 / 16; max-width: 25rem; margin-left: auto; margin-right: auto; }
+/* The click handler in main.js replaces the facade div with a bare
+   iframe, so the player is sized by a class set there — the old
+   ".video-facade + iframe" selector never matched anything. */
+.video-frame { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.video-frame--portrait { aspect-ratio: 9 / 16; max-width: 25rem; margin: 1rem auto; }
 .video-facade__button { display: block; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; }
 .video-facade__thumb { width: 100%; height: 100%; object-fit: cover; }
 .video-facade__play {
@@ -243,7 +253,10 @@ button[type="submit"] {
   width: 4rem; height: 2.75rem; line-height: 2.75rem; text-align: center;
   background: rgba(0, 0, 0, 0.75); color: #fff; border-radius: 0.5rem; font-size: 1.25rem;
 }
-.video-facade iframe, .video-facade + iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+/* Portrait videos in the Watch row stay narrow and centred, so a tall
+   card does not dwarf the row. */
+.watch-card .video-facade--portrait { max-width: 11rem; }
+.watch-card .video-frame--portrait { max-width: 11rem; margin: 0 auto; }
 /* Watch row: a horizontal scroll-snap row of tap-to-load video cards.
    The YouTube links in index.njk are turned into facades by the
    videoFacade transform, so no iframe or third-party script loads

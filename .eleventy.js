@@ -18,6 +18,28 @@ function youtubeId(url) {
   return m ? m[1] : null;
 }
 
+// Video IDs verified vertical (height > width) with yt-dlp, 23 Nov 2026.
+// A /shorts/ link is detected from the URL automatically; a vertical video
+// linked with a watch?v= URL (e.g. LOAuNNf0eVs) needs its ID here, or the
+// player renders in a 16:9 box and the video plays as a narrow strip.
+const VERTICAL_VIDEOS = new Set([
+  "2IbJ8CwQSQI",
+  "7kKnTs28fYo",
+  "LOAuNNf0eVs",
+  "RFBk-OhhmWk",
+  "W54dscrSuH4",
+  "YefAbng2k_I",
+  "_PUk447Xda0",
+  "n60kziisn6Y",
+  "sjVuhFmwjCs",
+  "wePjZMr6beE",
+  "zvtpeDCwBeo",
+]);
+
+function isVerticalVideo(href, id) {
+  return /\/shorts\//.test(href) || VERTICAL_VIDEOS.has(id);
+}
+
 module.exports = function (eleventyConfig) {
   // RFC3339 dates for the feed (toISOString is already RFC3339).
   eleventyConfig.addFilter("dateToRfc3339", (date) =>
@@ -124,15 +146,15 @@ module.exports = function (eleventyConfig) {
     if (!this.page.outputPath || !this.page.outputPath.endsWith(".html")) {
       return content;
     }
-    const facade = (id) =>
-      `<div class="video-facade"><button type="button" class="video-facade__button" data-video-id="${id}" aria-label="Play video on YouTube"><img class="video-facade__thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-facade__play" aria-hidden="true">&#9654;</span></button></div>`;
+    const facade = (id, vertical) =>
+      `<div class="video-facade${vertical ? " video-facade--portrait" : ""}"><button type="button" class="video-facade__button" data-video-id="${id}" aria-label="Play video on YouTube"><img class="video-facade__thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-facade__play" aria-hidden="true">&#9654;</span></button></div>`;
 
     // <a href="...youtube...">...</a> links
     content = content.replace(
       /<a\b[^>]*href="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>.*?<\/a>/gs,
       (match, href) => {
         const id = youtubeId(href);
-        return id ? facade(id) : match;
+        return id ? facade(id, isVerticalVideo(href, id)) : match;
       }
     );
     // Raw <iframe> embeds pointing at YouTube (none in the archive today,
@@ -141,7 +163,7 @@ module.exports = function (eleventyConfig) {
       /<iframe\b[^>]*src="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>(?:<\/iframe>)?/g,
       (match, src) => {
         const id = youtubeId(src);
-        return id ? facade(id) : match;
+        return id ? facade(id, isVerticalVideo(src, id)) : match;
       }
     );
     return content;

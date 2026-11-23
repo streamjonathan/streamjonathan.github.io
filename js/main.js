@@ -57,6 +57,9 @@ document.addEventListener("click", function (e) {
   var holder = button.closest(".video-facade");
   if (!holder) return;
   var frame = document.createElement("iframe");
+  frame.className = holder.classList.contains("video-facade--portrait")
+    ? "video-frame video-frame--portrait"
+    : "video-frame";
   frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
   frame.title = "YouTube video";
   frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
