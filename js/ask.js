@@ -226,6 +226,8 @@ function bootAsk() {
     var googleClientId = signinBox ? (signinBox.getAttribute("data-google-client-id") || "") : "";
     var igButton = document.getElementById("interview-ig-signin");
     var igNote = document.getElementById("interview-ig-note");
+    var lineButton = document.getElementById("interview-line-signin");
+    var lineNote = document.getElementById("interview-line-note");
     var googleBox = document.getElementById("interview-google-signin");
     var googleNote = document.getElementById("interview-google-note");
     var signinStatus = document.getElementById("interview-signin-status");
@@ -303,7 +305,9 @@ function bootAsk() {
         if (signedinText) {
           signedinText.textContent = me.provider === "instagram"
             ? "Signed in as @" + me.username + " (Instagram). "
-            : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
+            : me.provider === "line"
+              ? "Signed in with LINE" + (me.name ? " as " + me.name : "") + ". "
+              : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
         }
         if (signedinLine) signedinLine.hidden = false;
         if (me.name && !nameField.value) nameField.value = me.name;
@@ -378,6 +382,10 @@ function bootAsk() {
             igButton.style.display = "none";
             if (igNote) igNote.textContent = "Instagram sign-in is being set up — check back soon, or sign in with Google below.";
           }
+          if (!me.lineConfigured && lineButton) {
+            lineButton.style.display = "none";
+            if (lineNote) lineNote.textContent = "LINE sign-in is being set up — check back soon, or sign in with Instagram or Google.";
+          }
           applySignedIn(me);
           if (!me.signedIn) loadGoogleButton();
         })
@@ -386,10 +394,13 @@ function bootAsk() {
         });
     }
 
-    // Sign-in result from the Instagram redirect.
+    // Sign-in result from the Instagram or LINE redirect.
     var params = new URLSearchParams(window.location.search);
     if (params.get("signedin") === "instagram" && signinStatus) {
       signinStatus.textContent = "Signed in with Instagram — thank you. Now tell your story below.";
+    }
+    if (params.get("signedin") === "line" && signinStatus) {
+      signinStatus.textContent = "Signed in with LINE — thank you. Now tell your story below.";
     }
     if (params.get("signin") === "failed" && signinStatus) {
       signinStatus.textContent = "That sign-in did not go through — please try again, or sign in with Google.";

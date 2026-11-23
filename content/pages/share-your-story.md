@@ -15,6 +15,10 @@ Three questions below. Click each one to open it, and take your time — there i
     <a class="interview-ig-button" id="interview-ig-signin" href="/api/interview/auth/instagram">Sign in with Instagram</a>
   </p>
   <p class="field-note" id="interview-ig-note">Instagram sign-in is the simplest way — it also confirms your Instagram profile in one step. It works for Business and Creator accounts.</p>
+  <p>
+    <a class="interview-ig-button" id="interview-line-signin" href="/api/interview/auth/line">Sign in with LINE</a>
+  </p>
+  <p class="field-note" id="interview-line-note">For LINE users — it confirms your name. Your main social link is still asked for below.</p>
   <div id="interview-google-signin"></div>
   <p class="field-note" id="interview-google-note">Or sign in with Google — the same login as YouTube. It confirms you are a real person; your Instagram link is then checked against the message you send me (see below).</p>
   <p id="interview-signin-status" aria-live="polite"></p>

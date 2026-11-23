@@ -27,7 +27,8 @@
 //   jonathanmccallum.com/api/note  →  this Worker (anonymous reader notes)
 //   jonathanmccallum.com/api/interview → this Worker (artist interview
 //     submissions — see handleInterview below; sign-in at
-//     /api/interview/auth/instagram, /api/interview/auth/google,
+//     /api/interview/auth/instagram, /api/interview/auth/line,
+//     /api/interview/auth/google,
 //     /api/interview/me, /api/interview/auth/signout)
 //   jonathanmccallum.com/api/suggest → this Worker (reader artist suggestions)
 // Everything else on the site is served by Cloudflare Pages.
@@ -293,12 +294,17 @@ async function handleSuggest(request, env) {
 // keeps no ongoing access to anyone's account.
 //
 // Sessions: `isession-<rand>` in KV (1 hour), HttpOnly Secure cookie.
-// Instagram credentials (INSTAGRAM_CLIENT_ID / INSTAGRAM_CLIENT_SECRET)
+// Instagram credentials (INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET)
 // and GOOGLE_CLIENT_ID are Worker secrets/vars set at deploy — never in
-// the repo. Instagram login only works on the live domain (the redirect
+// the repo. The names matter: the secrets in the dashboard are
+// INSTAGRAM_APP_ID / INSTAGRAM_APP_SECRET (not CLIENT_ID /
+// CLIENT_SECRET), so the code must read those exact names.
+// Instagram login only works on the live domain (the redirect
 // URI registered in the Meta app) and only for Business/Creator
 // accounts; personal Instagram accounts cannot use it, which is why
-// Google sign-in is offered too.
+// Google sign-in is offered too. LINE Login works the same way (see
+// the LINE section below) with its own channel secrets
+// LINE_CHANNEL_ID / LINE_CHANNEL_SECRET.
 //
 // Deploy note: this file is deployed single-file via cf.py put-multipart,
 // so the Google token check below is inlined here (the comments branch
@@ -486,7 +492,7 @@ async function handleInstagramAuthStart(request, env) {
       { headers: { "Content-Type": "text/html" } }
     );
   }
-  if (!env.INSTAGRAM_CLIENT_ID || !env.INSTAGRAM_CLIENT_SECRET) {
+  if (!env.INSTAGRAM_APP_ID || !env.INSTAGRAM_APP_SECRET) {
     return new Response(
       interviewHtml("Instagram sign-in is not set up yet — Jonathan is still setting it up. Please check back soon, or sign in with Google instead."),
       { headers: { "Content-Type": "text/html" } }
@@ -498,7 +504,7 @@ async function handleInstagramAuthStart(request, env) {
   }
   const redirectUri = `${origin}/api/interview/auth/instagram/callback`;
   const params = new URLSearchParams({
-    client_id: env.INSTAGRAM_CLIENT_ID,
+    client_id: env.INSTAGRAM_APP_ID,
     redirect_uri: redirectUri,
     scope: "instagram_business_basic",
     response_type: "code",
@@ -525,8 +531,8 @@ async function handleInstagramAuthCallback(request, env) {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams({
-        client_id: env.INSTAGRAM_CLIENT_ID,
-        client_secret: env.INSTAGRAM_CLIENT_SECRET,
+        client_id: env.INSTAGRAM_APP_ID,
+        client_secret: env.INSTAGRAM_APP_SECRET,
         grant_type: "authorization_code",
         redirect_uri: redirectUri,
         code,
@@ -553,6 +559,102 @@ async function handleInstagramAuthCallback(request, env) {
     profileUrl: `https://www.instagram.com/${profile.username}`,
   });
   const r = redirectTo(request, "/share-your-story/?signedin=instagram");
+  r.headers.set("Set-Cookie", sessionCookie(id));
+  return r;
+}
+
+// --- LINE Login -----------------------------------------------------------
+// Identity only: scope "profile openid". The short-lived access token
+// is used once to fetch the profile, then discarded. Endpoints (LINE
+// docs, current flow): authorize
+// https://access.line.me/oauth2/v2.1/authorize, token exchange POST
+// https://api.line.me/oauth2/v2.1/token, profile GET
+// https://api.line.me/v2/profile. The redirect URI must exactly match
+// the one registered in the LINE channel, so this only works on the
+// live domain — never on a Pages preview. LINE has no public profile
+// URL per user, so the session carries an empty profileUrl and the
+// interview form still asks for the social link (same as Google).
+
+const LINE_AUTHORIZE_URL = "https://access.line.me/oauth2/v2.1/authorize";
+const LINE_TOKEN_URL = "https://api.line.me/oauth2/v2.1/token";
+const LINE_PROFILE_URL = "https://api.line.me/v2/profile";
+
+async function handleLineAuthStart(request, env) {
+  const origin = new URL(request.url).origin;
+  if (origin !== "https://jonathanmccallum.com") {
+    return new Response(
+      interviewHtml("LINE sign-in only works on the live site, jonathanmccallum.com — a preview link cannot finish the login."),
+      { headers: { "Content-Type": "text/html" } }
+    );
+  }
+  if (!env.LINE_CHANNEL_ID || !env.LINE_CHANNEL_SECRET) {
+    return new Response(
+      interviewHtml("LINE sign-in is not set up yet — Jonathan is still setting it up. Please check back soon, or sign in with Instagram or Google instead."),
+      { headers: { "Content-Type": "text/html" } }
+    );
+  }
+  const state = randomHex(16);
+  if (env.NOTES) {
+    await env.NOTES.put(`lstate-${state}`, JSON.stringify({ at: new Date().toISOString() }), { expirationTtl: 600 });
+  }
+  const redirectUri = `${origin}/api/interview/auth/line/callback`;
+  const params = new URLSearchParams({
+    client_id: env.LINE_CHANNEL_ID,
+    redirect_uri: redirectUri,
+    response_type: "code",
+    scope: "profile openid",
+    state,
+  });
+  return Response.redirect(`${LINE_AUTHORIZE_URL}?${params}`, 302);
+}
+
+async function handleLineAuthCallback(request, env) {
+  const url = new URL(request.url);
+  const code = url.searchParams.get("code") || "";
+  const state = url.searchParams.get("state") || "";
+  if (url.searchParams.get("error") || !code || !state) {
+    return redirectTo(request, "/share-your-story/?signin=failed");
+  }
+  const stored = env.NOTES ? await env.NOTES.get(`lstate-${state}`, "json") : null;
+  if (!stored) return redirectTo(request, "/share-your-story/?signin=failed");
+  await env.NOTES.delete(`lstate-${state}`);
+  const redirectUri = `${url.origin}/api/interview/auth/line/callback`;
+  let tok;
+  try {
+    const res = await fetch(LINE_TOKEN_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        grant_type: "authorization_code",
+        code,
+        redirect_uri: redirectUri,
+        client_id: env.LINE_CHANNEL_ID,
+        client_secret: env.LINE_CHANNEL_SECRET,
+      }),
+    });
+    tok = await res.json();
+  } catch {
+    return redirectTo(request, "/share-your-story/?signin=failed");
+  }
+  if (!tok || !tok.access_token) return redirectTo(request, "/share-your-story/?signin=failed");
+  let profile;
+  try {
+    const res = await fetch(LINE_PROFILE_URL, {
+      headers: { Authorization: `Bearer ${tok.access_token}` },
+    });
+    profile = await res.json();
+  } catch {
+    return redirectTo(request, "/share-your-story/?signin=failed");
+  }
+  if (!profile || !profile.displayName) return redirectTo(request, "/share-your-story/?signin=failed");
+  // The access token is deliberately NOT stored — identity only.
+  const id = await createInterviewSession(env, {
+    provider: "line",
+    username: profile.displayName,
+    name: profile.displayName,
+    profileUrl: "",
+  });
+  const r = redirectTo(request, "/share-your-story/?signedin=line");
   r.headers.set("Set-Cookie", sessionCookie(id));
   return r;
 }
@@ -587,7 +689,7 @@ async function handleGoogleAuth(request, env) {
 }
 
 // GET /api/interview/me — who is signed in, if anyone, and whether
-// Instagram sign-in is configured on this Worker.
+// Instagram and LINE sign-in are configured on this Worker.
 async function handleInterviewMe(request, env) {
   const s = await getInterviewSession(request, env);
   return json({
@@ -596,7 +698,8 @@ async function handleInterviewMe(request, env) {
     username: s ? s.username : "",
     name: s ? s.name : "",
     profileUrl: s ? s.profileUrl : "",
-    instagramConfigured: !!env.INSTAGRAM_CLIENT_ID,
+    instagramConfigured: !!env.INSTAGRAM_APP_ID,
+    lineConfigured: !!env.LINE_CHANNEL_ID,
   });
 }
 
@@ -900,6 +1003,12 @@ export default {
     }
     if (url.pathname.endsWith("/api/interview/auth/instagram")) {
       return handleInstagramAuthStart(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/line/callback")) {
+      return handleLineAuthCallback(request, env);
+    }
+    if (url.pathname.endsWith("/api/interview/auth/line")) {
+      return handleLineAuthStart(request, env);
     }
     if (url.pathname.endsWith("/api/interview/auth/google")) {
       return handleGoogleAuth(request, env);
