@@ -133,7 +133,7 @@ document.addEventListener("click", function (e) {
     if (paused || document.hidden || Date.now() < resumeAt) return;
     show(nearestIndex() + 1);
   }
-  function start() { if (!timer) timer = setInterval(step, 7000); }
+  function start() { if (!timer) timer = setInterval(step, 4000); }
   function touch() { paused = false; resumeAt = Date.now() + 5000; }
 
   if (dotsWrap) {
