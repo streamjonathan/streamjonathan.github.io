@@ -466,6 +466,14 @@ const IG_AUTHORIZE_URL = "https://www.instagram.com/oauth/authorize";
 const IG_TOKEN_URL = "https://api.instagram.com/oauth/access_token";
 const IG_PROFILE_URL = "https://graph.instagram.com/v21.0/me?fields=id,username";
 
+// Response.redirect needs an absolute URL — a relative path throws
+// (Worker error 1101). Every interview redirect goes through here.
+// Found live 2026-11-23: sign-out and the Instagram callback both
+// crashed with 1101 until this helper was added.
+function redirectTo(request, path) {
+  return Response.redirect(new URL(path, new URL(request.url).origin), 302);
+}
+
 async function handleInstagramAuthStart(request, env) {
   const origin = new URL(request.url).origin;
   if (origin !== "https://jonathanmccallum.com") {
@@ -501,10 +509,10 @@ async function handleInstagramAuthCallback(request, env) {
   const code = url.searchParams.get("code") || "";
   const state = url.searchParams.get("state") || "";
   if (url.searchParams.get("error") || !code || !state) {
-    return Response.redirect("/share-your-story/?signin=failed", 302);
+    return redirectTo(request, "/share-your-story/?signin=failed");
   }
   const stored = env.NOTES ? await env.NOTES.get(`istate-${state}`, "json") : null;
-  if (!stored) return Response.redirect("/share-your-story/?signin=failed", 302);
+  if (!stored) return redirectTo(request, "/share-your-story/?signin=failed");
   await env.NOTES.delete(`istate-${state}`);
   const redirectUri = `${url.origin}/api/interview/auth/instagram/callback`;
   let tok;
@@ -522,17 +530,17 @@ async function handleInstagramAuthCallback(request, env) {
     });
     tok = await res.json();
   } catch {
-    return Response.redirect("/share-your-story/?signin=failed", 302);
+    return redirectTo(request, "/share-your-story/?signin=failed");
   }
-  if (!tok || !tok.access_token) return Response.redirect("/share-your-story/?signin=failed", 302);
+  if (!tok || !tok.access_token) return redirectTo(request, "/share-your-story/?signin=failed");
   let profile;
   try {
     const res = await fetch(`${IG_PROFILE_URL}&access_token=${encodeURIComponent(tok.access_token)}`);
     profile = await res.json();
   } catch {
-    return Response.redirect("/share-your-story/?signin=failed", 302);
+    return redirectTo(request, "/share-your-story/?signin=failed");
   }
-  if (!profile || !profile.username) return Response.redirect("/share-your-story/?signin=failed", 302);
+  if (!profile || !profile.username) return redirectTo(request, "/share-your-story/?signin=failed");
   // The access token is deliberately NOT stored — identity only.
   const id = await createInterviewSession(env, {
     provider: "instagram",
@@ -540,7 +548,7 @@ async function handleInstagramAuthCallback(request, env) {
     name: profile.username,
     profileUrl: `https://www.instagram.com/${profile.username}`,
   });
-  const r = Response.redirect("/share-your-story/?signedin=instagram", 302);
+  const r = redirectTo(request, "/share-your-story/?signedin=instagram");
   r.headers.set("Set-Cookie", sessionCookie(id));
   return r;
 }
@@ -593,7 +601,7 @@ async function handleInterviewSignOut(request, env) {
   const cookie = request.headers.get("Cookie") || "";
   const m = cookie.match(/(?:^|;\s*)interview_session=([A-Za-z0-9]+)/);
   if (m && env.NOTES) await env.NOTES.delete(`isession-${m[1]}`);
-  const r = Response.redirect("/share-your-story/", 302);
+  const r = redirectTo(request, "/share-your-story/");
   r.headers.set("Set-Cookie", clearSessionCookie());
   return r;
 }

@@ -59,7 +59,7 @@ Three questions below. Click each one to open it, and take your time — there i
   </p>
 
   <h2>One more thing, if you can</h2>
-  <p>Would you also paste your reply in a message to Jonathan on Instagram? It gives him a copy there, and it helps confirm the account is really yours. Just copy your reply above, then <a href="https://ig.me/m/jonamccallum">message @jonamccallum on Instagram</a> and paste it in.</p>
+  <p>When you send this, your reply is copied for you, and a message to me on Instagram opens — just paste it in and send it. It gives me a copy there, and it helps me publish the article. Your reply stays here too, so you can keep a copy if you like.</p>
 
   <label class="permission" for="interview-permission">
     <input id="interview-permission" name="permission" type="checkbox" required>
@@ -69,3 +69,23 @@ Three questions below. Click each one to open it, and take your time — there i
   <button id="interview-button" type="submit">Send my story</button>
   <p id="interview-result" aria-live="polite"></p>
 </form>
+
+<section id="interview-done" hidden>
+  <h2>Thank you — your story is with me</h2>
+  <p>I will read it, and if it fits, I will draft it as an article for you to approve before anything is published.</p>
+
+  <h2>Want to keep a copy?</h2>
+  <p>Everything you wrote is here — this is yours to keep.</p>
+  <textarea id="interview-done-copy" rows="10" readonly aria-label="Your full reply, all three answers together"></textarea>
+  <p>
+    <button id="interview-done-copy-button" type="button">Copy my reply</button>
+    <span id="interview-done-copy-result" aria-live="polite"></span>
+  </p>
+
+  <h2>One more thing — sending it to me on Instagram really helps</h2>
+  <p>Your reply is already copied, so just paste it into the message and send it. It gives me a copy there, and it helps me publish the article. This page can't send the message for you — you still tap send yourself.</p>
+  <p>
+    <a class="interview-ig-button" href="https://ig.me/m/jonamccallum" target="_blank" rel="noopener">Open Instagram to paste it</a>
+  </p>
+  <p id="interview-done-note" aria-live="polite"></p>
+</section>

@@ -268,6 +268,22 @@ function bootAsk() {
       if (el) el.addEventListener("input", updateCopy);
     });
 
+    function copyReplyText(text, area, done) {
+      function ok() { done(); }
+      function fallback() {
+        try {
+          area.select();
+          document.execCommand("copy");
+        } catch (e) {}
+        done();
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(ok, fallback);
+      } else {
+        fallback();
+      }
+    }
+
     copyButton.addEventListener("click", function () {
       updateCopy();
       var text = copyArea.value;
@@ -275,18 +291,9 @@ function bootAsk() {
         copyResult.textContent = "Write your answers first, then copy them here.";
         return;
       }
-      function done() { copyResult.textContent = "Copied — your full reply is on the clipboard."; }
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(done, function () {
-          copyArea.select();
-          document.execCommand("copy");
-          done();
-        });
-      } else {
-        copyArea.select();
-        document.execCommand("copy");
-        done();
-      }
+      copyReplyText(text, copyArea, function () {
+        copyResult.textContent = "Copied — your full reply is on the clipboard.";
+      });
     });
 
     function applySignedIn(me) {
@@ -431,8 +438,40 @@ function bootAsk() {
         .then(function (data) {
           interviewButton.disabled = false;
           if (data.ok) {
+            // Sent. Now: copy the reply for them, and open the
+            // Instagram DM so they can paste it in. A website cannot
+            // send an Instagram DM itself — the person still taps
+            // send in Instagram. The auto-open may be blocked by the
+            // browser (the submit happened a moment ago), so the
+            // button below always opens it in one tap as well.
+            var donePanel = document.getElementById("interview-done");
+            var doneCopy = document.getElementById("interview-done-copy");
+            var doneCopyButton = document.getElementById("interview-done-copy-button");
+            var doneCopyResult = document.getElementById("interview-done-copy-result");
+            var doneNote = document.getElementById("interview-done-note");
+            updateCopy();
+            var text = copyArea.value;
+            if (doneCopy) doneCopy.value = text;
             interviewForm.hidden = true;
-            interviewResult.innerHTML = "Thank you — your story is with Jonathan. He will read it, and if it fits, he will draft it as an article for you to approve before anything is published.<br><br>If you have not already, please also paste your reply in a message to <a href=\"https://ig.me/m/jonamccallum\">@jonamccallum on Instagram</a> — it gives him a copy there.";
+            if (donePanel) donePanel.hidden = false;
+            copyReplyText(text, doneCopy || copyArea, function () {
+              if (doneCopyResult) doneCopyResult.textContent = "Copied — your full reply is on the clipboard.";
+            });
+            var dm = null;
+            try { dm = window.open("https://ig.me/m/jonamccallum", "_blank"); } catch (e) {}
+            if (doneNote) {
+              doneNote.textContent = dm
+                ? "The message to Jonathan should have opened in a new tab — just paste your reply in and send it."
+                : "Tap the button above to open the message to Jonathan, then paste your reply in and send it.";
+            }
+            if (doneCopyButton) {
+              doneCopyButton.addEventListener("click", function () {
+                copyReplyText(doneCopy.value, doneCopy, function () {
+                  if (doneCopyResult) doneCopyResult.textContent = "Copied — your full reply is on the clipboard.";
+                });
+              });
+            }
+            if (donePanel) donePanel.scrollIntoView();
           } else if (data.error) {
             interviewResult.textContent = data.error;
           } else {

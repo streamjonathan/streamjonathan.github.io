@@ -69,10 +69,16 @@ following Jesus in creative areas of life. The questions are
 accordions — click each heading to open it, answer in the large box
 inside. A live copy area below the questions holds the full reply
 (name, profile, all three answers), with a "Copy my reply" button.
-After the copy area the page asks, in plain words, if they could also
-paste the reply in a message to @jonamccallum on Instagram
-(https://ig.me/m/jonamccallum) — it gives Jonathan a copy there and
-helps confirm the account is really theirs.
+After sending, the page copies the full reply to the clipboard for
+them, opens a message to @jonamccallum on Instagram
+(https://ig.me/m/jonamccallum) so they can paste it in, and asks if
+they want to keep a copy — the whole reply stays on the page for them.
+The page is honest about this: a website cannot send an Instagram
+message for anyone, the person still taps send themselves. If the
+browser blocks the new tab opening, a button on the page opens the
+message in one tap instead. Sending it on Instagram gives Jonathan a
+copy there and helps confirm the account is really theirs — and for
+Google sign-ins it is also the handle check.
 
 ### Sign-in is the verification
 
@@ -145,6 +151,23 @@ sign-ins.
   deploy steps in `MAINTENANCE.md` / the connector docs), or the form
   will answer "not switched on yet". The Instagram and Google secrets
   are set as Worker secrets/vars at deploy time, never in the repo.
+- **Worker routes (zone, not code):** the Worker only answers paths
+  that have a zone Workers route. The zone needs
+  `jonathanmccallum.com/api/interview*` and
+  `jonathanmccallum.com/api/suggest` (alongside the older
+  `jonathanmccallum.com/api/ask` and `jonathanmccallum.com/api/note`).
+  Found live 2026-11-23: the interview and suggest routes were
+  missing, so both returned the site's 404 page — the Worker code was
+  fine, the zone had no route for them. The two routes were added
+  2026-11-23; if a new `/api/*` endpoint is added later, add its
+  route at the same time or it will 404 the same way.
+- **Redirects must be absolute:** `Response.redirect()` throws on a
+  relative path (Worker error 1101). All interview redirects go
+  through `redirectTo(request, path)` in `src/index.js`, which builds
+  the absolute URL from the request origin. Found live 2026-11-23:
+  sign-out and the Instagram callback both crashed with 1101 until
+  this was fixed — so even with the Meta app set up, Instagram
+  sign-in would have failed at the callback.
 
 ## Reader notes and artist suggestions (no AI involved)
 
