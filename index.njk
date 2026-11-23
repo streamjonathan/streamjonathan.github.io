@@ -20,6 +20,22 @@ eleventyExcludeFromCollections: true
 
 {% include "get-involved.njk" %}
 
+<section class="suggest-home" data-fade aria-labelledby="suggest-home-heading">
+  <h2 id="suggest-home-heading">Who should I write about next?</h2>
+  <p>Musicians and artists who follow Jesus — tap a photo to suggest one.</p>
+  <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest">
+  {% for artist in suggest_carousel %}
+    <button type="button" class="suggest-pick" role="listitem" data-artist="{{ artist.name }}" data-link="{{ artist.profile }}" title="Suggest {{ artist.name }}">
+      <img src="{{ artist.img }}" alt="{{ artist.name }}" loading="lazy" width="150" height="150">
+      <span class="suggest-pick__name">{{ artist.name }}</span>
+      <span class="suggest-pick__note">{{ artist.note }}</span>
+    </button>
+  {% endfor %}
+  </div>
+  <p class="suggest-carousel__more"><a href="/suggest-an-artist/">Suggest someone else</a> — anyone you think I should hear.</p>
+  <p class="suggest-optout">If you're featured here and would rather not be, please <a href="/suggest-an-artist/">contact Jonathan</a> and he'll remove you.</p>
+</section>
+
 <section class="featured" data-fade aria-labelledby="featured-heading">
   <h2 id="featured-heading">Newest writing</h2>
   <ul class="featured-row" data-auto-carousel>
