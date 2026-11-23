@@ -214,6 +214,237 @@ function bootAsk() {
       doNote();
     });
   }
+
+  // Share your story: artist interview form. Sign-in first (Instagram
+  // or Google) — the sign-in is what proves the account is really
+  // theirs. Questions are <details> accordions; a live copy area holds
+  // the full reply; the DM prompt asks them to also paste it to
+  // @jonamccallum on Instagram.
+  var interviewForm = document.getElementById("interview-form");
+  if (interviewForm) {
+    var signinBox = document.getElementById("interview-signin");
+    var googleClientId = signinBox ? (signinBox.getAttribute("data-google-client-id") || "") : "";
+    var igButton = document.getElementById("interview-ig-signin");
+    var igNote = document.getElementById("interview-ig-note");
+    var googleBox = document.getElementById("interview-google-signin");
+    var googleNote = document.getElementById("interview-google-note");
+    var signinStatus = document.getElementById("interview-signin-status");
+    var signedinLine = document.getElementById("interview-signedin");
+    var signedinText = document.getElementById("interview-signedin-text");
+    var nameField = document.getElementById("interview-name");
+    var socialField = document.getElementById("interview-social");
+    var socialNote = document.getElementById("interview-social-note");
+    var copyArea = document.getElementById("interview-copy");
+    var copyButton = document.getElementById("interview-copy-button");
+    var copyResult = document.getElementById("interview-copy-result");
+    var interviewButton = document.getElementById("interview-button");
+    var interviewResult = document.getElementById("interview-result");
+    var signedIn = null;
+
+    function fullReplyText() {
+      var lines = [];
+      var name = nameField.value.trim();
+      var social = socialField.value.trim();
+      if (name) lines.push(name);
+      if (social) lines.push(social);
+      lines.push("");
+      lines.push("Tell us about yourself and the music or art you make. What do you love making, and why?");
+      lines.push(document.getElementById("interview-q1").value.trim());
+      lines.push("");
+      lines.push("What would you like the world to know about your faith in Jesus — and how does it shape what you create?");
+      lines.push(document.getElementById("interview-q2").value.trim());
+      lines.push("");
+      lines.push("Tell us a story from your life. It doesn't have to be deep — it can be funny, or just interesting. What's a moment that says something about who you are?");
+      lines.push(document.getElementById("interview-q3").value.trim());
+      return lines.join("\n");
+    }
+
+    function updateCopy() {
+      copyArea.value = fullReplyText();
+    }
+
+    ["interview-name", "interview-social", "interview-social2", "interview-q1", "interview-q2", "interview-q3"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.addEventListener("input", updateCopy);
+    });
+
+    copyButton.addEventListener("click", function () {
+      updateCopy();
+      var text = copyArea.value;
+      if (!text.trim()) {
+        copyResult.textContent = "Write your answers first, then copy them here.";
+        return;
+      }
+      function done() { copyResult.textContent = "Copied — your full reply is on the clipboard."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () {
+          copyArea.select();
+          document.execCommand("copy");
+          done();
+        });
+      } else {
+        copyArea.select();
+        document.execCommand("copy");
+        done();
+      }
+    });
+
+    function applySignedIn(me) {
+      signedIn = me;
+      if (me.signedIn) {
+        if (signinStatus) signinStatus.textContent = "";
+        if (signedinText) {
+          signedinText.textContent = me.provider === "instagram"
+            ? "Signed in as @" + me.username + " (Instagram). "
+            : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
+        }
+        if (signedinLine) signedinLine.hidden = false;
+        if (me.name && !nameField.value) nameField.value = me.name;
+        if (me.provider === "instagram" && me.profileUrl) {
+          socialField.value = me.profileUrl;
+          socialField.readOnly = true;
+          if (socialNote) socialNote.textContent = "Taken from your Instagram sign-in — this is the account the site verified.";
+        } else if (socialNote) {
+          socialNote.textContent = "Paste the link to your profile, not just your username. Jonathan will check it against the message you send him on Instagram.";
+        }
+      } else {
+        if (signedinLine) signedinLine.hidden = true;
+        socialField.readOnly = false;
+      }
+      updateCopy();
+    }
+
+    function loadGoogleButton() {
+      if (!googleClientId) {
+        if (googleNote) googleNote.textContent = "Google sign-in is being set up — check back soon.";
+        return;
+      }
+      if (window.google && window.google.accounts && window.google.accounts.id) {
+        showGoogleButton();
+        return;
+      }
+      var s = document.createElement("script");
+      s.src = "https://accounts.google.com/gsi/client";
+      s.async = true;
+      s.defer = true;
+      s.onload = showGoogleButton;
+      s.onerror = function () {
+        if (googleNote) googleNote.textContent = "Google sign-in did not load — check the connection and try again.";
+      };
+      document.head.appendChild(s);
+    }
+
+    function showGoogleButton() {
+      if (!window.google || !window.google.accounts || !window.google.accounts.id) return;
+      window.google.accounts.id.initialize({ client_id: googleClientId, callback: onGoogleSignedIn });
+      if (googleBox) {
+        window.google.accounts.id.renderButton(googleBox, { theme: "outline", size: "large" });
+      }
+    }
+
+    function onGoogleSignedIn(resp) {
+      if (!resp || !resp.credential) return;
+      if (signinStatus) signinStatus.textContent = "Signing in…";
+      fetch("/api/interview/auth/google", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ credential: resp.credential }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (data.ok) {
+            refreshMe();
+          } else {
+            if (signinStatus) signinStatus.textContent = data.error || "That Google sign-in did not work — please try again.";
+          }
+        })
+        .catch(function () {
+          if (signinStatus) signinStatus.textContent = "That Google sign-in did not work — please try again.";
+        });
+    }
+
+    function refreshMe() {
+      fetch("/api/interview/me")
+        .then(function (r) { return r.json(); })
+        .then(function (me) {
+          if (!me.instagramConfigured && igButton) {
+            igButton.style.display = "none";
+            if (igNote) igNote.textContent = "Instagram sign-in is being set up — check back soon, or sign in with Google below.";
+          }
+          applySignedIn(me);
+          if (!me.signedIn) loadGoogleButton();
+        })
+        .catch(function () {
+          loadGoogleButton();
+        });
+    }
+
+    // Sign-in result from the Instagram redirect.
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("signedin") === "instagram" && signinStatus) {
+      signinStatus.textContent = "Signed in with Instagram — thank you. Now tell your story below.";
+    }
+    if (params.get("signin") === "failed" && signinStatus) {
+      signinStatus.textContent = "That sign-in did not go through — please try again, or sign in with Google.";
+    }
+
+    refreshMe();
+
+    interviewForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!signedIn || !signedIn.signedIn) {
+        interviewResult.textContent = "Please sign in first — that is how the site knows the account is really yours.";
+        return;
+      }
+      var qIds = [["interview-q1", "interview-q1-details"], ["interview-q2", "interview-q2-details"], ["interview-q3", "interview-q3-details"]];
+      for (var i = 0; i < qIds.length; i++) {
+        var field = document.getElementById(qIds[i][0]);
+        var details = document.getElementById(qIds[i][1]);
+        if (field.value.trim().length < 10) {
+          if (details) details.open = true;
+          field.focus();
+          interviewResult.textContent = "Please answer all three questions — a few sentences each is plenty.";
+          return;
+        }
+      }
+      var permission = document.getElementById("interview-permission").checked;
+      if (!nameField.value.trim() || !socialField.value.trim() || !permission) {
+        interviewResult.textContent = "Please fill in your name, your social profile, and tick the permission box.";
+        return;
+      }
+      interviewButton.disabled = true;
+      interviewResult.textContent = "Sending your story…";
+      fetch("/api/interview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: nameField.value.trim(),
+          social: socialField.value.trim(),
+          social2: document.getElementById("interview-social2").value.trim(),
+          q1: document.getElementById("interview-q1").value.trim(),
+          q2: document.getElementById("interview-q2").value.trim(),
+          q3: document.getElementById("interview-q3").value.trim(),
+          permission: permission,
+        }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          interviewButton.disabled = false;
+          if (data.ok) {
+            interviewForm.hidden = true;
+            interviewResult.innerHTML = "Thank you — your story is with Jonathan. He will read it, and if it fits, he will draft it as an article for you to approve before anything is published.<br><br>If you have not already, please also paste your reply in a message to <a href=\"https://ig.me/m/jonamccallum\">@jonamccallum on Instagram</a> — it gives him a copy there.";
+          } else if (data.error) {
+            interviewResult.textContent = data.error;
+          } else {
+            interviewResult.textContent = "That did not go through — the quickest way to reach Jonathan is a message on Instagram or Threads.";
+          }
+        })
+        .catch(function () {
+          interviewButton.disabled = false;
+          interviewResult.textContent = "That did not go through — the quickest way to reach Jonathan is a message on Instagram or Threads.";
+        });
+    });
+  }
 }
 
 if (document.readyState === "loading") {

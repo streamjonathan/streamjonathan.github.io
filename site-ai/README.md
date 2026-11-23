@@ -60,6 +60,92 @@ whole point, and it is enforced in the code below, not just promised.
 | `ai-gateway-guardrails.md` | Dashboard setup: gateway, guardrail policy, rate limits, logging |
 | `index/chunks.jsonl` | Generated chunks (git-ignored; rebuild any time) |
 
+## Artist interviews — `/share-your-story/`
+
+Musicians and artists can share their story through three questions on
+the `/share-your-story/` page. The page states plainly that there is no
+advertising on the site and that the goal is to learn more about people
+following Jesus in creative areas of life. The questions are
+accordions — click each heading to open it, answer in the large box
+inside. A live copy area below the questions holds the full reply
+(name, profile, all three answers), with a "Copy my reply" button.
+After the copy area the page asks, in plain words, if they could also
+paste the reply in a message to @jonamccallum on Instagram
+(https://ig.me/m/jonamccallum) — it gives Jonathan a copy there and
+helps confirm the account is really theirs.
+
+### Sign-in is the verification
+
+There is no anonymous or pasted-link submission. The artist signs in
+first — that IS the verification. Two providers, identity only:
+
+- **Instagram** (first choice): OAuth via the Instagram API with
+  Instagram Login, scope `instagram_business_basic` (profile info
+  only). Flow: `/api/interview/auth/instagram` → Instagram login →
+  `/api/interview/auth/instagram/callback` exchanges the code for a
+  short-lived token, fetches the profile (`GET /v21.0/me`), then
+  DISCARDS the token. The verified handle becomes the social link.
+  Needs Worker secrets `INSTAGRAM_CLIENT_ID` (the Instagram App ID,
+  not the Meta App ID) and `INSTAGRAM_CLIENT_SECRET`, and the redirect
+  URI `https://jonathanmccallum.com/api/interview/auth/instagram/callback`
+  registered in the Meta app. Only works on the live domain, and only
+  for Business/Creator accounts — personal Instagram accounts cannot
+  use it, and the public needs App Review (Advanced Access) first.
+- **Google** (fallback): Google Identity Services on the page, ID
+  token verified server-side in `src/index.js` (RS256 against Google's
+  JWKS — the same check as the comments feature, inlined here because
+  this Worker deploys single-file; the comments branch carries its own
+  copy in `site-ai/src/comments.js`, reconcile the two into one shared
+  module when that branch merges). Needs `GOOGLE_CLIENT_ID` as a Worker
+  var and the same client id in `googleClientId` in `_data/site.json`
+  (the same client id the comments feature needs). Google proves the
+  person; the social link is then checked against the DM the artist is
+  asked to send.
+
+What sign-in can and cannot do is stated on the form: it only confirms
+name and profile. It cannot post for anyone, read messages, or see
+anything private. The site never sees a password and keeps no ongoing
+access to anyone's account. Sessions are `isession-<rand>` in KV (1
+hour), HttpOnly Secure cookie; sign out at
+`/api/interview/auth/signout`. `GET /api/interview/me` reports who is
+signed in and whether Instagram is configured.
+
+The old DM-code step is gone: with real sign-in it added nothing. The
+DM prompt stays, as a copy channel and as the handle check for Google
+sign-ins.
+
+### Submission, email, approval, draft
+
+- **Endpoint:** `POST /api/interview` → `handleInterview()` in
+  `src/index.js`. Signed-in only; the identity comes from the session,
+  never from the request body. Answers are 10–5000 characters each;
+  the permission checkbox is required (by sending, they give permission
+  for Jonathan to share the answers as an article).
+- **Storage:** the NOTES KV namespace, keys `interview-<ts>-<rand>`,
+  with name, social link(s), the three answers, `permission: true`,
+  the verified identity, `verifiedBy` (`instagram` or `google`),
+  `handleVerified`, `status: "pending"`.
+- **Email:** the notes digest (`work/notes-digest.py`, cron every 6
+  hours) also emails new `interview-` keys to Jonathan, subject
+  starting `[INTERVIEW]`, with the full answers, name, social link,
+  and verification info.
+- **Approval → draft (auto-build):** nothing is ever auto-published.
+  Jonathan screens the email (and the DM, for Google sign-ins) and
+  approves. Bobby then runs
+  `python3 scripts/build-interview-draft.py interview-<ts>-<rand>`
+  (add `--confirm-dm` for Google sign-ins, once the DM has been
+  checked). The script writes
+  `content/posts/<date>-<slug>.md` with `draft: true` — the three
+  answers formatted as an article, no retyping — and marks the KV
+  record `drafted` so it cannot be built twice. Bobby reviews the
+  file, commits it on a branch, shows Jonathan a preview. It goes
+  live only when Jonathan says so (`draft: false`).
+- **Deploy note:** pushing to GitHub does NOT update the Worker. After
+  this branch merges, redeploy the Worker by hand (see the Worker
+  deploy steps in `MAINTENANCE.md` / the connector docs), or the form
+  will answer "not switched on yet". The Instagram and Google secrets
+  are set as Worker secrets/vars at deploy time, never in the repo.
+
 ## Deploy (after Jonathan signs into Cloudflare — free account)
 
 1. Dashboard → Workers & Pages → Create → Pages → connect the GitHub

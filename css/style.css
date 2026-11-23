@@ -145,6 +145,72 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
   color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
 }
 #note-result { color: var(--muted); }
+/* Share your story: interview form — big textareas, plenty of room. */
+.interview-form { display: block; }
+.interview-form label { display: block; margin: 1.25rem 0 0.4rem; font-weight: 600; }
+.interview-form input[type="text"],
+.interview-form input[type="url"] {
+  width: 100%; padding: 0.75rem 1rem;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.interview-form textarea {
+  width: 100%; min-height: 10rem; padding: 0.75rem 1rem; resize: vertical;
+  font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+.interview-form .field-note { color: var(--muted); font-size: 0.9rem; margin: 0.3rem 0 0; }
+.interview-form .permission {
+  display: flex; gap: 0.6rem; align-items: flex-start;
+  margin: 1.5rem 0; font-weight: 400;
+}
+.interview-form input[type="checkbox"] { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; margin-top: 0.2rem; }
+.interview-form button[type="submit"] {
+  padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem;
+}
+.interview-code {
+  display: inline-block; margin: 0.5rem 0; padding: 0.5rem 1rem;
+  font: 700 1.75rem/1.2 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  letter-spacing: 0.25em; border: 1px solid var(--line); border-radius: 0.75rem;
+}
+/* Sign-in box: identity only, no posting, no messages, no password. */
+.interview-signin {
+  margin: 1.5rem 0; padding: 1rem 1.25rem;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+}
+.interview-signin h2 { margin-top: 0; }
+.interview-ig-button {
+  display: inline-block; padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+  font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif; text-decoration: none;
+  color: var(--btn-text); background: var(--btn-bg); min-height: 3.25rem;
+}
+/* Interview questions: collapsed headings, click to open and answer. */
+.interview-question {
+  margin: 1rem 0; padding: 0.75rem 1rem;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+}
+.interview-question summary {
+  cursor: pointer; font-weight: 600;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 1.12rem; line-height: 1.4;
+}
+.interview-question textarea { margin-top: 0.75rem; }
+#interview-copy {
+  width: 100%; min-height: 12rem; padding: 0.75rem 1rem; resize: vertical;
+  font: 1rem/1.5 ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  border: 1px solid var(--line); border-radius: 0.75rem;
+  color: var(--text); background: var(--field-bg);
+}
+#interview-copy-button {
+  padding: 0.6rem 1.25rem; border: 1px solid var(--line); border-radius: 0.75rem;
+  font: 1rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text); background: var(--field-bg); cursor: pointer; min-height: 2.75rem;
+}
+#interview-copy-result { color: var(--muted); margin-left: 0.5rem; }
 /* Article list: title, date, one line of the writing itself. */
 .article-list { list-style: none; padding-left: 0; }
 .article-list li { border-top: 1px solid var(--line); padding: 0.9rem 0; margin: 0; }
