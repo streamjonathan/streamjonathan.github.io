@@ -10,13 +10,27 @@ Three questions below. Click each one to open it, and take your time — there i
 
 <section class="interview-signin" id="interview-signin" data-google-client-id="{{ site.googleClientId }}">
   <h2>First, sign in</h2>
-  <p>Please sign in with one of your accounts, so I know the story is really from you. Signing in only confirms your name and profile — it lets the site check you are who you say you are. It cannot post anything for you, read your messages, or see anything private. Your login stays between you and Instagram or Google; this site never sees your password.</p>
+  <p>Please sign in with one of your accounts, so I know the story is really from you. Signing in only confirms your name and profile — it lets the site check you are who you say you are. It cannot post anything for you, read your messages, or see anything private. Your login stays between you and Instagram, Google or your email provider; this site never sees your password, and an email code works once and then stops working.</p>
   <p>
     <a class="interview-ig-button" id="interview-ig-signin" href="/api/interview/auth/instagram">Sign in with Instagram</a>
   </p>
   <p class="field-note" id="interview-ig-note">Instagram sign-in is the simplest way — it also confirms your Instagram profile in one step. It works for Business and Creator accounts.</p>
   <div id="interview-google-signin"></div>
   <p class="field-note" id="interview-google-note">Or sign in with Google — the same login as YouTube. It confirms you are a real person; your Instagram link is then checked against the message you send me (see below).</p>
+  <div id="interview-email-signin">
+    <p class="field-note">Or sign in with email — no account needed. We send a 6-digit code to your address, and the code proves it is yours.</p>
+    <p>
+      <label for="interview-email">Your email address</label>
+      <input id="interview-email" name="email" type="email" maxlength="254" autocomplete="email" placeholder="you@example.com">
+      <button id="interview-email-send" type="button">Send code</button>
+    </p>
+    <p id="interview-email-code-row" hidden>
+      <label for="interview-email-code">The 6-digit code</label>
+      <input id="interview-email-code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
+      <button id="interview-email-verify" type="button">Sign in</button>
+    </p>
+    <p class="field-note" id="interview-email-note"></p>
+  </div>
   <p id="interview-signin-status" aria-live="polite"></p>
   <p id="interview-signedin" hidden>
     <span id="interview-signedin-text"></span>
