@@ -310,13 +310,15 @@ function bootAsk() {
       if (me.signedIn) {
         if (signinStatus) signinStatus.textContent = "";
         if (signedinText) {
-          signedinText.textContent = me.provider === "instagram"
-            ? "Signed in as @" + me.username + " (Instagram). "
-            : me.provider === "line"
-              ? "Signed in with LINE" + (me.name ? " as " + me.name : "") + ". "
-            : me.provider === "email"
-              ? "Signed in with email" + (me.name ? " as " + me.name : "") + ". "
-              : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
+          // One clear line for every provider: "Signed in with LINE as Jonathan."
+          var who = me.provider === "instagram"
+            ? "@" + me.username
+            : me.name || me.username || "";
+          var providerName = me.provider === "instagram" ? "Instagram"
+            : me.provider === "line" ? "LINE"
+            : me.provider === "email" ? "email"
+            : "Google";
+          signedinText.textContent = "Signed in with " + providerName + (who ? " as " + who : "") + ". ";
         }
         if (signedinLine) signedinLine.hidden = false;
         if (me.name && !nameField.value) nameField.value = me.name;

@@ -215,6 +215,13 @@ pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
   color: var(--text); background: var(--field-bg); cursor: pointer;
 }
 .interview-signin button[type="button"]:disabled { opacity: 0.6; cursor: default; }
+/* Signed-in status: one bold, unmistakable line — "Signed in with LINE as Jonathan. Sign out". */
+#interview-signedin {
+  font-weight: 600; padding: 0.75rem 1rem;
+  border-left: 3px solid var(--link); border-radius: 0 0.5rem 0.5rem 0;
+  background: var(--field-bg);
+}
+#interview-signedin a { margin-left: 0.5rem; }
 /* Interview questions: collapsed headings, click to open and answer. */
 .interview-question {
   margin: 1rem 0; padding: 0.75rem 1rem;
