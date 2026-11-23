@@ -81,8 +81,8 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=12" as="style">
-<link rel="stylesheet" href="/css/style.css?v=12">
+<link rel="preload" href="/css/style.css?v=13" as="style">
+<link rel="stylesheet" href="/css/style.css?v=13">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -98,6 +98,14 @@
   <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a></p>
   <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
   <p>Set in Georgia. Built with Eleventy, hosted on Cloudflare Pages.</p>
+  <nav class="site-languages" aria-label="Languages">
+    <h2>Read in other languages</h2>
+    <ul>
+    {% for lang in languages %}
+      <li><a href="{% if lang.code == "en" %}https://jonathanmccallum.com/{% else %}https://jonathanmccallum-{{ lang.code }}.pages.dev/{% endif %}" hreflang="{{ lang.code }}">{{ lang.flag }} {{ lang.name }}</a></li>
+    {% endfor %}
+    </ul>
+  </nav>
 </footer>
 <button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
 <div id="ask-overlay" hidden>
