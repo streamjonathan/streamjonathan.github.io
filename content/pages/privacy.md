@@ -6,7 +6,7 @@ original_url: https://jonathanmccallum.com/privacy/
 
 # Privacy
 
-This site is run by Jonathan McCallum, who lives in Getaria, Spain. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts to create here, no tracking, no advertising, and nothing for sale.
+This site is run by Jonathan McCallum, who lives in Getaria, Spain. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts to create here, no tracking, no advertising, and nothing for sale. It follows European privacy law (GDPR) for all visitors, wherever they are in the world.
 
 If you need to ask about anything on this page, or about your personal data, write to Jonathan at <a href="#" data-contact-email data-contact-email-text>Email me</a>. You can also message him on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
 
@@ -86,6 +86,10 @@ Transfers outside Europe are covered by the standard contractual clauses in Clou
 - Chat answers: 7 days, then deleted.
 - Notes, stories, suggestions and comments: kept until Jonathan has dealt with them and deleted them.
 - Sign-in codes from Resend: kept by Resend for 30 days.
+
+## Selling and advertising
+
+This site does not sell your personal information. It does not share your information for advertising, and there is no advertising on this site. The only others who handle your data are the services named above (Cloudflare, Resend, and Gmail), who process it only to run the site.
 
 ## Your rights under European law (GDPR)
 
