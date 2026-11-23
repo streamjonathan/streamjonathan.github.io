@@ -1,15 +1,19 @@
 ---
 layout: layouts/base.njk
 ---
-{# Co-authored article layout — mirrors layouts/post.njk, with a byline
-   naming both people, linking each one's social profile, and saying
-   what each of them brought. The front matter carries:
+{# Co-authored article layout — mirrors layouts/post.njk on main, with a
+   byline naming both people, linking each one's social profile, and
+   saying what each of them brought. The front matter carries:
    collaborator_name, collaborator_social (a profile link on Instagram,
    X, Threads, YouTube, Facebook or TikTok — checked by Bobby when the
    article is drafted), collaborator_role, jonathan_role.
    A collab article is never auto-published: Bobby drafts it
    (draft: true) only after Jonathan approves the proposal and the
-   collaborator's account is verified. #}
+   collaborator's account is verified.
+   NOTE: this mirrors main's post.njk, so it has the share section and
+   NO comments include — comments.njk only exists on the comments
+   branch. When the comments branch merges, add the same
+   {% include "comments.njk" %} here as in post.njk. #}
 <article>
   <h1>{{ title }}</h1>
   {% if page.date %}
@@ -26,6 +30,16 @@ layout: layouts/base.njk
   {{ content | safe }}
   </div>
 </article>
+<section class="share" aria-label="Share this post">
+  <p class="share__label">Share this post</p>
+  <div class="share__buttons">
+    <a class="share__btn" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&amp;url={{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">X</a>
+    <a class="share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">Facebook</a>
+    <a class="share__btn" href="https://wa.me/?text={{ title | urlencode }}%20{{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="share__btn" id="copy-link" type="button" data-url="{{ site.url }}{{ page.url }}">Copy link</button>
+  </div>
+  <p class="share__copied" id="copy-feedback" hidden>Link copied — thanks for sharing.</p>
+</section>
 {% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}
 {% if prevPost or nextPost %}
@@ -34,4 +48,3 @@ layout: layouts/base.njk
   {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}
 </nav>
 {% endif %}
-{% include "comments.njk" %}
