@@ -472,3 +472,27 @@ button[type="submit"] {
 .site-languages ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
 .site-languages a { text-decoration: none; white-space: nowrap; }
 .site-languages a:hover { text-decoration: underline; }
+/* Cookie consent banner: a small bar at the bottom, shown on first
+   visit until the reader picks Accept or Reject. Both buttons look
+   exactly the same on purpose — the law (and the Spanish AEPD guide)
+   says saying no must be as easy as saying yes, with no colour trick.
+   The banner never blocks the page: it sits at the bottom and the
+   reader can keep reading while it is there. */
+.cookie-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  background: var(--field-bg); color: var(--text);
+  border-top: 1px solid var(--line);
+  padding: 0.9rem 1rem 1rem; margin: 0;
+}
+.cookie-banner p { max-width: 60rem; margin: 0 auto 0.6rem; }
+.cookie-banner strong { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; }
+.cookie-banner__buttons { display: flex; gap: 0.75rem; }
+.cookie-banner__buttons button {
+  padding: 0.6rem 1.5rem; border: 1px solid var(--line); border-radius: 0.75rem;
+  font: 1rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--text); background: var(--field-bg); cursor: pointer; min-height: 2.75rem;
+}
+.cookie-banner__buttons button:hover { border-color: var(--link); }
+@media (min-width: 40rem) {
+  .cookie-banner { left: 1rem; right: auto; bottom: 1rem; max-width: 32rem; border: 1px solid var(--line); border-radius: 0.75rem; }
+}
