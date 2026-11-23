@@ -226,8 +226,17 @@ function bootAsk() {
     var googleClientId = signinBox ? (signinBox.getAttribute("data-google-client-id") || "") : "";
     var igButton = document.getElementById("interview-ig-signin");
     var igNote = document.getElementById("interview-ig-note");
+    var lineButton = document.getElementById("interview-line-signin");
+    var lineNote = document.getElementById("interview-line-note");
     var googleBox = document.getElementById("interview-google-signin");
     var googleNote = document.getElementById("interview-google-note");
+    var emailBox = document.getElementById("interview-email-signin");
+    var emailField = document.getElementById("interview-email");
+    var emailSendButton = document.getElementById("interview-email-send");
+    var emailCodeRow = document.getElementById("interview-email-code-row");
+    var emailCodeField = document.getElementById("interview-email-code");
+    var emailVerifyButton = document.getElementById("interview-email-verify");
+    var emailNote = document.getElementById("interview-email-note");
     var signinStatus = document.getElementById("interview-signin-status");
     var signedinLine = document.getElementById("interview-signedin");
     var signedinText = document.getElementById("interview-signedin-text");
@@ -303,7 +312,11 @@ function bootAsk() {
         if (signedinText) {
           signedinText.textContent = me.provider === "instagram"
             ? "Signed in as @" + me.username + " (Instagram). "
-            : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
+            : me.provider === "line"
+              ? "Signed in with LINE" + (me.name ? " as " + me.name : "") + ". "
+            : me.provider === "email"
+              ? "Signed in with email" + (me.name ? " as " + me.name : "") + ". "
+              : "Signed in with Google" + (me.name ? " as " + me.name : "") + ". ";
         }
         if (signedinLine) signedinLine.hidden = false;
         if (me.name && !nameField.value) nameField.value = me.name;
@@ -370,6 +383,80 @@ function bootAsk() {
         });
     }
 
+    // Email sign-in: two steps. First the reader asks for a code; then
+    // they type the 6-digit code the site sent them. The address stays
+    // in the box between steps — it is never stored in the browser.
+    function requestEmailCode() {
+      var email = emailField ? emailField.value.trim() : "";
+      if (!email || email.indexOf("@") < 1) {
+        if (emailNote) emailNote.textContent = "Please give a real email address.";
+        return;
+      }
+      if (emailSendButton) emailSendButton.disabled = true;
+      if (emailNote) emailNote.textContent = "Sending your code…";
+      fetch("/api/interview/auth/email/request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (emailSendButton) emailSendButton.disabled = false;
+          if (data.ok) {
+            if (emailCodeRow) emailCodeRow.hidden = false;
+            if (emailNote) emailNote.textContent = "Your code is on its way — check your inbox (and the spam folder, just in case). It expires in 10 minutes.";
+            if (emailCodeField) emailCodeField.focus();
+          } else {
+            if (emailNote) emailNote.textContent = data.error || "That code did not send — please try again in a minute.";
+          }
+        })
+        .catch(function () {
+          if (emailSendButton) emailSendButton.disabled = false;
+          if (emailNote) emailNote.textContent = "That code did not send — please try again in a minute.";
+        });
+    }
+
+    function verifyEmailCode() {
+      var email = emailField ? emailField.value.trim() : "";
+      var code = emailCodeField ? emailCodeField.value.trim() : "";
+      if (!email || code.length !== 6) {
+        if (emailNote) emailNote.textContent = "Type the 6-digit code from the email.";
+        return;
+      }
+      if (emailVerifyButton) emailVerifyButton.disabled = true;
+      if (emailNote) emailNote.textContent = "Checking your code…";
+      fetch("/api/interview/auth/email/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email, code: code }),
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          if (emailVerifyButton) emailVerifyButton.disabled = false;
+          if (data.ok) {
+            if (emailNote) emailNote.textContent = "";
+            refreshMe();
+          } else {
+            if (emailNote) emailNote.textContent = data.error || "That code did not check out — please try again.";
+          }
+        })
+        .catch(function () {
+          if (emailVerifyButton) emailVerifyButton.disabled = false;
+          if (emailNote) emailNote.textContent = "That code did not check out — please try again.";
+        });
+    }
+
+    if (emailSendButton) emailSendButton.addEventListener("click", requestEmailCode);
+    if (emailVerifyButton) emailVerifyButton.addEventListener("click", verifyEmailCode);
+    if (emailCodeField) {
+      emailCodeField.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          verifyEmailCode();
+        }
+      });
+    }
+
     function refreshMe() {
       fetch("/api/interview/me")
         .then(function (r) { return r.json(); })
@@ -377,6 +464,17 @@ function bootAsk() {
           if (!me.instagramConfigured && igButton) {
             igButton.style.display = "none";
             if (igNote) igNote.textContent = "Instagram sign-in is being set up — check back soon, or sign in with Google below.";
+          }
+          if (!me.lineConfigured && lineButton) {
+            lineButton.style.display = "none";
+            if (lineNote) lineNote.textContent = "LINE sign-in is being set up — check back soon, or sign in with Instagram or Google.";
+          }
+          if (!me.emailConfigured && emailBox) {
+            // Hide the inputs but keep the box and its note visible, so
+            // the reader sees why email sign-in is not there.
+            if (emailField && emailField.parentElement) emailField.parentElement.hidden = true;
+            if (emailCodeRow) emailCodeRow.hidden = true;
+            if (emailNote) emailNote.textContent = "Email sign-in is being set up — check back soon, or sign in with Google or Instagram above.";
           }
           applySignedIn(me);
           if (!me.signedIn) loadGoogleButton();
@@ -386,10 +484,13 @@ function bootAsk() {
         });
     }
 
-    // Sign-in result from the Instagram redirect.
+    // Sign-in result from the Instagram or LINE redirect.
     var params = new URLSearchParams(window.location.search);
     if (params.get("signedin") === "instagram" && signinStatus) {
       signinStatus.textContent = "Signed in with Instagram — thank you. Now tell your story below.";
+    }
+    if (params.get("signedin") === "line" && signinStatus) {
+      signinStatus.textContent = "Signed in with LINE — thank you. Now tell your story below.";
     }
     if (params.get("signin") === "failed" && signinStatus) {
       signinStatus.textContent = "That sign-in did not go through — please try again, or sign in with Google.";
