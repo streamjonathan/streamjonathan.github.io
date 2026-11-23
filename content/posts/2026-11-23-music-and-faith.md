@@ -6,13 +6,17 @@ draft: false
 shareImage: /images/music-faith/sonreal.jpg
 ---
 
-I spend a lot of time listening to small musicians on Instagram. Not the big names. The ones with a guitar in a bedroom, or a song recorded on a phone.
+I spend a lot of time listening to musicians across Instagram. These are some I have been listening to lately.
 
-A good song and a bit of joy can lift a whole day. I think that is true. A song can carry what a lecture never could. It can hold hope, and grief, and faith, all in three minutes.
+A good song and a bit of joy can lift a whole day. I think that is true. A song can carry what a lecture never could. It can hold hope, and grief, and faith, all in three minutes. What have you been listening to lately?
 
-Paul did something like this in Athens. He used their poetry and their language, the way they already understood God. He started where people already were. I think music does that too. It meets people where they are.
+Paul did something like this in Athens. He used their poetry and their language, the way they already understood God. He started where people already were. I think music does that too. It meets people where they are. Have you ever heard God in a song that was not a worship song?
 
-These are twelve musicians I have been listening to lately. They are not all singing worship songs. Most of them are just singing about life, and faith is part of it. That is what I like about them. Tap a card to watch the song on Instagram.
+They are not all singing worship songs. Most of them are just singing about life, and faith is part of it. That is what I like about them. Tap a card to watch the song on Instagram.
+
+I also made a reaction video to SonReal's new song. You can watch it here:
+
+[My reaction to SonReal's new video](https://www.youtube.com/shorts/wePjZMr6beE)
 
 <div class="ig-grid">
 <a class="ig-card" href="https://www.instagram.com/reel/DgBgmKwB84s/" target="_blank" rel="noopener">
@@ -58,7 +62,7 @@ These are twelve musicians I have been listening to lately. They are not all sin
 <a class="ig-card" href="https://www.instagram.com/reel/Df71X0lzZsN/" target="_blank" rel="noopener">
 <img class="ig-card__img" src="/images/music-faith/allison_eide.jpg" alt="Allison Eide" loading="lazy" width="150" height="150">
 <span class="ig-card__text"><span class="ig-card__name">Allison Eide</span>
-<span class="ig-card__note">"Jesus is kind. Tour is a gift." Her songs, played for 3,000 people back home.</span></span>
+<span class="ig-card__note">"Jesus is kind. Tour is a gift." Her songs, played back home.</span></span>
 </a>
 <a class="ig-card" href="https://www.instagram.com/reel/DgD31mXBDcn/" target="_blank" rel="noopener">
 <img class="ig-card__img" src="/images/music-faith/rachelpurcellmusic.jpg" alt="Rachel Purcell" loading="lazy" width="150" height="150">
@@ -77,6 +81,8 @@ These are twelve musicians I have been listening to lately. They are not all sin
 </a>
 </div>
 
-I wonder which songs have carried you. What song has held your faith when words ran out?
+I wonder which songs have carried you. What song has held your faith when words ran out? And which of these twelve would you listen to first?
+
+Let me know what you are listening to. I am always looking for new songs.
 
 Thanks for stopping by.
