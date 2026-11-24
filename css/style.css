@@ -421,7 +421,7 @@ button[type="submit"] {
 /* Featured carousel: the newest articles in a slow-moving row, same
    scroll-snap pattern as the Watch row. The reader can swipe or scroll
    it by hand; the script below moves it along gently when left alone. */
-/* Get involved: the reader forms, at the top, in a gold box so they pop out. */
+/* Get involved: the reader forms, just above the footer, in a gold box so they pop out. */
 .get-involved {
   border: 2px solid var(--link);
   border-radius: 0.5rem;
