@@ -9,6 +9,8 @@ A name and a link is enough — and a few words about why them. I read everythin
 
 Know someone already? Tap their photo and the form fills itself in — then just add a few words about why them, and send.
 
+<p class="row-hint">Swipe for more artists <span aria-hidden="true">→</span></p>
+
 <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-auto-carousel>
 {% for artist in suggest_carousel %}
   <button type="button" class="suggest-pick" role="listitem" data-artist="{{ artist.name }}" data-link="{{ artist.profile }}" title="Suggest {{ artist.name }}">

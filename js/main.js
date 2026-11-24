@@ -115,7 +115,17 @@ document.addEventListener("click", function (e) {
     });
     return best;
   }
+  // Long rows get a progress bar + "3 of 94" counter instead of one
+  // dot per slide — a hundred dots would run the page heaps wide.
+  var useProgress = cards.length > 12;
+  var progressBar = null, progressFill = null, countEl = null;
   function markDot() {
+    if (useProgress) {
+      if (progressFill) progressFill.style.width = ((index + 1) / cards.length * 100) + "%";
+      if (countEl) countEl.textContent = (index + 1) + " of " + cards.length;
+      if (progressBar) progressBar.setAttribute("aria-valuenow", String(index + 1));
+      return;
+    }
     dots.forEach(function (dot, i) {
       if (i === index) dot.setAttribute("aria-current", "true");
       else dot.removeAttribute("aria-current");
@@ -152,17 +162,37 @@ document.addEventListener("click", function (e) {
   function touch() { paused = false; resumeAt = Date.now() + 5000; }
 
   if (dotsWrap) {
-    for (var d = 0; d < cards.length; d++) {
-      var dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = "featured-dot";
-      dot.setAttribute("role", "tab");
-      dot.setAttribute("aria-label", "Go to article " + (d + 1));
-      (function (i) {
-        dot.addEventListener("click", function () { show(i); touch(); });
-      })(d);
-      dotsWrap.appendChild(dot);
-      dots.push(dot);
+    if (useProgress) {
+      dotsWrap.classList.add("featured-dots--progress");
+      dotsWrap.removeAttribute("role");
+      var label = dotsWrap.getAttribute("aria-label") || "Position in list";
+      dotsWrap.removeAttribute("aria-label");
+      progressBar = document.createElement("div");
+      progressBar.className = "featured-progress";
+      progressBar.setAttribute("role", "progressbar");
+      progressBar.setAttribute("aria-label", label);
+      progressBar.setAttribute("aria-valuemin", "1");
+      progressBar.setAttribute("aria-valuemax", String(cards.length));
+      progressFill = document.createElement("span");
+      progressFill.className = "featured-progress__fill";
+      progressBar.appendChild(progressFill);
+      dotsWrap.appendChild(progressBar);
+      countEl = document.createElement("span");
+      countEl.className = "featured-count";
+      dotsWrap.appendChild(countEl);
+    } else {
+      for (var d = 0; d < cards.length; d++) {
+        var dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "featured-dot";
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", "Go to article " + (d + 1));
+        (function (i) {
+          dot.addEventListener("click", function () { show(i); touch(); });
+        })(d);
+        dotsWrap.appendChild(dot);
+        dots.push(dot);
+      }
     }
   }
   row.addEventListener("pointerdown", function () { paused = true; });
