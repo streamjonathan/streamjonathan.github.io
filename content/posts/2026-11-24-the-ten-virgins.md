@@ -6,13 +6,10 @@ draft: false
 pillar: 10
 article_number: 27
 passage: "Matthew 25:1-13"
-shareImage: /images/jesus-teachings/article-27-the-ten-virgins.jpg
 description: "Five virgins took oil with their lamps, and five did not — and the bridegroom came at midnight."
 ---
 
-<img src="/images/jesus-teachings/article-27-the-ten-virgins.jpg" alt="The Parable of the Wise and Foolish Virgins, by Hieronymus Francken II" loading="lazy">
 
-*The Parable of the Wise and Foolish Virgins, Hieronymus Francken II, public domain.*
 
 We all know what it feels like to be caught unprepared.
 
