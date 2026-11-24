@@ -81,11 +81,18 @@
       });
       return;
     }
+    // Scroll to the start of the line (Jonathan), then follow it up as
+    // each step lights — the page glides with the trace instead of the
+    // progress happening off-screen.
+    if (steps.length) {
+      steps[0].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
     steps.forEach(function (el, i) {
       timers.push(
         setTimeout(function () {
           el.classList.add("is-lit");
-        }, 400 + i * 650)
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 400 + i * 500)
       );
     });
   }

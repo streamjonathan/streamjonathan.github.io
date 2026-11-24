@@ -2,16 +2,20 @@
 title: "My Family Tree — Mon arbre généalogique"
 slug: family-tree
 layout: layouts/base.njk
-pageStylesheet: /css/family-tree.css?v=2
-pageScript: /js/family-tree.js?v=1
+pageStylesheet: /css/family-tree.css?v=3
+pageScript: /js/family-tree.js?v=2
 ---
 
 {% macro personCard(id, step) %}
 {% set p = familyTree.people[id] %}
 {% set nameFr = p.name.fr if p.name.fr else p.name %}
 {% set nameEn = p.name.en if p.name.en else p.name %}
-<article class="person{% if p.key %} person--key{% endif %}" data-person="{{ id }}" data-step="{{ step }}">
+<article class="person{% if p.key %} person--key{% endif %}" data-person="{{ id }}"{% if step is defined %} data-step="{{ step }}"{% endif %}>
+  {% if p.photo %}
+  <img class="person__photo-img" src="{{ p.photo }}" alt="" loading="lazy">
+  {% else %}
   <div class="person__photo" aria-hidden="true"></div>
+  {% endif %}
   <button type="button" class="person__head" aria-expanded="false" aria-controls="detail-{{ id }}">
     <span class="person__name"><span class="lang-fr">{{ nameFr }}</span><span class="lang-en">{{ nameEn }}</span></span>
     <span class="person__role"><span class="lang-fr">{{ p.role.fr }}</span><span class="lang-en">{{ p.role.en }}</span></span>
@@ -44,7 +48,7 @@ pageScript: /js/family-tree.js?v=1
   <p class="family-tree__intro"><span class="lang-fr">{{ para.fr }}</span><span class="lang-en">{{ para.en }}</span></p>
   {% endfor %}
 
-  <p class="family-tree__bonetxea"><span class="lang-fr">Il existe aussi un lien plus ancien entre le Pays basque et Tahiti : <a href="https://getariaturismo.eus/en/domingo-de-bonechea/">Domingo Bonetxea</a> est né à <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, a navigué jusqu'à Tahiti, et est mort à <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> en 1775.</span><span class="lang-en">There is an older link between the Basque Country and Tahiti, too: <a href="https://getariaturismo.eus/en/domingo-de-bonechea/">Domingo Bonetxea</a> was born in <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, sailed to Tahiti, and died in <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> in 1775.</span></p>
+  <p class="family-tree__bonetxea"><span class="lang-fr">Il existe aussi un lien plus ancien entre le Pays basque et Tahiti : <a href="/domingo-bonetxea/">Domingo Bonetxea</a> est né à <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, a navigué jusqu'à Tahiti, et est mort à <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> en 1775.</span><span class="lang-en">There is an older link between the Basque Country and Tahiti, too: <a href="/domingo-bonetxea/">Domingo Bonetxea</a> was born in <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, sailed to Tahiti, and died in <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> in 1775.</span></p>
 
   <p class="family-tree__contact">
     <a href="#" data-contact-email data-contact-email-text>Email me</a>
@@ -59,17 +63,80 @@ pageScript: /js/family-tree.js?v=1
   <p class="family-tree__hint"><span class="lang-fr">{{ familyTree.tapHint.fr }}</span><span class="lang-en">{{ familyTree.tapHint.en }}</span></p>
 
   <div class="family-tree">
+    <div class="family-tree__couple" data-step="14">
+      {{ personCard("john-hunter", 14) }}
+      {{ personCard("mary-armstrong", 14) }}
+    </div>
+    <p class="family-tree__marriage" data-step="14"><span class="lang-fr">{{ familyTree.marriageChipTop.fr }}</span><span class="lang-en">{{ familyTree.marriageChipTop.en }}</span></p>
+    <div class="family-tree__connector" data-step="13" aria-hidden="true"></div>
     <div class="family-tree__couple" data-step="12">
       {{ personCard("john", 12) }}
       {{ personCard("susannah", 12) }}
     </div>
     <p class="family-tree__marriage" data-step="12"><span class="lang-fr">{{ familyTree.marriageChip.fr }}</span><span class="lang-en">{{ familyTree.marriageChip.en }}</span></p>
+    <div class="family-tree__branches">
+      <h2><span class="lang-fr">{{ familyTree.branches.susannahParents.heading.fr }}</span><span class="lang-en">{{ familyTree.branches.susannahParents.heading.en }}</span></h2>
+      <div class="family-tree__couple">
+        {{ personCard("robert-flanagan") }}
+        {{ personCard("ann-marsh") }}
+      </div>
+      <h2><span class="lang-fr">{{ familyTree.branches.johnChildren.heading.fr }}</span><span class="lang-en">{{ familyTree.branches.johnChildren.heading.en }}</span></h2>
+      <p class="family-tree__note"><span class="lang-fr">{{ familyTree.branches.johnChildren.note.fr }}</span><span class="lang-en">{{ familyTree.branches.johnChildren.note.en }}</span></p>
+      <div class="family-tree__children">
+        {{ personCard("john-junior") }}
+        {{ personCard("eliza-hunter") }}
+        {{ personCard("hephzibah") }}
+        {{ personCard("thomas") }}
+        {{ personCard("mary-hunter") }}
+        {{ personCard("suzannah-junior") }}
+        {{ personCard("jane-adelaide") }}
+        {{ personCard("emma-anna") }}
+        {{ personCard("mathilda") }}
+        {{ personCard("edouard") }}
+      </div>
+    </div>
+
     <div class="family-tree__connector" data-step="11" aria-hidden="true"></div>
     {{ personCard("alexandre", 10) }}
     <div class="family-tree__connector" data-step="9" aria-hidden="true"></div>
     {{ personCard("alexandre-edgar", 8) }}
+
+    <div class="family-tree__branches">
+      <h2><span class="lang-fr">{{ familyTree.branches.edgarChildren.heading.fr }}</span><span class="lang-en">{{ familyTree.branches.edgarChildren.heading.en }}</span></h2>
+      <p class="family-tree__note"><span class="lang-fr">{{ familyTree.branches.edgarChildren.note.fr }}</span><span class="lang-en">{{ familyTree.branches.edgarChildren.note.en }}</span></p>
+      <div class="family-tree__children">
+        {{ personCard("john-william") }}
+        {{ personCard("alexander-twin") }}
+        {{ personCard("martha-ervine") }}
+        {{ personCard("francis-hunter") }}
+        {{ personCard("william-charles") }}
+        {{ personCard("violet-rebecca") }}
+        {{ personCard("alexander-ernest") }}
+      </div>
+    </div>
+
+    <div class="family-tree__branches">
+      <h2><span class="lang-fr">{{ familyTree.branches.jackParents.heading.fr }}</span><span class="lang-en">{{ familyTree.branches.jackParents.heading.en }}</span></h2>
+      <div class="family-tree__couple">
+        {{ personCard("john-mccallum") }}
+        {{ personCard("elizabeth-reid") }}
+      </div>
+    </div>
     <div class="family-tree__connector" data-step="7" aria-hidden="true"></div>
-    {{ personCard("amy", 6) }}
+    <div class="family-tree__couple" data-step="6">
+      {{ personCard("amy", 6) }}
+      {{ personCard("jack-reid", 6) }}
+    </div>
+    <p class="family-tree__marriage" data-step="6"><span class="lang-fr">{{ familyTree.marriageChipAmy.fr }}</span><span class="lang-en">{{ familyTree.marriageChipAmy.en }}</span></p>
+
+    <div class="family-tree__branches">
+      <h2><span class="lang-fr">{{ familyTree.branches.amyChildren.heading.fr }}</span><span class="lang-en">{{ familyTree.branches.amyChildren.heading.en }}</span></h2>
+      <p class="family-tree__note"><span class="lang-fr">{{ familyTree.branches.amyChildren.note.fr }}</span><span class="lang-en">{{ familyTree.branches.amyChildren.note.en }}</span></p>
+      <div class="family-tree__children">
+        {{ personCard("alex-mccallum") }}
+      </div>
+    </div>
+
     <div class="family-tree__connector" data-step="5" aria-hidden="true"></div>
     {{ personCard("john-stewart", 4) }}
     <div class="family-tree__connector" data-step="3" aria-hidden="true"></div>
@@ -91,4 +158,6 @@ pageScript: /js/family-tree.js?v=1
     </div>
     <p class="share__copied" id="copy-feedback" hidden>Link copied — thanks for sharing.</p>
   </section>
+
+  {% include "comments.njk" %}
 </article>
