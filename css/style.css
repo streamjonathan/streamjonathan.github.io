@@ -51,6 +51,10 @@ html[data-theme="light"] {
   --btn-text: #faf9f6;
 }
 * { box-sizing: border-box; }
+/* The page itself never scrolls sideways: every sideways row scrolls
+   inside its own container. `clip` (not `hidden`) keeps the page from
+   moving without turning it into a scroll container. */
+html, body { overflow-x: clip; }
 body {
   margin: 0 auto;
   max-width: 40rem;
@@ -415,7 +419,10 @@ button[type="submit"] {
    until the reader taps a card. */
 .watch-section { margin-top: 2.5rem; }
 .watch-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
-.watch-card { flex: 0 0 20rem; scroll-snap-align: start; }
+.watch-row { scrollbar-width: none; }
+.watch-row::-webkit-scrollbar { display: none; }
+.watch-section.is-ready .featured-controls { display: flex; }
+.watch-card { flex: 0 0 min(20rem, 85%); scroll-snap-align: start; }
 .watch-card .video-facade { margin: 0; }
 .watch-title { font-size: 0.95rem; margin: 0.5rem 0 0; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; }
 /* Featured carousel: the newest articles in a slow-moving row, same
@@ -470,10 +477,18 @@ button[type="submit"] {
     font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted);
   }
 }
+/* Row hint: the same touch-only swipe hint for every sideways row. */
+.row-hint { display: none; }
+@media (pointer: coarse) {
+  .row-hint {
+    display: block; text-align: center; margin: 1.25rem 0 -0.25rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted);
+  }
+}
 .featured-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
 /* The arrows and dots are the navigation now, so the row's own
-   scrollbar is hidden. The Watch row keeps its scrollbar — it has
-   no arrows, so the scrollbar is its only hint that it scrolls. */
+   scrollbar is hidden — the Watch row too, now that it has arrows
+   and dots of its own. */
 .featured-row { scrollbar-width: none; }
 .featured-row::-webkit-scrollbar { display: none; }
 /* Cards are a little narrower than the row on phones, so the next
@@ -500,7 +515,17 @@ button[type="submit"] {
   cursor: pointer;
 }
 .featured-arrow:hover { color: var(--link); border-color: var(--link); }
-.featured-dots { display: flex; gap: 0.25rem; flex: 1; justify-content: center; }
+.featured-dots { display: flex; gap: 0.25rem; flex: 1; min-width: 0; justify-content: center; }
+/* Long rows (more than twelve slides) get a progress bar and a
+   "3 of 94" counter instead of one dot per slide — a hundred dots
+   would run the page heaps wide. The bar and counter always fit. */
+.featured-dots--progress { justify-content: stretch; gap: 0.6rem; align-items: center; }
+.featured-progress { flex: 1; min-width: 0; height: 0.35rem; background: var(--line); border-radius: 999px; overflow: hidden; }
+.featured-progress__fill { display: block; height: 100%; width: 0; background: var(--link); border-radius: 999px; transition: width .3s ease; }
+.featured-count { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+@media (max-width: 40rem) {
+  .featured-dot { width: 1.25rem; height: 1.25rem; min-height: 1.25rem; }
+}
 .featured-dot {
   width: 1.5rem; height: 1.5rem; min-height: 1.5rem; padding: 0;
   border: 0; background: none; cursor: pointer;
@@ -540,8 +565,10 @@ button[type="submit"] {
 .writing-image { display: block; width: 5rem; height: 5rem; border-radius: 50%; object-fit: cover; margin-bottom: 0.5rem; }
 .writing-image--empty { background: var(--chip-bg); border: 1px solid var(--line); }
 .writing.is-ready .featured-controls { display: flex; }
+/* On phones the card stops short of the full row, so the next card
+   always peeks in from the right — the row plainly scrolls. */
 @media (max-width: 40rem) {
-  .writing-card { flex-basis: 100%; }
+  .writing-card { flex-basis: 88%; }
 }
 /* Gentle fade-in as sections enter view. Only when JavaScript adds
    .js-fade to <html>, so without JS everything is simply visible.

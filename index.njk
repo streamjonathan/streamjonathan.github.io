@@ -68,6 +68,7 @@ eleventyExcludeFromCollections: true
 <section class="suggest-home" data-fade aria-labelledby="suggest-home-heading">
   <h2 id="suggest-home-heading">Who should I write about next?</h2>
   <p>Musicians and artists from all walks of life, including Jesus followers — tap a photo to suggest one.</p>
+  <p class="row-hint">Swipe for more artists <span aria-hidden="true">→</span></p>
   <div class="suggest-carousel" role="list" aria-label="Musicians and artists you can suggest" data-progressive data-auto-carousel>
   {% for artist in suggest_carousel %}
     {% if loop.index <= 30 %}
@@ -91,6 +92,7 @@ eleventyExcludeFromCollections: true
 <section class="lang-taster" data-fade aria-labelledby="lang-taster-heading">
   <h2 id="lang-taster-heading">Have a listen in another language</h2>
   <p>I am still learning about music — all kinds of it, from all over the world. Have a listen in another language.</p>
+  <p class="row-hint">Swipe for more languages <span aria-hidden="true">→</span></p>
   <div class="lang-taster__row" role="list" aria-label="Languages to listen in" data-auto-carousel>
   {% for lang in lang_taster %}
     <a class="lang-taster__card" role="listitem" href="{{ lang.url }}">
@@ -115,6 +117,7 @@ eleventyExcludeFromCollections: true
 
 <section class="writing" data-fade aria-labelledby="writing-heading">
   <h2 id="writing-heading">Writing</h2>
+  <p class="row-hint">More writing — swipe for the next one <span aria-hidden="true">→</span></p>
   <ul class="writing-row" data-auto-carousel>
   {% for post in collections.publishedPosts | reverse %}
     <li class="writing-card">
@@ -134,7 +137,8 @@ eleventyExcludeFromCollections: true
 
 <section class="watch-section" data-fade aria-labelledby="watch-heading">
   <h2 id="watch-heading">Watch</h2>
-  <ul class="watch-row">
+  <p class="row-hint">More videos — swipe for the next one <span aria-hidden="true">→</span></p>
+  <ul class="watch-row" data-auto-carousel data-no-auto>
   {% set shown = [] %}
   {% for post in collections.publishedPosts | reverse %}
     {% if post.data.source_video and shown | length < 6 %}
@@ -146,6 +150,11 @@ eleventyExcludeFromCollections: true
     {% endif %}
   {% endfor %}
   </ul>
+  <div class="featured-controls">
+    <button type="button" class="featured-arrow" data-carousel-prev aria-label="Previous video">‹</button>
+    <div class="featured-dots" role="tablist" aria-label="Videos"></div>
+    <button type="button" class="featured-arrow" data-carousel-next aria-label="Next video">›</button>
+  </div>
 </section>
 
 <section class="note-section" data-fade aria-labelledby="note-heading">
