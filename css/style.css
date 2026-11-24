@@ -446,16 +446,43 @@ button[type="submit"] {
 .get-involved__email { display: block; margin-top: 0.35rem; font-weight: 600; color: var(--link); }
 
 .featured { margin-top: 1.5rem; }
+/* Newest writing: the newest article leads the section as one big
+   card, so it sits at the top and is impossible to miss. The whole
+   card is one link — image, title and excerpt all tap through to
+   the article. The next nine newest follow in the row below it. */
+.featured-lead { display: block; color: var(--text); text-decoration: none; border-top: 1px solid var(--line); padding-top: 1rem; margin: 1rem 0 0; }
+.featured-lead__media { display: block; overflow: hidden; }
+.featured-lead__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.featured-lead__body { display: block; padding-top: 0.75rem; }
+.featured-lead__eyebrow { display: block; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--link); margin-bottom: 0.25rem; }
+.featured-lead__title { display: block; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 1.5rem; line-height: 1.25; transition: color .2s ease; }
+.featured-lead:hover .featured-lead__title { color: var(--link); }
+.featured-lead .meta { display: block; margin-top: 0.25rem; }
+.featured-lead .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
+.featured-lead__read { display: inline-block; margin-top: 0.5rem; color: var(--link); font-weight: 600; }
+.featured-lead__read span { display: inline-block; }
+/* Row hint: only on touch screens, where swiping works — same
+   pattern as the swipe hint on article pages. */
+.featured-row__hint { display: none; }
+@media (pointer: coarse) {
+  .featured-row__hint {
+    display: block; text-align: center; margin: 1.25rem 0 -0.25rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted);
+  }
+}
 .featured-row { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; list-style: none; padding: 0 0 0.5rem; margin: 1rem 0; }
 /* The arrows and dots are the navigation now, so the row's own
    scrollbar is hidden. The Watch row keeps its scrollbar — it has
    no arrows, so the scrollbar is its only hint that it scrolls. */
 .featured-row { scrollbar-width: none; }
 .featured-row::-webkit-scrollbar { display: none; }
-.featured-card { flex: 0 0 20rem; scroll-snap-align: start; border-top: 1px solid var(--line); padding-top: 0.9rem; }
-.featured-card a { font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; color: var(--text); transition: color .2s ease; }
-.featured-card a:hover { color: var(--link); }
-.featured-card .meta { margin-left: 0.5rem; }
+/* Cards are a little narrower than the row on phones, so the next
+   card always peeks in from the right — the row plainly scrolls. */
+.featured-card { flex: 0 0 min(20rem, 82%); scroll-snap-align: start; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+.featured-card__link { display: block; color: var(--text); text-decoration: none; }
+.featured-card__title { display: block; font-size: 1.12rem; font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; transition: color .2s ease; }
+.featured-card__link:hover .featured-card__title { color: var(--link); }
+.featured-card .meta { display: block; margin-top: 0.25rem; }
 .featured-card .excerpt { color: var(--muted); font-size: 0.95rem; margin: 0.35rem 0 0; }
 .featured-image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 0.5rem; }
 /* Featured carousel controls: arrows and dots, only shown once the
@@ -484,6 +511,19 @@ button[type="submit"] {
   transition: background .2s ease;
 }
 .featured-dot[aria-current="true"]::before { background: var(--link); }
+/* Newest writing motion: light, CSS-only, no libraries. The lead
+   image breathes very slowly and the Read arrow nudges, so the newest
+   article invites a tap without shouting. The row gives one small
+   sideways nudge the first time it scrolls into view, showing it
+   moves. All off when the reader prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .featured-lead__image { animation: lead-zoom 24s ease-in-out infinite alternate; }
+  @keyframes lead-zoom { from { transform: scale(1); } to { transform: scale(1.045); } }
+  .featured-lead__read span { animation: read-nudge 2.4s ease-in-out infinite; }
+  @keyframes read-nudge { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(5px); } }
+  .js-fade .featured.is-visible .featured-row { animation: row-nudge 1.4s ease-out 0.6s 1; }
+  @keyframes row-nudge { 0% { transform: translateX(0); } 35% { transform: translateX(-16px); } 100% { transform: translateX(0); } }
+}
 /* Writing carousel: the full list of articles in a slow-moving row, two
    cards at a time, so the page no longer runs on forever. Same
    auto-scroll, arrows and dots as the featured carousel above, and the
