@@ -327,3 +327,25 @@ html[data-theme="light"] {
     transform: none;
   }
 }
+
+/* A generic blurred image at the top of every person card. No real
+   photo of any person is shown — the same soft sea-and-sky wash for
+   everyone, in the tree's gold, silver and bronze. */
+.person__photo {
+  height: 4.5rem;
+  background:
+    radial-gradient(120% 90% at 20% 20%, rgba(232, 200, 122, 0.55), transparent 60%),
+    radial-gradient(120% 100% at 85% 30%, rgba(192, 192, 192, 0.5), transparent 55%),
+    radial-gradient(140% 120% at 50% 110%, rgba(205, 127, 50, 0.45), transparent 60%),
+    linear-gradient(160deg, #2e4a5a, #7d9db0 55%, #d9c9a3);
+}
+
+/* The Bonetxea note under the intro. */
+.family-tree__bonetxea {
+  font-size: 1rem;
+  margin: 0.75rem 0;
+}
+
+.family-tree__bonetxea a {
+  color: var(--tree-gold);
+}

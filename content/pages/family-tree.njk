@@ -1,11 +1,8 @@
 ---
 title: "My Family Tree — Mon arbre généalogique"
 slug: family-tree
-draft: true
-noindex: true
-eleventyExcludeFromCollections: true
 layout: layouts/base.njk
-pageStylesheet: /css/family-tree.css?v=1
+pageStylesheet: /css/family-tree.css?v=2
 pageScript: /js/family-tree.js?v=1
 ---
 
@@ -14,6 +11,7 @@ pageScript: /js/family-tree.js?v=1
 {% set nameFr = p.name.fr if p.name.fr else p.name %}
 {% set nameEn = p.name.en if p.name.en else p.name %}
 <article class="person{% if p.key %} person--key{% endif %}" data-person="{{ id }}" data-step="{{ step }}">
+  <div class="person__photo" aria-hidden="true"></div>
   <button type="button" class="person__head" aria-expanded="false" aria-controls="detail-{{ id }}">
     <span class="person__name"><span class="lang-fr">{{ nameFr }}</span><span class="lang-en">{{ nameEn }}</span></span>
     <span class="person__role"><span class="lang-fr">{{ p.role.fr }}</span><span class="lang-en">{{ p.role.en }}</span></span>
@@ -34,7 +32,6 @@ pageScript: /js/family-tree.js?v=1
 </article>
 {% endmacro %}
 
-<div data-pagefind-ignore>
 <article class="family-tree-page" id="family-tree" data-tree-lang="fr">
   <h1><span class="lang-fr">{{ familyTree.title.fr }}</span><span class="lang-en">{{ familyTree.title.en }}</span></h1>
 
@@ -46,6 +43,8 @@ pageScript: /js/family-tree.js?v=1
   {% for para in familyTree.intro %}
   <p class="family-tree__intro"><span class="lang-fr">{{ para.fr }}</span><span class="lang-en">{{ para.en }}</span></p>
   {% endfor %}
+
+  <p class="family-tree__bonetxea"><span class="lang-fr">Il existe aussi un lien plus ancien entre le Pays basque et Tahiti : <a href="https://getariaturismo.eus/en/domingo-de-bonechea/">Domingo Bonetxea</a> est né à <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, a navigué jusqu'à Tahiti, et est mort à <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> en 1775.</span><span class="lang-en">There is an older link between the Basque Country and Tahiti, too: <a href="https://getariaturismo.eus/en/domingo-de-bonechea/">Domingo Bonetxea</a> was born in <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, sailed to Tahiti, and died in <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> in 1775.</span></p>
 
   <p class="family-tree__contact">
     <a href="#" data-contact-email data-contact-email-text>Email me</a>
@@ -81,5 +80,15 @@ pageScript: /js/family-tree.js?v=1
 
   <p class="family-tree__privacy"><span class="lang-fr">{{ familyTree.privacyNote.fr }}</span><span class="lang-en">{{ familyTree.privacyNote.en }}</span></p>
   <p class="family-tree__about"><span class="lang-fr">{{ familyTree.aboutNote.fr }}</span><span class="lang-en">{{ familyTree.aboutNote.en }}</span></p>
+
+  <section class="share" aria-label="Share this page">
+    <p class="share__label">Share this page</p>
+    <div class="share__buttons">
+      <a class="share__btn" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&amp;url={{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">X</a>
+      <a class="share__btn" href="https://www.facebook.com/sharer/sharer.php?u={{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">Facebook</a>
+      <a class="share__btn" href="https://wa.me/?text={{ title | urlencode }}%20{{ (site.url + page.url) | urlencode }}" target="_blank" rel="noopener">WhatsApp</a>
+      <button class="share__btn" id="copy-link" type="button" data-url="{{ site.url }}{{ page.url }}">Copy link</button>
+    </div>
+    <p class="share__copied" id="copy-feedback" hidden>Link copied — thanks for sharing.</p>
+  </section>
 </article>
-</div>
