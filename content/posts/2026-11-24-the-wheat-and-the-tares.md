@@ -6,13 +6,10 @@ draft: false
 pillar: 4
 article_number: 31
 passage: "Matthew 13:24-30"
-shareImage: /images/jesus-teachings/article-31-the-wheat-and-the-tares.jpg
 description: "An enemy sowed weeds among the wheat — and the master said, let both grow together until the harvest."
 ---
 
-<img src="/images/jesus-teachings/article-31-the-wheat-and-the-tares.jpg" alt="The Parable of the Wheat and the Tares, by Abraham Bloemaert" loading="lazy">
 
-*The Parable of the Wheat and the Tares, Abraham Bloemaert, public domain.*
 
 We all know what it feels like to want to sort things out right now — to pull up what does not belong.
 
