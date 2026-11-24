@@ -320,6 +320,14 @@ button[type="submit"] {
 }
 .post-nav a { padding: 0.5rem 0; }
 .post-nav__next { margin-left: auto; text-align: right; }
+/* Swipe hint: only on touch screens, where swiping works. */
+.post-nav__hint { display: none; }
+@media (pointer: coarse) {
+  .post-nav__hint {
+    display: block; text-align: center; margin: 2rem 0 -1.25rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted);
+  }
+}
 /* Share this post: X, Facebook, WhatsApp, copy link. On every post. */
 .share { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1rem; }
 .share__label { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.95rem; margin: 0 0 0.5rem; }

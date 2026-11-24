@@ -24,6 +24,7 @@ layout: layouts/base.njk
 {% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}
 {% if prevPost or nextPost %}
+<p class="post-nav__hint">{% if nextPost and prevPost %}Swipe left for the next article · Swipe right for the previous one{% elif nextPost %}Swipe left for the next article{% else %}Swipe right for the previous one{% endif %}</p>
 <nav class="post-nav" aria-label="More writing">
   {% if prevPost %}<a class="post-nav__prev" href="{{ prevPost.url }}">← {{ prevPost.data.title }}</a>{% endif %}
   {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}
