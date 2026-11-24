@@ -28,6 +28,8 @@ She said, "Truth, Lord: yet the dogs eat of the crumbs which fall from their mas
 
 Then Jesus said to her, "O woman, great is thy faith: be it unto thee even as thou wilt." And her daughter was made whole from that very hour.
 
+*A note on the word "dogs": some have said Jesus is going back and forth in this conversation, enjoying talking in a light-hearted manner. It is difficult to understand the context of the word used here, so the reader should consider the context — and that Jesus approves of her faith and encourages her, pressing her to keep going.*
+
 Why do you think the woman did not give up? What do you make of Jesus' answer about the crumbs? And what does it say that he praised the faith of a stranger?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

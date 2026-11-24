@@ -6,13 +6,10 @@ draft: false
 pillar: 2
 article_number: 63
 passage: "John 9:1-41"
-shareImage: /images/jesus-teachings/article-63-the-man-born-blind.jpg
 description: "A man blind from birth was given sight by Jesus — and when the religious leaders questioned him, he had only one answer."
 ---
 
-<img src="/images/jesus-teachings/article-63-the-man-born-blind.jpg" alt="Christ Healing the Blind, by El Greco" loading="lazy">
 
-*Christ Healing the Blind, El Greco (c. 1570), public domain.*
 
 We all know what it feels like to be asked to explain something we cannot explain.
 

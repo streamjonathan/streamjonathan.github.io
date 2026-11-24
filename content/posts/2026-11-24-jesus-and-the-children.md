@@ -6,13 +6,10 @@ draft: false
 pillar: 8
 article_number: 45
 passage: "Mark 10:13-16"
-shareImage: /images/jesus-teachings/article-45-jesus-and-the-children.jpg
 description: "The disciples tried to turn the little children away, but Jesus was indignant — and took them in his arms."
 ---
 
-<img src="/images/jesus-teachings/article-45-jesus-and-the-children.jpg" alt="Suffer the Little Children to Come Unto Me, by Jacob Jordaens" loading="lazy">
 
-*Suffer the Little Children to Come Unto Me, Jacob Jordaens (1615), public domain.*
 
 We all know what it feels like to be told we are too small to matter.
 

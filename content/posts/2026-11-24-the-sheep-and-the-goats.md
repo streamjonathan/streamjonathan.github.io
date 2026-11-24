@@ -6,13 +6,10 @@ draft: false
 pillar: 10
 article_number: 28
 passage: "Matthew 25:31-46"
-shareImage: /images/jesus-teachings/article-28-the-sheep-and-the-goats.jpg
 description: "The King will separate the sheep from the goats — and say, as you did it to one of the least of these, you did it to me."
 ---
 
-<img src="/images/jesus-teachings/article-28-the-sheep-and-the-goats.jpg" alt="The Last Judgment, by Hans Memling" loading="lazy">
 
-*The Last Judgment, Hans Memling (c. 1467–1471), public domain.*
 
 We all know what it feels like to wonder whether the small things we do really matter.
 

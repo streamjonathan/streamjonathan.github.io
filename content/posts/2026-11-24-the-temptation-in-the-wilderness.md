@@ -6,13 +6,10 @@ draft: false
 pillar: 8
 article_number: 52
 passage: "Matthew 4:1-11"
-shareImage: /images/jesus-teachings/article-52-the-temptation-in-the-wilderness.jpg
 description: "Forty days without food, and the tempter offered him bread, a miracle, and the whole world — Jesus answered with scripture."
 ---
 
-<img src="/images/jesus-teachings/article-52-the-temptation-in-the-wilderness.jpg" alt="The Temptation of Christ, by Ary Scheffer" loading="lazy">
 
-*The Temptation of Christ, Ary Scheffer (1854), public domain.*
 
 We all know what it feels like to be hungry, tired — and tempted to take a shortcut.
 
