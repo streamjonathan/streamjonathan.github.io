@@ -2,7 +2,7 @@
 title: "I Am the Bread of Life: The Hunger That Bread Cannot Fill"
 date: 2026-11-24
 slug: bread-of-life
-draft: true
+draft: false
 pillar: 1
 article_number: 2
 shareImage: /images/jesus-teachings/article-02-loaves-fishes.jpg
@@ -13,18 +13,16 @@ description: "Jesus fed five thousand people, then said something stranger — H
 
 *The Miracle of the Loaves and the Fishes, Bartolomé Esteban Murillo (1617–1682), public domain.*
 
-The day before, Jesus had fed five thousand people with five loaves and two fish. The crowd came back the next morning. They wanted more bread.
+The day before, Jesus had fed five thousand people with five small loaves and two fish. The next morning the crowd came looking for him again. They had crossed the lake to find him. They wanted more bread.
 
-That is easy to understand. Bread fills you up. But bread never lasts. You eat, and a few hours later you are hungry again.
+Jesus said to them, "Do not work for the food that spoils. Work for the food that lasts."
 
-Jesus did not offer them more bread. He said something stranger. "I am the bread of life."
+They asked him, "What must we do to do the works God requires?"
 
-He did not say He could give them bread. He said He was the bread. The thing they were hungry for was not food. It was life itself, and He was claiming to be it.
+Jesus answered, "The work of God is this: to believe in the one he has sent."
 
-Think about what that means. Bread is ordinary. Everyone eats it. Everyone needs it. Jesus was saying that He is as basic to life as bread — and that without Him, we stay hungry no matter how much we eat.
+Then he said, "I am the bread of life. Whoever comes to me will never go hungry."
 
-C.S. Lewis put it plainly in Mere Christianity: a man who said the sort of things Jesus said could not be just a good teacher. He would have to be either out of his mind, or exactly who He claimed to be. There is no middle ground.
+He did not offer them more bread. He offered them himself.
 
-If Jesus is the bread of life, then the hunger we all feel — for meaning, for peace, for something that lasts — has an answer. And the answer is a person, not a rule.
-
-What are you hungry for that bread alone has never filled?
+What are you hungry for? What would it mean to come to him? And what keeps you from it?
