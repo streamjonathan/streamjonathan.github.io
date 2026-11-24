@@ -1,0 +1,177 @@
+/* Mind Poems — calendar grid + pop-up poems. Loaded only on /mind-poems/ (v1). */
+
+.mind-poems__intro {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  line-height: 1.45;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.mind-poems__note {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 1.5rem 0 0;
+}
+
+/* The calendar grid: 7 columns like the paper page, at every width. */
+.mind-poems__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.mind-poems__day {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.35rem 0.4rem;
+  text-align: left;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--text);
+  font: inherit;
+}
+
+.mind-poems__num {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Days with a poem: a little fuller, with an ink dot. Tap to read. */
+button.mind-poems__day {
+  cursor: pointer;
+}
+
+button.mind-poems__day:hover,
+button.mind-poems__day:focus-visible {
+  background: var(--chip-bg);
+}
+
+button.mind-poems__day:active {
+  transform: scale(0.97);
+}
+
+.mind-poems__day--filled {
+  background: var(--chip-bg);
+}
+
+.mind-poems__day--filled .mind-poems__num {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.mind-poems__dot {
+  position: absolute;
+  right: 0.45rem;
+  bottom: 0.45rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--link);
+}
+
+/* Day 4 is boxed in ink on the paper — same here, a hand-drawn border. */
+.mind-poems__day--boxed {
+  border: 2px solid var(--text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+/* The pop-up: a native dialog, poem in a handwriting-style face. */
+.mind-poems__dialog {
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 10px;
+  padding: 1.75rem 1.5rem 1.5rem;
+  max-width: 26rem;
+  width: calc(100vw - 2.5rem);
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+.mind-poems__dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.mind-poems__dialog h2 {
+  margin: 0 0 1rem;
+  font-size: 1rem;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.mind-poems__poem {
+  font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
+  font-size: 1.4rem;
+  line-height: 1.65;
+  margin: 0 0 1.5rem;
+}
+
+.mind-poems__nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.mind-poems__nav button {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.mind-poems__nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.mind-poems__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: transparent;
+  border: 0;
+  color: var(--muted);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+@keyframes mind-poems-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+}
+
+.mind-poems__dialog[open] {
+  animation: mind-poems-pop 0.25s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mind-poems__dialog[open] {
+    animation: none;
+  }
+
+  button.mind-poems__day:active {
+    transform: none;
+  }
+}
+
+@media (min-width: 40rem) {
+  .mind-poems__day {
+    min-height: 4.5rem;
+  }
+}
