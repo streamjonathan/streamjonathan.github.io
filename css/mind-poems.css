@@ -1,4 +1,20 @@
-/* Mind Poems — calendar grid + pop-up poems. Loaded only on /mind-poems/ (v1). */
+/* Mind Poems — calendar grid + pop-up poems. Loaded only on /mind-poems/ (v2).
+   Restyled with the site fonts: Fraunces for day numbers and poem text,
+   Newsreader for labels and small text, gold/silver/bronze rotating
+   accents — the same three colours as the thumbnails and quote cards. */
+
+:root {
+  --poem-gold: #e8c87a;
+  --poem-silver: #c0c0c0;
+  --poem-bronze: #cd7f32;
+}
+
+/* Day: warm paper, never white — deepen the accents so they still read. */
+html[data-theme="light"] {
+  --poem-gold: #7a5a10;
+  --poem-silver: #6e6e6e;
+  --poem-bronze: #8a5a1d;
+}
 
 .mind-poems__intro {
   font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
@@ -37,9 +53,11 @@
 }
 
 .mind-poems__num {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   font-size: 0.85rem;
   color: var(--muted);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 /* Days with a poem: a little fuller, with an ink dot. Tap to read. */
@@ -61,8 +79,21 @@ button.mind-poems__day:active {
 }
 
 .mind-poems__day--filled .mind-poems__num {
-  color: var(--text);
+  font-size: 1.05rem;
   font-weight: 600;
+}
+
+/* Rotating accents, in filled-day order: gold, silver, bronze, repeat. */
+button.mind-poems__day:nth-of-type(3n + 1) .mind-poems__num {
+  color: var(--poem-gold);
+}
+
+button.mind-poems__day:nth-of-type(3n + 2) .mind-poems__num {
+  color: var(--poem-silver);
+}
+
+button.mind-poems__day:nth-of-type(3n) .mind-poems__num {
+  color: var(--poem-bronze);
 }
 
 .mind-poems__dot {
@@ -72,7 +103,15 @@ button.mind-poems__day:active {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: var(--link);
+  background: var(--poem-gold);
+}
+
+button.mind-poems__day:nth-of-type(3n + 2) .mind-poems__dot {
+  background: var(--poem-silver);
+}
+
+button.mind-poems__day:nth-of-type(3n) .mind-poems__dot {
+  background: var(--poem-bronze);
 }
 
 /* Day 4 is boxed in ink on the paper — same here, a hand-drawn border. */
@@ -81,9 +120,10 @@ button.mind-poems__day:active {
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
-/* The pop-up: a native dialog, poem in a handwriting-style face. */
+/* The pop-up: a native dialog, poem in Fraunces like the site headings. */
 .mind-poems__dialog {
   border: 1px solid var(--line);
+  border-top: 3px solid var(--poem-gold);
   background: var(--bg);
   color: var(--text);
   border-radius: 10px;
@@ -93,6 +133,14 @@ button.mind-poems__day:active {
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
 }
 
+.mind-poems__dialog:nth-of-type(3n + 2) {
+  border-top-color: var(--poem-silver);
+}
+
+.mind-poems__dialog:nth-of-type(3n) {
+  border-top-color: var(--poem-bronze);
+}
+
 .mind-poems__dialog::backdrop {
   background: rgba(0, 0, 0, 0.55);
 }
@@ -100,14 +148,16 @@ button.mind-poems__day:active {
 .mind-poems__dialog h2 {
   margin: 0 0 1rem;
   font-size: 1rem;
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--muted);
 }
 
 .mind-poems__poem {
-  font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   font-size: 1.4rem;
   line-height: 1.65;
   margin: 0 0 1.5rem;
