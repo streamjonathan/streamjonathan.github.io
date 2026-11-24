@@ -182,7 +182,11 @@ document.addEventListener("click", function (e) {
   }, { passive: true });
   if (section) section.classList.add("is-ready");
   markDot();
-  if (!reduceMotion) start();
+  // Rows marked data-no-auto stay still until the reader moves them:
+  // the newest-writing row sits under a lead card that already carries
+  // the motion, and a row that slides away while the reader is reading
+  // an excerpt is a tap missed.
+  if (!reduceMotion && !row.hasAttribute("data-no-auto")) start();
   });
 })();
 
