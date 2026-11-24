@@ -2,7 +2,7 @@
 title: "I and the Father Are One: The Claim That Started a Storm"
 date: 2026-11-24
 slug: i-and-the-father-are-one
-draft: true
+draft: false
 pillar: 1
 article_number: 7
 shareImage: /images/jesus-teachings/article-07-transfiguration.jpg

@@ -2,7 +2,7 @@
 title: "The Servant King: He Washed Their Feet"
 date: 2026-11-24
 slug: the-servant-king
-draft: true
+draft: false
 pillar: 1
 article_number: 9
 shareImage: /images/jesus-teachings/article-09-foot-washing.jpg

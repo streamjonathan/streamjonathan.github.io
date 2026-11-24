@@ -2,7 +2,7 @@
 title: "The Glory He Had Before the World Began: A Prayer from Before Time"
 date: 2026-11-24
 slug: the-glory-before-the-world
-draft: true
+draft: false
 pillar: 1
 article_number: 13
 shareImage: /images/jesus-teachings/article-13-creation-of-adam.jpg

@@ -2,7 +2,7 @@
 title: "I Am the Resurrection and the Life: Said at a Grave"
 date: 2026-11-24
 slug: the-resurrection-and-the-life
-draft: true
+draft: false
 pillar: 1
 article_number: 8
 shareImage: /images/jesus-teachings/article-08-raising-lazarus.jpg

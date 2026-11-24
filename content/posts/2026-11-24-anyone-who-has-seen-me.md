@@ -2,7 +2,7 @@
 title: "Anyone Who Has Seen Me Has Seen the Father: Look at Jesus"
 date: 2026-11-24
 slug: anyone-who-has-seen-me
-draft: true
+draft: false
 pillar: 1
 article_number: 11
 shareImage: /images/jesus-teachings/article-11-pantocrator.jpg

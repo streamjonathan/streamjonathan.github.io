@@ -2,7 +2,7 @@
 title: "I Am the Way, the Truth, and the Life: No Other Road"
 date: 2026-11-24
 slug: the-way-the-truth-and-the-life
-draft: true
+draft: false
 pillar: 1
 article_number: 10
 shareImage: /images/jesus-teachings/article-10-last-supper.jpg

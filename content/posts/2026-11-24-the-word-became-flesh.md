@@ -2,7 +2,7 @@
 title: "The Word Became Flesh: God Came to Live Among Us"
 date: 2026-11-24
 slug: the-word-became-flesh
-draft: true
+draft: false
 pillar: 1
 article_number: 4
 shareImage: /images/jesus-teachings/article-04-nativity.jpg

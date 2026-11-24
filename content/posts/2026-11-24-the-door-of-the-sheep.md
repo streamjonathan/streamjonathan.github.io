@@ -2,7 +2,7 @@
 title: "I Am the Door: The Way In Is a Person"
 date: 2026-11-24
 slug: the-door-of-the-sheep
-draft: true
+draft: false
 pillar: 1
 article_number: 5
 shareImage: /images/jesus-teachings/article-05-sheepfold-moonlight.jpg

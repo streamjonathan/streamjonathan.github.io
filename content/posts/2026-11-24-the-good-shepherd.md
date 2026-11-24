@@ -2,7 +2,7 @@
 title: "I Am the Good Shepherd: He Knows His Sheep by Name"
 date: 2026-11-24
 slug: the-good-shepherd
-draft: true
+draft: false
 pillar: 1
 article_number: 6
 shareImage: /images/jesus-teachings/article-06-good-shepherd.jpg
