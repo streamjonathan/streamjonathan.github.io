@@ -1,0 +1,85 @@
+---
+title: "My Family Tree — Mon arbre généalogique"
+slug: family-tree
+draft: true
+noindex: true
+eleventyExcludeFromCollections: true
+layout: layouts/base.njk
+pageStylesheet: /css/family-tree.css?v=1
+pageScript: /js/family-tree.js?v=1
+---
+
+{% macro personCard(id, step) %}
+{% set p = familyTree.people[id] %}
+{% set nameFr = p.name.fr if p.name.fr else p.name %}
+{% set nameEn = p.name.en if p.name.en else p.name %}
+<article class="person{% if p.key %} person--key{% endif %}" data-person="{{ id }}" data-step="{{ step }}">
+  <button type="button" class="person__head" aria-expanded="false" aria-controls="detail-{{ id }}">
+    <span class="person__name"><span class="lang-fr">{{ nameFr }}</span><span class="lang-en">{{ nameEn }}</span></span>
+    <span class="person__role"><span class="lang-fr">{{ p.role.fr }}</span><span class="lang-en">{{ p.role.en }}</span></span>
+    <span class="person__line"><span class="lang-fr">{{ p.line.fr }}</span><span class="lang-en">{{ p.line.en }}</span></span>
+    {% if p.badge %}
+    <span class="person__badge"><span class="lang-fr">{{ p.badge.fr }}</span><span class="lang-en">{{ p.badge.en }}</span></span>
+    {% endif %}
+    {% if p.status %}
+    <span class="person__status person__status--{{ p.status }}"><span class="lang-fr">{{ familyTree.statusLabels[p.status].fr }}</span><span class="lang-en">{{ familyTree.statusLabels[p.status].en }}</span></span>
+    {% endif %}
+    <span class="person__toggle" aria-hidden="true">+</span>
+  </button>
+  <div class="person__detail" id="detail-{{ id }}" hidden>
+    {% for para in p.detail %}
+    <p><span class="lang-fr">{{ para.fr }}</span><span class="lang-en">{{ para.en }}</span></p>
+    {% endfor %}
+  </div>
+</article>
+{% endmacro %}
+
+<div data-pagefind-ignore>
+<article class="family-tree-page" id="family-tree" data-tree-lang="fr">
+  <h1><span class="lang-fr">{{ familyTree.title.fr }}</span><span class="lang-en">{{ familyTree.title.en }}</span></h1>
+
+  <p class="family-tree__lang" role="group" aria-label="Language — Langue">
+    <button type="button" data-tree-lang-btn="fr" aria-pressed="true">Français</button>
+    <button type="button" data-tree-lang-btn="en" aria-pressed="false">English</button>
+  </p>
+
+  {% for para in familyTree.intro %}
+  <p class="family-tree__intro"><span class="lang-fr">{{ para.fr }}</span><span class="lang-en">{{ para.en }}</span></p>
+  {% endfor %}
+
+  <p class="family-tree__contact">
+    <a href="#" data-contact-email data-contact-email-text>Email me</a>
+    · <a href="/contact-jonathan/"><span class="lang-fr">Page de contact</span><span class="lang-en">Contact page</span></a>
+  </p>
+
+  <p class="family-tree__actions">
+    <button type="button" class="family-tree__trace" id="trace-line">
+      <span class="lang-fr">{{ familyTree.traceButton.fr }}</span><span class="lang-en">{{ familyTree.traceButton.en }}</span>
+    </button>
+  </p>
+  <p class="family-tree__hint"><span class="lang-fr">{{ familyTree.tapHint.fr }}</span><span class="lang-en">{{ familyTree.tapHint.en }}</span></p>
+
+  <div class="family-tree">
+    <div class="family-tree__couple" data-step="12">
+      {{ personCard("john", 12) }}
+      {{ personCard("susannah", 12) }}
+    </div>
+    <p class="family-tree__marriage" data-step="12"><span class="lang-fr">{{ familyTree.marriageChip.fr }}</span><span class="lang-en">{{ familyTree.marriageChip.en }}</span></p>
+    <div class="family-tree__connector" data-step="11" aria-hidden="true"></div>
+    {{ personCard("alexandre", 10) }}
+    <div class="family-tree__connector" data-step="9" aria-hidden="true"></div>
+    {{ personCard("alexandre-edgar", 8) }}
+    <div class="family-tree__connector" data-step="7" aria-hidden="true"></div>
+    {{ personCard("amy", 6) }}
+    <div class="family-tree__connector" data-step="5" aria-hidden="true"></div>
+    {{ personCard("john-stewart", 4) }}
+    <div class="family-tree__connector" data-step="3" aria-hidden="true"></div>
+    {{ personCard("father", 2) }}
+    <div class="family-tree__connector" data-step="1" aria-hidden="true"></div>
+    {{ personCard("jonathan", 0) }}
+  </div>
+
+  <p class="family-tree__privacy"><span class="lang-fr">{{ familyTree.privacyNote.fr }}</span><span class="lang-en">{{ familyTree.privacyNote.en }}</span></p>
+  <p class="family-tree__about"><span class="lang-fr">{{ familyTree.aboutNote.fr }}</span><span class="lang-en">{{ familyTree.aboutNote.en }}</span></p>
+</article>
+</div>

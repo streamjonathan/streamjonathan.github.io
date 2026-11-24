@@ -10,6 +10,7 @@
 {% if page.url != "/" %}{% set pageDescription = content | excerpt %}{% endif %}
 <meta name="description" content="{{ pageDescription }}">
 <meta name="author" content="{{ site.author }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
 <link rel="canonical" href="{{ site.url }}{{ page.url }}">
 <meta property="og:site_name" content="{{ site.title }}">
 <meta property="og:title" content="{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}">
@@ -83,6 +84,8 @@
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
 <link rel="preload" href="/css/style.css?v=29" as="style">
 <link rel="stylesheet" href="/css/style.css?v=29">
+{% if pageStylesheet %}<link rel="preload" href="{{ pageStylesheet }}" as="style">
+<link rel="stylesheet" href="{{ pageStylesheet }}">{% endif %}
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -128,6 +131,7 @@
   </div>
 </div>
 <script src="/js/main.js?v=14" defer></script>
+{% if pageScript %}<script src="{{ pageScript }}" defer></script>{% endif %}
 <script src="/js/ask.js?v=11" defer></script>
 <script src="/js/suggest.js?v=4" defer></script>
 <script src="/js/consent.js?v=1" defer></script>
