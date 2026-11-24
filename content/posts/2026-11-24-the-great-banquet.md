@@ -6,8 +6,13 @@ draft: false
 pillar: 4
 article_number: 25
 passage: "Luke 14:15-24"
+shareImage: /images/jesus-teachings/article-25-the-great-banquet.jpg
 description: "A man gave a great banquet and invited many — but one by one, they all made excuses."
 ---
+
+<img src="/images/jesus-teachings/article-25-the-great-banquet.jpg" alt="The Wedding Feast, by Eugène Burnand" loading="lazy">
+
+*The Wedding Feast, Eugène Burnand (1908), public domain.*
 
 
 

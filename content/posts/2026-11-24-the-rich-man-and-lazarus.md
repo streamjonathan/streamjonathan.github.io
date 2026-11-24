@@ -6,8 +6,13 @@ draft: false
 pillar: 5
 article_number: 36
 passage: "Luke 16:19-31"
+shareImage: /images/jesus-teachings/article-36-the-rich-man-and-lazarus.jpg
 description: "A rich man feasted every day while Lazarus lay at his gate. Then both men died — and everything changed."
 ---
+
+<img src="/images/jesus-teachings/article-36-the-rich-man-and-lazarus.jpg" alt="Lazarus and the Rich Man, by Jacopo Bassano" loading="lazy">
+
+*Lazarus and the Rich Man, Jacopo Bassano (c. 1550), public domain.*
 
 We all walk past people in need. Most days we barely notice.
 

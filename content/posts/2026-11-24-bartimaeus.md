@@ -6,8 +6,13 @@ draft: false
 pillar: 2
 article_number: 41
 passage: "Mark 10:46-52"
+shareImage: /images/jesus-teachings/article-41-bartimaeus.jpg
 description: "A blind beggar by the roadside would not be silenced. He shouted louder — and Jesus stopped."
 ---
+
+<img src="/images/jesus-teachings/article-41-bartimaeus.jpg" alt="Healing of the Blind Men of Jericho, by Byzantine mosaic, Sant'Apollinare Nuovo, Ravenna" loading="lazy">
+
+*Healing of the Blind Men of Jericho, Byzantine mosaic, Sant'Apollinare Nuovo, Ravenna (early 6th century), public domain.*
 
 We all know what it feels like to be told to keep quiet.
 

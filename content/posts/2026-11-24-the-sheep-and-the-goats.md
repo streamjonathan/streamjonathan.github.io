@@ -6,8 +6,13 @@ draft: false
 pillar: 10
 article_number: 28
 passage: "Matthew 25:31-46"
+shareImage: /images/jesus-teachings/article-28-the-sheep-and-the-goats.jpg
 description: "The King will separate the sheep from the goats — and say, as you did it to one of the least of these, you did it to me."
 ---
+
+<img src="/images/jesus-teachings/article-28-the-sheep-and-the-goats.jpg" alt="Separation of Sheep and Goats, by Byzantine mosaic, Sant'Apollinare Nuovo, Ravenna" loading="lazy">
+
+*Separation of Sheep and Goats, Byzantine mosaic, Sant'Apollinare Nuovo, Ravenna (original early 6th century), public domain.*
 
 
 

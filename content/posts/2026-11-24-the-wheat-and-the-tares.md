@@ -6,8 +6,13 @@ draft: false
 pillar: 4
 article_number: 31
 passage: "Matthew 13:24-30"
+shareImage: /images/jesus-teachings/article-31-the-wheat-and-the-tares.jpg
 description: "An enemy sowed weeds among the wheat — and the master said, let both grow together until the harvest."
 ---
+
+<img src="/images/jesus-teachings/article-31-the-wheat-and-the-tares.jpg" alt="The Enemy Who Sows, by James Tissot" loading="lazy">
+
+*The Enemy Who Sows, James Tissot (c. 1886–1894), public domain.*
 
 
 
