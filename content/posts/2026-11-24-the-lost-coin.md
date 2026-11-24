@@ -2,7 +2,7 @@
 title: "The Lost Coin: She Sweeps the Whole House"
 date: 2026-11-24
 slug: the-lost-coin
-draft: true
+draft: false
 pillar: 5
 article_number: 19
 passage: "Luke 15:8-10"

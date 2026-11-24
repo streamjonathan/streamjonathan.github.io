@@ -2,7 +2,7 @@
 title: "The Lord's Prayer: Our Father in Heaven"
 date: 2026-11-24
 slug: the-lords-prayer
-draft: true
+draft: false
 pillar: 6
 article_number: 55
 passage: "Matthew 6:9-13"

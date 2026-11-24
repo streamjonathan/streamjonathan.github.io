@@ -2,7 +2,7 @@
 title: "The Persistent Widow: She Would Not Stop Asking"
 date: 2026-11-24
 slug: the-persistent-widow
-draft: true
+draft: false
 pillar: 6
 article_number: 34
 passage: "Luke 18:1-8"

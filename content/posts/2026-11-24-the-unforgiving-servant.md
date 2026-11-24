@@ -2,7 +2,7 @@
 title: "The Unforgiving Servant: Forgiven Much, Forgiving Little"
 date: 2026-11-24
 slug: the-unforgiving-servant
-draft: true
+draft: false
 pillar: 5
 article_number: 20
 passage: "Matthew 18:21-35"

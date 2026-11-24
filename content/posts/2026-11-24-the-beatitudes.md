@@ -2,7 +2,7 @@
 title: "The Beatitudes: Blessed Are the Poor in Spirit"
 date: 2026-11-24
 slug: the-beatitudes
-draft: true
+draft: false
 pillar: 3
 article_number: 54
 passage: "Matthew 5:1-12"

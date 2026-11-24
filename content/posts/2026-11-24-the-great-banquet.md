@@ -2,7 +2,7 @@
 title: "The Great Banquet: The Guests Who Would Not Come"
 date: 2026-11-24
 slug: the-great-banquet
-draft: true
+draft: false
 pillar: 4
 article_number: 25
 passage: "Luke 14:15-24"

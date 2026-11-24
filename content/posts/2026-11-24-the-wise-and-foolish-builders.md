@@ -2,7 +2,7 @@
 title: "The Wise and Foolish Builders: Two Houses, One Storm"
 date: 2026-11-24
 slug: the-wise-and-foolish-builders
-draft: true
+draft: false
 pillar: 3
 article_number: 22
 passage: "Matthew 7:24-27"

@@ -2,7 +2,7 @@
 title: "The Ten Virgins: Five Were Ready, Five Were Not"
 date: 2026-11-24
 slug: the-ten-virgins
-draft: true
+draft: false
 pillar: 10
 article_number: 27
 passage: "Matthew 25:1-13"

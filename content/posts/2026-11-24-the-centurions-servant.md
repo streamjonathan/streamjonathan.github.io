@@ -2,7 +2,7 @@
 title: "The Centurion's Servant: Just Say the Word"
 date: 2026-11-24
 slug: the-centurions-servant
-draft: true
+draft: false
 pillar: 2
 article_number: 48
 passage: "Matthew 8:5-13"

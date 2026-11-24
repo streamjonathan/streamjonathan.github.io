@@ -2,7 +2,7 @@
 title: "The Leper Healed: I Am Willing"
 date: 2026-11-24
 slug: the-leper-healed
-draft: true
+draft: false
 pillar: 2
 article_number: 49
 passage: "Mark 1:40-45"

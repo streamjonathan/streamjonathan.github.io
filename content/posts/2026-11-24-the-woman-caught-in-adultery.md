@@ -2,7 +2,7 @@
 title: "The Woman Caught in Adultery: Neither Do I Condemn You"
 date: 2026-11-24
 slug: the-woman-caught-in-adultery
-draft: true
+draft: false
 pillar: 5
 article_number: 47
 passage: "John 8:1-11"

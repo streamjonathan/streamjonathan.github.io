@@ -2,7 +2,7 @@
 title: "The Ten Lepers: Only One Came Back"
 date: 2026-11-24
 slug: the-ten-lepers
-draft: true
+draft: false
 pillar: 2
 article_number: 61
 passage: "Luke 17:11-19"

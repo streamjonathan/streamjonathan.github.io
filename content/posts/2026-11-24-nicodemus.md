@@ -2,7 +2,7 @@
 title: "Nicodemus: You Must Be Born Again"
 date: 2026-11-24
 slug: nicodemus
-draft: true
+draft: false
 pillar: 1
 article_number: 57
 passage: "John 3:1-21"

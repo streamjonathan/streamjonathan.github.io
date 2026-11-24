@@ -2,7 +2,7 @@
 title: "The Unjust Steward: A Strange Story About Money"
 date: 2026-11-24
 slug: the-unjust-steward
-draft: true
+draft: false
 pillar: 5
 article_number: 35
 passage: "Luke 16:1-13"

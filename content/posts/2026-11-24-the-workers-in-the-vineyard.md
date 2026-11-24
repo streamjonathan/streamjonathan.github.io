@@ -2,7 +2,7 @@
 title: "The Workers in the Vineyard: The Last Are Paid First"
 date: 2026-11-24
 slug: the-workers-in-the-vineyard
-draft: true
+draft: false
 pillar: 4
 article_number: 26
 passage: "Matthew 20:1-16"

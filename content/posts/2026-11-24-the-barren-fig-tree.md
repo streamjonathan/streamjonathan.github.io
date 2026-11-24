@@ -2,7 +2,7 @@
 title: "The Barren Fig Tree: One More Year"
 date: 2026-11-24
 slug: the-barren-fig-tree
-draft: true
+draft: false
 pillar: 4
 article_number: 37
 passage: "Luke 13:6-9"

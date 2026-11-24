@@ -2,7 +2,7 @@
 title: "The Temptation in the Wilderness: Man Shall Not Live by Bread Alone"
 date: 2026-11-24
 slug: the-temptation-in-the-wilderness
-draft: true
+draft: false
 pillar: 8
 article_number: 52
 passage: "Matthew 4:1-11"

@@ -2,7 +2,7 @@
 title: "The Wedding at Cana: Water Turned to Wine"
 date: 2026-11-24
 slug: the-wedding-at-cana
-draft: true
+draft: false
 pillar: 2
 article_number: 62
 passage: "John 2:1-11"

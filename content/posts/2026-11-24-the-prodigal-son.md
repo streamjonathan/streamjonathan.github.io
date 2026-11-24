@@ -2,7 +2,7 @@
 title: "The Prodigal Son: The Father Who Ran to Meet Him"
 date: 2026-11-24
 slug: the-prodigal-son
-draft: true
+draft: false
 pillar: 5
 article_number: 17
 passage: "Luke 15:11-32"

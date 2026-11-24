@@ -2,7 +2,7 @@
 title: "The Talents: What Will You Do with What You Were Given?"
 date: 2026-11-24
 slug: the-talents
-draft: true
+draft: false
 pillar: 10
 article_number: 21
 passage: "Matthew 25:14-30"

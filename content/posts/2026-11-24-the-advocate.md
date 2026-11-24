@@ -2,7 +2,7 @@
 title: "The Advocate: Another Helper Who Will Be with You"
 date: 2026-11-24
 slug: the-advocate
-draft: true
+draft: false
 pillar: 10
 article_number: 32
 passage: "John 14:16-17, 26; 15:26; 16:7-15"

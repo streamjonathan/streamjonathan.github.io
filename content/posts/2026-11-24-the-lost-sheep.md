@@ -2,7 +2,7 @@
 title: "The Lost Sheep: He Leaves the Ninety-Nine"
 date: 2026-11-24
 slug: the-lost-sheep
-draft: true
+draft: false
 pillar: 5
 article_number: 18
 passage: "Luke 15:3-7"

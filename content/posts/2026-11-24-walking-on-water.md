@@ -2,7 +2,7 @@
 title: "Walking on Water: Do Not Be Afraid"
 date: 2026-11-24
 slug: walking-on-water
-draft: true
+draft: false
 pillar: 2
 article_number: 39
 passage: "Matthew 14:22-33"

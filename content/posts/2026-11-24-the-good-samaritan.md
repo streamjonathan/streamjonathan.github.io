@@ -2,7 +2,7 @@
 title: "The Good Samaritan: The Neighbour You Didn't Expect"
 date: 2026-11-24
 slug: the-good-samaritan
-draft: true
+draft: false
 pillar: 5
 article_number: 16
 passage: "Luke 10:25-37"

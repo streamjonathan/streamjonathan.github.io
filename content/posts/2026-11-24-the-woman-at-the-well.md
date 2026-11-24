@@ -2,7 +2,7 @@
 title: "The Woman at the Well: Living Water"
 date: 2026-11-24
 slug: the-woman-at-the-well
-draft: true
+draft: false
 pillar: 5
 article_number: 43
 passage: "John 4:1-42"

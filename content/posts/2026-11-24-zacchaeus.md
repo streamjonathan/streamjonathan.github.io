@@ -2,7 +2,7 @@
 title: "Zacchaeus: The Little Man Up a Tree"
 date: 2026-11-24
 slug: zacchaeus
-draft: true
+draft: false
 pillar: 5
 article_number: 42
 passage: "Luke 19:1-10"

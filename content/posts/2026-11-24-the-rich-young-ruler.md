@@ -2,7 +2,7 @@
 title: "The Rich Young Ruler: One Thing You Lack"
 date: 2026-11-24
 slug: the-rich-young-ruler
-draft: true
+draft: false
 pillar: 8
 article_number: 46
 passage: "Mark 10:17-31"

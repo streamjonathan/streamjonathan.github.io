@@ -2,7 +2,7 @@
 title: "The Sheep and the Goats: When Did We See You?"
 date: 2026-11-24
 slug: the-sheep-and-the-goats
-draft: true
+draft: false
 pillar: 10
 article_number: 28
 passage: "Matthew 25:31-46"

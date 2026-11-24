@@ -2,7 +2,7 @@
 title: "The Call of the First Disciples: Follow Me"
 date: 2026-11-24
 slug: the-call-of-the-first-disciples
-draft: true
+draft: false
 pillar: 8
 article_number: 56
 passage: "Matthew 4:18-22"

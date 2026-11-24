@@ -2,7 +2,7 @@
 title: "Bartimaeus: Son of David, Have Mercy on Me"
 date: 2026-11-24
 slug: bartimaeus
-draft: true
+draft: false
 pillar: 2
 article_number: 41
 passage: "Mark 10:46-52"

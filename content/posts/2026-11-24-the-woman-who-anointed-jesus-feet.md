@@ -2,7 +2,7 @@
 title: "The Woman Who Anointed Jesus' Feet: Her Many Sins Are Forgiven"
 date: 2026-11-24
 slug: the-woman-who-anointed-jesus-feet
-draft: true
+draft: false
 pillar: 5
 article_number: 58
 passage: "Luke 7:36-50"

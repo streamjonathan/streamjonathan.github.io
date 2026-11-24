@@ -2,7 +2,7 @@
 title: "Jairus' Daughter: Do Not Fear, Only Believe"
 date: 2026-11-24
 slug: jairus-daughter
-draft: true
+draft: false
 pillar: 2
 article_number: 50
 passage: "Mark 5:21-24, 35-43"

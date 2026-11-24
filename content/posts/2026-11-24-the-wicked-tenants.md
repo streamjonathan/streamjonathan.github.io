@@ -2,7 +2,7 @@
 title: "The Wicked Tenants: The Stone the Builders Rejected"
 date: 2026-11-24
 slug: the-wicked-tenants
-draft: true
+draft: false
 pillar: 7
 article_number: 33
 passage: "Matthew 21:33-46"

@@ -2,7 +2,7 @@
 title: "Calming the Storm: Why Are You Afraid?"
 date: 2026-11-24
 slug: calming-the-storm
-draft: true
+draft: false
 pillar: 2
 article_number: 40
 passage: "Mark 4:35-41"

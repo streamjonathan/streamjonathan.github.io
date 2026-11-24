@@ -2,7 +2,7 @@
 title: "The Pharisee and the Tax Collector: Two Men Went Up to Pray"
 date: 2026-11-24
 slug: the-pharisee-and-the-tax-collector
-draft: true
+draft: false
 pillar: 6
 article_number: 23
 passage: "Luke 18:9-14"

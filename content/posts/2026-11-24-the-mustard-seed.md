@@ -2,7 +2,7 @@
 title: "The Mustard Seed: The Smallest Seed Grows Tall"
 date: 2026-11-24
 slug: the-mustard-seed
-draft: true
+draft: false
 pillar: 4
 article_number: 15
 passage: "Matthew 13:31-32"

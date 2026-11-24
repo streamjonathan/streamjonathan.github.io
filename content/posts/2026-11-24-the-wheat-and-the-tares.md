@@ -2,7 +2,7 @@
 title: "The Wheat and the Tares: Let Them Grow Together"
 date: 2026-11-24
 slug: the-wheat-and-the-tares
-draft: true
+draft: false
 pillar: 4
 article_number: 31
 passage: "Matthew 13:24-30"

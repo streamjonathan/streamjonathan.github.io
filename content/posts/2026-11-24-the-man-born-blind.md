@@ -2,7 +2,7 @@
 title: "The Man Born Blind: One Thing I Know, I Was Blind and Now I See"
 date: 2026-11-24
 slug: the-man-born-blind
-draft: true
+draft: false
 pillar: 2
 article_number: 63
 passage: "John 9:1-41"

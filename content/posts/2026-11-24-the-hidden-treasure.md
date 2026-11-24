@@ -2,7 +2,7 @@
 title: "The Hidden Treasure: He Sold Everything He Had"
 date: 2026-11-24
 slug: the-hidden-treasure
-draft: true
+draft: false
 pillar: 4
 article_number: 29
 passage: "Matthew 13:44"

@@ -2,7 +2,7 @@
 title: "The Rich Man and Lazarus: The Man at the Gate"
 date: 2026-11-24
 slug: the-rich-man-and-lazarus
-draft: true
+draft: false
 pillar: 5
 article_number: 36
 passage: "Luke 16:19-31"

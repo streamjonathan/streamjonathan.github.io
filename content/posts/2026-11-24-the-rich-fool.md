@@ -2,7 +2,7 @@
 title: "The Rich Fool: Bigger Barns, Shorter Life"
 date: 2026-11-24
 slug: the-rich-fool
-draft: true
+draft: false
 pillar: 5
 article_number: 24
 passage: "Luke 12:13-21"

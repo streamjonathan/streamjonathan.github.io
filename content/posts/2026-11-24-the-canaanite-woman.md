@@ -2,7 +2,7 @@
 title: "The Canaanite Woman: Even the Dogs Eat the Crumbs"
 date: 2026-11-24
 slug: the-canaanite-woman
-draft: true
+draft: false
 pillar: 2
 article_number: 60
 passage: "Matthew 15:21-28"

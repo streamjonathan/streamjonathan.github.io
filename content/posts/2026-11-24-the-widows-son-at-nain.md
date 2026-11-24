@@ -2,7 +2,7 @@
 title: "The Widow's Son at Nain: Young Man, I Say to You, Arise"
 date: 2026-11-24
 slug: the-widows-son-at-nain
-draft: true
+draft: false
 pillar: 2
 article_number: 59
 passage: "Luke 7:11-17"

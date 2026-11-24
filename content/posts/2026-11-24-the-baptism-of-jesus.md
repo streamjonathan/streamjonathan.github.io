@@ -2,7 +2,7 @@
 title: "The Baptism of Jesus: This Is My Beloved Son"
 date: 2026-11-24
 slug: the-baptism-of-jesus
-draft: true
+draft: false
 pillar: 1
 article_number: 53
 passage: "Matthew 3:13-17"

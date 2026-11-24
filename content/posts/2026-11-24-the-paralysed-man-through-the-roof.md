@@ -2,7 +2,7 @@
 title: "The Paralysed Man Through the Roof: They Lowered Him Down"
 date: 2026-11-24
 slug: the-paralysed-man-through-the-roof
-draft: true
+draft: false
 pillar: 2
 article_number: 44
 passage: "Mark 2:1-12"

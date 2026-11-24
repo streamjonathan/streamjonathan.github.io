@@ -2,7 +2,7 @@
 title: "The Pearl of Great Price: One Pearl Worth Everything"
 date: 2026-11-24
 slug: the-pearl-of-great-price
-draft: true
+draft: false
 pillar: 4
 article_number: 30
 passage: "Matthew 13:45-46"

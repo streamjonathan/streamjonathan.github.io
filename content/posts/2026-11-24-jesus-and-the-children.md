@@ -2,7 +2,7 @@
 title: "Jesus and the Children: Let Them Come to Me"
 date: 2026-11-24
 slug: jesus-and-the-children
-draft: true
+draft: false
 pillar: 8
 article_number: 45
 passage: "Mark 10:13-16"

@@ -2,7 +2,7 @@
 title: "The Woman with the Bleeding: Your Faith Has Made You Well"
 date: 2026-11-24
 slug: the-woman-with-the-bleeding
-draft: true
+draft: false
 pillar: 2
 article_number: 51
 passage: "Mark 5:25-34"
