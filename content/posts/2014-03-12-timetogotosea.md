@@ -7,6 +7,8 @@ original_url: http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_url: https://web.archive.org/web/20210313202717/http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_timestamp: 20210313202717
 ---
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/03/12/timetogotosea/">日本語で読む →</a></p>
+
 Sandside I slump, on shelled shore, sun screened and sipping soda, unaware of rising tide. 
  The waves lap my feet, childish, childlike. 
  I settle into my shallow rock pool. 

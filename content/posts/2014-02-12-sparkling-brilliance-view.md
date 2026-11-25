@@ -9,6 +9,8 @@ wayback_url: https://web.archive.org/web/20140212155330/http://www.jonathanmccal
 wayback_timestamp: 20140212155330
 ---
 
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/02/12/sparkling-brilliance-view/">日本語で読む →</a></p>
+
 <img src="/images/2014-02-monet-grand-canal.jpg" alt="The Grand Canal, by Claude Monet" loading="lazy">
 
 *The Grand Canal, Claude Monet (1908), public domain.*
