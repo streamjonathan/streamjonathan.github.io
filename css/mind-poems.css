@@ -1,6 +1,6 @@
-/* Mind Poems — calendar grid + pop-up poems. Loaded only on /mind-poems/ (v2).
-   Restyled with the site fonts: Fraunces for day numbers and poem text,
-   Newsreader for labels and small text, gold/silver/bronze rotating
+/* Mind Poems — one poem a day, calendar grid + pop-up poems. Loaded only
+   on /mind-poems/ (v3). Site fonts: Fraunces for day numbers and poem
+   text, Newsreader for labels and small text, gold/silver/bronze rotating
    accents — the same three colours as the thumbnails and quote cards. */
 
 :root {
@@ -28,6 +28,94 @@ html[data-theme="light"] {
   color: var(--muted);
   font-size: 0.95rem;
   margin: 1.5rem 0 0;
+}
+
+/* One poem a day — the default view: a single poem card, like the pop-up
+   but inline. Only one article is visible at a time; the rest (and the
+   calendar, when JS hides it) stay hidden. */
+.mind-poems__today-poem[hidden],
+.mind-poems__calendar[hidden] {
+  display: none;
+}
+
+.mind-poems__today-label {
+  font-family: "Newsreader", Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  font-size: 1rem;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}
+
+.mind-poems__today-poem {
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-top: 3px solid var(--poem-gold);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem 1.25rem;
+  margin: 0 0 1rem;
+}
+
+/* Rotating accents, in poem order: gold, silver, bronze, repeat. */
+.mind-poems__today-poem:nth-of-type(3n + 2) {
+  border-top-color: var(--poem-silver);
+}
+
+.mind-poems__today-poem:nth-of-type(3n) {
+  border-top-color: var(--poem-bronze);
+}
+
+.mind-poems__today-day {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--poem-gold);
+  margin: 0 0 1rem;
+}
+
+.mind-poems__today-poem:nth-of-type(3n + 2) .mind-poems__today-day {
+  color: var(--poem-silver);
+}
+
+.mind-poems__today-poem:nth-of-type(3n) .mind-poems__today-day {
+  color: var(--poem-bronze);
+}
+
+/* Day 4 is boxed in ink on the paper — same hand-drawn border here. */
+.mind-poems__today-poem.mind-poems__today-poem--boxed {
+  border: 2px solid var(--text);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+.mind-poems__poem--today {
+  font-size: 1.6rem;
+  margin-bottom: 0;
+}
+
+.mind-poems__today-nav {
+  margin: 0 0 1.5rem;
+}
+
+.mind-poems__calendar-link {
+  margin: 0 0 1.5rem;
+}
+
+.mind-poems__calendar-toggle {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.mind-poems__calendar-toggle:hover,
+.mind-poems__calendar-toggle:focus-visible {
+  background: var(--chip-bg);
 }
 
 /* The calendar grid: 7 columns like the paper page, at every width. */

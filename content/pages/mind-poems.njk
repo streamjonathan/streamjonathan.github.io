@@ -1,12 +1,40 @@
 ---
 title: "Mind Poems"
 slug: mind-poems
-pageStylesheet: /css/mind-poems.css?v=2
-pageScript: /js/mind-poems.js?v=1
+pageStylesheet: /css/mind-poems.css?v=3
+pageScript: /js/mind-poems.js?v=2
 ---
 
-<p class="mind-poems__intro">One small poem a day, written by hand in the boxes of a calendar. Tap a day to read it.</p>
+{# One poem a day: the day of the month cycles through the poems.
+   Day 2 shows poem 2, … day 7 shows poem 7, day 8 shows poem 2 again:
+   index = (dayOfMonth - 2) mod 6, so day 1 shows poem 7. Every day of
+   the month shows a poem, and the cycle grows on its own if a poem is
+   added to mindPoems.json. JS re-picks today's poem from the reader's
+   own clock on load; the poem below is the build-date default, so the
+   page still shows a poem with JS off. #}
+{% set todayNum = page.date.getDate() %}
+{% set defaultIndex = ((todayNum - 2) % 6 + 6) % 6 %}
+{% set defaultPoem = mindPoems[defaultIndex] %}
 
+<p class="mind-poems__intro">One small poem a day, written by hand in the boxes of a calendar.</p>
+
+<section class="mind-poems__today" aria-label="Today's poem">
+  <p class="mind-poems__today-label" data-today-label>Today's poem</p>
+  {% for poem in mindPoems %}
+  <article class="mind-poems__today-poem{% if poem.boxed %} mind-poems__today-poem--boxed{% endif %}" data-today-poem="{{ poem.day }}"{% if poem.day != defaultPoem.day %} hidden{% endif %}>
+    <h2 class="mind-poems__today-day">Day {{ poem.day }}</h2>
+    <p class="mind-poems__poem mind-poems__poem--today">{% for line in poem.lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
+  </article>
+  {% endfor %}
+  <p class="mind-poems__nav mind-poems__today-nav">
+    <button type="button" data-today-prev>← Previous day</button>
+    <button type="button" data-today-next>Next day →</button>
+  </p>
+</section>
+
+<p class="mind-poems__calendar-link"><button type="button" class="mind-poems__calendar-toggle" data-calendar-toggle aria-expanded="false" aria-controls="mind-poems-calendar">View the full calendar</button></p>
+
+<section class="mind-poems__calendar" id="mind-poems-calendar" aria-label="Full calendar">
 <div class="mind-poems__grid" data-fade>
 {% for day in range(1, 32) %}
 {% set poem = none %}
@@ -21,6 +49,7 @@ pageScript: /js/mind-poems.js?v=1
 {% endif %}
 {% endfor %}
 </div>
+</section>
 
 {% for poem in mindPoems %}
 {% set prev = mindPoems[loop.index0 - 1] if loop.index0 > 0 else none %}
