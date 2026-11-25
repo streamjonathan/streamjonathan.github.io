@@ -24,7 +24,11 @@ layout: layouts/base.njk
 {% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
 {% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}
 {% if prevPost or nextPost %}
-<p class="post-nav__hint">{% if nextPost and prevPost %}Swipe left for the next article · Swipe right for the previous one{% elif nextPost %}Swipe left for the next article{% else %}Swipe right for the previous one{% endif %}</p>
+<div class="post-nav__swipe">
+  {% if prevPost %}<a class="post-nav__swipe-arrow" href="{{ prevPost.url }}" aria-label="Previous article: {{ prevPost.data.title }}">‹</a>{% else %}<span class="post-nav__swipe-arrow post-nav__swipe-arrow--off" aria-hidden="true">‹</span>{% endif %}
+  <p class="post-nav__swipe-label">Swipe<span class="post-nav__swipe-sub">{% if nextPost and prevPost %}left for the next article · right to go back{% elif nextPost %}left for the next article{% else %}right for the previous article{% endif %}</span></p>
+  {% if nextPost %}<a class="post-nav__swipe-arrow" href="{{ nextPost.url }}" aria-label="Next article: {{ nextPost.data.title }}">›</a>{% else %}<span class="post-nav__swipe-arrow post-nav__swipe-arrow--off" aria-hidden="true">›</span>{% endif %}
+</div>
 <nav class="post-nav" aria-label="More writing">
   {% if prevPost %}<a class="post-nav__prev" href="{{ prevPost.url }}">← {{ prevPost.data.title }}</a>{% endif %}
   {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}

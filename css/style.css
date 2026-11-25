@@ -324,13 +324,37 @@ button[type="submit"] {
 }
 .post-nav a { padding: 0.5rem 0; }
 .post-nav__next { margin-left: auto; text-align: right; }
-/* Swipe hint: only on touch screens, where swiping works. */
-.post-nav__hint { display: none; }
+/* Swipe sign: a clear arrow pair with a swipe cue, only on touch
+   screens, where swiping works. The arrows are links to the previous
+   and next articles; swiping left / right does the same (js/main.js).
+   Desktop keeps the quiet prev / next title links below it. */
+.post-nav__swipe { display: none; }
 @media (pointer: coarse) {
-  .post-nav__hint {
-    display: block; text-align: center; margin: 2rem 0 -1.25rem;
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 0.9rem; color: var(--muted);
+  .post-nav__swipe {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    margin: 2rem 0 0; padding: 0.75rem 0.25rem;
+    border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
+  .post-nav__swipe-arrow {
+    flex: 0 0 auto; width: 2.75rem; height: 2.75rem; min-height: 2.75rem;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--line); border-radius: 999px;
+    background: var(--chip-bg); color: var(--link); text-decoration: none;
+    font: 600 1.75rem/1 "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  }
+  .post-nav__swipe-arrow--off { color: var(--muted); opacity: 0.35; }
+  .post-nav__swipe-label {
+    margin: 0; text-align: center;
+    font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-weight: 600; font-size: 1.25rem; color: var(--link);
+  }
+  .post-nav__swipe-sub {
+    display: block; margin-top: 0.1rem;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-weight: 400; font-size: 0.85rem; color: var(--muted);
+  }
+  /* The sign carries the top border now, so the title links sit close under it. */
+  .post-nav { margin-top: 1rem; border-top: 0; padding-top: 0.5rem; }
 }
 /* Share this post: X, Facebook, WhatsApp, copy link. On every post. */
 .share { border-top: 1px solid var(--line); margin-top: 2rem; padding-top: 1rem; }
