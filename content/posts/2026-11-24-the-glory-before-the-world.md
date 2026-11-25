@@ -21,4 +21,4 @@ Before the world began. Before there was anything at all, he was there, with the
 
 He did not claim a glory he would earn one day. He spoke of a glory he already had, before time.
 
-What was he like, before the world began? Why would he leave that glory and come here? And what does it mean that he prayed for you?
+What was he like, before the world began? Why would he leave that glory and come here?

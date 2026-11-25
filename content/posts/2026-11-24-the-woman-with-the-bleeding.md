@@ -14,7 +14,7 @@ description: "Twelve years, many doctors, all her money gone — and then one to
 
 *Healing of the Woman with the Issue of Blood, T'oros Roslin (13th century), public domain.*
 
-We all know what it feels like to have tried everything — and nothing worked.
+Twelve years. Many doctors. All her money gone — and she was worse, not better.
 
 A woman had been subject to bleeding for twelve years. She had suffered a great deal under the care of many doctors and had spent all she had, yet instead of getting better she grew worse.
 
@@ -26,6 +26,6 @@ But Jesus kept looking around to see who had done it. Then the woman, knowing wh
 
 He said to her, "Daughter, your faith has healed you. Go in peace and be freed from your suffering."
 
-Why did she only dare to touch his cloak? Why did Jesus stop and ask who touched him? And what would you tell him, if he asked you for the whole truth?
+Why did she only dare to touch his cloak? Why did Jesus stop and ask who touched him?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

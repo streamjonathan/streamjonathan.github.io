@@ -14,7 +14,7 @@ description: "A mother from outside Israel would not stop asking Jesus for help 
 
 *Christ and the Canaanite Woman, Annibale Carracci (1595), public domain.*
 
-We all know what it feels like to keep asking when nobody seems to be listening.
+A mother came to Jesus, crying out for her daughter.
 
 Jesus went to the coasts of Tyre and Sidon. A woman of Canaan came out and cried, "Have mercy on me, O Lord, thou Son of David; my daughter is grievously vexed with a devil."
 
@@ -30,6 +30,6 @@ Then Jesus said to her, "O woman, great is thy faith: be it unto thee even as th
 
 *A note on the word "dogs": some have said Jesus is going back and forth in this conversation, enjoying talking in a light-hearted manner. It is difficult to understand the context of the word used here, so the reader should consider the context — and that Jesus approves of her faith and encourages her, pressing her to keep going.*
 
-Why do you think the woman did not give up? What do you make of Jesus' answer about the crumbs? And what does it say that he praised the faith of a stranger?
+Why do you think the woman did not give up? What do you make of Jesus' answer about the crumbs?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

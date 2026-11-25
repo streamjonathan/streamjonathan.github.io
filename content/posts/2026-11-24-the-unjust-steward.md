@@ -6,10 +6,10 @@ draft: false
 pillar: 5
 article_number: 35
 passage: "Luke 16:1-13"
-description: "A manager about to lose his job cuts his master's bills — and the master praises his shrewdness. What did Jesus mean?"
+description: "A manager about to lose his job cuts his master's bills — and the master praises his shrewdness."
 ---
 
-We all know what it feels like to worry about money.
+A manager about to lose his job. A master who praised his shrewdness.
 
 Jesus told his disciples this story. There was a rich man who had a manager looking after his money, and the manager was accused of wasting it. So the rich man called him in and said, "What is this I hear about you? Give an account of your management, because you cannot be manager any longer."
 
@@ -19,6 +19,6 @@ And the master commended the dishonest manager, because he had acted shrewdly.
 
 Then Jesus said, "No one can serve two masters. You cannot serve both God and money."
 
-What do you make of this strange story? What does it mean to use what you have wisely? And which master are you serving?
+Why did the master praise a manager who had cut his bills? And why did Jesus say you cannot serve both God and money?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

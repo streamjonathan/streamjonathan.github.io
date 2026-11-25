@@ -14,7 +14,7 @@ description: "A rich man tore down his barns to build bigger ones — and that v
 
 *The Parable of the Rich Fool, Rembrandt van Rijn (1627), public domain.*
 
-We all know what it feels like to want a little more security.
+One rich man had a good harvest — and his first thought was bigger barns.
 
 A man in the crowd said to Jesus, "Teacher, tell my brother to divide the inheritance with me." Jesus said, "Man, who made me a judge or divider over you?" Then he said to them all, "Take care, and be on your guard against all covetousness, for one's life does not consist in the abundance of his possessions."
 
@@ -24,6 +24,6 @@ But God said to him, "Fool! This night your soul is required of you, and the thi
 
 Jesus finished, "So is the one who lays up treasure for himself and is not rich toward God."
 
-What are you storing up? If tonight were your last night, what would matter most? And what does it mean to be rich toward God?
+What does it mean to be rich toward God?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

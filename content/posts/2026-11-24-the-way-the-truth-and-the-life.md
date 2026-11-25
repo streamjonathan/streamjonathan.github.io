@@ -21,4 +21,4 @@ He did not say he knew the way. He said he was the way. Not a map, not a set of 
 
 He did not point to the road. He said he was the road.
 
-What road are you on? What would it mean if the way to God is a person? And where do you think he is taking you?
+What would it mean if the way to God is a person?

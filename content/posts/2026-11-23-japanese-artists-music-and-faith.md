@@ -71,4 +71,4 @@ I keep coming back to Japanese musicians on Instagram. I find a new song most we
 </a>
 </div>
 
-Which song has carried you when words ran out? Is there one that held your faith for you? If you start with one of these twelve, which would it be? And tell me what you are listening to. I am always looking for new songs. Thanks for reading.
+Which song has carried you when words ran out? If you start with one of these twelve, which would it be? And tell me what you are listening to. I am always looking for new songs. Thanks for reading.

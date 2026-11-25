@@ -21,4 +21,4 @@ A hired man runs when the wolf comes. The sheep are not his, so why would he sta
 
 He did not say he watches the sheep from a distance. He said he knows them — and he would die for them.
 
-Whose voice do you follow? What would it mean to be known like that? And what does it say that he would lay down his life for the sheep?
+What would it mean to be known like that? And what does it say that he would lay down his life for the sheep?

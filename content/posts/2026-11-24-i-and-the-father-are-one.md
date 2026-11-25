@@ -23,4 +23,4 @@ The leaders picked up stones again. They said he was blaspheming — making hims
 
 He said who he was, plainly. And they understood exactly what he meant.
 
-What do you make of that claim? If he and the Father are one, what does that change? And why do you think they reached for stones?
+What do you make of that claim? Why do you think they reached for stones?

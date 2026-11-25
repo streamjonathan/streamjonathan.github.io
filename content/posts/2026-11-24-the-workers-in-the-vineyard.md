@@ -14,7 +14,7 @@ description: "The men hired at five in the evening were paid the same as the men
 
 *The Parable of the Workers in the Vineyard, Marten van Valckenborch, public domain.*
 
-We all know what it feels like when something does not seem fair.
+The men hired at five in the evening were paid the same as the men who had worked all day.
 
 Jesus said the kingdom of heaven is like a master of a house who went out early in the morning to hire labourers for his vineyard. He agreed with them for a denarius a day, and sent them in.
 
@@ -30,6 +30,6 @@ The master said, "Friend, I am doing you no wrong. Did you not agree with me for
 
 Jesus finished, "So the last will be first, and the first last."
 
-Does that sound fair to you? When have you felt like the worker hired first? And what does it say about God that he is generous like this?
+What does it say about God that he is generous like this?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

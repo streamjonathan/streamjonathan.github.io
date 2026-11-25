@@ -11,7 +11,7 @@ description: "The King will separate the sheep from the goats — and say, as yo
 
 
 
-We all know what it feels like to wonder whether the small things we do really matter.
+The King separated the sheep from the goats. And the things that mattered were small: food, drink, a welcome, a visit.
 
 Jesus said, "When the Son of Man comes in his glory, and all the angels with him, then he will sit on his glorious throne. Before him will be gathered all the nations, and he will separate people one from another as a shepherd separates the sheep from the goats. And he will place the sheep on his right, but the goats on the left."
 
@@ -27,6 +27,6 @@ They too will ask, "Lord, when did we see you like that, and did not minister to
 
 Jesus finished, "And these will go away into eternal punishment, but the righteous into eternal life."
 
-Who are the least of these around you? When have you helped someone without thinking twice? And what does it mean that Jesus takes it personally?
+What did the King count as done to him? And what does it mean that Jesus takes it personally?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

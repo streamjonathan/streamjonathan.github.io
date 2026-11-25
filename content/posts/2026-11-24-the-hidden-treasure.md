@@ -14,7 +14,7 @@ description: "A man found treasure hidden in a field — and in his joy he sold 
 
 *The Hidden Treasure, James Tissot (c. 1886–1894), public domain.*
 
-We all know what it feels like to find something so good you would give up anything for it.
+A man found treasure hidden in a field. In his joy he sold everything he had and bought that field.
 
 Jesus said, "The kingdom of heaven is like treasure hidden in a field, which a man found and covered up. Then in his joy he goes and sells all that he has and buys that field."
 
@@ -22,6 +22,6 @@ That is the whole story. A man finds treasure in a field. He hides it again. He 
 
 He does not hesitate. He does not bargain. He does not keep a little back just in case. The treasure is worth it all.
 
-What would you give everything for? What has ever made you that joyful? And what does it say that Jesus compares the kingdom of heaven to a treasure like that?
+What does it say that Jesus compares the kingdom of heaven to a treasure like that?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

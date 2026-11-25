@@ -7,14 +7,14 @@ pillar: 10
 article_number: 21
 passage: "Matthew 25:14-30"
 shareImage: /images/jesus-teachings/article-21-the-talents.jpg
-description: "Five talents, two talents, one talent — and the question of what you do with what you were given."
+description: "Five talents, two talents, one talent — and a master who came back to see what they had done with them."
 ---
 
 <img src="/images/jesus-teachings/article-21-the-talents.jpg" alt="The Parable of the Talents, by Willem de Poorter" loading="lazy">
 
 *The Parable of the Talents, Willem de Poorter, public domain.*
 
-We have all been given something — and the question is what we do with it.
+Five talents, two talents, one talent. The master went away — and one day he came back.
 
 A man about to travel called his servants and gave them his money: five talents to one, two to another, one to another — each according to his ability.
 
@@ -24,6 +24,6 @@ When the master returned, he said to the first two, "Well done, good and faithfu
 
 "To everyone who has," Jesus said, "more will be given."
 
-What have you been given? Are you using it, or burying it? And what would it look like to hear "well done"?
+What made the first two servants hear "well done"?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

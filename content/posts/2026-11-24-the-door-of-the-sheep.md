@@ -21,4 +21,4 @@ In those days a sheepfold had one opening. At night the shepherd himself would l
 
 He did not say the way in was a rule, or a ritual, or a test. He said the way in was him.
 
-What are you looking for a way into? What does it mean that the way in is a person, not a rule? And have you ever tried to climb in another way?
+What does it mean that the way in is a person, not a rule?

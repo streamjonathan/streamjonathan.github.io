@@ -14,7 +14,7 @@ description: "A religious leader came to Jesus at night with a question. Jesus a
 
 *Jesus and Nicodemus, Henry Ossawa Tanner (1899), public domain.*
 
-We all know what it feels like to have a question we are almost afraid to ask.
+Nicodemus came to Jesus at night, with a question.
 
 There was a man named Nicodemus, a Pharisee and a ruler of the Jews. He came to Jesus by night and said, "Rabbi, we know that thou art a teacher come from God."
 
@@ -24,6 +24,6 @@ Nicodemus said, "How can a man be born when he is old?" Jesus said a person must
 
 Then Jesus said, "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
 
-Why do you think Nicodemus came at night? What do you think it means to be born from above? And what does it say that God loved the world this much?
+Why do you think Nicodemus came at night? What do you think it means to be born from above?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

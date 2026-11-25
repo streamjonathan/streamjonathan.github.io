@@ -14,7 +14,7 @@ description: "He leaves the ninety-nine and goes after the one that is lost."
 
 *The Parable of the Lost Sheep, John Atkinson Grimshaw, public domain.*
 
-Being lost is a lonely feeling — and being looked for changes everything.
+One sheep was lost, and the shepherd left the ninety-nine to go and look for it.
 
 Jesus asked, "If one of you has a hundred sheep and loses one, what will you do? Will you not leave the ninety-nine in the open country and go after the lost one until you find it?"
 
@@ -22,6 +22,6 @@ And when he finds it, he lays it on his shoulders and carries it home, rejoicing
 
 Jesus said there is more joy in heaven over one sinner who repents than over ninety-nine who need no repentance.
 
-Have you ever felt like the one sheep? What does it say that he goes looking, instead of waiting? And who in your life might need to know they are being looked for?
+What does it say that he goes looking, instead of waiting?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

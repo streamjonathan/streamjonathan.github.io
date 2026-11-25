@@ -16,7 +16,7 @@ I am also aware that others will not like what I have to say, and that is really
 
 ![The Arc Raiders logo on a building in a snowy landscape](/images/arc-raiders-and-jesus-who-heals-the-world.jpg)
 
-As I watched the footage of the ice and the loneliness of the world in the game, I thought there is definitely a spiritual element to the way humanity feels lost and lonely without the connection to God, without that closeness.
+As I watched the footage of the ice and the loneliness of the world in the game, I thought about how lost and lonely that world felt without the connection to God, without that closeness.
 
 And thankfully, we can return to the Creator. Or you could say the Creator has returned to us. Jesus walked the earth. He lived a life far beyond anything we could imagine, a perfect life. We see it in the way he treated people, how he loved, how his unconditional love was displayed for all. That includes the way he treated those who thought they had authority over others. Jesus saw his authority as love, even to lay down his life and die so we could find life.
 

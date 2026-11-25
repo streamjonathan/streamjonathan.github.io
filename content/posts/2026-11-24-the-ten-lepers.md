@@ -14,7 +14,7 @@ description: "Ten men with leprosy cried out to Jesus, and all ten were healed. 
 
 *The Healing of Ten Lepers, James Tissot (c. 1886–1894), public domain.*
 
-We all know what it feels like to be thanked — and what it feels like to be forgotten.
+Ten men stood far off and called out to Jesus.
 
 As Jesus went to Jerusalem, he entered a village, and ten men that were lepers stood far off. They lifted up their voices and said, "Jesus, Master, have mercy on us."
 
@@ -24,6 +24,6 @@ One of them, when he saw that he was healed, turned back. He glorified God with 
 
 Jesus said, "Were there not ten cleansed? but where are the nine? There are not found that returned to give glory to God, save this stranger." And he said to him, "Arise, go thy way: thy faith hath made thee whole."
 
-Why do you think only one came back? What does it say that the one who returned was a Samaritan? And when were you last thankful like that?
+Why do you think only one came back? What does it say that the one who returned was a Samaritan?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

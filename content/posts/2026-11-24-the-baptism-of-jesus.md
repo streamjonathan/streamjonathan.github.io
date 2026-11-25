@@ -14,7 +14,7 @@ description: "John tried to stop him, but Jesus was baptised — and the heavens
 
 *The Baptism of Christ, Andrea del Verrocchio and Leonardo da Vinci (c. 1470–75), public domain.*
 
-We all know what it feels like to hear someone say who we really are.
+Before any miracle, before any teaching — Jesus came to the Jordan to be baptised.
 
 Jesus came from Galilee to the Jordan to be baptised by John. But John tried to deter him, saying, "I need to be baptised by you, and do you come to me?"
 
@@ -24,6 +24,6 @@ As soon as Jesus was baptised, he went up out of the water. At that moment heave
 
 He had done nothing yet — no miracles, no teaching, no crowds. And before any of it, the voice said who he was: beloved, and pleasing to God.
 
-Why would Jesus be baptised, when John was baptising people for repentance? What does the voice from heaven say about him? And what would it mean to hear God say he is pleased with you?
+Why would Jesus be baptised, when John was baptising people for repentance? What does the voice from heaven say about him?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

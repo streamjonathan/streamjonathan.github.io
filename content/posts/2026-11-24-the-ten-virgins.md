@@ -11,7 +11,7 @@ description: "Five virgins took oil with their lamps, and five did not — and t
 
 
 
-We all know what it feels like to be caught unprepared.
+Five virgins took oil with their lamps, and five did not. The bridegroom came at midnight.
 
 Jesus said the kingdom of heaven will be like ten virgins who took their lamps and went to meet the bridegroom. Five of them were foolish, and five were wise. The foolish took their lamps but took no oil with them. The wise took flasks of oil with their lamps.
 
@@ -23,6 +23,6 @@ While they were going to buy, the bridegroom came. Those who were ready went in 
 
 Jesus finished, "Watch therefore, for you know neither the day nor the hour."
 
-What does it mean to be ready? What would you not want to be caught without? And how do you stay ready when the wait is long?
+What does it mean to be ready? Why did the wise ones take flasks of oil with their lamps?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

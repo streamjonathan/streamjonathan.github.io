@@ -14,7 +14,7 @@ description: "At a wedding in Cana the wine ran out. Jesus told the servants to 
 
 *The Wedding at Cana, Paolo Veronese (1563), public domain.*
 
-We all know what it feels like when something runs out at the worst moment.
+At a wedding in Cana, the wine ran out.
 
 There was a marriage in Cana of Galilee, and the mother of Jesus was there. Jesus and his disciples were invited too.
 
@@ -28,6 +28,6 @@ When the governor tasted the water that was made wine, he said to the bridegroom
 
 This was the first miracle Jesus did, and his disciples believed on him.
 
-Why do you think Jesus helped at a wedding? What do you make of his mother telling the servants to do whatever he said? And what does this first miracle say about him?
+Why do you think Jesus helped at a wedding? What do you make of his mother telling the servants to do whatever he said?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

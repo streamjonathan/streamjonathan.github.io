@@ -11,7 +11,7 @@ description: "A man gave a great banquet and invited many — but one by one, th
 
 
 
-We all know what it feels like to be invited somewhere — and what it feels like to say no.
+A man gave a great banquet and invited many. One by one, they all made excuses.
 
 One of those eating with Jesus said, "Blessed is everyone who will eat bread in the kingdom of God!" So Jesus told them a story.
 
@@ -23,6 +23,6 @@ The servant told his master, and the master was angry. He said, "Go out quickly 
 
 So the master said, "Go out to the highways and hedges and compel people to come in, that my house may be filled. For I tell you, none of those men who were invited shall taste my banquet."
 
-What excuses do we make? Who would we never expect to see at the table? And what does it say that the house was filled anyway?
+Who did the master bring in when the invited guests would not come? And what does it say that the house was filled anyway?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

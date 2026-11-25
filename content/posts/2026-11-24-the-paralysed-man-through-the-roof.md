@@ -14,7 +14,7 @@ description: "Four friends could not get through the crowd, so they dug through 
 
 *The Palsied Man Let Down through the Roof, James Tissot (c. 1886–1894), public domain.*
 
-We all know what it feels like to need help we cannot get on our own.
+A crowd so thick there was no room, not even outside the door. Four friends, a mat, and a roof.
 
 Jesus was at home in Capernaum, and so many people gathered that there was no room left, not even outside the door. Four men came carrying a paralysed man on a mat, but they could not get through the crowd. So they dug through the roof above Jesus and lowered the man down on his mat.
 
@@ -26,6 +26,6 @@ Jesus said, "Which is easier: to say to this paralysed man, 'Your sins are forgi
 
 He got up, took his mat and walked out in full view of them all. They were all amazed and praised God, saying, "We have never seen anything like this!"
 
-What do the four friends show us about faith? What would you ask Jesus to forgive — or to heal? And what does it say that he forgave the man first, and then healed him?
+What do the four friends show us about faith? And what does it say that he forgave the man first, and then healed him?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

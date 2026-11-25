@@ -14,7 +14,7 @@ description: "Jesus sat down on the mountain, and his disciples came to him. The
 
 *The Sermon on the Mount, Carl Bloch (1877), public domain.*
 
-We all know what it feels like to be left out.
+His first words on the mountain were about who is blessed.
 
 Jesus went up into a mountain. He sat down, and his disciples came to him. Then he opened his mouth and taught them.
 
@@ -22,8 +22,8 @@ Jesus went up into a mountain. He sat down, and his disciples came to him. Then 
 
 He went on. Blessed are those who hunger and thirst for what is right, the merciful, the pure in heart, and the peacemakers. Blessed are those who are persecuted for doing what is right. "Rejoice, and be exceeding glad: for great is your reward in heaven."
 
-The world calls the rich and strong blessed. Jesus began with the poor, the sad, and the gentle.
+Jesus began with the poor, the sad, and the gentle.
 
-Which of these blessings surprises you most? What would it mean to be poor in spirit? And what does Jesus say belongs to people like that?
+What would it mean to be poor in spirit? What does Jesus say belongs to people like that?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

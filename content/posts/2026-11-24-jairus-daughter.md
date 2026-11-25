@@ -14,7 +14,7 @@ description: "They told Jairus his daughter was dead — but Jesus said, 'Do not
 
 *The Raising of Jairus' Daughter, Ilya Repin (1871), public domain.*
 
-We all know what it feels like when hope runs out.
+A synagogue leader fell at Jesus' feet. His little daughter was dying.
 
 Jairus, one of the synagogue leaders, came and fell at Jesus' feet, pleading earnestly with him. "My little daughter is dying," he said. "Please come and put your hands on her so that she will be healed and live." So Jesus went with him.
 
@@ -28,6 +28,6 @@ He put them all out, and took the child's father and mother and the disciples wh
 
 Immediately the girl, who was twelve years old, stood up and began to walk around. They were completely astonished. He gave strict orders not to let anyone know about this, and told them to give her something to eat.
 
-What would you have done when the messengers said she was dead? Why did Jesus say she was asleep? And what does "do not fear, only believe" mean for you today?
+Why did Jesus say she was asleep? And why did he put everyone out of the room, and take only her parents and three disciples?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

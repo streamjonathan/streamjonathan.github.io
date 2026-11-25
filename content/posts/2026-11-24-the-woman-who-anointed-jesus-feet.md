@@ -14,7 +14,7 @@ description: "A woman came to Jesus at dinner, weeping, and washed his feet with
 
 *Christ in the House of the Pharisee Simon, Dierick Bouts (15th century), public domain.*
 
-We all know what it feels like to be judged by a room full of people.
+A woman came into the house while Jesus was at dinner.
 
 One of the Pharisees, named Simon, invited Jesus to eat with him. Jesus went in and sat down.
 
@@ -26,6 +26,6 @@ Jesus told him of two men who owed money, one five hundred pence and one fifty. 
 
 Then Jesus said to the woman, "Thy sins are forgiven." And to her, "Thy faith hath saved thee; go in peace."
 
-Why do you think the woman came to Jesus at all? What did Simon see that Jesus did not? And what does it mean to be forgiven like that?
+Why do you think the woman came to Jesus at all? What did Simon see that Jesus did not?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

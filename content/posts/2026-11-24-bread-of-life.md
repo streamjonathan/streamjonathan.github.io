@@ -25,4 +25,4 @@ Then he said, "I am the bread of life. Whoever comes to me will never go hungry.
 
 He did not offer them more bread. He offered them himself.
 
-What are you hungry for? What would it mean to come to him? And what keeps you from it?
+What would it mean to come to him?

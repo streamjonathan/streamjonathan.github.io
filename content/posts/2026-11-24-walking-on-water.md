@@ -9,7 +9,7 @@ passage: "Matthew 14:22-33"
 description: "Late at night, in wind and waves, the disciples saw Jesus walking on the water — and Peter stepped out of the boat."
 ---
 
-We all know what it feels like to be afraid in the dark.
+Late at night. Wind against the boat. And Jesus, walking on the water.
 
 Jesus made his disciples get into the boat and go on ahead to the other side, while he dismissed the crowd. Then he went up on a mountainside by himself to pray. When evening came, he was there alone, and the boat was already a long way from land, buffeted by the waves because the wind was against it.
 
@@ -27,6 +27,6 @@ Immediately Jesus reached out his hand and caught him. "You of little faith," he
 
 When they climbed into the boat, the wind died down. Then those in the boat worshipped him, saying, "Truly you are the Son of God."
 
-What are you afraid of right now? What would it mean to hear him say, "Don't be afraid"? And what would you do if he said, "Come"?
+Why did Peter step out of the boat — and why did he start to sink? And why did Jesus ask him, "Why did you doubt?"
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

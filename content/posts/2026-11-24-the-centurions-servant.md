@@ -14,7 +14,7 @@ description: "A Roman soldier who never set foot in Jesus' house had greater fai
 
 *The Centurion of Capernaum Begs Jesus to Heal His Servant, Johannes Ykens (17th century), public domain.*
 
-We all know what it feels like to ask for help for someone we love.
+A Roman centurion came to Jesus in Capernaum. His servant lay at home, paralysed and suffering terribly.
 
 When Jesus entered Capernaum, a centurion came to him, asking for help. "Lord," he said, "my servant lies at home paralysed, suffering terribly."
 
@@ -26,6 +26,6 @@ When Jesus heard this, he was amazed. "Truly I tell you, I have not found anyone
 
 Then Jesus said to the centurion, "Go! Let it be done just as you believed it would." And his servant was healed at that moment.
 
-What did the centurion understand about authority? Why was Jesus amazed? And what would "just say the word" look like in your life?
+What did the centurion understand about authority? Why was Jesus amazed?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

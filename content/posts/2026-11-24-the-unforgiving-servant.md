@@ -14,7 +14,7 @@ description: "A king forgives a debt that could never be repaid — and the forg
 
 *The Parable of the Unforgiving Servant, Claude Vignon, public domain.*
 
-Forgiving someone who hurt you is one of the hardest things there is.
+A king forgave a debt that could never be repaid. The man he forgave would not forgive a small one.
 
 Peter asked, "Lord, how many times should I forgive? Seven times?" Jesus said, "Not seven times, but seventy-seven times."
 
@@ -24,6 +24,6 @@ But that servant went out and found a fellow servant who owed him a hundred dena
 
 When the king heard, he was angry. "I forgave you all that debt," he said. "Should you not have had mercy, as I had mercy on you?"
 
-What debt of yours has been forgiven? Who do you find hardest to forgive? And what would change if you forgave them the way you have been forgiven?
+Why did the servant refuse to forgive a debt so much smaller than his own?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

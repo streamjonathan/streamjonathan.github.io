@@ -22,7 +22,7 @@ They go through a garden of Eden sort of place. They find a world within a world
 
 And it is in tremendous running into love that happens in that last scene. They are running toward love himself, Jesus. And there are others running in that same direction from different worlds and different places.
 
-My videos are very much unscripted and from my heart. I stumble over the words sometimes, especially at the end, because I am overwhelmed by how good God's plan is. For us now, we get a taste of heaven in the renewing of our life, and our imagination is captivated by Jesus himself.
+My videos are very much unscripted and from my heart. I stumble over the words sometimes, especially at the end, because I am overwhelmed by how good God's plan is. For me now, I get a taste of heaven in the renewing of my life, and my imagination is captivated by Jesus himself.
 
 Watch the video: [C.S.Lewis & The Wonder of Knowing God on YouTube](https://www.youtube.com/watch?v=6lj8L5rfrT4)
 

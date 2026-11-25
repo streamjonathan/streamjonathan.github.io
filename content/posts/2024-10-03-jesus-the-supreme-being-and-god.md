@@ -12,7 +12,7 @@ Christ is the visible image of the invisible God. He existed before anything was
 
 ![Jonathan talking about Jesus the supreme being and God](/images/jesus-the-supreme-being-and-god.jpg)
 
-There are spiritual realms that we do not see, and we are part of that. In our modern ideas we have often failed to see that Jesus has revealed who the living, invisible God is. This is recorded in a historical account in the New Testament, and it is also backed up through Old Testament prophecies. This may not be something you agree with. However it is still there in human history, and you are able to go and check it out if you would like to.
+There are spiritual realms that we do not see, and we are part of that. Modern ideas often miss that Jesus has revealed who the living, invisible God is. This is recorded in a historical account in the New Testament, and it is also backed up through Old Testament prophecies. This may not be something you agree with. However it is still there in human history, and you are able to go and check it out if you would like to.
 
 Jesus has shown what this invisible God is like. He is loving and forgiving and merciful and kind, and he desires people to walk with him. He is much more than a set of beliefs. He is the visible image of the invisible God.
 

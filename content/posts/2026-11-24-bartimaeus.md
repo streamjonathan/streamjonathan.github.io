@@ -9,7 +9,7 @@ passage: "Mark 10:46-52"
 description: "A blind beggar by the roadside would not be silenced. He shouted louder — and Jesus stopped."
 ---
 
-We all know what it feels like to be told to keep quiet.
+A blind beggar by the roadside. The crowd told him to be quiet. He shouted louder.
 
 As Jesus and his disciples were leaving Jericho, a large crowd following, Bartimaeus was sitting by the roadside begging. He was blind, the son of Timaeus. When he heard that it was Jesus of Nazareth, he began to shout, "Jesus, Son of David, have mercy on me!"
 
@@ -25,6 +25,6 @@ The blind man said, "Rabbi, I want to see."
 
 "Go," said Jesus, "your faith has healed you." Immediately he received his sight and followed Jesus along the road.
 
-What are you shouting for? Who is telling you to be quiet? And what would you ask Jesus for, if he stopped and asked you?
+Why did Bartimaeus shout louder when they told him to be quiet? And why did Jesus ask, "What do you want me to do for you?"
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

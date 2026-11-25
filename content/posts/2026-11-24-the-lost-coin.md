@@ -14,7 +14,7 @@ description: "She lights a lamp, sweeps the house, and searches until she finds 
 
 *The Parable of the Lost Drachma, Domenico Fetti, public domain.*
 
-Losing something small can turn a whole house upside down.
+One coin was lost, and the woman turned the whole house upside down to find it.
 
 "If a woman has ten silver coins and loses one," Jesus asked, "will she not light a lamp, sweep the house, and search carefully until she finds it?"
 
@@ -22,6 +22,6 @@ And when she finds it, she calls her friends and neighbours and says, "Rejoice w
 
 Jesus said there is joy before the angels of God over one sinner who repents.
 
-What would you sweep the whole house to find? What does it mean to be searched for like that? And who would you tell first, if you found what was lost?
+What does it mean to be searched for like that?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

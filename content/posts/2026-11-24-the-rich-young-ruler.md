@@ -14,7 +14,7 @@ description: "He had kept all the commandments since he was a boy — but when J
 
 *Christ and the Rich Young Ruler, Heinrich Hofmann (1889), public domain.*
 
-We all know what it feels like to have almost everything — and still want more.
+He had kept all the commandments since he was a boy — and still he came asking.
 
 A man ran up to Jesus and fell on his knees. "Good teacher," he asked, "what must I do to inherit eternal life?"
 
@@ -32,6 +32,6 @@ The disciples were amazed. "Who then can be saved?" Jesus said, "With man this i
 
 Peter said, "We have left everything to follow you!" "You will receive a hundred times as much," Jesus said, "and eternal life."
 
-What is the one thing you would find hardest to give up? Why did Jesus love the man and still let him walk away? And what does it mean that what is impossible for us is possible with God?
+Why did Jesus love the man and still let him walk away? And what does it mean that what is impossible for us is possible with God?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

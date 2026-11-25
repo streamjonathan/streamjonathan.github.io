@@ -23,4 +23,4 @@ God did not stay far away. He came and lived here, among us. We saw his glory â€
 
 He did not send a message. He came himself.
 
-What does it mean that God came to live among us? If Jesus is God in flesh, what does that say about God? And what would it mean to receive him?
+What does it mean that God came to live among us? If Jesus is God in flesh, what does that say about God?

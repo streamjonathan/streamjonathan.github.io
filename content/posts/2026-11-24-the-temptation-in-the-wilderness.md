@@ -11,7 +11,7 @@ description: "Forty days without food, and the tempter offered him bread, a mira
 
 
 
-We all know what it feels like to be hungry, tired — and tempted to take a shortcut.
+Forty days without food. Then the tempter came.
 
 Jesus was led by the Spirit into the wilderness to be tempted by the devil. After fasting forty days and forty nights, he was hungry. The tempter came to him and said, "If you are the Son of God, tell these stones to become bread."
 
@@ -25,6 +25,6 @@ Again, the devil took him to a very high mountain and showed him all the kingdom
 
 Jesus said to him, "Away from me, Satan! For it is written: 'Worship the Lord your God, and serve him only.'" Then the devil left him, and angels came and attended him.
 
-What do the three temptations have in common? Why did Jesus answer each one with scripture? And what shortcut are you tempted to take today?
+What do the three temptations have in common? Why did Jesus answer each one with scripture?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

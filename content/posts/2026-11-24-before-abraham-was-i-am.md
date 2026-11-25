@@ -23,4 +23,4 @@ The leaders understood exactly what he meant. They picked up stones to throw at 
 
 He did not back down. He did not explain it away. He said who he was, plainly.
 
-What do you think he meant? If Jesus is who he said he is, what does that change? And what do you do with his words?
+What do you think he meant?

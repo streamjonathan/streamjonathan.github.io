@@ -14,7 +14,7 @@ description: "A merchant searching for fine pearls found one of great value — 
 
 *The Pearl of Great Price, after John Everett Millais (1864), public domain.*
 
-We all know what it feels like to search for something — and then, at last, to find it.
+A merchant spent his life searching for fine pearls. Then one day he found one pearl of great value.
 
 Jesus said, "Again, the kingdom of heaven is like a merchant in search of fine pearls, who, on finding one pearl of great value, went and sold all that he had and bought it."
 
@@ -24,6 +24,6 @@ Then one day he found it. One pearl. A pearl of great value. And he did what the
 
 He did not keep his other pearls as well. He gave them all up for the one.
 
-What are you searching for? Have you ever found something worth giving everything up for? And what would it mean if the kingdom of heaven were that one pearl?
+What would it mean if the kingdom of heaven were that one pearl?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

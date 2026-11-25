@@ -12,7 +12,7 @@ There's a moment where Jesus is with his closest followers, and a crowd of peopl
 
 ![Jonathan smiling by the sea, with the rocky shore behind him](/images/to-believe-in-the-one-he-has-sent.jpg)
 
-That has stayed with me. What does it mean to believe in the one he has sent? Is belief a theological system, a way of thinking it all through? Or is it something more like showing love towards God and towards others?
+That has stayed with me. What does it mean to believe in the one he has sent? Belief is not just a way of thinking it all through. It is more like showing love towards God and towards others.
 
 I think belief does have a lot to do with the mind. But I saw a mountain bike parked just there, and it made me think. A bicycle only carries you somewhere when you put it into action. Belief is like that too. It moves when you live it.
 

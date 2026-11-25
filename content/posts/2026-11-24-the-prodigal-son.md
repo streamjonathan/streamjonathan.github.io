@@ -14,7 +14,7 @@ description: "While he was still far off, his father saw him, ran to him, and ki
 
 *The Return of the Prodigal Son, Rembrandt van Rijn (c. 1666–1669), public domain.*
 
-Most of us know what it feels like to walk away — and to wonder if we can come back.
+The younger son walked away with his share. Then he wondered if he could come back.
 
 A man had two sons. The younger said, "Father, give me my share of the property." So the father divided it between them. Soon after, the younger son went off to a far country and wasted it all. Then a famine came, and he began to starve.
 
@@ -22,6 +22,6 @@ He came to himself: "I will go back to my father." But while he was still far of
 
 The older brother was angry — he had stayed and worked all those years. But the father went out to him too. "Son, you are always with me. All that is mine is yours. But we had to celebrate — your brother was lost, and is found."
 
-Which brother do you recognise in yourself? And is there a road home you have been putting off?
+Why did the father run to meet his son while he was still far off?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

@@ -21,4 +21,4 @@ Jesus answered, "Even if I talk about myself, what I say is true. I know where I
 
 He did not say he could point to the light. He said he was the light.
 
-What does it mean to walk in darkness? What would change if you followed the light instead? And where do you think he is leading you?
+What does it mean to walk in darkness?

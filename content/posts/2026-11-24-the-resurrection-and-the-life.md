@@ -25,4 +25,4 @@ Then he went to the tomb and called, "Lazarus, come out!" And Lazarus came out.
 
 He did not only talk about resurrection. He did it.
 
-What do you think Martha heard in those words? If he is the resurrection, what does death mean now? And what would you ask him at a grave?
+What do you think Martha heard in those words? If he is the resurrection, what does death mean now?

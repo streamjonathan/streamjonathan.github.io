@@ -14,7 +14,7 @@ I think about how we can be different. God's Spirit changes us. But sometimes it
 
 ![Jonathan talking about being like Jesus](/images/be-like-jesus-and-not-proud-nor-loud-nor-over-confident.jpg)
 
-Not everyone who is loud or confident actually lives their faith. Sincerity and authenticity are proved over time. That may sound critical, but I think it is true.
+Being loud or confident does not always mean living faith. Sincerity and authenticity are proved over time. That may sound critical, but I think it is true.
 
 My understanding of faith is that Jesus transforms us through his Holy Spirit. It has a lot to do with shaping our hearts, quieting our minds, and loving in the middle of suffering. Loving others even when people do not treat you the way you want them to. Loving when people have been offended, hurt, or harmed.
 

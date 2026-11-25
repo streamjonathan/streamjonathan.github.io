@@ -14,7 +14,7 @@ description: "The tenants killed the servants, then the son — and Jesus said, 
 
 *The Parable of the Wicked Husbandmen, Marten van Valckenborch, public domain.*
 
-We all know what it feels like to be given something good to look after — and to forget it was never ours.
+A vineyard. A master far away. Tenants who forgot it was never theirs.
 
 Jesus said, "There was a master of a house who planted a vineyard and put a fence around it and dug a winepress in it and built a tower and leased it to tenants, and went into another country."
 
@@ -28,6 +28,6 @@ Jesus said, "Have you never read in the Scriptures: 'The stone that the builders
 
 The chief priests and the Pharisees heard his parables and perceived that he was speaking about them. They sought to arrest him, but they feared the crowds, because the crowds held him to be a prophet.
 
-What has been given to you to look after? How do we treat what belongs to someone else? And what does it mean that the rejected stone became the cornerstone?
+Why did the tenants forget the vineyard was never theirs? And what does it mean that the rejected stone became the cornerstone?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

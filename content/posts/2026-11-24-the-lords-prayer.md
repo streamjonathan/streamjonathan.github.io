@@ -14,7 +14,7 @@ description: "Jesus taught his disciples how to pray — short, simple, and hone
 
 *Jesus Teaches the People by the Sea, James Tissot (c. 1886–1894), public domain.*
 
-We all know what it feels like to not know what to say when we pray.
+The disciples wanted to know how to pray. Jesus gave them a short prayer.
 
 Jesus was teaching his disciples on the mountain. He told them not to pray with many words to be heard. God already knows what we need before we ask.
 
@@ -22,6 +22,6 @@ So he gave them these words to pray: "Our Father which art in heaven, Hallowed b
 
 That is the whole prayer: bread, forgiveness, and help.
 
-What do you notice about how short this prayer is? Which line of it do you need most today? And what would change if you prayed it like you meant it?
+What do you notice about how short this prayer is?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

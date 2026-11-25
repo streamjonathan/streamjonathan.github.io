@@ -14,8 +14,6 @@ description: "At the Last Supper Jesus promised another Helper — the Spirit of
 
 *The Pentecost, El Greco (c. 1600), public domain.*
 
-We all know what it feels like when someone we love has to go away.
-
 At the Last Supper, Jesus told his friends he was going away. Then he said, "And I will ask the Father, and he will give you another Helper, to be with you forever, even the Spirit of truth, whom the world cannot receive, because it neither sees him nor knows him. You know him, for he dwells with you and will be in you."
 
 "But the Helper, the Holy Spirit, whom the Father will send in my name, he will teach you all things and bring to your remembrance all that I have said to you."
@@ -28,6 +26,6 @@ At the Last Supper, Jesus told his friends he was going away. Then he said, "And
 
 The Son asks. The Father gives. The Spirit comes — and stays.
 
-What does it mean to have "another Helper"? How does it feel to know the Spirit is with you for ever? And what has he reminded you of that Jesus said?
+What does it mean to have "another Helper"?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

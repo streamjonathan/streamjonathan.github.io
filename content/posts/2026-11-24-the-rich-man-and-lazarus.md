@@ -9,7 +9,7 @@ passage: "Luke 16:19-31"
 description: "A rich man feasted every day while Lazarus lay at his gate. Then both men died — and everything changed."
 ---
 
-We all walk past people in need. Most days we barely notice.
+A rich man feasted every day. At his gate lay Lazarus, covered with sores.
 
 Jesus told this story. There was a rich man who was dressed in purple and fine linen and lived in luxury every day. At his gate lay a poor man named Lazarus, covered with sores, longing to eat what fell from the rich man's table. Even the dogs came and licked his sores.
 
@@ -19,6 +19,6 @@ But Abraham said, "Child, remember that in your lifetime you received your good 
 
 The rich man begged Abraham to send Lazarus to warn his five brothers. "They have Moses and the Prophets," Abraham answered. "Let them listen to them." "If someone from the dead goes to them, they will repent," the rich man said. Abraham said, "If they do not listen to Moses and the Prophets, they will not be convinced even if someone rises from the dead."
 
-Who do you walk past at the gate? What are you listening to? And what would change if you really believed the warning?
+Why did the rich man only notice Lazarus when it was too late? And why would Abraham not send Lazarus to warn the brothers?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

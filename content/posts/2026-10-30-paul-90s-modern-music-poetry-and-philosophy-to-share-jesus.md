@@ -8,11 +8,11 @@ source_video: https://www.youtube.com/watch?v=-0vnp9w5caU
 source_transcript: transcripts/-0vnp9w5caU.md
 ---
 
-Paul addresses this by doing the exact opposite of what you might expect. When he spoke to the Athenians, he used their poetry and their language, the way they understood God. And he spoke about Jesus as the centre of creation, the one who holds everything together.
+Paul addresses this by doing the exact opposite of what might be expected. When he spoke to the Athenians, he used their poetry and their language, the way they understood God. And he spoke about Jesus as the centre of creation, the one who holds everything together.
 
 Paul doesn't have an idea that everything is bad. He also doesn't think that evil and bad don't exist. He challenges the worldview of the time, and he does it by starting where people already are.
 
-This is about 90s music. If you are my age, you will remember people from religious circles saying this music is bad or unhelpful. I didn't even grow up in a religious household, but I noticed the trend.
+This is about 90s music. If you are my age, you may remember people from religious circles saying this music is bad or unhelpful. I didn't even grow up in a religious household, but I noticed the trend.
 
 ![Jonathan talking about Paul, 90s music and poetry](/images/paul-90s-modern-music-poetry-and-philosophy-to-share-jesus.jpg)
 

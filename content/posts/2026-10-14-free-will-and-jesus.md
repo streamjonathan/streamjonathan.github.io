@@ -10,7 +10,7 @@ source_transcript: transcripts/2IbJ8CwQSQI.md
 
 How long could we talk about the mystery of free will? God is above all, knowing all, all powerful, and somehow allowing things to happen that we don't want to happen. The more I went along in this video, the more I realised the layers and depths of it.
 
-I want to start with this. Good people suffer. People suffer, and I do not know why. Maybe you have a complex answer or a simple one. My hope is that we, as followers of Jesus, wouldn't be quick to give answers that are going to be very harmful for someone to hear in the middle of suffering. I think we only learn that truth when we suffer ourselves.
+I want to start with this. Good people suffer. People suffer, and I do not know why. I do not have a simple answer for that. My hope is that we, as followers of Jesus, wouldn't be quick to give answers that are going to be very harmful for someone to hear in the middle of suffering. I think we only learn that truth when we suffer ourselves.
 
 Terrible things happen to people of all beliefs, all ages, cultures, places and times. That is important to say before we speak about free will.
 

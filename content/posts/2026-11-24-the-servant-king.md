@@ -23,4 +23,4 @@ When he finished, he said, "You call me Teacher and Lord, and rightly so, for th
 
 The King washed feet. And he told his friends to do the same.
 
-What kind of king washes feet? If he is Lord and he serves like this, what does that say about greatness? And whose feet would you wash?
+What kind of king washes feet? If he is Lord and he serves like this, what does that say about greatness?

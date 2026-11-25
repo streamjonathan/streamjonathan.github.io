@@ -14,7 +14,7 @@ description: "One man thanks God he is not like other men. The other will not ev
 
 *The Pharisee and the Publican, James Tissot (c. 1886–1894), public domain.*
 
-We all know what it feels like to compare ourselves with someone else — and feel better.
+Two men went up to the temple to pray. One thanked God he was not like other men. The other would not even lift his eyes to heaven.
 
 Jesus told this story to some who thought they were righteous and looked down on others.
 
@@ -26,6 +26,6 @@ But the tax collector stood far off. He would not even lift his eyes to heaven. 
 
 Jesus said the tax collector went home justified, not the Pharisee. "Everyone who exalts himself will be humbled," he said, "but the one who humbles himself will be exalted."
 
-Which of the two men do you recognise in yourself? What would you pray if no one was listening? And what does it mean to go home justified?
+What does it mean to go home justified?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?

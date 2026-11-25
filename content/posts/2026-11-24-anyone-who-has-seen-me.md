@@ -23,4 +23,4 @@ Jesus said: look at me. What I do, the Father does. What I say, the Father says.
 
 He did not tell them to look somewhere else. He told them to look at him.
 
-What do you think God is like? If you want to know, where would you look? And what have you seen in Jesus so far?
+What do you think God is like?

@@ -23,4 +23,4 @@ The gardener prunes the branches that bear fruit, so they bear even more.
 
 He did not say try harder. He said stay connected.
 
-What are you joined to? What fruit is growing in your life? And what would it mean to stay in him?
+What would it mean to stay in him?

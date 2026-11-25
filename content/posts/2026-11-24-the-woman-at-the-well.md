@@ -9,7 +9,7 @@ passage: "John 4:1-42"
 description: "Tired and thirsty at noon, Jesus asked a Samaritan woman for a drink — and offered her living water instead."
 ---
 
-We all know what it feels like to be thirsty for something more.
+Noon. A well. A tired traveller, and a woman come to draw water.
 
 Jesus, tired from the journey, sat down by a well. It was about noon. A Samaritan woman came to draw water, and Jesus said to her, "Will you give me a drink?"
 
@@ -31,6 +31,6 @@ Then Jesus declared, "I, the one speaking to you — I am he."
 
 The woman left her water jar and went back to the town. "Come, see a man who told me everything I ever did," she said. "Could this be the Messiah?" Many Samaritans believed in him because of her testimony. He stayed two days, and many more believed because of his own word. "Now we have heard for ourselves," they said, "and we know that this man really is the Saviour of the world."
 
-What are you thirsty for? What would it mean to never thirst again? And who would you tell, if you met him at the well?
+Why did Jesus offer her living water, when all he had asked for was a drink? And why did she leave her jar and run back to the town?
 
 If you're reading this, would you mind taking a moment to say hello to Jonathan?
