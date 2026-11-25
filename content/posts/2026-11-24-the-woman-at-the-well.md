@@ -6,8 +6,13 @@ draft: false
 pillar: 5
 article_number: 43
 passage: "John 4:1-42"
+shareImage: /images/jesus-teachings/article-43-the-woman-at-the-well.jpg
 description: "Tired and thirsty at noon, Jesus asked a Samaritan woman for a drink — and offered her living water instead."
 ---
+
+<img src="/images/jesus-teachings/article-43-the-woman-at-the-well.jpg" alt="The Woman of Samaria at the Well, by James Tissot" loading="lazy">
+
+*The Woman of Samaria at the Well, James Tissot (c. 1886–1894), public domain.*
 
 We all know what it feels like to be thirsty for something more.
 

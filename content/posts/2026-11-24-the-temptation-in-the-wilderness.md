@@ -6,8 +6,13 @@ draft: false
 pillar: 8
 article_number: 52
 passage: "Matthew 4:1-11"
+shareImage: /images/jesus-teachings/article-52-the-temptation-in-the-wilderness.jpg
 description: "Forty days without food, and the tempter offered him bread, a miracle, and the whole world — Jesus answered with scripture."
 ---
+
+<img src="/images/jesus-teachings/article-52-the-temptation-in-the-wilderness.jpg" alt="Christ in the Wilderness, by Ivan Kramskoi" loading="lazy">
+
+*Christ in the Wilderness, Ivan Kramskoi (1872), public domain.*
 
 
 

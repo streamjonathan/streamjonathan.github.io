@@ -6,8 +6,13 @@ draft: false
 pillar: 2
 article_number: 63
 passage: "John 9:1-41"
+shareImage: /images/jesus-teachings/article-63-the-man-born-blind.jpg
 description: "A man blind from birth was given sight by Jesus — and when the religious leaders questioned him, he had only one answer."
 ---
+
+<img src="/images/jesus-teachings/article-63-the-man-born-blind.jpg" alt="Healing of the Blind Man, by Duccio di Buoninsegna" loading="lazy">
+
+*Healing of the Blind Man, Duccio di Buoninsegna (c. 1308–1311), public domain.*
 
 
 

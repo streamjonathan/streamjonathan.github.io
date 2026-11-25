@@ -6,8 +6,13 @@ draft: false
 pillar: 10
 article_number: 27
 passage: "Matthew 25:1-13"
+shareImage: /images/jesus-teachings/article-27-the-ten-virgins.jpg
 description: "Five virgins took oil with their lamps, and five did not — and the bridegroom came at midnight."
 ---
+
+<img src="/images/jesus-teachings/article-27-the-ten-virgins.jpg" alt="The Wise Virgins, by James Tissot" loading="lazy">
+
+*The Wise Virgins, James Tissot (c. 1886–1894), public domain.*
 
 
 

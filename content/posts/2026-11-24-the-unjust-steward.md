@@ -6,8 +6,13 @@ draft: false
 pillar: 5
 article_number: 35
 passage: "Luke 16:1-13"
+shareImage: /images/jesus-teachings/article-35-the-unjust-steward.jpg
 description: "A manager about to lose his job cuts his master's bills — and the master praises his shrewdness. What did Jesus mean?"
 ---
+
+<img src="/images/jesus-teachings/article-35-the-unjust-steward.jpg" alt="Parable of the Unjust Steward, by Marinus van Reymerswaele" loading="lazy">
+
+*Parable of the Unjust Steward, Marinus van Reymerswaele (c. 1540), public domain.*
 
 We all know what it feels like to worry about money.
 
