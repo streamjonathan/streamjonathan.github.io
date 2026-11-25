@@ -2,12 +2,16 @@
 title: "friendship fathomed"
 date: 2014-02-12
 slug: friendship-fathomed
+draft: false
+shareImage: /images/2014-02-monet-sainte-adresse-beach.jpg
 original_url: http://www.jonathanmccallum.com/2014/02/12/friendship-fathomed/
 wayback_url: https://web.archive.org/web/20140212123548/http://www.jonathanmccallum.com/2014/02/12/friendship-fathomed/
 wayback_timestamp: 20140212123548
 ---
-[![Photo by Jordan Wong http://www.etsy.com/people/jordyby](/images/2014-02-seapoem1.jpg)](/images/2014-02-seapoem1.jpg)
-Photo by Jordan Wong http://www.etsy.com/people/jordyby
+
+<img src="/images/2014-02-monet-sainte-adresse-beach.jpg" alt="The Beach at Sainte-Adresse, by Claude Monet" loading="lazy">
+
+*The Beach at Sainte-Adresse, Claude Monet (1867), public domain.*
 
 Finding
 
@@ -46,6 +50,3 @@ is
 finding
 
 me.
-
-Photo by [Jordan Wong](http://www.etsy.com/people/jordyby) 
- Poem by Jonathan McCallum [@peoplepoesia](https://twitter.com/peoplepoesia)
