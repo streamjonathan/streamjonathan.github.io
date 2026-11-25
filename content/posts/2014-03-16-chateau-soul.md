@@ -2,10 +2,15 @@
 title: "chateau soul"
 date: 2014-03-16
 slug: chateau-soul
+draft: false
 original_url: http://www.jonathanmccallum.com/2014/03/16/chateau-soul/
 wayback_url: https://web.archive.org/web/20140317005015/http://www.jonathanmccallum.com/2014/03/16/chateau-soul/
 wayback_timestamp: 20140317005015
 ---
+![The Artist's House at Giverny, by Claude Monet](/images/2014-03-chateau-soul.jpg)
+
+*The Artist's House at Giverny, Claude Monet, public domain.*
+
 Along a windswept grassy hill you may find my soul chateau. 
  Warm days–windows welcoming sunlit air. 
  Winter grey–a fire crackling.
