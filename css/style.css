@@ -624,6 +624,10 @@ button[type="submit"] {
 /* Comments: signed in with Google, real names only. */
 .comments-section { margin: clamp(2rem, 5vw, 3rem) 0; }
 .comments-note { color: var(--muted); }
+/* The Google sign-in button renders inside this box; keep it inside
+   the content column on a 390px phone. */
+#comments-signin { max-width: 100%; }
+#comments-signin > div { max-width: 100%; }
 .comments-list { list-style: none; padding-left: 0; }
 .comments-empty { color: var(--muted); }
 .comment { border-top: 1px solid var(--line); padding: 1rem 0; }
@@ -648,8 +652,16 @@ button[type="submit"] {
 .comment__waiting { margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--muted); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 .comment__approve { padding: 0.25rem 0.75rem; min-height: 0; margin-top: 0.5rem; border: 0; border-radius: 0.5rem; background: var(--btn-bg); color: var(--btn-text); cursor: pointer; font-size: 0.85rem; }
 .comments-approval { color: var(--muted); font-size: 0.9rem; }
-#comments-form textarea { flex: 1 1 100%; padding: 0.75rem 1rem; resize: vertical; font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif; border: 1px solid var(--line); border-radius: 0.75rem; color: var(--text); background: var(--field-bg); }
-#comments-form input[type="url"] { flex: 1 1 100%; }
+/* The form is a flex column: without this, the flex: 1 1 100% on the
+   fields below did nothing (they were narrow default-width boxes in a
+   block layout), and labels sat beside the fields instead of above
+   them. Every child takes the full width, so the form fits a 390px
+   phone as well as desktop. */
+#comments-form { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+#comments-form label { display: block; width: 100%; font-weight: 600; }
+#comments-form .comments-as, #comments-form .comments-approval { width: 100%; }
+#comments-form textarea { flex: 1 1 100%; width: 100%; padding: 0.75rem 1rem; resize: vertical; font: 1.05rem/1.5 "Newsreader", Georgia, "Times New Roman", serif; border: 1px solid var(--line); border-radius: 0.75rem; color: var(--text); background: var(--field-bg); }
+#comments-form input[type="url"] { flex: 1 1 100%; width: 100%; }
 #comments-form button[type="submit"] { padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem; font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem; }
 .comments-as { color: var(--muted); }
 .comments-result { color: var(--muted); }

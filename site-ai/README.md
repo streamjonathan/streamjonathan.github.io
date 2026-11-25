@@ -269,14 +269,18 @@ Before merging to main, revert the preview settings:
   to `connect-src` in their `_headers` (mirrors call the comments API
   on the main domain, cross-origin).
 
-Google OAuth client (Jonathan's job, or a browser task): no client id
-exists yet, so sign-in shows "coming soon" until this is done. In
-Google Cloud Console, create an OAuth client ID (Web application) and
-add these Authorised JavaScript origins: `https://jonathanmccallum.com`
-plus each mirror's pages.dev domain and any preview domains. Copy the
-Client ID into `googleClientId` in `_data/site.json` (main site and
-every mirror) and set the same value as the `GOOGLE_CLIENT_ID` Worker
-var at deploy.
+Google OAuth client: DONE 2026-11-23 (commit 8be4499) — a Web
+application client was created and its ID is in `googleClientId` in
+`_data/site.json` (`899929886251-4drt0p77lq42ehbc1g44146gvn3k5550.apps.googleusercontent.com`,
+same value as the `GOOGLE_CLIENT_ID` Worker var at deploy). What is
+still unverified, and needs Jonathan (or a browser task in his Google
+account) to check in Google Cloud Console: the client's Authorised
+JavaScript origins must include `https://jonathanmccallum.com` plus
+each mirror's pages.dev domain and any preview domains — if an origin
+is missing, Google refuses the sign-in on that domain. The Desktop
+OAuth client in the same project is a different client and must not
+be used here: only a Web client works with Google Identity Services
+in the browser.
 
 Deploying (after merge): deploy this Worker with the API route,
 adding the three plain-text vars listed under "Helper updates" below

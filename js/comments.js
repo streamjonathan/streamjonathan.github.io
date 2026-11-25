@@ -299,6 +299,11 @@
       .catch(function () { showGoogleOrEmail(); });
   }
 
+  function googleConsent() {
+    if (window.JMConsent && window.JMConsent.choice) return window.JMConsent.choice();
+    try { return localStorage.getItem("cookie-consent"); } catch (e) { return null; }
+  }
+
   function showGoogleOrEmail() {
     // Not signed in by any method: the Google button, plus a line
     // pointing to the email option on /share-your-story/.
@@ -307,6 +312,16 @@
     }
     if (!clientId) {
       if (note) note.textContent = "Comments open soon — sign-in with Google is being set up.";
+      return;
+    }
+    // Google's sign-in button loads a script from accounts.google.com
+    // and Google may set its own cookies, so it only loads after the
+    // visitor accepts cookies (same rule as the interview form in
+    // js/ask.js, and as the privacy page promises). Instagram, LINE
+    // and email sign-in load nothing from a third party, so they work
+    // either way — the note points at them instead.
+    if (googleConsent() !== "accepted") {
+      if (note) note.textContent = "Google sign-in needs cookies — accept cookies to use it, or sign in with Instagram, LINE or email on the Share your story page. You can change your mind with “Cookie settings” at the bottom of the page.";
       return;
     }
     if (window.google && window.google.accounts && window.google.accounts.id) {
@@ -326,11 +341,22 @@
 
   function showButton() {
     if (!window.google || !window.google.accounts || !window.google.accounts.id) return;
+    if (signinBox && signinBox.children.length) return; // already rendered
     window.google.accounts.id.initialize({ client_id: clientId, callback: onSignedIn });
     if (signinBox) {
       window.google.accounts.id.renderButton(signinBox, { theme: "outline", size: "large" });
     }
   }
+
+  // If the visitor accepts cookies later, load the Google button then
+  // (same pattern as the interview form in js/ask.js).
+  window.addEventListener("cookie-consent", function (e) {
+    if (e.detail !== "accepted") return;
+    if (token || sessionSignedIn) return; // already signed in
+    if (signinBox && signinBox.children.length) return; // button already there
+    if (form && !form.hidden) return; // form already showing
+    showGoogleOrEmail();
+  });
 
   if (form) {
     form.addEventListener("submit", function (e) {
