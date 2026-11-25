@@ -9,7 +9,7 @@ wayback_url: https://web.archive.org/web/20140212123548/http://www.jonathanmccal
 wayback_timestamp: 20140212123548
 ---
 
-Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2014/02/12/friendship-fathomed/)
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/02/12/friendship-fathomed/">日本語で読む →</a></p>
 
 <img src="/images/2014-02-monet-sainte-adresse-beach.jpg" alt="The Beach at Sainte-Adresse, by Claude Monet" loading="lazy">
 

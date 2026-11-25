@@ -9,7 +9,7 @@ wayback_url: https://web.archive.org/web/20131209190644/http://www.jonathanmccal
 wayback_timestamp: 20131209190644
 ---
 
-Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2013/11/20/coves-basque-culture/)
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2013/11/20/coves-basque-culture/">日本語で読む →</a></p>
 
 <img src="/images/2013-11-monet-etretat-cliff.jpg" alt="The Cliff of Aval, Étretat, by Claude Monet" loading="lazy">
 

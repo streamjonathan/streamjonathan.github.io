@@ -9,7 +9,7 @@ wayback_url: https://web.archive.org/web/20131214193130/http://www.jonathanmccal
 wayback_timestamp: 20131214193130
 ---
 
-Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2013/12/14/day-exploring-donibane/)
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2013/12/14/day-exploring-donibane/">日本語で読む →</a></p>
 
 <img src="/images/2013-12-monet-sainte-adresse-beach.jpg" alt="The Beach at Sainte-Adresse, by Claude Monet" loading="lazy">
 

@@ -9,7 +9,7 @@ wayback_url: https://web.archive.org/web/20201111202610/http://www.jonathanmccal
 wayback_timestamp: 20201111202610
 ---
 
-Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2014/02/24/glass-shatters/)
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/02/24/glass-shatters/">日本語で読む →</a></p>
 
 <img src="/images/2014-02-monet-epte-river-bend.jpg" alt="Bend in the Epte River near Giverny, by Claude Monet" loading="lazy">
 

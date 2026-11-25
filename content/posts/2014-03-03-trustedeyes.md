@@ -9,7 +9,7 @@ wayback_url: https://web.archive.org/web/20140306070817/http://www.jonathanmccal
 wayback_timestamp: 20140306070817
 ---
 
-Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2014/03/03/trustedeyes/)
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/03/03/trustedeyes/">日本語で読む →</a></p>
 
 <img src="/images/2014-03-monet-vetheuil-fog.jpg" alt="Vétheuil in the Fog, by Claude Monet" loading="lazy">
 
