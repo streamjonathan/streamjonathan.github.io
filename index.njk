@@ -18,6 +18,30 @@ eleventyExcludeFromCollections: true
   <a href="https://jonamccallum.substack.com">Substack</a>
 </p>
 
+<section class="ask-hero ask-hero--top" data-fade aria-labelledby="ask-heading">
+  <h2 id="ask-heading">Interact with Jonathan's writing</h2>
+  <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
+  {# Europe disclaimer (EU AI Act Art. 50): visible in the chat itself,
+     before the first question, in the visitor's language, kept visible
+     while the chat is open. Wording: _data/askDisclaimer.json. #}
+  {% set disc = askDisclaimer[site.language] or askDisclaimer.en %}
+  <p class="ai-note ask-disclaimer">{{ disc.text }} <a href="/privacy/">Privacy</a></p>
+  <form id="ask-form">
+    <label for="ask-question">Your question</label>
+    <input id="ask-question" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
+    <button id="ask-button" type="button">Ask</button>
+  </form>
+  <div class="chips" role="group" aria-label="Try asking">
+    <button type="button" data-q="What has he written about Narnia?">Narnia</button>
+    <button type="button" data-q="What does he say about surfing and Jesus?">Surfing and Jesus</button>
+    <button type="button" data-q="Tell me about the poem “to sea”.">The poem “to sea”</button>
+    <button type="button" data-q="What has he written about C. S. Lewis?">C. S. Lewis</button>
+  </div>
+  <div id="ask-answer" aria-live="polite"></div>
+  <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
+  <p class="ask-under18">{{ (askUi[site.language] or askUi.en).under18 }}</p>
+</section>
+
 <p class="family-tree-link"><a href="/family-tree/">🌳 My family tree</a> — tracing my family back to Tahiti.</p>
 
 <section class="featured" data-fade aria-labelledby="featured-heading">
@@ -172,29 +196,6 @@ eleventyExcludeFromCollections: true
   <p class="note-privacy">Notes are anonymous — no name or email is asked for. See <a href="/privacy/">Privacy</a> for how notes are kept.</p>
 </section>
 
-<section class="ask-hero" data-fade aria-labelledby="ask-heading">
-  <h2 id="ask-heading">Interact with Jonathan's writing</h2>
-  <p>This is a conversation with Jonathan's writing, not with Jonathan himself. Ask anything about what he has written — every answer comes from his published posts, with a link to the post it came from.</p>
-  {# Europe disclaimer (EU AI Act Art. 50): visible in the chat itself,
-     before the first question, in the visitor's language, kept visible
-     while the chat is open. Wording: _data/askDisclaimer.json. #}
-  {% set disc = askDisclaimer[site.language] or askDisclaimer.en %}
-  <p class="ai-note ask-disclaimer">{{ disc.text }} <a href="/privacy/">Privacy</a></p>
-  <form id="ask-form">
-    <label for="ask-question">Your question</label>
-    <input id="ask-question" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
-    <button id="ask-button" type="button">Ask</button>
-  </form>
-  <div class="chips" role="group" aria-label="Try asking">
-    <button type="button" data-q="What has he written about Narnia?">Narnia</button>
-    <button type="button" data-q="What does he say about surfing and Jesus?">Surfing and Jesus</button>
-    <button type="button" data-q="Tell me about the poem “to sea”.">The poem “to sea”</button>
-    <button type="button" data-q="What has he written about C. S. Lewis?">C. S. Lewis</button>
-  </div>
-  <div id="ask-answer" aria-live="polite"></div>
-  <p class="ask-fallback"><a href="/search/">Or search the writing directly</a> — search always works, even when the chat is resting.</p>
-  <p class="ask-under18">{{ (askUi[site.language] or askUi.en).under18 }}</p>
-</section>
 
 <hr class="rule-gold">
 

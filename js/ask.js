@@ -208,6 +208,14 @@ function bootAsk() {
       overlay.hidden = false;
       if (overlayInput) overlayInput.focus();
     });
+    // Top entry point: the header Ask button (data-ask-open) opens the
+    // same panel, on every page, mobile and desktop.
+    document.querySelectorAll("[data-ask-open]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        overlay.hidden = false;
+        if (overlayInput) overlayInput.focus();
+      });
+    });
     var closeBtn = document.getElementById("ask-close");
     if (closeBtn) {
       closeBtn.addEventListener("click", function () {

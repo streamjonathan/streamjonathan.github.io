@@ -82,16 +82,27 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=31" as="style">
-<link rel="stylesheet" href="/css/style.css?v=31">
+<link rel="preload" href="/css/style.css?v=32" as="style">
+<link rel="stylesheet" href="/css/style.css?v=32">
 {% if pageStylesheet %}<link rel="preload" href="{{ pageStylesheet }}" as="style">
 <link rel="stylesheet" href="{{ pageStylesheet }}">{% endif %}
 </head>
 <body>
+{# Ask panel strings come from _data/askDisclaimer.json (EU AI Act Art. 50
+   disclaimer, per language) and _data/askUi.json (resting / not-ready /
+   button strings). The same js/ask.js runs on every language site: the
+   page's own language picks the strings, and data-ask-api is the Worker
+   base — empty means same origin (/api/ask on jonathanmccallum.com),
+   language sites set it to https://jonathanmccallum.com. #}
+{% set disc = askDisclaimer[site.language] or askDisclaimer.en %}
+{% set ui = askUi[site.language] or askUi.en %}
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header">
   <a class="site-header__title" href="/">Jonathan McCallum</a>
-  <button id="theme-toggle" type="button">Dark</button>
+  <span class="site-header__actions">
+    <button id="ask-top" type="button" data-ask-open>{{ ui.askButton }}</button>
+    <button id="theme-toggle" type="button">Dark</button>
+  </span>
 </header>
 <main id="main">
 {{ content | safe }}
@@ -113,14 +124,8 @@
     </ul>
   </nav>
 </footer>
-{# Ask panel strings come from _data/askDisclaimer.json (EU AI Act Art. 50
-   disclaimer, per language) and _data/askUi.json (resting / not-ready /
-   button strings). The same js/ask.js runs on every language site: the
-   page's own language picks the strings, and data-ask-api is the Worker
-   base — empty means same origin (/api/ask on jonathanmccallum.com),
-   language sites set it to https://jonathanmccallum.com. #}
-{% set disc = askDisclaimer[site.language] or askDisclaimer.en %}
-{% set ui = askUi[site.language] or askUi.en %}
+{# Ask panel: the strings (disc / ui) are set at the top of <body>,
+   above the header, so the header Ask button can use them too. #}
 <button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
 <div id="ask-overlay" hidden
   data-ask-lang="{{ site.language }}"
@@ -149,7 +154,7 @@
 </div>
 <script src="/js/main.js?v=15" defer></script>
 {% if pageScript %}<script src="{{ pageScript }}" defer></script>{% endif %}
-<script src="/js/ask.js?v=12" defer></script>
+<script src="/js/ask.js?v=13" defer></script>
 <script src="/js/suggest.js?v=4" defer></script>
 <script src="/js/consent.js?v=1" defer></script>
 <script src="/js/comments.js?v=3" defer></script>

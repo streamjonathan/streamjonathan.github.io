@@ -75,7 +75,15 @@ a:hover { color: var(--link); }
 img, picture, video, iframe { max-width: 100%; height: auto; }
 img { display: block; }
 /* Slim header on every page: the site title links home, theme choice at right. */
-.site-header { display: flex; justify-content: space-between; align-items: baseline; }
+.site-header { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; }
+.site-header__actions { display: flex; align-items: baseline; gap: 0.25rem; }
+/* Ask at the top: a gold Ask button in the header on every page, so the
+   chat is one tap away without scrolling — on phones (390px) as well as
+   desktop. It opens the same panel as the floating button. */
+#ask-top {
+  border: 0; border-radius: 999px; background: var(--btn-bg); color: var(--btn-text);
+  font-weight: 600; padding: 0.5rem 1rem; min-height: 2.75rem; cursor: pointer;
+}
 .site-header__title { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-variant-numeric: tabular-nums; text-decoration: none; padding: 0.75rem 0.25rem; min-height: 2.75rem; display: inline-block; }
 .site-header__title:hover { color: var(--link); }
 .site-header button {
@@ -110,6 +118,9 @@ code { font-size: 0.9em; }
 pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* The chat is the entrance: big box, one clear button, try-it chips. */
 .ask-hero { margin: clamp(2rem, 5vw, 3rem) 0; max-width: 48rem; }
+/* On the homepage the hero sits at the top, right under the intro, so the
+   Ask box is visible without scrolling — keep its top margin small there. */
+.ask-hero--top { margin-top: 1.25rem; }
 .ask-hero h2 { margin-top: 0; }
 .ask-hero form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .ask-hero label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
