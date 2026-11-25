@@ -9,6 +9,8 @@ wayback_url: https://web.archive.org/web/20141023101403/http://www.jonathanmccal
 wayback_timestamp: 20141023101403
 ---
 
+Read it in Japanese: [日本語で読む](https://jonathanmccallum-ja.pages.dev/2013/11/25/hookers-drunks/)
+
 <img src="/images/2013-11-monet-magpie.jpg" alt="The Magpie, by Claude Monet" loading="lazy">
 
 *The Magpie, Claude Monet (1868–1869), public domain.*
