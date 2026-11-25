@@ -6,8 +6,13 @@ draft: false
 pillar: 2
 article_number: 41
 passage: "Mark 10:46-52"
+shareImage: /images/jesus-teachings/article-41-bartimaeus.jpg
 description: "A blind beggar by the roadside would not be silenced. He shouted louder — and Jesus stopped."
 ---
+
+<img src="/images/jesus-teachings/article-41-bartimaeus.jpg" alt="The Two Blind Men at Jericho, by James Tissot" loading="lazy">
+
+*The Two Blind Men at Jericho, James Tissot (1886–1896), public domain.*
 
 We all know what it feels like to be told to keep quiet.
 

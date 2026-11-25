@@ -6,8 +6,13 @@ draft: false
 pillar: 4
 article_number: 37
 passage: "Luke 13:6-9"
+shareImage: /images/jesus-teachings/article-37-the-barren-fig-tree.jpg
 description: "For three years the fig tree bore no fruit. The owner said cut it down — but the gardener asked for one more year."
 ---
+
+<img src="/images/jesus-teachings/article-37-the-barren-fig-tree.jpg" alt="The Barren Fig Tree, by James Tissot" loading="lazy">
+
+*The Barren Fig Tree, James Tissot (c. 1886–1894), public domain.*
 
 We all know what it feels like to be given one more chance.
 

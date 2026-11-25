@@ -6,8 +6,13 @@ draft: false
 original_url: http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_url: https://web.archive.org/web/20210313202717/http://www.jonathanmccallum.com/2014/03/12/timetogotosea/
 wayback_timestamp: 20210313202717
+shareImage: /images/2014-03-monet-seascape.jpg
 ---
 <p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/03/12/timetogotosea/">日本語で読む →</a></p>
+
+<img src="/images/2014-03-monet-seascape.jpg" alt="Rough Sea at Étretat, by Claude Monet" loading="lazy">
+
+*Rough Sea at Étretat, Claude Monet (1883), public domain.*
 
 Sandside I slump, on shelled shore, sun screened and sipping soda, unaware of rising tide. 
  The waves lap my feet, childish, childlike. 

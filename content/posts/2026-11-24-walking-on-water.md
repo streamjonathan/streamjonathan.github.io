@@ -6,8 +6,13 @@ draft: false
 pillar: 2
 article_number: 39
 passage: "Matthew 14:22-33"
+shareImage: /images/jesus-teachings/article-39-walking-on-water.jpg
 description: "Late at night, in wind and waves, the disciples saw Jesus walking on the water — and Peter stepped out of the boat."
 ---
+
+<img src="/images/jesus-teachings/article-39-walking-on-water.jpg" alt="Jesus Walks on the Sea, by James Tissot" loading="lazy">
+
+*Jesus Walks on the Sea, James Tissot (c. 1886–1894), public domain.*
 
 We all know what it feels like to be afraid in the dark.
 

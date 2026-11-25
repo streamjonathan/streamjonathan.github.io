@@ -6,8 +6,13 @@ draft: false
 pillar: 2
 article_number: 40
 passage: "Mark 4:35-41"
+shareImage: /images/jesus-teachings/article-40-calming-the-storm.jpg
 description: "The waves were filling the boat, and Jesus was asleep. Then he stood up and said to the wind and the waves, 'Be still.'"
 ---
+
+<img src="/images/jesus-teachings/article-40-calming-the-storm.jpg" alt="Christ in the Storm on the Lake of Galilee, by Rembrandt van Rijn" loading="lazy">
+
+*Christ in the Storm on the Lake of Galilee, Rembrandt van Rijn (1633), public domain.*
 
 We all know what it feels like when everything around us is falling apart.
 

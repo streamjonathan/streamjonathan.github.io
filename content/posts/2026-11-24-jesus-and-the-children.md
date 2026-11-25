@@ -6,8 +6,13 @@ draft: false
 pillar: 8
 article_number: 45
 passage: "Mark 10:13-16"
+shareImage: /images/jesus-teachings/article-45-jesus-and-the-children.jpg
 description: "The disciples tried to turn the little children away, but Jesus was indignant — and took them in his arms."
 ---
+
+<img src="/images/jesus-teachings/article-45-jesus-and-the-children.jpg" alt="Suffer the Little Children to Come unto Me, by James Tissot" loading="lazy">
+
+*Suffer the Little Children to Come unto Me, James Tissot (c. 1886–1894), public domain.*
 
 
 

@@ -6,8 +6,13 @@ draft: false
 pillar: 5
 article_number: 42
 passage: "Luke 19:1-10"
+shareImage: /images/jesus-teachings/article-42-zacchaeus.jpg
 description: "Zacchaeus was too small to see over the crowd, so he climbed a tree. Jesus looked up, called him by name, and came to his house."
 ---
+
+<img src="/images/jesus-teachings/article-42-zacchaeus.jpg" alt="Zacchaeus in the Sycamore Awaiting the Passage of Jesus, by James Tissot" loading="lazy">
+
+*Zacchaeus in the Sycamore Awaiting the Passage of Jesus, James Tissot (c. 1886–1894), public domain.*
 
 We all know what it feels like to be too small to see.
 
