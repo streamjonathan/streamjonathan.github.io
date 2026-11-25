@@ -2,10 +2,17 @@
 title: "Shatters"
 date: 2014-02-24
 slug: glass-shatters
+draft: false
+shareImage: /images/2014-02-monet-epte-river-bend.jpg
 original_url: http://www.jonathanmccallum.com/2014/02/24/glass-shatters/
 wayback_url: https://web.archive.org/web/20201111202610/http://www.jonathanmccallum.com/2014/02/24/glass-shatters/
 wayback_timestamp: 20201111202610
 ---
+
+<img src="/images/2014-02-monet-epte-river-bend.jpg" alt="Bend in the Epte River near Giverny, by Claude Monet" loading="lazy">
+
+*Bend in the Epte River near Giverny, Claude Monet (1888), public domain.*
+
 Glass shatters, sun light flows, a biting wind awakes my soul. I see, after all, that life is light, not sharp clear panes. I took glass for beauty, yet it was the penetrating wind that awoke me to see through, see the view, to see You.
 
 With words, 
@@ -27,14 +34,14 @@ You said, “Don’t judge.”
  We have lost humility, the ability to see. 
  The glass is stained.
 
-There is a day that resounds in my soul, an unsought email, an opinion turned valuation. 
- A confident, evangelical man charged me to preach both testaments, the whole Bible. 
- To preach the gospel, he said. 
- Not. Just. Jesus. 
- I had never felt such a jolt, the crash nearly audible. 
- Is He not the old and the new? 
- Is He not the fullness of the gospel? 
- The. Good. News?
+There is a day that resounds in my soul, an opinion turned valuation.
+Someone charged me to preach both testaments, the whole Bible.
+To preach the gospel, they said.
+Not. Just. Jesus.
+I had never felt such a jolt, the crash nearly audible.
+Is He not the old and the new?
+Is He not the fullness of the gospel?
+The. Good. News?
 
 The glass that cuts the wind and chills the light 
  Jabs at my feet as I walk to the stream. 
@@ -44,11 +51,4 @@ The glass that cuts the wind and chills the light
  It’s just that today my window broke, the Light flooding in, 
  And the Wind woke me.
 
-Tags:
-[glass](http://www.jonathanmccallum.com/tag/glass/)
-,
-[Jonathan McCallum](http://www.jonathanmccallum.com/tag/jonathan-mccallum/)
-,
-[poem](http://www.jonathanmccallum.com/tag/poem/)
-,
-[poetry](http://www.jonathanmccallum.com/tag/poetry/)
+Poem by Jonathan McCallum
