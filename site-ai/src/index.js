@@ -42,6 +42,18 @@ import { handleComments } from "./comments.js";
 const FIXED_REFUSAL =
   "I can only help with Jonathan's published writing — here's a post you might like:";
 
+// When nothing matches, the refusal still points the reader at one real
+// published post — the fallback must never end in a bare colon. The
+// intro post is the safe default for any question: it is the site's
+// welcome page, it is published, and it says what the site is about.
+// (Fixed 2026-11-25: the bare refusal showed the colon and no post.)
+const DEFAULT_SOURCE = {
+  title: "If Jesus Is Real, and He Is Good",
+  url: "https://jonathanmccallum.com/2026/11/23/if-jesus-is-real-and-he-is-good/",
+};
+const FIXED_REFUSAL_WITH_POST =
+  `${FIXED_REFUSAL} ${DEFAULT_SOURCE.title} — ${DEFAULT_SOURCE.url}`;
+
 const PAUSED_MESSAGE =
   "The chat is resting until tomorrow — please try searching the writing instead.";
 
@@ -1118,7 +1130,7 @@ async function answerOnce(question, env, gateway) {
   const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
   const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
   if (matches.length === 0) {
-    return { answer: FIXED_REFUSAL, sources: [], paused: false, noMatch: true };
+    return { answer: FIXED_REFUSAL_WITH_POST, sources: [DEFAULT_SOURCE], paused: false, noMatch: true };
   }
 
   const sources = dedupeByUrl(
@@ -1185,7 +1197,7 @@ async function answerStream(question, env, gateway) {
   const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
   const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
   if (matches.length === 0) {
-    return json({ answer: FIXED_REFUSAL, sources: [], paused: false });
+    return json({ answer: FIXED_REFUSAL_WITH_POST, sources: [DEFAULT_SOURCE], paused: false });
   }
 
   const sources = dedupeByUrl(
@@ -1285,7 +1297,7 @@ async function answerStream(question, env, gateway) {
     } catch {
       if (!aborted) {
         try {
-          await writer.write(sse({ refusal: FIXED_REFUSAL, sources: [] }));
+          await writer.write(sse({ refusal: FIXED_REFUSAL_WITH_POST, sources: [DEFAULT_SOURCE] }));
           await writer.close();
         } catch {}
       }
@@ -1419,8 +1431,8 @@ export default {
       const message = String(err && err.message ? err.message : err);
       if (/2016|2017|prompt.*block|guardrail/i.test(message)) {
         return json({
-          answer: FIXED_REFUSAL,
-          sources: [],
+          answer: FIXED_REFUSAL_WITH_POST,
+          sources: [DEFAULT_SOURCE],
           paused: false,
         });
       }
