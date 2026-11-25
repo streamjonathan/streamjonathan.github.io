@@ -10,25 +10,45 @@
 // Run it after publishing new posts, then run embed-and-insert.mjs to put
 // the new chunks into Vectorize.
 //
-// Usage:  node site-ai/scripts/build-index.mjs
+// Usage:  node site-ai/scripts/build-index.mjs [--lang <code>]
+//         [--posts-dir <path>] [--out <path>]
 // Output: site-ai/index/chunks.jsonl  (generated, public-safe, git-ignored)
+//         or site-ai/index/chunks-<lang>.jsonl with --lang.
+//
+// Multilingual Ask: one Vectorize index holds every language, and each
+// chunk carries metadata.lang. The Worker filters retrieval by lang, so a
+// visitor only ever gets answers from writing in their own language.
+// Run once per language repo, e.g.:
+//   node site-ai/scripts/build-index.mjs --lang es \
+//     --posts-dir ~/workspace/jonathanmccallum-es/content/posts
+//   node site-ai/scripts/embed-and-insert.mjs --lang es --dry-run
+// The chunks files are build artefacts (git-ignored); the Vectorize
+// insert is what the Worker reads. Never answer from another language's
+// chunks — if a language has no chunks, the Worker says so instead.
 
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const POSTS_DIR = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "..",
-  "content",
-  "posts"
+const args = process.argv.slice(2);
+function argVal(name, fallback) {
+  const i = args.indexOf(name);
+  return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
+}
+const LANG = (argVal("--lang", "en") || "en").toLowerCase();
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const POSTS_DIR = argVal(
+  "--posts-dir",
+  path.join(SCRIPT_DIR, "..", "..", "content", "posts")
 );
-const OUT_FILE = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "index",
-  "chunks.jsonl"
+const OUT_FILE = argVal(
+  "--out",
+  path.join(
+    SCRIPT_DIR,
+    "..",
+    "index",
+    LANG === "en" ? "chunks.jsonl" : `chunks-${LANG}.jsonl`
+  )
 );
 
 const CHUNK_WORDS = 400;
@@ -137,9 +157,11 @@ for (const file of files.sort()) {
   const title = data.title || file.replace(/\.md$/, "");
   chunkText(text).forEach((chunk, i) => {
     chunks.push({
-      id: `${data.slug || file.replace(/\.md$/, "")}-${i}`,
+      // Chunk ids are namespaced by language, so re-indexing one language
+      // never overwrites another's chunks in the shared Vectorize index.
+      id: `${LANG}-${data.slug || file.replace(/\.md$/, "")}-${i}`,
       text: chunk,
-      metadata: { title, url, date: data.date || "", chunk: i },
+      metadata: { title, url, date: data.date || "", chunk: i, lang: LANG },
     });
   });
 }

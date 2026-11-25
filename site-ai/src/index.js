@@ -57,10 +57,88 @@ const FIXED_REFUSAL_WITH_POST =
 const PAUSED_MESSAGE =
   "The chat is resting until tomorrow — please try searching the writing instead.";
 
+// Multilingual Ask (2026-11-25, branch ask-bigger-multilingual-eu).
+// One shared Vectorize index holds every language; each chunk carries
+// metadata.lang, and retrieval filters by it — a visitor only ever gets
+// answers from writing in their own language. INDEXED_LANGS (wrangler
+// [vars]) is the list of languages actually embedded in the index so
+// far; it must match reality, and the Worker refuses a language that
+// is not on it instead of answering from English and pretending it is
+// the visitor's language. Phase 1: the 19 live language sites; phase 2:
+// all 50. Until a language is embedded, the client shows its own
+// "not ready in this language yet" line (noIndexForLang below).
+const LANG_NAMES = {
+  am: "Amharic", ar: "Arabic", as: "Assamese", az: "Azerbaijani",
+  bn: "Bengali", bho: "Bhojpuri", my: "Burmese", zh: "Chinese",
+  nl: "Dutch", en: "English", fr: "French", de: "German",
+  gu: "Gujarati", ha: "Hausa", hi: "Hindi", id: "Indonesian",
+  it: "Italian", ja: "Japanese", jv: "Javanese", kn: "Kannada",
+  ko: "Korean", ln: "Lingala", mai: "Maithili", ml: "Malayalam",
+  mr: "Marathi", ne: "Nepali", pcm: "Nigerian Pidgin", or: "Odia",
+  om: "Oromo", ps: "Pashto", fa: "Persian", pl: "Polish",
+  pnb: "Punjabi (Shahmukhi)", pa: "Punjabi (Gurmukhi)", pt: "Portuguese",
+  ro: "Romanian", ru: "Russian", sd: "Sindhi", es: "Spanish",
+  su: "Sundanese", sw: "Swahili", tl: "Tagalog", ta: "Tamil",
+  te: "Telugu", th: "Thai", tr: "Turkish", uk: "Ukrainian",
+  ur: "Urdu", vi: "Vietnamese", yo: "Yoruba",
+};
+function normaliseLang(raw) {
+  const code = String(raw || "en").toLowerCase().trim();
+  return LANG_NAMES[code] ? code : "en";
+}
+function indexedLangs(env) {
+  const list = String(env.INDEXED_LANGS || "en")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter((s) => LANG_NAMES[s]);
+  return new Set(list.length ? list : ["en"]);
+}
+// Language instruction appended to the system prompt for non-English
+// answers. The model answers in the visitor's language, from that
+// language's writing only — never in English dressed up as the local
+// language, and never by translating an English answer.
+function languageInstruction(lang) {
+  if (lang === "en") return "";
+  const name = LANG_NAMES[lang];
+  return `\n\nLanguage: answer in ${name}. Write the whole answer in ${name}, including the question back to the reader. Use only the ${name} passages below. If the answer is not in them, say so in ${name} — do not answer in English instead, and do not translate an English answer into ${name}.`;
+}
+
+// Daily Neuron budget — soft stop (see work/ask-eu-legal-and-disclaimer.md
+// Part C). Workers AI free tier is 10,000 Neurons/day per Cloudflare
+// ACCOUNT, shared across all 50 sites + tests, hard stop, error 3036 /
+// HTTP 429. The Worker cannot read its own Neuron spend, so it counts
+// fresh answers and estimates: NEURON_ESTIMATE_PER_ANSWER (default 130,
+// the ~75 fresh answers/day the site has measured) × answers served.
+// At NEURON_SOFT_STOP (default 9,000) it stops serving new model
+// answers and shows the resting message instead, so one busy morning
+// cannot burn the whole day and the block cannot drag into tomorrow.
+// Cached answers cost nothing and are never counted. If the KV counter
+// is unavailable the Worker fails open — Cloudflare's hard stop is
+// still the backstop, and error 3036 is caught as "resting" below.
+const NEURON_DAY_KEY = `neurons-day-${new Date().toISOString().slice(0, 10)}`;
+async function neuronsUsed(env) {
+  if (!env.NOTES) return 0;
+  try {
+    return Number((await env.NOTES.get(NEURON_DAY_KEY)) || 0);
+  } catch {
+    return 0;
+  }
+}
+async function noteNeurons(env) {
+  if (!env.NOTES) return;
+  try {
+    const used = (await neuronsUsed(env)) + Number(env.NEURON_ESTIMATE_PER_ANSWER || 130);
+    await env.NOTES.put(NEURON_DAY_KEY, String(used), { expirationTtl: 90000 });
+  } catch {}
+}
+async function budgetPaused(env) {
+  return (await neuronsUsed(env)) >= Number(env.NEURON_SOFT_STOP || 9000);
+}
+
 // Only chunks scoring above this count as a real match. With six posts
-// the scores run 0.35–0.65, and the second-best chunk is usually an
-// unrelated post, so 0.5 keeps the sources list to the post the
-// question is actually about.
+// the scores ran 0.35–0.65; the corpus is now 94 published English
+// posts (and ~70 per language), so 0.5 still keeps the sources list to
+// the post the question is actually about.
 const MIN_SCORE = 0.5;
 
 // Good answers are cached for a week. Refusals and resting messages are
@@ -145,14 +223,15 @@ function withCors(request, response) {
   return new Response(response.body, { status: response.status, headers });
 }
 
-// Cache key: SHA-256 of the normalised question, so "What is Narnia?"
-// and "what is  narnia?" hit the same entry. Curly quotes become
+// Cache key: SHA-256 of the normalised question, namespaced by
+// language — the same question in Spanish and in English are different
+// answers and must never share a cache entry. Curly quotes become
 // straight ones and trailing punctuation is dropped, so the homepage
 // chip "Tell me about the poem “to sea”." matches a typed "Tell me
 // about the poem 'to sea'". Keys live in the NOTES KV namespace under a
 // cache- prefix, separate from the note- keys.
-async function cacheKey(question) {
-  const norm = question
+async function cacheKey(question, lang = "en") {
+  const norm = `${lang}:${question}`
     .toLowerCase()
     .replace(/[‘’]/g, "'")
     .replace(/[“”]/g, '"')
@@ -1113,7 +1192,7 @@ async function handleInterview(request, env) {
 // Non-streaming answer: the original whole-answer path, kept as the
 // fallback when streaming is unavailable, and the path that populates
 // the cache. Returns {answer, sources, paused}.
-async function answerOnce(question, env, gateway) {
+async function answerOnce(question, env, gateway, lang = "en") {
   // The embed call goes DIRECT to Workers AI, not through the gateway:
   // an embedding turns text into numbers and cannot produce text, leak
   // anything, or be talked into saying anything — guardrails on it are
@@ -1127,7 +1206,12 @@ async function answerOnce(question, env, gateway) {
   const vector = embedding.data[0];
 
   const topK = Number(env.TOP_K || 5);
-  const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
+  const queryOpts = { topK, returnMetadata: "all" };
+  // English stays unfiltered: the pre-rollout chunks carry no lang
+  // metadata, and filtering would hide them. Other languages only ever
+  // see their own language's chunks — never English in disguise.
+  if (lang !== "en") queryOpts.filter = { lang };
+  const results = await env.VECTORIZE.query(vector, queryOpts);
   const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
   if (matches.length === 0) {
     return { answer: FIXED_REFUSAL_WITH_POST, sources: [DEFAULT_SOURCE], paused: false, noMatch: true };
@@ -1152,7 +1236,7 @@ async function answerOnce(question, env, gateway) {
     env.CHAT_MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
     {
       messages: [
-        { role: "system", content: SYSTEM_PROMPT },
+        { role: "system", content: SYSTEM_PROMPT + languageInstruction(lang) },
         {
           role: "user",
           content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title only. Do not write any link.`,
@@ -1186,7 +1270,7 @@ async function answerOnce(question, env, gateway) {
 // A good streamed answer is cached, so the next identical question is
 // instant. Returns a Response, or null when streaming could not start
 // (the caller then falls back to answerOnce).
-async function answerStream(question, env, gateway) {
+async function answerStream(question, env, gateway, lang = "en") {
   // Embed direct, not through the gateway — see answerOnce for why.
   const embedding = await env.AI.run(env.EMBED_MODEL || "@cf/baai/bge-m3", {
     text: [question],
@@ -1194,7 +1278,12 @@ async function answerStream(question, env, gateway) {
   const vector = embedding.data[0];
 
   const topK = Number(env.TOP_K || 5);
-  const results = await env.VECTORIZE.query(vector, { topK, returnMetadata: "all" });
+  const queryOpts = { topK, returnMetadata: "all" };
+  // English stays unfiltered: the pre-rollout chunks carry no lang
+  // metadata, and filtering would hide them. Other languages only ever
+  // see their own language's chunks — never English in disguise.
+  if (lang !== "en") queryOpts.filter = { lang };
+  const results = await env.VECTORIZE.query(vector, queryOpts);
   const matches = (results.matches || []).filter((m) => m.score > MIN_SCORE);
   if (matches.length === 0) {
     return json({ answer: FIXED_REFUSAL_WITH_POST, sources: [DEFAULT_SOURCE], paused: false });
@@ -1219,7 +1308,7 @@ async function answerStream(question, env, gateway) {
       env.CHAT_MODEL || "@cf/meta/llama-3.1-8b-instruct-fp8-fast",
       {
         messages: [
-          { role: "system", content: SYSTEM_PROMPT },
+          { role: "system", content: SYSTEM_PROMPT + languageInstruction(lang) },
           {
             role: "user",
             content: `Question: ${question}\n\n${sourceBlock}\n\nAnswer only from the sources above, citing the post title only. Do not write any link.`,
@@ -1239,7 +1328,7 @@ async function answerStream(question, env, gateway) {
 
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
-  const key = env.NOTES ? await cacheKey(question) : null;
+  const key = env.NOTES ? await cacheKey(question, lang) : null;
 
   (async () => {
     const reader = stream.getReader();
@@ -1369,6 +1458,24 @@ export default {
       }
       return withCors(request, await handleSuggest(request, env));
     }
+    // The language sites call /api/ask cross-origin from their own
+    // Pages origin — same allowlist as /api/suggest, preflight included.
+    if (url.pathname.endsWith("/api/ask") && request.method === "OPTIONS") {
+      const origin = corsOrigin(request);
+      if (!origin) {
+        return json({ error: "Method not allowed. POST JSON to /api/ask." }, 405);
+      }
+      return new Response(null, {
+        status: 204,
+        headers: {
+          "Access-Control-Allow-Origin": origin,
+          "Access-Control-Allow-Methods": "POST, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type",
+          "Access-Control-Max-Age": "86400",
+          Vary: "Origin",
+        },
+      });
+    }
     if (request.method !== "POST") {
       return json({ error: "Method not allowed. POST a JSON question to /api/ask." }, 405);
     }
@@ -1381,6 +1488,12 @@ export default {
     }
 
     const question = typeof body.question === "string" ? body.question.trim() : "";
+    // lang comes from the page (site.language); Accept-Language is the
+    // fallback for a caller that sends none. Unknown codes become "en".
+    const lang = normaliseLang(
+      body.lang ||
+        (request.headers.get("Accept-Language") || "").slice(0, 2)
+    );
     const maxChars = Number(env.MAX_QUESTION_CHARS || 500);
     if (!question || question.length > maxChars) {
       return json({ error: `Ask one question, up to ${maxChars} characters.` }, 400);
@@ -1388,33 +1501,60 @@ export default {
 
     const ip = request.headers.get("CF-Connecting-IP") || "unknown";
     if (rateLimited(ip)) {
-      return json({
+      return withCors(request, json({
         answer: PAUSED_MESSAGE,
         sources: [],
         paused: true,
-      });
+      }));
+    }
+
+    // Language not embedded yet: say so, honestly, in the response —
+    // never answer from English and pretend it is the visitor's
+    // language. The client shows its own translated "not ready yet"
+    // line for this flag. No AI call is made, so no Neurons are spent.
+    if (!indexedLangs(env).has(lang)) {
+      return withCors(request, json({
+        answer: "",
+        sources: [],
+        paused: false,
+        noIndexForLang: true,
+        lang,
+      }));
     }
 
     const gateway = env.AI_GATEWAY_ID ? { gateway: { id: env.AI_GATEWAY_ID } } : undefined;
 
     // Repeated questions come straight from the cache — no AI call.
-    const key = env.NOTES ? await cacheKey(question) : null;
+    const key = env.NOTES ? await cacheKey(question, lang) : null;
     if (env.NOTES && key) {
       try {
         const hit = await env.NOTES.get(key, "json");
         if (hit && hit.answer && hit.sources) {
-          return json({ answer: hit.answer, sources: hit.sources, paused: false, cached: true });
+          return withCors(request, json({ answer: hit.answer, sources: hit.sources, paused: false, cached: true, lang }));
         }
       } catch {}
     }
 
+    // Soft stop: at ~9,000 estimated Neurons the chat rests for the
+    // day instead of burning the pool and hitting Cloudflare's hard
+    // stop (error 3036). Cached answers above already bypass this.
+    if (await budgetPaused(env)) {
+      return withCors(request, json({
+        answer: PAUSED_MESSAGE,
+        sources: [],
+        paused: true,
+      }));
+    }
+
     try {
+      // One fresh answer's worth of Neurons, counted before the call.
+      await noteNeurons(env);
       // Fast path: stream the answer as it is written.
-      const streamed = await answerStream(question, env, gateway);
-      if (streamed) return streamed;
+      const streamed = await answerStream(question, env, gateway, lang);
+      if (streamed) return withCors(request, streamed);
 
       // Fallback: whole-answer path (also populates the cache).
-      const result = await answerOnce(question, env, gateway);
+      const result = await answerOnce(question, env, gateway, lang);
       if (!result.noMatch && !result.unsafe && !result.paused && env.NOTES && key) {
         await env.NOTES
           .put(key, JSON.stringify({ answer: result.answer, sources: result.sources }), {
@@ -1422,25 +1562,26 @@ export default {
           })
           .catch(() => {});
       }
-      return json({ answer: result.answer, sources: result.sources, paused: result.paused });
+      return withCors(request, json({ answer: result.answer, sources: result.sources, paused: result.paused, lang }));
     } catch (err) {
       // Daily neuron allowance used up, gateway block, or any AI error:
       // never show an error page. The chat rests; search keeps working.
       // (A gateway prompt/response block also lands here with a 2016/2017
-      // error — same warm refusal, never the raw error.)
+      // error — same warm refusal, never the raw error. Error 3036 /
+      // HTTP 429 is the daily free-allocation limit — resting, not a bug.)
       const message = String(err && err.message ? err.message : err);
       if (/2016|2017|prompt.*block|guardrail/i.test(message)) {
-        return json({
+        return withCors(request, json({
           answer: FIXED_REFUSAL_WITH_POST,
           sources: [DEFAULT_SOURCE],
           paused: false,
-        });
+        }));
       }
-      return json({
+      return withCors(request, json({
         answer: PAUSED_MESSAGE,
         sources: [],
         paused: true,
-      });
+      }));
     }
   },
 };

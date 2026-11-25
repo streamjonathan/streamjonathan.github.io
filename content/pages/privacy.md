@@ -16,11 +16,26 @@ Jonathan McCallum is the data controller for this site. That means he decides wh
 
 ## What is collected, and why
 
+The short version, in one table (this is the summary European privacy law asks for — GDPR Art. 13). The sections below it give the detail.
+
+| What | What is kept | Why (legal basis) | Who else sees it | How long |
+|---|---|---|---|---|
+| Serving the site, keeping it secure | IP address, browser and request data | Legitimate interest: keeping the site secure and working | Cloudflare (host) | Kept by Cloudflare; Jonathan keeps no separate copy |
+| The chat | Your question, only while the answer is made | Legitimate interest: answering questions about the published writing | Cloudflare Workers AI, to generate the answer only | Questions are not stored; good answers are kept 7 days, then deleted |
+| Signing in | Name / username / verified email, as listed below | Your consent: you choose to sign in | Google, Instagram, LINE, or your email provider | Sign-in sessions 1 hour; codes 10 minutes |
+| Share your story | Name, social link, your three answers | Your consent, plus the permission box you tick | No one, until Jonathan checks it with you | Until Jonathan has dealt with it and deleted it |
+| Suggest an artist | Artist name and link, what you suggest, why, your name and link if you give them | Your consent | No one | Until Jonathan has dealt with it and deleted it |
+| Leave a note | The note text only — anonymous by design | Your consent: you choose to leave one | No one, until Jonathan reads it in his digest email | Until Jonathan has read it and deleted it |
+| Comments | Name, comment, optional social or video link | Your consent | No one, until Jonathan approves it | While the comment is published; deleted on request or when removed |
+
+Your question itself is not stored, is not used to train a model, and is sent only to Cloudflare Workers AI to generate the answer. If that ever changes, this page will be updated first.
+
 ### The chat: "Interact with Jonathan's writing"
 
 When you type a question, it is sent to Cloudflare — the company that hosts this site — so its AI can look through Jonathan's published writing and draft an answer. The answer comes only from his writing, with a link to the post it came from.
 
 - Your question itself is not stored. It is turned into a one-way code (a hash) so the site can find a saved answer if someone asks the same thing again. Good answers are kept for 7 days, then deleted.
+- Your question is not used to train a model, and is sent only to Cloudflare Workers AI to generate the answer.
 - The chat is not Jonathan. It is an AI, and it can get things wrong.
 - The legal basis for the chat is legitimate interest: running a small site that answers questions from published writing.
 
@@ -53,6 +68,8 @@ Notes are anonymous. The site asks for no name, no email, and no social media ha
 
 If you comment on an article, the site keeps your name, your comment, and a link to your social profile or a video if you add one. Comments are checked by Jonathan before they appear. The legal basis is your consent.
 
+To report a comment, write to Jonathan at <a href="#" data-contact-email data-contact-email-text>Email me</a>. Comments are not accepted if they are spam, abusive, or share someone else's personal details; if a comment is removed, Jonathan will say why when he replies. Signing in to comment is optional — reading the site never needs it.
+
 ### Search
 
 Search runs entirely on your own device. Nothing you search for is sent anywhere.
@@ -68,6 +85,7 @@ This site uses very few cookies. None of them track you.
 | Cookie or storage | What it does | How long it lasts |
 |---|---|---|
 | `interview_session` | Keeps you signed in while you share your story or comment. | 1 hour |
+| Cloudflare security cookies (`__cf_bm`, `cf_clearance`) | Only if Cloudflare checks that a request comes from a real browser: they keep the site secure from bots. No consent is needed for these, because they are strictly necessary for security. | About 30 minutes to 1 day |
 | `theme` (saved on your device) | Remembers whether you chose the light or dark theme. | Until you change it |
 | `cookie-consent` (saved on your device) | Remembers whether you accepted or rejected cookies, so the banner does not ask again. | Until you change it |
 | Google sign-in | Only if you accept cookies: Google's own sign-in button loads from Google, and Google may set its own cookies. See [Google's privacy policy](https://policies.google.com/privacy). | Set by Google |
@@ -105,7 +123,7 @@ Because the site stores so little, there is usually nothing to show or delete. A
 
 ## Children
 
-This site is not for people under 18. It talks about faith in Jesus, and that is religious content, so it is written for adults. If you are under 18, please do not share personal information here, and do not write to Jonathan.
+This site is not for people under 18. It talks about faith in Jesus, and that is religious content, so it is written for adults. If you are under 18, please do not share personal information here, do not use the chat, notes or comments, and do not write to Jonathan.
 
 In Spain, the law says a child under 14 needs a parent or guardian to agree before sharing personal data online. This site's own rule is stricter than that: under 18, this site is not for you.
 
@@ -115,4 +133,4 @@ This is a personal website. Everything here is Jonathan's own writing and his ow
 
 ## Changes
 
-This page will be updated if anything about the site changes. Last updated 23 November 2026.
+This page will be updated if anything about the site changes. Last updated 25 November 2026.

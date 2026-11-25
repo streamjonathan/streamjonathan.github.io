@@ -82,8 +82,8 @@
 </script>
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
-<link rel="preload" href="/css/style.css?v=30" as="style">
-<link rel="stylesheet" href="/css/style.css?v=30">
+<link rel="preload" href="/css/style.css?v=31" as="style">
+<link rel="stylesheet" href="/css/style.css?v=31">
 {% if pageStylesheet %}<link rel="preload" href="{{ pageStylesheet }}" as="style">
 <link rel="stylesheet" href="{{ pageStylesheet }}">{% endif %}
 </head>
@@ -98,7 +98,7 @@
 </main>
 <footer class="site-footer">
   <p>This chat answers only from Jonathan's published writing — it is not Jonathan, and its answers can be wrong.</p>
-  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a> · <a href="/family-tree/">Family tree</a> · <a href="#" id="cookie-settings">Cookie settings</a> · <a href="/share-your-story/">Share your story</a></p>
+  <p>{{ site.title }} — <a href="/feed/">RSS feed</a> · <a href="/search/">Search</a> · <a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a> · <a href="/family-tree/">Family tree</a> · <a href="#" id="cookie-settings">Cookie settings</a> · <a href="/share-your-story/">Share your story</a></p>
   <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
   <p>Say hi — <a href="#" data-contact-email data-contact-email-text>Email me</a></p>
   <p>Set in Fraunces and Newsreader. Built with Eleventy, hosted on Cloudflare Pages.</p>
@@ -113,16 +113,33 @@
     </ul>
   </nav>
 </footer>
+{# Ask panel strings come from _data/askDisclaimer.json (EU AI Act Art. 50
+   disclaimer, per language) and _data/askUi.json (resting / not-ready /
+   button strings). The same js/ask.js runs on every language site: the
+   page's own language picks the strings, and data-ask-api is the Worker
+   base — empty means same origin (/api/ask on jonathanmccallum.com),
+   language sites set it to https://jonathanmccallum.com. #}
+{% set disc = askDisclaimer[site.language] or askDisclaimer.en %}
+{% set ui = askUi[site.language] or askUi.en %}
 <button id="ask-fab" type="button" aria-label="Ask about the writing">Ask</button>
-<div id="ask-overlay" hidden>
+<div id="ask-overlay" hidden
+  data-ask-lang="{{ site.language }}"
+  data-ask-api=""
+  data-ask-rest="{{ ui.resting }}"
+  data-ask-notready="{{ ui.notReady }}"
+  data-ask-thinking="{{ ui.thinking }}"
+  data-ask-search="{{ ui.searchLink }}"
+  data-ask-fallback-url="https://jonathanmccallum.com/2026/11/23/if-jesus-is-real-and-he-is-good/"
+  data-ask-fallback-title="If Jesus Is Real, and He Is Good">
   <div class="ask-panel" role="dialog" aria-modal="true" aria-labelledby="ask-overlay-heading">
     <div class="ask-panel__head">
       <h2 id="ask-overlay-heading">Ask the writing</h2>
       <button id="ask-close" type="button" aria-label="Close">×</button>
     </div>
-    <p class="ask-panel__note">An AI answers from Jonathan's published writing only. It is not Jonathan, and it can get things wrong.</p>
+    <p class="ask-panel__note ask-disclaimer">{{ disc.text }} <a href="/privacy/">Privacy</a></p>
+    <p class="ask-under18">{{ ui.under18 }}</p>
     <form id="ask-form-overlay">
-      <label for="ask-question-overlay">Your question</label>
+      <label for="ask-question-overlay">{{ (askUi[site.language] or askUi.en).questionLabel }}</label>
       <input id="ask-question-overlay" name="question" type="text" maxlength="500" placeholder="Ask about Narnia, surfing, Jesus…" required>
       <button id="ask-button-overlay" type="button">Ask</button>
     </form>
@@ -132,7 +149,7 @@
 </div>
 <script src="/js/main.js?v=15" defer></script>
 {% if pageScript %}<script src="{{ pageScript }}" defer></script>{% endif %}
-<script src="/js/ask.js?v=11" defer></script>
+<script src="/js/ask.js?v=12" defer></script>
 <script src="/js/suggest.js?v=4" defer></script>
 <script src="/js/consent.js?v=1" defer></script>
 <script src="/js/comments.js?v=3" defer></script>

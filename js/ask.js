@@ -15,14 +15,44 @@
 // page and lose the visitor's words. The submit listeners stay as a
 // fallback for Enter-key submission, and they preventDefault too.
 function bootAsk() {
+  // Ask config comes from the page itself (#ask-overlay data-*
+  // attributes, rendered by base.njk from _data/askUi.json): the
+  // visitor's language, the Worker base URL (empty = same origin on the
+  // main site, https://jonathanmccallum.com on the language sites), and
+  // the translated resting / not-ready / button strings. English is the
+  // fallback when a language has no strings yet. No strings are
+  // hardcoded here in a second language — the template owns them.
+  var overlayEl = document.getElementById("ask-overlay");
+  var cfg = { lang: "en", api: "", rest: "Ask is resting for today — it has answered a lot of questions. Please come back tomorrow, or read the writing below.", notReady: "Ask isn't ready in this language yet. You can read Jonathan's writing in English, or search this site.", thinking: "Thinking…", searchLink: "Search the writing", fallbackUrl: "https://jonathanmccallum.com/2026/11/23/if-jesus-is-real-and-he-is-good/", fallbackTitle: "If Jesus Is Real, and He Is Good" };
+  if (overlayEl && overlayEl.dataset) {
+    var d = overlayEl.dataset;
+    if (d.askLang) cfg.lang = d.askLang;
+    if (d.askApi !== undefined) cfg.api = d.askApi || "";
+    if (d.askRest) cfg.rest = d.askRest;
+    if (d.askNotready) cfg.notReady = d.askNotready;
+    if (d.askThinking) cfg.thinking = d.askThinking;
+    if (d.askSearch) cfg.searchLink = d.askSearch;
+    if (d.askFallbackUrl) cfg.fallbackUrl = d.askFallbackUrl;
+    if (d.askFallbackTitle) cfg.fallbackTitle = d.askFallbackTitle;
+  }
+  // The Worker's fallback post is the English "If Jesus Is Real" post.
+  // On a language site whose translation of that post exists, the link
+  // the reader sees is the translated post instead (same post, their
+  // language); otherwise the English post is shown as-is.
+  var EN_FALLBACK_URL = "https://jonathanmccallum.com/2026/11/23/if-jesus-is-real-and-he-is-good/";
   function renderSources(answerEl, sources) {
     if (!sources || !sources.length) return;
     var list = document.createElement("ul");
     sources.forEach(function (s) {
       var li = document.createElement("li");
       var a = document.createElement("a");
-      a.href = s.url;
-      a.textContent = s.title;
+      if (s.url === EN_FALLBACK_URL && cfg.fallbackUrl && cfg.fallbackUrl !== s.url) {
+        a.href = cfg.fallbackUrl;
+        a.textContent = cfg.fallbackTitle || s.title;
+      } else {
+        a.href = s.url;
+        a.textContent = s.title;
+      }
       li.appendChild(a);
       list.appendChild(li);
     });
@@ -30,6 +60,23 @@ function bootAsk() {
   }
 
   function renderFull(p, answerEl, data) {
+    // Language not indexed yet: the Worker says so (noIndexForLang)
+    // instead of answering from English. Show the translated line and
+    // a search link — never an English answer dressed up as local.
+    if (data.noIndexForLang) {
+      p.textContent = cfg.notReady;
+      var a = document.createElement("a");
+      a.href = "/search/";
+      a.textContent = cfg.searchLink;
+      answerEl.appendChild(a);
+      return;
+    }
+    // Daily budget used up (or rate-limited): the friendly resting
+    // line, in the visitor's language — never a raw error code.
+    if (data.paused) {
+      p.textContent = cfg.rest;
+      return;
+    }
     p.textContent = data.answer || "No answer came back — please try the search below.";
     renderSources(answerEl, data.sources);
   }
@@ -83,7 +130,7 @@ function bootAsk() {
     p.textContent = "The chat isn't available right now — please use the search instead.";
     var a = document.createElement("a");
     a.href = "/search/?q=" + encodeURIComponent(q);
-    a.textContent = "Search the writing";
+    a.textContent = cfg.searchLink;
     answerEl.appendChild(a);
   }
 
@@ -102,12 +149,12 @@ function bootAsk() {
       button.disabled = true;
       answerEl.innerHTML = "";
       var p = document.createElement("p");
-      p.textContent = "Thinking…";
+      p.textContent = cfg.thinking;
       answerEl.appendChild(p);
-      fetch("/api/ask", {
+      fetch(cfg.api + "/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: q }),
+        body: JSON.stringify({ question: q, lang: cfg.lang }),
       })
         .then(function (r) {
           var ct = r.headers.get("Content-Type") || "";

@@ -17,28 +17,49 @@
 // Vectorize free holds 5M stored dimensions — 179 posts chunked is a few
 // thousand vectors, far inside the free allowance. Re-running replaces
 // chunks by id (upsert), so re-indexing after publishing new posts is safe.
+//
+// MULTILINGUAL: one shared index, metadata.lang per chunk. Run once per
+// language (the chunks file comes from build-index.mjs --lang <code>):
+//   node site-ai/scripts/embed-and-insert.mjs --lang es --dry-run
+//   CF_ACCOUNT_ID=... CF_API_TOKEN=<redacted> node site-ai/scripts/embed-and-insert.mjs --lang es
+// All 50 languages together are ~3,564 chunks × 1024 dims ≈ 3.65M stored
+// dimensions — inside the 5M free allowance, with ~1.3M dims of headroom.
+// One-time migration note: chunks built before this branch used ids
+// without a language prefix (e.g. "to-sea-0"). After the first
+// --lang run, delete those old ids from the index (or recreate the
+// index empty first) so the old unfiltered English chunks do not linger
+// alongside the new "en-…" ones.
 
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const CHUNKS_FILE = path.join(
-  path.dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "index",
-  "chunks.jsonl"
+const args = process.argv.slice(2);
+function argVal(name, fallback) {
+  const i = args.indexOf(name);
+  return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
+}
+const LANG = (argVal("--lang", "en") || "en").toLowerCase();
+const CHUNKS_FILE = argVal(
+  "--chunks-file",
+  path.join(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "..",
+    "index",
+    LANG === "en" ? "chunks.jsonl" : `chunks-${LANG}.jsonl`
+  )
 );
 const INDEX_NAME = "jonathanmccallum-posts";
 const EMBED_MODEL = "@cf/baai/bge-m3";
 const EMBED_BATCH = 50;
 const INSERT_BATCH = 100;
 
-const DRY_RUN = process.argv.includes("--dry-run");
+const DRY_RUN = args.includes("--dry-run");
 const ACCOUNT_ID = process.env.CF_ACCOUNT_ID;
 const API_TOKEN = process.env.CF_API_TOKEN;
 
 if (!fs.existsSync(CHUNKS_FILE)) {
-  console.error(`No chunks file. Run: node site-ai/scripts/build-index.mjs`);
+  console.error(`No chunks file. Run: node site-ai/scripts/build-index.mjs --lang ${LANG}`);
   process.exit(1);
 }
 const chunks = fs
@@ -47,7 +68,16 @@ const chunks = fs
   .filter(Boolean)
   .map((line) => JSON.parse(line));
 
-console.log(`chunks to index: ${chunks.length}`);
+// Safety: every chunk inserted by this run must carry this run's lang,
+// so a wrong file can never pollute another language's answers.
+const wrongLang = chunks.filter((c) => c.metadata && c.metadata.lang && c.metadata.lang !== LANG);
+if (wrongLang.length) {
+  console.error(`Refusing: ${wrongLang.length} chunks in ${CHUNKS_FILE} are not lang="${LANG}". Rebuild with build-index.mjs --lang ${LANG} first.`);
+  process.exit(1);
+}
+for (const c of chunks) c.metadata = { ...c.metadata, lang: LANG };
+
+console.log(`lang: ${LANG} — chunks to index: ${chunks.length}`);
 if (chunks.length === 0) {
   console.log("Nothing to do — no published posts yet.");
   process.exit(0);

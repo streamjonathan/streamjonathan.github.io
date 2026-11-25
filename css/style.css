@@ -109,7 +109,7 @@ blockquote { border-left: 3px solid var(--link); margin-left: 0; padding-left: 1
 code { font-size: 0.9em; }
 pre { overflow-x: auto; background: var(--code-bg); padding: 0.75rem; }
 /* The chat is the entrance: big box, one clear button, try-it chips. */
-.ask-hero { margin: clamp(2rem, 5vw, 3rem) 0; }
+.ask-hero { margin: clamp(2rem, 5vw, 3rem) 0; max-width: 48rem; }
 .ask-hero h2 { margin-top: 0; }
 .ask-hero form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .ask-hero label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
@@ -350,10 +350,10 @@ button[type="submit"] {
   right: 1rem;
   bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
   z-index: 50;
-  width: 3.5rem; height: 3.5rem; min-height: 3.5rem;
+  width: 4rem; height: 4rem; min-height: 4rem;
   border: 0; border-radius: 999px;
   background: var(--btn-bg); color: var(--btn-text);
-  font: 600 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  font: 600 1.1rem system-ui, -apple-system, "Segoe UI", sans-serif;
   box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.35);
   cursor: pointer;
 }
@@ -364,7 +364,7 @@ button[type="submit"] {
 }
 #ask-overlay[hidden] { display: none; }
 .ask-panel {
-  width: 100%; max-height: 92dvh; overflow-y: auto;
+  width: 100%; max-height: 92dvh; overflow-y: auto; overflow-x: hidden;
   background: var(--bg); color: var(--text);
   border: 1px solid var(--line); border-bottom: 0;
   border-radius: 1rem 1rem 0 0;
@@ -380,6 +380,12 @@ button[type="submit"] {
   min-width: 2.75rem; min-height: 2.75rem; cursor: pointer;
 }
 .ask-panel__note { color: var(--muted); font-size: 0.9rem; margin: 0.5rem 0 0; }
+/* Europe disclaimer (EU AI Act Art. 50): shown in the chat itself,
+   before the first question, and kept visible while the chat is open.
+   Same size as the old note, but in the main text colour so it reads
+   as a notice, not fine print. */
+.ask-disclaimer { color: var(--text); font-size: 0.95rem; }
+.ask-under18 { color: var(--muted); font-size: 0.9rem; margin: 0.25rem 0 0; }
 .ask-panel form { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
 .ask-panel label { width: 100%; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 .ask-panel input {
@@ -398,7 +404,7 @@ button[type="submit"] {
 @media (min-width: 40rem) {
   #ask-overlay { align-items: center; padding: 1rem; }
   .ask-panel {
-    max-width: 36rem; border-bottom: 1px solid var(--line);
+    max-width: 48rem; max-height: 92dvh; border-bottom: 1px solid var(--line);
     border-radius: 1rem;
   }
 }
