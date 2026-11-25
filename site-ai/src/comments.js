@@ -329,6 +329,49 @@ async function handleListComments(request, env, url) {
   return commentJson(request, { comments });
 }
 
+// Email Jonathan when a reader comments, via Resend — same pattern
+// as sendSigninCodeEmail in index.js. Returns true when Resend
+// accepted it, false otherwise (missing key, network error, non-2xx).
+// The notification address is the deploy-time var NOTIFY_EMAIL, set to
+// mccallumhome@gmail.com — never ADMIN_EMAIL, which is unconfirmed.
+// The subject and sender match the Gmail filter that stars and labels
+// tree mail ("Family tree").
+async function sendCommentNotificationEmail(env, c) {
+  if (!env.RESEND_API_KEY || !env.NOTIFY_EMAIL) return false;
+  const slug = c.post.split(":").slice(1).join(":") || c.post;
+  const text = [
+    `New comment on ${slug} — jonathanmccallum.com`,
+    ``,
+    `From: ${c.name}${c.email ? ` (${c.email})` : ""}${c.provider ? ` via ${c.provider}` : ""}${c.username ? ` (${c.username})` : ""}`,
+    `Thread: ${c.post}`,
+    ``,
+    c.text,
+    ``,
+    `Page: https://jonathanmccallum.com/${slug}/`,
+    ``,
+    `This comment is pending — it needs approval. Sign in on the page to approve it.`,
+  ].join("\n");
+  let res;
+  try {
+    res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Jonathan McCallum <hello@jonathanmccallum.com>",
+        to: env.NOTIFY_EMAIL,
+        subject: `[COMMENT] New comment on ${slug} — jonathanmccallum.com`,
+        text,
+      }),
+    });
+  } catch {
+    return false;
+  }
+  return res.ok;
+}
+
 // POST /api/comment { credential?, post, text, video?, social? } —
 // signed-in readers only. Identity comes from a Google ID token in
 // the POST body OR from the interview session cookie (Google,
@@ -462,6 +505,22 @@ async function handlePostComment(request, env) {
   };
   const key = `comment-${post}-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
   await env.NOTES.put(key, JSON.stringify(comment));
+  // Notify Jonathan by email — reader comments only, never his own
+  // (isOwner) and never helper updates (those go through
+  // handleHelperUpdate, untouched). A failed send must never fail the
+  // comment post: the comment is already stored above.
+  if (!isOwner) {
+    try {
+      await sendCommentNotificationEmail(env, {
+        post,
+        name,
+        text,
+        email,
+        provider,
+        username,
+      });
+    } catch {}
+  }
   // Reply with the public fields only — the verified details stay
   // in KV for Jonathan and are never sent back to the browser.
   const { provider: _p, username: _u, profileUrl: _l, email: _e, ...publicComment } = comment;

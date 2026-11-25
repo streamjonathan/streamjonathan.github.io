@@ -1,5 +1,5 @@
 /* Family tree — a private, bilingual Ancestry-style tree. Loaded only
-   on /family-tree/ (v1). Site fonts throughout: Fraunces for names and
+   on /family-tree/ (v4). Site fonts throughout: Fraunces for names and
    headings, Newsreader for body and small text. Gold, silver and bronze
    are the same three accent colours as the thumbnails and quote cards. */
 
@@ -59,6 +59,37 @@ html[data-theme="light"] {
 
 .family-tree__actions {
   margin: 1.25rem 0 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* The Tahiti control is the prominent primary button. */
+.family-tree__tahiti {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 0;
+  border-radius: 999px;
+  padding: 0.7rem 1.5rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.family-tree__tahiti:active {
+  transform: scale(0.97);
+}
+
+/* Trace my line stays, smaller and secondary. */
+.family-tree__trace--secondary {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 400;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
 }
 
 .family-tree__trace {
@@ -75,6 +106,264 @@ html[data-theme="light"] {
 
 .family-tree__trace:active {
   transform: scale(0.97);
+}
+
+/* Contact: a clear box near the top of the page. */
+.family-tree__contact-box {
+  border: 1px solid var(--tree-gold);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.family-tree__contact-box h2 {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.family-tree__contact-box p {
+  margin: 0.5rem 0 0;
+}
+
+.family-tree__contact-box a {
+  color: var(--tree-gold);
+  font-weight: 600;
+}
+
+/* Ancestor search: a box above the tree. */
+.family-tree__search {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0;
+}
+
+.family-tree__search label {
+  display: block;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.family-tree__search input[type="search"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.family-tree__search input[type="search"]:focus-visible {
+  outline: 2px solid var(--tree-gold);
+  outline-offset: 2px;
+}
+
+.family-tree__search-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+
+.ancestor-matches {
+  margin-top: 0.75rem;
+}
+
+.ancestor-matches ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+}
+
+.ancestor-matches li {
+  margin: 0.35rem 0;
+}
+
+.ancestor-match {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.ancestor-match:hover,
+.ancestor-match:focus-visible {
+  border-color: var(--tree-gold);
+}
+
+.ancestor-result {
+  margin-top: 0.75rem;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.75rem;
+}
+
+.ancestor-result[hidden],
+.ancestor-matches[hidden] {
+  display: none;
+}
+
+.ancestor-result__sentence {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.ancestor-result__chain {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.6rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.ancestor-result__note {
+  color: var(--tree-bronze);
+  font-size: 0.95rem;
+  margin: 0.6rem 0 0;
+}
+
+.ancestor-result__contact {
+  margin: 0.75rem 0 0;
+}
+
+.ancestor-result__contact a {
+  color: var(--tree-gold);
+  font-weight: 600;
+}
+
+/* Tahiti descendants: expandable generation groups. Compact name
+   lists — no full cards — so a hundred-plus names stay light. */
+.tahiti {
+  margin: 1.5rem 0;
+}
+
+.tahiti h2 {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  margin: 1.25rem 0 0.5rem;
+}
+
+.tahiti .family-tree__note {
+  text-align: left;
+  max-width: none;
+  margin: 0 0 0.75rem;
+}
+
+.tahiti-group {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin: 0.75rem 0;
+  transition: border-color 0.45s ease, box-shadow 0.45s ease;
+}
+
+.tahiti-group.is-lit {
+  border-color: var(--tree-gold);
+  background: rgba(232, 200, 122, 0.1);
+  box-shadow: 0 0 0 3px rgba(232, 200, 122, 0.55),
+    0 0 2rem rgba(232, 200, 122, 0.35);
+}
+
+.tahiti-group h3 {
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin: 0 0 0.5rem;
+}
+
+.tahiti-subgroup {
+  margin: 0.5rem 0;
+}
+
+.tahiti-subgroup summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0.35rem 0;
+}
+
+.tahiti-subgroup summary:focus-visible {
+  outline: 2px solid var(--tree-gold);
+  outline-offset: 2px;
+}
+
+.tahiti-names {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.tahiti-name {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--chip-bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.tahiti-name:hover,
+.tahiti-name:focus-visible {
+  border-color: var(--tree-gold);
+}
+
+.tahiti-name__name {
+  display: block;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.tahiti-name__line {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-top: 0.1rem;
+}
+
+.tahiti-name .person__status {
+  margin-top: 0.35rem;
+  margin-left: 0;
+}
+
+@media (max-width: 34rem) {
+  .tahiti-names {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tahiti-group {
+    transition: none;
+  }
+
+  .family-tree__tahiti:active {
+    transform: none;
+  }
 }
 
 .family-tree__hint {

@@ -2,8 +2,8 @@
 title: "My Family Tree — Mon arbre généalogique"
 slug: family-tree
 layout: layouts/base.njk
-pageStylesheet: /css/family-tree.css?v=3
-pageScript: /js/family-tree.js?v=2
+pageStylesheet: /css/family-tree.css?v=4
+pageScript: /js/family-tree.js?v=3
 ---
 
 {% macro personCard(id, step) %}
@@ -50,13 +50,28 @@ pageScript: /js/family-tree.js?v=2
 
   <p class="family-tree__bonetxea"><span class="lang-fr">Il existe aussi un lien plus ancien entre le Pays basque et Tahiti : <a href="/domingo-bonetxea/">Domingo Bonetxea</a> est né à <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, a navigué jusqu'à Tahiti, et est mort à <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> en 1775.</span><span class="lang-en">There is an older link between the Basque Country and Tahiti, too: <a href="/domingo-bonetxea/">Domingo Bonetxea</a> was born in <a href="https://en.wikipedia.org/wiki/Getaria,_Gipuzkoa">Getaria</a>, sailed to Tahiti, and died in <a href="https://en.wikipedia.org/wiki/Tautira">Tautira</a> in 1775.</span></p>
 
-  <p class="family-tree__contact">
-    <a href="#" data-contact-email data-contact-email-text>Email me</a>
-    · <a href="/contact-jonathan/"><span class="lang-fr">Page de contact</span><span class="lang-en">Contact page</span></a>
-  </p>
+  <section class="family-tree__contact-box">
+    <h2><span class="lang-fr">{{ familyTree.contactSection.heading.fr }}</span><span class="lang-en">{{ familyTree.contactSection.heading.en }}</span></h2>
+    <p><span class="lang-fr">{{ familyTree.contactSection.text.fr }}</span><span class="lang-en">{{ familyTree.contactSection.text.en }}</span></p>
+    <p>
+      <a href="#" data-contact-email data-contact-email-text>Email me</a>
+      · <a href="/contact-jonathan/"><span class="lang-fr">Page de contact</span><span class="lang-en">Contact page</span></a>
+    </p>
+  </section>
+
+  <section class="family-tree__search" id="ancestor-search">
+    <label for="ancestor-search-input"><span class="lang-fr">{{ familyTree.search.label.fr }}</span><span class="lang-en">{{ familyTree.search.label.en }}</span></label>
+    <input type="search" id="ancestor-search-input" autocomplete="off" spellcheck="false" placeholder="{{ familyTree.search.placeholder.fr }}" data-placeholder-fr="{{ familyTree.search.placeholder.fr }}" data-placeholder-en="{{ familyTree.search.placeholder.en }}">
+    <p class="family-tree__search-hint"><span class="lang-fr">{{ familyTree.search.hint.fr }}</span><span class="lang-en">{{ familyTree.search.hint.en }}</span></p>
+    <div id="ancestor-search-matches" class="ancestor-matches" hidden></div>
+    <div id="ancestor-search-result" class="ancestor-result" hidden></div>
+  </section>
 
   <p class="family-tree__actions">
-    <button type="button" class="family-tree__trace" id="trace-line">
+    <button type="button" class="family-tree__tahiti" id="tahiti-expand">
+      <span class="lang-fr">{{ familyTree.tahitiButton.fr }}</span><span class="lang-en">{{ familyTree.tahitiButton.en }}</span>
+    </button>
+    <button type="button" class="family-tree__trace family-tree__trace--secondary" id="trace-line">
       <span class="lang-fr">{{ familyTree.traceButton.fr }}</span><span class="lang-en">{{ familyTree.traceButton.en }}</span>
     </button>
   </p>
@@ -93,8 +108,40 @@ pageScript: /js/family-tree.js?v=2
         {{ personCard("emma-anna") }}
         {{ personCard("mathilda") }}
         {{ personCard("edouard") }}
+        {{ personCard("william-hector") }}
+        {{ personCard("edward-1832") }}
+        {{ personCard("tina-hunter") }}
       </div>
     </div>
+
+    <section class="tahiti" id="tahiti-descendants">
+      <h2><span class="lang-fr">{{ familyTree.tahitiHeading.fr }}</span><span class="lang-en">{{ familyTree.tahitiHeading.en }}</span></h2>
+      <p class="family-tree__note"><span class="lang-fr">{{ familyTree.tahitiNote.fr }}</span><span class="lang-en">{{ familyTree.tahitiNote.en }}</span></p>
+      {% for g in familyTree.tahitiGroups %}
+      <section class="tahiti-group" data-tahiti-group="{{ g.id }}">
+        <h3><span class="lang-fr">{{ g.heading.fr }}</span><span class="lang-en">{{ g.heading.en }}</span></h3>
+        {% for sub in g.subgroups %}
+        <details class="tahiti-subgroup">
+          <summary><span class="lang-fr">{{ sub.label.fr }}</span><span class="lang-en">{{ sub.label.en }}</span></summary>
+          <ul class="tahiti-names">
+            {% for id in sub.members %}
+            {% set p = familyTree.people[id] %}
+            <li>
+              <button type="button" class="tahiti-name" data-person-ref="{{ id }}">
+                <span class="tahiti-name__name">{{ p.name }}</span>
+                <span class="tahiti-name__line"><span class="lang-fr">{{ p.line.fr }}</span><span class="lang-en">{{ p.line.en }}</span></span>
+                {% if p.status %}
+                <span class="person__status person__status--{{ p.status }}"><span class="lang-fr">{{ familyTree.statusLabels[p.status].fr }}</span><span class="lang-en">{{ familyTree.statusLabels[p.status].en }}</span></span>
+                {% endif %}
+              </button>
+            </li>
+            {% endfor %}
+          </ul>
+        </details>
+        {% endfor %}
+      </section>
+      {% endfor %}
+    </section>
 
     <div class="family-tree__connector" data-step="11" aria-hidden="true"></div>
     {{ personCard("alexandre", 10) }}
@@ -161,3 +208,5 @@ pageScript: /js/family-tree.js?v=2
 
   {% include "comments.njk" %}
 </article>
+
+<script type="application/json" id="family-tree-data">{{ familyTree | dump | safe }}</script>
