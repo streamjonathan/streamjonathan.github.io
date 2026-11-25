@@ -20,7 +20,7 @@ I love language and the sweet music strummed by “inarticulate” and “ineffi
 
 And it’s not just in English words that I find this phenomenon. When I hear the flavoured Spanish from outside of Iberia spoken with a plethora of diminutive spices I feel a bit queasy. Yet soft cuddly roly-poly Mexican words can just as easily create a delightful warmth inside my soul. “Ammoooor mio”, can as easily induce nausea as bring droplets of nostalgia, the phrase draws up memories of exploring the streets of Bogota with Colombian friends.
 
-My ever-softening Australian accent is being glazed by the delicious American linguistic media that we all feast upon daily. I live in Europe and the few times I do hear an Aussie accent I am inclined to be startled, momentarily brought back to Sydney on a hot summer’s day. I can’t help but laugh at my own twang and abandoned “lettas” even as I show clear disrespect for my linguistic heritage. I knock you ‘Stralia cause I love ya. Yeah na. No yeah.
+My ever-softening Australian accent is being glazed by the delicious American linguistic media that we all feast upon daily. The few times I do hear an Aussie accent I am inclined to be startled, momentarily brought back to Australia on a hot summer’s day. I can’t help but laugh at my own twang and abandoned “lettas” even as I show clear disrespect for my linguistic heritage. I knock you ‘Stralia cause I love ya. Yeah na. No yeah.
 
 This also happens to me when I hear strong ‘Merican accents, those of friends and family, of Hollywood and news readers. Some people just sound, well, a bit like Jethro or Forrest. And those talents like Robin Williams give the world a glimpse of linguistic bliss, often straight off the cuff.
 

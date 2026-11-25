@@ -20,9 +20,9 @@ wayback_timestamp: 20240302033615
 
 ![BasqueCoast.jpg](/images/2023-11-image-1.jpeg)
 
-**Small towns.** The shepherds graze their sheep in the pasture as my daughter climbs up our fence to watch. The local school teacher gives our little one a huge kiss and hug each morning. And not only does the post office not mind if you forgot your wallet and have to pay tomorrow, they know you by name and ensure your mail follows you despite several address changes.
+**Small towns.** The shepherds graze their sheep in the pasture as children climb up the fence to watch. The local school teacher gives the little ones a huge kiss and hug each morning. And not only does the post office not mind if you forgot your wallet and have to pay tomorrow, they know you by name and ensure your mail follows you despite several address changes.
 
-***Pequeños pueblos.** Mi hija observa subida a nuestra valla del patio como las ovejas pastan guiadas por el pastor. La profesora local le da un beso enorme y un abrazo a nuestra pequeña cada mañana. En la oficina de correos no solo no les importa que te hayas olvidado la cartera y vuelvas mañana a pagar, sino que te conocen por tu nombre y se aseguran que tu correspondencia te llegue a pesar de los cambios de dirección.*
+***Pequeños pueblos.** Los niños observan subidos a la valla del patio como las ovejas pastan guiadas por el pastor. La profesora local les da un beso enorme y un abrazo a los pequeños cada mañana. En la oficina de correos no solo no les importa que te hayas olvidado la cartera y vuelvas mañana a pagar, sino que te conocen por tu nombre y se aseguran que tu correspondencia te llegue a pesar de los cambios de dirección.*
 
 **The festivals.** With plenty of food, Herri Kirolak rural sports, and traditional music and dress, there seems to be a festival every other weekend, even in the rainy winter! Often a group of flutists and drummers marches through the town to announce the festival’s opening in the early morning, the grills are ignited for the txistorra or mackerel, and the Basque accordion trikitixa players compete while the irintzi yelling competitors warm up.
 

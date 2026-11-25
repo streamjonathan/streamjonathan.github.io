@@ -6,7 +6,7 @@ original_url: http://www.jonathanmccallum.com/2014/11/21/harbouring-peace/
 wayback_url: https://web.archive.org/web/20210303082654/http://www.jonathanmccallum.com/2014/11/21/harbouring-peace/
 wayback_timestamp: 20210303082654
 ---
-[![Getaria2_edited-1](/images/2014-11-Getaria2_edited-1.jpg)](/images/2014-11-Getaria2_edited-1.jpg) [![Getaria1](/images/2014-11-Getaria1.jpg)](/images/2014-11-Getaria1.jpg)
+[![Harbour2_edited-1](/images/2014-11-Harbour2_edited-1.jpg)](/images/2014-11-Harbour2_edited-1.jpg) [![Harbour1](/images/2014-11-Harbour1.jpg)](/images/2014-11-Harbour1.jpg)
 
 My journey began in a Basque fishing port on the Atlantic coast, 
  The home of fishermen, whalers, explorers, traders. 

@@ -7,7 +7,7 @@ wayback_url: https://web.archive.org/web/20160609071650/http://www.jonathanmccal
 wayback_timestamp: 20160609071650
 ---
 ![Photo by Jason Coon](/images/2015-08-CaveBasqueCountry.jpg)
-Over the previous week, under drizzle and burst of sunshine, I’ve been exploring the Basque Country: Zumaia, Getaria, Donostia-San Sebastian & beyond (scroll down to see the photos).
+Over the previous week, under drizzle and burst of sunshine, I’ve been exploring the Basque Country: Zumaia, Donostia-San Sebastian & beyond (scroll down to see the photos).
 
 In Zumaia, a sweet chapel overlooks the fossil-filled flysch and the wedge-shaped wave that has produced professional body boarders. From the town, a great surf spot and an up-close encounter with the flysch are only a two-minute boat ride or a short drive and a kilometer walk away.
 
@@ -15,7 +15,7 @@ A friend and I headed down to Zumaia at low tide last week to explore the coast 
 
 Geologists, surfers and foodies will all find a reason to love this little port town, as well as those passing through on the paths of St. James and “Ocho Apellidos Vascos”.
 
-Driving from Zumaia eastward, we made a stop in Getaria, where a happy surfer pulled into a nice tube.  The charming old town of Getaria is sandwiched between two beaches–one for surfing and the other a calm bay behind the port.
+Driving from Zumaia eastward, we made a stop along the coast, where a happy surfer pulled into a nice tube.  The charming old town is sandwiched between two beaches–one for surfing and the other a calm bay behind the port.
 
 In the afternoon I got to capture some of Donostia’s culinary action through the lens with friends going “ [Pintxo Hunting](http://www.sansebastianfood.com/en/gourmet-tours-and-experiences/pintxo-hunting) ” and taking the “ [Pintxo Cooking Class](http://www.sansebastianfood.com/en/basque-inside-cooking/pintxo-cooking-masterclass) ” tour offered at [San Sebastián Food](http://www.sansebastianfood.com/) .  See my previous post about [San Sebastián Food’s cooking adventures](http://www.blogseitb.us/discoverbasquecountry/2014/10/01/a-full-filling-day-touring-donostia/) or visit their website directly [here](http://www.sansebastianfood.com/en) .
 
@@ -32,14 +32,14 @@ Photo by Jason Coon
 Photo by Jason Coon
 [![Photo by Jason Coon](/images/2015-08-View.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/view/)
 Photo by Jason Coon
-[![JonathanMcCallumGetariaView](/images/2015-08-JonathanMcCallumGetariaView1.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/jonathanmccallumgetariaview-2/)
-[![Getaria Evening](/images/2015-08-GetariaEvening.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/getariaevening/)
+[![JonathanMcCallumCoastView](/images/2015-08-JonathanMcCallumCoastView1.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/jonathanmccallumcoastview-2/)
+[![Coast Evening](/images/2015-08-CoastEvening.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/coastevening/)
 [![Grapes](/images/2015-08-Grapes1.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/grapes-2/)
-[![GetariaWallWave](/images/2015-08-GetariaWallWave.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/getariawallwave/)
-[![Getaria Rowing](/images/2015-08-GetariaRowing.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/getariarowing/)
+[![CoastWallWave](/images/2015-08-CoastWallWave.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/coastwallwave/)
+[![Coast Rowing](/images/2015-08-CoastRowing.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/coastrowing/)
 [![Basque Bloom of Purple](/images/2015-08-BasqueBloomofPurple.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/basquebloomofpurple/)
 [![Jonathan McCallum](/images/2015-07-JonathanMcCallumSurf6.jpg)](http://www.jonathanmccallum.com/2015/07/28/basque-country-surfing-photography/jonathanmccallumsurf6/)
-[![GetariaViewJM](/images/2015-08-GetariaViewJM.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/getariaviewjm/)
+[![CoastViewJM](/images/2015-08-CoastViewJM.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/coastviewjm/)
 [![Tuna](/images/2015-08-Tuna.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/tuna/)
 [![Peppers](/images/2015-08-Peppers.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/peppers/)
 [![SquidLight](/images/2015-08-SquidLight.jpg)](http://www.jonathanmccallum.com/2015/08/11/exploring-the-basque-country/squidlight/)

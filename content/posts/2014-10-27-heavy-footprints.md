@@ -7,7 +7,7 @@ wayback_url: https://web.archive.org/web/20160405034957/http://www.jonathanmccal
 wayback_timestamp: 20160405034957
 ---
 ![Heavy Footprints](/images/2014-10-HeavyFootprints.jpg)
-**Sydney**
+**Australia**
 
 We cast out, fishing turquoise-starred red bream, the same the native people have caught in moderation for millennia. **That people dwelt gently upon this coast** , shell middens their only refuse. I pointed out the shells to my friend, but he hushed me: “They might claim their land back!”
 

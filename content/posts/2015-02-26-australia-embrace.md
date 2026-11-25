@@ -7,9 +7,9 @@ wayback_url: https://web.archive.org/web/20201013071951/http://www.jonathanmccal
 wayback_timestamp: 20201013071951
 ---
 Fresh salt water embrace, surfing in this beautiful place. 
- Sydney, Australia
+ Australia
 
-I feel at “home”, it’s been two years since I saw your shores. 
+It’s been two years since I saw your shores. 
  Just dived in, running down from sandy shore, to so much more, a blue clear dream, lots of sun screen.
 
 Out among surfers, young and old, slowing down after the glitz of air-conditioned office life, 
@@ -20,7 +20,7 @@ People still say hey, even G’day, yet most of all it’s the moments of being 
 The afternoon storm streams in, the flash and rumble, life refreshed, take a breath, 
  Moments at their best.
 
-Words & Photo (Wanda Beach) by Jonathan McCallum
+Words & Photo by Jonathan McCallum
 
 Tags:
 [australia](http://www.jonathanmccallum.com/tag/australia/)
@@ -29,6 +29,5 @@ Tags:
 ,
 [surfing](http://www.jonathanmccallum.com/tag/surfing/)
 ,
-[Sydney](http://www.jonathanmccallum.com/tag/sydney/)
-,
+
 [travel](http://www.jonathanmccallum.com/tag/travel/)

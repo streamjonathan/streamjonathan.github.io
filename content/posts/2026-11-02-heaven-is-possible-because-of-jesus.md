@@ -8,7 +8,7 @@ source_video: https://www.youtube.com/watch?v=_PUk447Xda0
 source_transcript: transcripts/_PUk447Xda0.md
 ---
 
-I especially like the part in the song where it talks about being close to heaven. What is the person? I first heard this song at a youth group in Sydney, in my high school years, and the youth pastor used it as an example of what people are going through.
+I especially like the part in the song where it talks about being close to heaven. What is the person? I first heard this song at a youth group in my high school years, and the youth pastor used it as an example of what people are going through.
 
 It summarised how I was feeling as a teenager. I was out and about on my skateboard, and at the youth group everyone was skating, and people were very friendly.
 

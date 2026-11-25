@@ -7,8 +7,8 @@ wayback_url: https://web.archive.org/web/20140306070817/http://www.jonathanmccal
 wayback_timestamp: 20140306070817
 ---
 [![](/images/ext-peoplepoesia-files-wordpress-com-fading-petalspoem.jpg)](/images/ext-peoplepoesia-files-wordpress-com-fading-petalspoem.jpg) When the foggy grey days arrive, 
- I’ll glimpse again her trusting, trusted eyes, 
- My partner-friend. 
+ I’ll glimpse again those trusting, trusted eyes, 
+ My dear friend. 
  Through life’s dry valleys, 
  Up laughter drenched hills, 
  Finding intimacy in mundane plains. 

@@ -18,7 +18,7 @@ I think one of the traps we all fall into is thinking that my group, my tribe, m
 
 It reminds me of the story of the prodigal son. The father's love is abundant and open to both sons. One needs to turn back to God. The other is the brother who is very judgmental. The father's love is always accessible to both of them.
 
-I am grateful for a lot in my own life. I grew up in Australia, in Sydney, in the nineties without the internet, with a big brother who helped me so much and loving parents who gave me everything I needed and more. Looking back, I can see how special those opportunities were. Life is not equal or the same for everyone.
+I am grateful for a lot in my own life. I grew up in Australia, in the nineties, without the internet. Looking back, I can see how special those opportunities were. Life is not equal or the same for everyone.
 
 So when I interact with people, I try to remember that everyone has a different experience, different pains, a different road they are travelling on. It is good to be aware of that, and to ask God to guide us in the words we speak.
 

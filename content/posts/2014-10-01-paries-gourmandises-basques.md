@@ -25,4 +25,4 @@ Something for everyone at Pariès, Donostia
 
 Photos by [Jonathan McCallum](https://twitter.com/jonamccallum)
 
-Words by Sarah McCallum
+

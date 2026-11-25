@@ -7,7 +7,7 @@ wayback_url: https://web.archive.org/web/20160318125127/http://www.jonathanmccal
 wayback_timestamp: 20160318125127
 ---
 ![Beauty I See](/images/2015-05-BeautyISeePoem.jpg)
-For my daughter and all daughters everywhere
+For all daughters everywhere
 
 Beauty I see 
  In your eyes of sunlit afternoon 

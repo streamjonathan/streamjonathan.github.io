@@ -7,7 +7,7 @@ wayback_url: https://web.archive.org/web/20160418145308/http://www.jonathanmccal
 wayback_timestamp: 20160418145308
 ---
 ![Natural Beauty](/images/2015-06-Natural.jpg)
-Building momentum on the bike down the slope, we caught up with the gentle breeze.  From the gathering where my daughter loves to sing down to her grandmother’s home where she loves to play.
+Building momentum on the bike down the slope, we caught up with the gentle breeze.  From the gathering where friends love to sing down to a neighbour’s home where children love to play.
 
 Enchanted by the simplicity of rolling, we find a familiar lush lawn and drop our bikes, slipping off sandals to allow bare-skinned feet to meet soft rain sprinkled grass.
 

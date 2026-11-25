@@ -11,7 +11,7 @@ Sun mixed with rain, vapour rising from humid Kathmandu lanes, a mango-tinged af
 
 Tibetan monasteries’ gilded domes, reflecting the gently arriving eventide, spot the city- and country-scape.  Mountain biking out to those hills, I open up snacks to share with monks, some as young as  four.
 
-I find something precious as I water our rooftop vines, careful not to fall off down over the rough concrete roof, feeling shy as the fragrant crowds passed below, yet most people would not look up, if they did they they would see me running downstairs past my smiling wife onto those familiar muddy cow-hoof-printed mud streets.  People would stare as I handed a few coins in exchange for paper fragile joys to fly.
+I find something precious as I water the rooftop vines, careful not to fall off down over the rough concrete roof, feeling shy as the fragrant crowds passed below, yet most people would not look up, if they did they they would see me running downstairs onto those familiar muddy cow-hoof-printed mud streets.  People would stare as I handed a few coins in exchange for paper fragile joys to fly.
 
 A kite, a Nepali kite, to flicker and fight through the air streams.
 

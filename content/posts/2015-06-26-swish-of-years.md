@@ -21,7 +21,7 @@ Fly Fishing
 Lilies & Tigers in the Garden
 [![Afternoon Light](/images/2015-06-LightTree.jpg)](http://www.jonathanmccallum.com/2015/06/26/swish-of-years/lighttree/)
 Afternoon Light
-I’m thirty three today, in Indiana USA, went down to a stream in the nearby wood with my four-year-old self.  She, a bit more cautious than her dad, looks like me and points to the deer on the forested path just as it leaped away, vanishing into the tall grass.  I hold her hand and a camera, she holds the fly rod, our feet touch the cool clear stream.  Trees that reach the highest swayed in a light breeze, the leaves quivered.  I love this wood of time, I love this hand I hold.
+I’m thirty three today, in Indiana USA, went down to a stream in the nearby wood with my younger self. I hold a camera and a fly rod, my feet touch the cool clear stream.  Trees that reach the highest swayed in a light breeze, the leaves quivered.  I love this wood of time.
 Tonight we will head to town for a circular cheese bread with garlic and sauce, smile at the loved ones around.  I was five, now I’m going to be thirty four someday.
 
 Words & Photos by Jonathan McCallum

@@ -10,7 +10,7 @@ wayback_timestamp: 20160609072039
 From the lush Txakoli covered hills to the blue hues of the sea, here are a few photos from a walk along the coast today.
 
 [![View Zarautz](/images/2015-08-ViewZarautzJonathan.jpg)](http://www.jonathanmccallum.com/2015/08/02/basque-view/viewzarautzjonathan/)
-[![Getaria View](/images/2015-08-JonathanMcCallumGetariaView.jpg)](http://www.jonathanmccallum.com/2015/08/02/basque-view/jonathanmccallumgetariaview/)
+[![Basque View](/images/2015-08-JonathanMcCallumBasqueView.jpg)](http://www.jonathanmccallum.com/2015/08/02/basque-view/jonathanmccallumbasqueview/)
 [![Passion Fruit](/images/2015-08-PassionFruit.jpg)](http://www.jonathanmccallum.com/2015/08/02/basque-view/passionfruit/)
 [![Txakoli Grapes](/images/2015-08-Grapes.jpg)](http://www.jonathanmccallum.com/2015/08/02/basque-view/grapes/)
 Merci pour partager ma photo. J’ai l’intention de publier des autres ici dans ma page [Facebook](https://www.facebook.com/CulturePeacePeoplePoesia?ref=hl) . Merci de bien vouloir ajouter le lien a mon site facebook, quand vous utilisez mes photos. 

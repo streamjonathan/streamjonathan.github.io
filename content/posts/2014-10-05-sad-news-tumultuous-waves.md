@@ -19,10 +19,10 @@ Eddie and this one brother laying down their lives for others reminds me of Jesu
 
 *Greater love has no one than this: to lay down one’s life for one’s friends* .
 
-[![Point between Zarautz and Getaria](/images/2014-10-Zarautz2.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz2/)
-Point between Zarautz and Getaria
-[![View from Getaria to Zarautz](/images/2014-10-Zarautz1.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz1/)
-View from Getaria to Zarautz
+[![Point along the coast](/images/2014-10-Zarautz2.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz2/)
+Point along the coast
+[![View along the coast to Zarautz](/images/2014-10-Zarautz1.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz1/)
+View along the coast to Zarautz
 [![Wind spray off waves](/images/2014-10-Zarautz4.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz4/)
 Wind spray off waves
 [![Zarautz Port](/images/2014-10-Zarautz5.jpg)](http://www.jonathanmccallum.com/2014/10/05/sad-news-tumultuous-waves/zarautz5/)

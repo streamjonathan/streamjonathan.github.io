@@ -7,9 +7,9 @@ wayback_url: https://web.archive.org/web/20141026035036/http://www.jonathanmccal
 wayback_timestamp: 20141026035036
 ---
 Beautiful Town March 23, 2014 [Jonathan McCallum](http://www.jonathanmccallum.com/author/jonathanmccallum/) [Jonathan](http://www.jonathanmccallum.com/category/jonathan/) 0
-Our Austral-merican family has made a fishing village home among dear Basque friends. Just last year this seaside town was reported by the New York Times as a top place to visit. We improved on the suggestion and settled here.
+I live in the Basque Country, among dear Basque friends. Just last year this seaside town was reported by the New York Times as a top place to visit.
 
-Today, like every day, I walked hand-in-hand with our sweet-songed toddler bobbing to school, passing vineyards, modern-historic architecture, yet something distracted me from what I normally love to gaze at—the horizonless sea.
+Today, like every day, I walked to school, passing vineyards, modern-historic architecture, yet something distracted me from what I normally love to gaze at—the horizonless sea.
 
 Hidden to tourists’ and reporters’ eyes is a trash-strewn path—wrappers of all descriptions, articles of clothing, copious amounts of construction debris and even a pipe spilling human poo from the workmen’s cubicle.
 
@@ -19,11 +19,11 @@ It flies through town during storms, scatters along the beaches, and is finally 
 
 The problem with trash and poo is that if you don’t clean it up, it gets into you. From land to sea it will always somehow become part of me.
 
-My wife and I paved the blunderous path of trying to explain this problem by planning for twenty university students from the U.S. to do a bit of tidying along the path. All was well until my dear wife mentioned, offhandedly, about the project at the town hall. Her idea landed her in a personal meeting with the higher ups, who were taken aback and graciously explained that it felt a bit unseemly for outsiders to do that which the townspeople should do.
+I paved the blunderous path of trying to explain this problem by planning for twenty university students from the U.S. to do a bit of tidying along the path. All was well until the project was mentioned, offhandedly, at the town hall. That landed in a personal meeting with the higher ups, who were taken aback and graciously explained that it felt a bit unseemly for outsiders to do that which the townspeople should do.
 
 As foreigners, trash talking is not our place.
 
-And I have to say, our own trash-spilling countries are also far from green. I grew up near a beach with huge sand hills, used as Saharan deserts in films. The glass industry mined them and now the beaches are disappearing and people complain. In my country-in-law, I’ve envisioned skiing down the growing slope of the local landfill that serves an area the size of France.
+And I have to say, our own trash-spilling countries are also far from green. I grew up near a beach with huge sand hills, used as Saharan deserts in films. The glass industry mined them and now the beaches are disappearing and people complain. 
 
 It baffles me how in diverse once-pioneering landscapes people *pay* to recycle in American suburbs.
 
@@ -39,4 +39,4 @@ So I’m off on my only personal “cru…”, whoa I almost used that word agai
  That stuff is rubbish. 
  That stuff takes the focus off Jesus.
 
-[clean up](http://www.jonathanmccallum.com/tag/clean-up/) , [environment](http://www.jonathanmccallum.com/tag/environment/) , [jesus](http://www.jonathanmccallum.com/tag/jesus/) , [let's not trash it](http://www.jonathanmccallum.com/tag/lets-not-trash-it/) , [love](http://www.jonathanmccallum.com/tag/love/) , [nature](http://www.jonathanmccallum.com/tag/nature/) , [stop the trash talk](http://www.jonathanmccallum.com/tag/stop-the-trash-talk/) , [teaching our kids](http://www.jonathanmccallum.com/tag/teaching-our-kids/) , [trash](http://www.jonathanmccallum.com/tag/trash/) , [why?](http://www.jonathanmccallum.com/tag/why/)
+[clean up](http://www.jonathanmccallum.com/tag/clean-up/) , [environment](http://www.jonathanmccallum.com/tag/environment/) , [jesus](http://www.jonathanmccallum.com/tag/jesus/) , [let's not trash it](http://www.jonathanmccallum.com/tag/lets-not-trash-it/) , [love](http://www.jonathanmccallum.com/tag/love/) , [nature](http://www.jonathanmccallum.com/tag/nature/) , [stop the trash talk](http://www.jonathanmccallum.com/tag/stop-the-trash-talk/) ,  [trash](http://www.jonathanmccallum.com/tag/trash/) , [why?](http://www.jonathanmccallum.com/tag/why/)

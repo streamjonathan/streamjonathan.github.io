@@ -6,7 +6,7 @@ original_url: http://www.jonathanmccallum.com/2015/04/19/walking-through-beauty/
 wayback_url: https://web.archive.org/web/20201010165835/http://www.jonathanmccallum.com/2015/04/19/walking-through-beauty/
 wayback_timestamp: 20201010165835
 ---
-For months now I’ve been away from our Basque home, traveling to our other homes, not fully aware of the significance of this journey, bringing people across our path and we across theirs.  We took off from the rolling Basque coast to land in Sydney Australia, heading on to the west coast of the USA, to land now amidst friends in the once wild west of Colorado.
+For months now I’ve been away from the Basque Country, traveling, not fully aware of the significance of this journey, bringing people across our path and we across theirs.  We took off from the rolling Basque coast to land in Australia, heading on to the west coast of the USA, to land now amidst friends in the once wild west of Colorado.
 
 We have come to gather together, to attend the [Simply Jesus Gathering](http://www.simplyjesusgathering.com/) .  People–everyday people–yet leaders, admired not so much for their fame, but for the steps and leaps they have taken to follow another person, a guy named Jesus, weaving their story into his, with all the ups and downs.
 

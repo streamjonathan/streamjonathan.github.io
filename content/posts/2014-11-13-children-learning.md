@@ -9,7 +9,7 @@ wayback_timestamp: 20141205002056
 Children Learning November 13, 2014 [Jonathan McCallum](http://www.jonathanmccallum.com/author/jonathanmccallum/) [Jonathan](http://www.jonathanmccallum.com/category/jonathan/) 0
 [![](/images/2014-11-IMG_5380.jpg)](http://www.jonathanmccallum.com/?attachment_id=2962)
 I wept today. 
- Children my daughter’s age ran around me at play. 
+ Children ran around me at play. 
  Syrian refugees in a school run by an NGO. 
  A welcoming country bends under much weight, 
  So that though they have a place to sleep, some food to eat, 

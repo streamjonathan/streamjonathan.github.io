@@ -14,8 +14,8 @@ With words,
  When we need the deluging river.
 
 My skin, with fragments of glass, feels the wind as I walk, out. 
- My daughter is already there playing in the breeze; 
- My wife by the brook, refreshing.
+  
+ 
 
 I’m tired by words, energized by words. There are words, though not eloquent, that soothe my soul. And there are words, lucid and doctrinal, that harm me. The phrases may be correct, may profess a desire for truth, yet they wound. They could never be found in Your mouth.
 

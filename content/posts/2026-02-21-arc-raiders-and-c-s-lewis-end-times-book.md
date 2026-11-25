@@ -16,7 +16,7 @@ A lot of people want to know exactly what will happen in the end times. The book
 
 Jane, one of my favourite characters, has a series of dreams. That spoke to me, because I had nightmares when I was growing up that would scare the daylight out of me. I prayed, God, please take away these nightmares. And I slept without dreams or nightmares for a long time, about a year. I took that as a sign from God that he was real.
 
-I knew I could pray because an older lady came to our school to teach scripture. She always said, Jesus loves you. You can talk to him anytime. That was my complete theological education as a twelve-year-old in Sydney, and I think it was a pretty good one.
+I knew I could pray because an older lady came to our school to teach scripture. She always said, Jesus loves you. You can talk to him anytime. That was my complete theological education as a twelve-year-old, and I think it was a pretty good one.
 
 What I love most is the humble, everyday people Jane meets at St Anne's. A farmer. A professor. People so connected to God that they change the world around them, and the world barely notices them. The everyday person who follows God can have a far bigger impact than they could ever imagine.
 

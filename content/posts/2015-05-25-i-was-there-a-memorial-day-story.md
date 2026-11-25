@@ -15,7 +15,7 @@ He had been in the tanks in World War II, an Australian solider.
 
 Today I am under the overcast Midwestern USA sky, watching Obama’s speech and reading about this day they celebrate as Memorial Day.
 
-I am reflecting about war, how to honor those who served in the armed forces for both of my home countries—the USA and Australia.  How can I help my child to understand what this day is about?  Remembering and mourning with the families who lost their loved ones during war.
+I am reflecting about war, how to honor those who served in the armed forces for both of my home countries—the USA and Australia.  How can I help children to understand what this day is about?  Remembering and mourning with the families who lost their loved ones during war.
 
 And what they were fighting for?  Words used in today’s speeches spoke of DEMOCRACY, FREEDOM, “protecting our loved ones” and “giving our children a better future”.
 

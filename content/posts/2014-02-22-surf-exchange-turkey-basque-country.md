@@ -7,7 +7,7 @@ wayback_url: https://web.archive.org/web/20170201131108/http://www.jonathanmccal
 wayback_timestamp: 20170201131108
 ---
 ![](/images/2015-10-SurfTurkeyAlanya.jpg)
-During a few hours’ stop-over in Istanbul, Turkey, I sat down in the food court with a friend from Syria.  We ordered some food at the cafe and chatted with the manager, who then joined us with complimentary drinks.  I had lived in a Turkish suburb in Sydney, Australia, where I first encountered this warmth of hospitality, so I wasn’t surprised to experience it again in that international airport.
+During a few hours’ stop-over in Istanbul, Turkey, I sat down in the food court with a friend from Syria.  We ordered some food at the cafe and chatted with the manager, who then joined us with complimentary drinks.  I had first encountered this warmth of hospitality in Australia, so I wasn’t surprised to experience it again in that international airport.
 
 Recently I have been in contact with the Turkish surfing community, both on the Black Sea and Mediterranean coast. And I have learned that a few Turkish surfers have been over here to ride the waves in the Basque Country.  These contacts made me think of [Cross Culture Surf](http://www.crossculturesurf.com/) ‘s surfing trips around the world.
 
