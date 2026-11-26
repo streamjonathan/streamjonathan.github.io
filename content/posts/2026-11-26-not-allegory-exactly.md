@@ -10,7 +10,7 @@ shareImage: /images/jono-not-allegory-gold.jpg
 
 <img src="/images/jono-not-allegory-gold.jpg" alt="Not allegory, exactly" loading="lazy">
 
-When the film comes, I'll probably be thinking about The Magician's Nephew — the original point and story. What does that say about me? I'm for sure going to be re-reading it, and discovering it anew, in all its beauty and power to guide us to Jesus, who is God.
+When the movie comes out, I'll be thinking about the book. Not the film — The Magician's Nephew itself, the original point and story. What does that say about me? I'm for sure going to be re-reading it, and discovering it anew, in all its beauty and power to guide us to Jesus, who is God.
 
 Meryl Streep is going to voice Aslan. That is confirmed now, for Greta Gerwig's Narnia: The Magician's Nephew — in cinemas 12 February 2027, then on Netflix 2 April 2027.
 
@@ -59,4 +59,5 @@ So I am asking you. What do you think — does the voice matter? Is Aslan an all
 ---
 
 Sources: C. S. Lewis, letter to Mrs Hook, 29 December 1958, in Letters of C. S. Lewis, ed. W. H. Lewis (1966), p. 283 — wording checked against the published letter and five further sources; C. S. Lewis, Letters to Children; C. S. Lewis, The Magician's Nephew (1955). Quotations kept short and used for commentary. Lewis died in 1963; his work remains in copyright in the UK and the EU until 2034.
+
 
