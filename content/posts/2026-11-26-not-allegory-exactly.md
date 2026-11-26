@@ -10,7 +10,7 @@ shareImage: /images/jono-not-allegory-gold.jpg
 
 <img src="/images/jono-not-allegory-gold.jpg" alt="Not allegory, exactly" loading="lazy">
 
-When the movie comes out, I'll be thinking about the book. Not the film — The Magician's Nephew itself, the original point and story. What does that say about me? I'm for sure going to be re-reading it, and discovering it anew, in all its beauty and power to guide us to Jesus, who is God.
+When the movie comes out, I'll be thinking about the book. Not the film — The Magician's Nephew itself, the original point and story. What does that say about me? I'm for sure going to be re-reading it, and discovering it anew, in all its beauty and power to guide us to Jesus, who is God. I hope to keep writing about Lewis's books too — the worlds within Narnia, the Space Trilogy, and The Great Divorce.
 
 Meryl Streep is going to voice Aslan. That is confirmed now, for Greta Gerwig's Narnia: The Magician's Nephew — in cinemas 12 February 2027, then on Netflix 2 April 2027.
 
@@ -46,7 +46,7 @@ I made that video because this is the point for me: a whole new group of people 
 
 I also completely see the point that people may never read the books after watching the movie, and the movie may cause a whole lot of people to miss the entire point. That would be tragic. It is hard to know yet. Once again, see what I think in the video — it is kind of hard to summarise it here, and you can hear my tone in the video better.
 
-I wrote a longer piece on the book itself — the song, the bell, the apple. Here is a short part of it, the moment Narnia begins:
+I wrote a longer piece on the book itself — the song, the bell, the apple. Here is a short part of it, the moment Narnia begins — in Lewis's own words, from The Magician's Nephew:
 
 "In the darkness something was happening at last. A voice had begun to sing."
 
@@ -59,6 +59,7 @@ So I am asking you. What do you think — does the voice matter? Is Aslan an all
 ---
 
 Sources: C. S. Lewis, letter to Mrs Hook, 29 December 1958, in Letters of C. S. Lewis, ed. W. H. Lewis (1966), p. 283 — wording checked against the published letter and five further sources; C. S. Lewis, Letters to Children; C. S. Lewis, The Magician's Nephew (1955). Quotations kept short and used for commentary. Lewis died in 1963; his work remains in copyright in the UK and the EU until 2034.
+
 
 
 
