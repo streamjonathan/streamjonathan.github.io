@@ -6,7 +6,7 @@ draft: false
 shareImage: /images/jono-not-allegory-gold.jpg
 ---
 
-<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2026/11/26/not-allegory-exactly/">日本語で読む →</a></p>
+<p class="poem-lang-link"><a href="https://9c5a696b.jonathanmccallum-ja.pages.dev/2026/11/26/not-allegory-exactly/">日本語で読む →</a></p>
 
 <img src="/images/jono-not-allegory-gold.jpg" alt="Not allegory, exactly" loading="lazy">
 
@@ -59,5 +59,6 @@ So I am asking you. What do you think — does the voice matter? Is Aslan an all
 ---
 
 Sources: C. S. Lewis, letter to Mrs Hook, 29 December 1958, in Letters of C. S. Lewis, ed. W. H. Lewis (1966), p. 283 — wording checked against the published letter and five further sources; C. S. Lewis, Letters to Children; C. S. Lewis, The Magician's Nephew (1955). Quotations kept short and used for commentary. Lewis died in 1963; his work remains in copyright in the UK and the EU until 2034.
+
 
 
