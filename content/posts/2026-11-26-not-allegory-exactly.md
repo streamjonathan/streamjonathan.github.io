@@ -6,7 +6,7 @@ draft: false
 shareImage: /images/jono-not-allegory-gold.jpg
 ---
 
-<p class="poem-lang-link"><a href="https://a46cd29f.jonathanmccallum-ja.pages.dev/2026/11/26/not-allegory-exactly/">日本語で読む →</a></p>
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2026/11/26/not-allegory-exactly/">日本語で読む →</a></p>
 
 <img src="/images/jono-not-allegory-gold.jpg" alt="Not allegory, exactly" loading="lazy">
 
