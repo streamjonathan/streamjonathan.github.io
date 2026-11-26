@@ -413,6 +413,11 @@ button[type="submit"] {
   background: rgba(0, 0, 0, 0.75); color: #fff; border-radius: 0.5rem; font-size: 1.25rem;
 }
 .video-facade iframe, .video-facade + iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+/* Vertical (9:16) tap-to-load embed, for TikTok. The iframe swaps in
+   where the facade was, inside the same narrow centred box. */
+.tiktok-embed { max-width: 22rem; margin: 1rem auto; }
+.tiktok-embed .video-facade { aspect-ratio: 9 / 16; margin: 0; }
+.tiktok-embed iframe { width: 100%; aspect-ratio: 9 / 16; border: 0; }
 /* Video spotlight: a gentle gold pulse around one featured video, so the
    reader really sees it. Reusable on any post: wrap the YouTube link in
    <div class="video-spotlight" data-fade>...</div> and the tap-to-load
