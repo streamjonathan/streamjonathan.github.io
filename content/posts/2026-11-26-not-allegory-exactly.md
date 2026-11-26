@@ -24,9 +24,7 @@ He called the books supposals — a "what if":
 
 "Let us suppose that there were a land like Narnia and that the Son of God, as he became a Man in our world, became a Lion there, and then imagine what would happen."
 
-Now, here is the question I keep coming back to. Lewis had strong ideas even about the drawings of his characters. He worked closely with Pauline Baynes, who drew Narnia — and privately he complained that she could not draw lions, and that she knew nothing about animal anatomy. To her face he asked for only one small change in all those years, a man rowing a boat the wrong way round. And when her work won the Carnegie Medal, he wrote back, "Is it not rather 'our' Medal?"
-
-So we might guess what he would think of a woman voicing Aslan. Or we might not. He cared deeply about how Aslan looked and sounded in his head — and he still let someone else draw him, and shared the credit. You never really know what a writer would say about a film made seventy years later. I think it is honest to say that, and to leave the question open.
+We might guess what he would think of a woman voicing Aslan. Or we might not. He cared deeply about how Aslan looked and sounded in his head. You never really know what a writer would say about a film made seventy years later. I think it is honest to say that, and to leave the question open.
 
 I understand why people disagree, and for the most part it is probably healthy to have this theological debate — about a movie — that is about a great book, which leads us to an excellent shifting of our mind toward the good news. It is how Lewis helps us, much like Tolkien, to reimagine the scriptural story of who Jesus is — and not stay on the sidelines, but step into life in Jesus.
 
@@ -60,4 +58,5 @@ So I am asking you. What do you think — does the voice matter? Is Aslan an all
 
 ---
 
-Sources: C. S. Lewis, letter to Mrs Hook, 29 December 1958, in Letters of C. S. Lewis, ed. W. H. Lewis (1966), p. 283 — wording checked against the published letter and five further sources; C. S. Lewis, Letters to Children; C. S. Lewis, The Magician's Nephew (1955). On Baynes: Pauline Baynes, letter to Walter Hooper, 15 August 1967; NarniaWeb, "How C.S. Lewis Met Narnia Illustrator, Pauline Baynes". Quotations kept short and used for commentary. Lewis died in 1963; his work remains in copyright in the UK and the EU until 2034.
+Sources: C. S. Lewis, letter to Mrs Hook, 29 December 1958, in Letters of C. S. Lewis, ed. W. H. Lewis (1966), p. 283 — wording checked against the published letter and five further sources; C. S. Lewis, Letters to Children; C. S. Lewis, The Magician's Nephew (1955). Quotations kept short and used for commentary. Lewis died in 1963; his work remains in copyright in the UK and the EU until 2034.
+
