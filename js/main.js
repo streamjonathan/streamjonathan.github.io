@@ -54,10 +54,11 @@ document.addEventListener("click", function (e) {
   var button = e.target.closest("[data-video-id]");
   if (!button) return;
   var id = button.getAttribute("data-video-id");
+  var start = button.getAttribute("data-video-start");
   var holder = button.closest(".video-facade");
   if (!holder) return;
   var frame = document.createElement("iframe");
-  frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0";
+  frame.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0" + (start ? "&start=" + start : "");
   frame.title = "YouTube video";
   frame.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
   frame.allowFullscreen = true;

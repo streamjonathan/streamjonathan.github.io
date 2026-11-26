@@ -18,6 +18,14 @@ function youtubeId(url) {
   return m ? m[1] : null;
 }
 
+// YouTube: optional start time in seconds (?t=2s, ?t=90 or ?start=90).
+// Carried through the facade so a link that starts part-way in still
+// starts there when the reader taps play.
+function youtubeStart(url) {
+  const m = url.match(/[?&](?:t|start)=(\d+)/);
+  return m ? m[1] : null;
+}
+
 module.exports = function (eleventyConfig) {
   // RFC3339 dates for the feed (toISOString is already RFC3339).
   eleventyConfig.addFilter("dateToRfc3339", (date) =>
@@ -124,15 +132,15 @@ module.exports = function (eleventyConfig) {
     if (!this.page.outputPath || !this.page.outputPath.endsWith(".html")) {
       return content;
     }
-    const facade = (id) =>
-      `<div class="video-facade"><button type="button" class="video-facade__button" data-video-id="${id}" aria-label="Play video on YouTube"><img class="video-facade__thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-facade__play" aria-hidden="true">&#9654;</span></button></div>`;
+    const facade = (id, start) =>
+      `<div class="video-facade"><button type="button" class="video-facade__button" data-video-id="${id}"${start ? ` data-video-start="${start}"` : ""} aria-label="Play video on YouTube"><img class="video-facade__thumb" src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-facade__play" aria-hidden="true">&#9654;</span></button></div>`;
 
     // <a href="...youtube...">...</a> links
     content = content.replace(
       /<a\b[^>]*href="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>.*?<\/a>/gs,
       (match, href) => {
         const id = youtubeId(href);
-        return id ? facade(id) : match;
+        return id ? facade(id, youtubeStart(href)) : match;
       }
     );
     // Raw <iframe> embeds pointing at YouTube (none in the archive today,
@@ -141,7 +149,7 @@ module.exports = function (eleventyConfig) {
       /<iframe\b[^>]*src="([^"]*(?:youtube\.com|youtu\.be)[^"]*)"[^>]*>(?:<\/iframe>)?/g,
       (match, src) => {
         const id = youtubeId(src);
-        return id ? facade(id) : match;
+        return id ? facade(id, youtubeStart(src)) : match;
       }
     );
     return content;
