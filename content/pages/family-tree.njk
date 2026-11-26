@@ -4,6 +4,11 @@ slug: family-tree
 layout: layouts/base.njk
 pageStylesheet: /css/family-tree.css?v=2
 pageScript: /js/family-tree.js?v=1
+# PRIVATE until the Hunter/Wilson research is fixed (Nov 2026).
+# permalink:false unpublishes the page; eleventyExcludeFromCollections
+# drops it from the sitemap. Restore by removing these two lines.
+permalink: false
+eleventyExcludeFromCollections: true
 ---
 
 {% macro personCard(id, step) %}
