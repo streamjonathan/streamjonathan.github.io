@@ -14,9 +14,7 @@ shareImage: /images/hokusai-great-wave.jpg
 
 I watched a video about learning Japanese by listening, and I am applying the same method to Basque and Japanese.
 
-**Watch the video: [Learning Japanese Isn't Actually That Hard](https://youtu.be/7fvCb5_Nzq4) — Trenton explains the whole method in 21 minutes. It is worth your time.**
-
-The video is Trenton's ["Learning Japanese Isn't Actually That Hard"](https://youtu.be/7fvCb5_Nzq4). His point is simple: we pick up a language by understanding it, not by studying it like a maths problem. His method is called immersion. You listen to real language, a lot of it, and your brain does the rest.
+The video is Trenton's "Learning Japanese Isn't Actually That Hard". His point is simple: we pick up a language by understanding it, not by studying it like a maths problem. His method is called immersion. You listen to real language, a lot of it, and your brain does the rest.
 
 Here it is, in short.
 
@@ -67,3 +65,5 @@ That is all. A little listening, a few words, one short conversation — every d
 *Red Fuji (Fine Wind, Clear Morning), Katsushika Hokusai (c. 1830–1832), public domain.*
 
 I will keep going, a little at a time. If you are learning a language too, what do you listen to?
+
+**Watch the video: [Learning Japanese Isn't Actually That Hard](https://youtu.be/7fvCb5_Nzq4) — Trenton explains the whole method in 21 minutes. It is worth your time.**
