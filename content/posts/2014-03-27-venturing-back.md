@@ -2,11 +2,21 @@
 title: "Venturing Back In"
 date: 2014-03-27
 slug: venturing-back
+draft: false
 original_url: http://www.jonathanmccallum.com/2014/03/27/venturing-back/
 wayback_url: https://web.archive.org/web/20150318095017/http://www.jonathanmccallum.com/2014/03/27/venturing-back/
 wayback_timestamp: 20150318095017
+shareImage: /images/jono-venturing-back-bronze.jpg
 ---
-Venturing Back In March 27, 2014 [Jonathan McCallum](http://www.jonathanmccallum.com/author/jonathanmccallum/) [Jonathan](http://www.jonathanmccallum.com/category/jonathan/) 0
+
+Originally posted 27 March 2014.
+
+<p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/2014/03/27/venturing-back/">日本語で読む →</a></p>
+
+<img src="/images/jono-venturing-back-bronze.jpg" alt="La Manneporte (Étretat), by Claude Monet" loading="lazy">
+
+*La Manneporte (Étretat), Claude Monet (1883), public domain.*
+
 Faces along the street, lush hues in the hills, glade and green as sunshine flares down, grey sky makes way for blue, fishing boats haul glistening nets, sun light makes sea life bright.
 
 Outside beauty flows into me, drawing in colours, entering through eyes, soaking in the skin, life like the rhythmic rolling sea. 
@@ -22,5 +32,3 @@ Your beauty felt within, timidly, I confessed my sin—fear, anxiety and grey da
  Into Your tingling light, like a tiny child approaching his heart’s delight, overwhelmed, I began see your beauty deep within.
 
 In the sea, childlike, free, you always find me.
-
-[alive](http://www.jonathanmccallum.com/tag/alive/) , [Christianity](http://www.jonathanmccallum.com/tag/christianity/) , [faith](http://www.jonathanmccallum.com/tag/faith/) , [fresh](http://www.jonathanmccallum.com/tag/fresh/) , [jesus](http://www.jonathanmccallum.com/tag/jesus/) , [refreshment](http://www.jonathanmccallum.com/tag/refreshment/) , [sea](http://www.jonathanmccallum.com/tag/sea/) , [spiritual life](http://www.jonathanmccallum.com/tag/spiritual-life/)
