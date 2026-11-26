@@ -52,6 +52,8 @@ This article skips over reading and writing. It is about speaking and understand
 
 My listening material is the Gospels — the New Testament. I listen to the words of Jesus in Basque and in Japanese. The stories are short, the words are plain, and I already know what they mean in English, so I can follow along. My Japanese site already carries the whole New Testament in Japanese. For Basque, I listen where I can find it — and I hear Basque every day where I live, in the streets and shops of the Basque Country.
 
+On the Japanese version of this article you can listen to the first chapters of the Gospels in Japanese — there is a player there, no sign-up needed.
+
 Each day, a little:
 
 - Listen a little. Ten minutes of the Gospels in Basque or Japanese, while I walk or do something else.
