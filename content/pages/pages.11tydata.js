@@ -9,6 +9,7 @@ module.exports = {
   tags: ["pages"],
   eleventyComputed: {
     permalink: (data) => {
+      if (data.permalink === false) return false;
       try {
         return new URL(data.original_url).pathname;
       } catch {
