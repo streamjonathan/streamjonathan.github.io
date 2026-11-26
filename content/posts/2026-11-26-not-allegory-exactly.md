@@ -28,6 +28,8 @@ Now, here is the question I keep coming back to. Lewis had strong ideas even abo
 
 So we might guess what he would think of a woman voicing Aslan. Or we might not. He cared deeply about how Aslan looked and sounded in his head — and he still let someone else draw him, and shared the credit. You never really know what a writer would say about a film made seventy years later. I think it is honest to say that, and to leave the question open.
 
+I understand why people disagree, and for the most part it is probably healthy to have this theological debate — about a movie — that is about a great book, which leads us to an excellent shifting of our mind toward the good news. It is how Lewis helps us, much like Tolkien, to reimagine the scriptural story of who Jesus is — and not stay on the sidelines, but step into life in Jesus.
+
 <div class="video-spotlight" data-fade>
 <a href="https://www.youtube.com/watch?v=LOAuNNf0eVs&t=2s">Watch the video: The Magician's Nephew, that new Narnia movie — about the new film, Lewis and the nature of God</a>
 </div>
