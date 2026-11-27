@@ -30,8 +30,6 @@ Released on 11 September 2026, it sits at the center of Timbreroots' EP Take Me 
 
 ## Say hi
 
-I've done my best to make sure every artist I write about here is a real person — someone you may have just heard of, who would probably really appreciate you taking a moment to say hi on their social media.
-
 <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dd35GmFNcM3/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Dd35GmFNcM3/">Timbreroots and Eve sing "Reconcile" — watch the reel they made together.</a></blockquote>
 <script async src="//www.instagram.com/embed.js"></script>
 
@@ -43,3 +41,5 @@ I've done my best to make sure every artist I write about here is a real person 
 - "Reconcile" on Spotify: https://open.spotify.com/track/26dzD1D3xPmXMuRCtTIdlR
 - Watch them sing it on a mountain at sunrise: https://www.youtube.com/watch?v=uki49kyYnKs
 - Timbreroots' website: https://www.timbreroots.com
+
+I've done my best to keep this free of AI-made artists. These are real people, and I hope hearing about them is helpful and refreshing.
