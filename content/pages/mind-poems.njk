@@ -1,23 +1,22 @@
 ---
-title: "Mind Poems"
+title: "Daily Poems"
 slug: mind-poems
-pageStylesheet: /css/mind-poems.css?v=2
+pageStylesheet: /css/mind-poems.css?v=3
 pageScript: /js/mind-poems.js?v=1
 ---
 
-<p class="mind-poems__intro">One small poem a day, written by hand in the boxes of a calendar. Tap a day to read it.</p>
+<p class="mind-poems__intro">A small poem each day, written by hand in the boxes of a calendar. Tap a box to read it.</p>
 
 <div class="mind-poems__grid" data-fade>
 {% for day in range(1, 32) %}
 {% set poem = none %}
 {% for p in mindPoems %}{% if p.day == day %}{% set poem = p %}{% endif %}{% endfor %}
 {% if poem %}
-  <button type="button" class="mind-poems__day mind-poems__day--filled{% if poem.boxed %} mind-poems__day--boxed{% endif %}" data-poem="{{ poem.day }}" aria-label="Day {{ poem.day }} poem — tap to read">
-    <span class="mind-poems__num">{{ poem.day }}</span>
+  <button type="button" class="mind-poems__day mind-poems__day--filled{% if poem.boxed %} mind-poems__day--boxed{% endif %}" data-poem="{{ poem.day }}" aria-label="{{ poem.day }} November 2026 poem — tap to read">
     <span class="mind-poems__dot" aria-hidden="true"></span>
   </button>
 {% else %}
-  <span class="mind-poems__day" aria-hidden="true"><span class="mind-poems__num">{{ day }}</span></span>
+  <span class="mind-poems__day" aria-hidden="true"></span>
 {% endif %}
 {% endfor %}
 </div>
@@ -27,7 +26,7 @@ pageScript: /js/mind-poems.js?v=1
 {% set next = mindPoems[loop.index0 + 1] if loop.index0 < (mindPoems | length) - 1 else none %}
 <dialog class="mind-poems__dialog" id="mind-poem-{{ poem.day }}" aria-labelledby="mind-poem-{{ poem.day }}-title">
   <button type="button" class="mind-poems__close" data-close aria-label="Close">×</button>
-  <h2 id="mind-poem-{{ poem.day }}-title">Day {{ poem.day }}</h2>
+  <h2 id="mind-poem-{{ poem.day }}-title">{{ poem.day }} November 2026</h2>
   <p class="mind-poems__poem">{% for line in poem.lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</p>
   <p class="mind-poems__nav">
     <button type="button" data-open="{{ prev.day }}" {% if not prev %}disabled{% endif %}>← Previous</button>
