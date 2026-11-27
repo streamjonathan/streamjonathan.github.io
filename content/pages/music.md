@@ -66,3 +66,13 @@ Forever!<br>
 *Saint George and the Dragon, Paolo Uccello (about 1470), public domain.*
 
 Words: Vandelux's daughter, as told to her dad. Music: Vandelux (Evan White). Video: [@vandelux on TikTok](https://www.tiktok.com/@vandelux/video/7710054371186199821). The full song isn't released yet — this is the clip he shared.
+
+## Listen on Spotify
+
+I put some playlists together on Spotify. They are public, so you can follow them there and listen any time.
+
+- **[Narnia — Music from the Wardrobe](https://open.spotify.com/playlist/6WwsHGJmgaUb7Obzd7iZvX)** — Music from the BBC series and the films, and songs inspired by Narnia and C.S. Lewis.
+- **[90s Christian — Songs about Jesus](https://open.spotify.com/playlist/1VO3gG2nDGx7AOUVTF7fXO)** — The 90s songs about Jesus I keep coming back to — dc Talk, Jars of Clay, Rich Mullins, Amy Grant and more.
+- **[Christmas — Songs about Jesus](https://open.spotify.com/playlist/2ygr8YGnqC37zHbs44yKag)** — Christmas songs about Jesus, not Santa.
+- **[Rich Mullins — Best of Rich Mullins](https://open.spotify.com/playlist/2l8uXYHWn2OytafAfcbOEX)** — His best songs, from "Awesome God" to "The Color Green".
+- **[Music and Faith — the English musicians, by category](https://open.spotify.com/playlist/1HQ9a4Z6CzpPgHQdL3NZxc)** — One song each from the musicians on the Music and Faith page — singer-songwriters and folk first, then worship, then rap and pop punk.
