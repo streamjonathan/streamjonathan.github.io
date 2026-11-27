@@ -3,34 +3,41 @@ title: "Reconcile — Timbreroots and Eve"
 date: 2026-11-27
 slug: reconcile-timbreroots-and-eve
 draft: false
+shareImage: /images/2026-11-reconcile-timbreroots-eve-sunrise.jpg
 ---
 
-There is a song I keep coming back to this week. It is called "Reconcile", by Timbreroots and Eve. It is gentle, and it is about healing.
+<img src="/images/2026-11-reconcile-timbreroots-eve-sunrise.jpg" alt="Bene and Eve singing Reconcile on a mountain at sunrise" loading="lazy">
 
-Bene leads Timbreroots. He plays fingerstyle guitar, and his songs are soft folk with warm harmonies. Eve sings with him. "Reconcile" is the first song they wrote together.
+"Reconcile" by Timbreroots and Eve is a gentle track about inner healing and finding peace in nature.
 
-The song is about inner healing — finding peace and harmony in nature. Bene says it started when he was living in a busy city and feeling homesick. The music gave him back the peace nature used to give him. Eve says the song is a reminder to slow down and be in the moment, in a world that moves too fast.
+Bene leads Timbreroots with soft folk, fingerstyle guitar, and warm harmonies alongside Eve. "Reconcile" is their first co-written song. Born from Bene feeling homesick in a busy city and Eve's wish to slow down in a fast world, the two climbed a mountain at 4 a.m. to sing it at sunrise. Across just over three minutes, acoustic guitar, two voices, and images of the sky, a brook, grass, and trees capture that quiet.
 
-They climbed a mountain at 4am to sing it as the sun came up. You can hear that quiet in the song. It is just over three minutes long. Acoustic guitar, two voices, and lyrics that walk you through nature: the sky, a brook, grass under your feet, the sound of the trees.
-
-> "Hold on for a while, get healed, reconcile."
-
-"Reconcile" came out on 11 September 2026. It sits in the middle of the new Timbreroots EP, *Take Me Back*, which came out on 20 November. The whole EP is gentle like this — worth a quiet listen from start to finish.
+Released on 11 September 2026, it sits at the center of Timbreroots' EP Take Me Back (out 20 November), which keeps that same calm feel from start to finish.
 
 ## What to listen for
 
-- The two voices coming together on the chorus — "Hold on for a while, get healed, reconcile."
-- The fingerstyle guitar underneath everything, soft and steady.
-- The way the song slows you down. It is a good one for a walk, or for a still morning.
+- Both voices joining on the chorus: "Hold on for a while, get healed, reconcile."
+- Steady, soft fingerstyle guitar underneath.
+- A calming pace suited to a walk or a quiet morning.
 
-What helps you slow down and breathe again? I would love to hear.
+<img src="/images/2026-11-reconcile-timbreroots-eve-sunrise.gif" alt="Bene and Eve singing Reconcile as the sun comes up" loading="lazy">
 
 ## Listen
 
-- "Reconcile" on Spotify: https://open.spotify.com/track/26dzD1D3xPmXMuRCtTIdlR
-- Timbreroots playlist (12 songs, including "Reconcile"): https://open.spotify.com/playlist/1odNeV2ByvvCMeB3MFKC6Z
-- Watch them sing it on a mountain at sunrise: https://www.youtube.com/watch?v=uki49kyYnKs
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1odNeV2ByvvCMeB3MFKC6Z?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+## Say hi
+
+I've done my best to make sure every artist I write about here is a real person — someone you may have just heard of, who would probably really appreciate you taking a moment to say hi on their social media.
+
+<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Dd35GmFNcM3/" data-instgrm-version="14"><a href="https://www.instagram.com/p/Dd35GmFNcM3/">Timbreroots and Eve sing "Reconcile" — watch the reel they made together.</a></blockquote>
+<script async src="//www.instagram.com/embed.js"></script>
+
 - Timbreroots on Instagram: https://www.instagram.com/timbreroots/
 - Eve on Instagram: https://www.instagram.com/evesmusicroom/
-- The reel they made together: https://www.instagram.com/p/Dd35GmFNcM3/
+
+## More
+
+- "Reconcile" on Spotify: https://open.spotify.com/track/26dzD1D3xPmXMuRCtTIdlR
+- Watch them sing it on a mountain at sunrise: https://www.youtube.com/watch?v=uki49kyYnKs
 - Timbreroots' website: https://www.timbreroots.com
