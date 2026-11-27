@@ -280,7 +280,7 @@
     var payload = decodePayload(token);
     myName = payload.name || "You";
     if (note) note.textContent = "Signed in — comments show your real name and photo.";
-    if (signinBox) signinBox.textContent = "";
+    if (signinBox) { signinBox.textContent = ""; signinBox.classList.remove("google-btn"); }
     if (asLine) asLine.textContent = "Commenting as " + myName + ".";
     if (form) form.hidden = false;
     load();
@@ -298,7 +298,7 @@
           // "Signed in with email" when an email session has no name.
           myName = me.name || (me.provider === "email" ? "Signed in with email" : "You");
           if (note) note.textContent = "Signed in — comments show your real name.";
-          if (signinBox) signinBox.textContent = "";
+          if (signinBox) { signinBox.textContent = ""; signinBox.classList.remove("google-btn"); }
           if (asLine) asLine.textContent = "Commenting as " + myName + ".";
           if (form) form.hidden = false;
           return;
@@ -337,7 +337,12 @@
     if (!window.google || !window.google.accounts || !window.google.accounts.id) return;
     window.google.accounts.id.initialize({ client_id: clientId, callback: onSignedIn });
     if (signinBox) {
-      window.google.accounts.id.renderButton(signinBox, { theme: "outline", size: "large" });
+      // Fixed button size (240x44) so the button never renders wide,
+      // and an explicit width so Google draws it at button size from
+      // the start. The button is never hidden: hiding it stopped
+      // Google's script settling it to normal size.
+      signinBox.classList.add("google-btn");
+      window.google.accounts.id.renderButton(signinBox, { theme: "outline", size: "large", width: 240 });
     }
   }
 

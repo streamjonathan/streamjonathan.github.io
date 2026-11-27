@@ -382,7 +382,12 @@ function bootAsk() {
       if (!window.google || !window.google.accounts || !window.google.accounts.id) return;
       window.google.accounts.id.initialize({ client_id: googleClientId, callback: onGoogleSignedIn });
       if (googleBox) {
-        window.google.accounts.id.renderButton(googleBox, { theme: "outline", size: "large" });
+        // Fixed button size (240x44) so the button never renders wide,
+        // and an explicit width so Google draws it at button size from
+        // the start. The button is never hidden: hiding it stopped
+        // Google's script settling it to normal size.
+        googleBox.classList.add("google-btn");
+        window.google.accounts.id.renderButton(googleBox, { theme: "outline", size: "large", width: 240 });
       }
       // The note says cookies are needed — once the button is showing,
       // that no longer applies, so clear it.
