@@ -29,6 +29,8 @@
 
   var list = document.getElementById("comments-list");
   var note = document.getElementById("comments-note");
+  var countEl = document.getElementById("comments-count");
+  var details = section.querySelector(".comments-dropdown");
   var signinBox = document.getElementById("comments-signin");
   var form = document.getElementById("comments-form");
   var asLine = document.getElementById("comments-as");
@@ -97,6 +99,13 @@
 
   function render(comments) {
     list.textContent = "";
+    // The shut dropdown shows the count, so the reader knows whether
+    // there is anything to open for — updated on every load.
+    if (countEl) {
+      countEl.textContent = !comments.length ? "No comments yet — be the first."
+        : comments.length === 1 ? "1 comment"
+        : comments.length + " comments";
+    }
     if (!comments.length) {
       var empty = document.createElement("li");
       empty.className = "comments-empty";
@@ -372,5 +381,21 @@
   }
 
   load();
-  startSignIn();
+  // Sign-in (Google button, interview session check) waits until the
+  // reader first opens the comments — the Google button cannot render
+  // into a shut panel, and nothing here is needed while it is shut.
+  var signInStarted = false;
+  function maybeStartSignIn() {
+    if (signInStarted) return;
+    signInStarted = true;
+    startSignIn();
+  }
+  if (details) {
+    if (details.open) maybeStartSignIn();
+    details.addEventListener("toggle", function () {
+      if (details.open) maybeStartSignIn();
+    });
+  } else {
+    startSignIn();
+  }
 })();
