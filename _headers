@@ -38,13 +38,25 @@
 # library only loads after the visitor accepts cookies (see
 # js/consent.js and js/ask.js): rejecting cookies means Google's script
 # never loads. Nothing else from Google is allowed.
+#
+# Spotify and Instagram embeds (added 2026-11-27, branch music-timbreroots-eve):
+# the Reconcile article embeds a Spotify playlist player and an Instagram
+# reel. Both were blocked by this policy until these allowances were added:
+# frame-src https://open.spotify.com (the playlist player iframe) and
+# https://www.instagram.com (the reel iframe), script-src + connect-src
+# https://www.instagram.com (embed.js and its data fetch), img-src
+# https://*.cdninstagram.com (the embed's photos), and style-src
+# 'unsafe-inline' (the embed writes its own inline styles — without it the
+# reel renders unstyled). Scripts stay strict: no 'unsafe-inline' for
+# script-src, only the theme-script hash. Instagram's script loads for
+# every reader of a page that embeds a reel.
 /*
   Strict-Transport-Security: max-age=63072000; includeSubDomains
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval' 'sha256-B+K4sG2SBX6iawIG/pWI4u/Xe5oHjEhmf5NmrwfDbxI=' https://accounts.google.com/gsi/client; style-src 'self' https://accounts.google.com/gsi/style; img-src 'self' https://i.ytimg.com https://lh3.googleusercontent.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://www.tiktok.com https://accounts.google.com/gsi/; connect-src 'self' https://accounts.google.com/gsi/; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'wasm-unsafe-eval' 'sha256-B+K4sG2SBX6iawIG/pWI4u/Xe5oHjEhmf5NmrwfDbxI=' https://accounts.google.com/gsi/client https://www.instagram.com; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style; img-src 'self' https://i.ytimg.com https://lh3.googleusercontent.com https://*.cdninstagram.com; font-src 'self'; frame-src https://www.youtube-nocookie.com https://www.tiktok.com https://accounts.google.com/gsi/ https://open.spotify.com https://www.instagram.com; connect-src 'self' https://accounts.google.com/gsi/ https://www.instagram.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'
   # Edge-cache HTML for 5 minutes: browsers still revalidate every
   # navigation (max-age=0), the edge serves from cache and refreshes
   # in the background. A deploy is at most 5 minutes stale.
