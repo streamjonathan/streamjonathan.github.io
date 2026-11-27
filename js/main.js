@@ -262,3 +262,20 @@ document.addEventListener("click", function (e) {
     }
   });
 })();
+
+// Glowing dropdowns (Connect on the homepage, Comments under articles):
+// a tap outside, or Escape, shuts an open one. The panels themselves
+// are plain <details>, so they open and shut with no JavaScript at all.
+(function () {
+  function closeOpen() {
+    Array.prototype.forEach.call(document.querySelectorAll("details.social-dropdown[open], details.comments-dropdown[open]"), function (d) {
+      d.removeAttribute("open");
+    });
+  }
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest("details.social-dropdown, details.comments-dropdown")) closeOpen();
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeOpen();
+  });
+})();

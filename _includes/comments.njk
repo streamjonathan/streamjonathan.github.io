@@ -21,7 +21,18 @@
   data-comments-lang="{{ site.language }}"
   data-comments-api="{{ site.commentsApi }}"
   data-comments-client-id="{{ site.googleClientId }}">
-  <h2 id="comments-heading">Comments</h2>
+  {# Comments live in a glowing dropdown — shut by default, tap to open.
+     The heading and the count stay visible when it is shut; the count
+     text is updated by js/comments.js once the thread loads. Sign-in
+     (Google button, interview session check) waits until the reader
+     opens it — the Google button cannot render into a shut panel. #}
+  <details class="comments-dropdown" id="comments-dropdown">
+    <summary class="comments-dropdown__summary">
+      <span class="comments-dropdown__title" id="comments-heading">Comments</span>
+      <span class="comments-dropdown__count" id="comments-count">No comments yet — be the first.</span>
+      <span class="comments-dropdown__chevron" aria-hidden="true">▾</span>
+    </summary>
+    <div class="comments-dropdown__body">
   <p class="comments-note" id="comments-note">Sign in with Google to join the conversation.</p>
   <div id="comments-signin"></div>
   <ul class="comments-list" id="comments-list" aria-live="polite"></ul>
@@ -38,4 +49,6 @@
   </form>
   <p class="comments-result" id="comments-result" aria-live="polite"></p>
   <noscript><p>Comments need JavaScript enabled.</p></noscript>
+    </div>
+  </details>
 </section>

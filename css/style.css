@@ -33,6 +33,10 @@
   --chip-bg: rgba(255, 255, 255, 0.06);
   --btn-bg: #faf9f6;
   --btn-text: #121212;
+  /* Soft gold glow for the dropdowns (Connect, Comments): a faint
+     gold ring and halo when shut, a little deeper on hover/focus. */
+  --glow-soft: 0 0 0 1px rgba(232, 200, 122, 0.4), 0 0 16px rgba(232, 200, 122, 0.25);
+  --glow-strong: 0 0 0 1px rgba(232, 200, 122, 0.65), 0 0 24px rgba(232, 200, 122, 0.4);
 }
 /* Day: warm paper, never white. */
 html[data-theme="light"] {
@@ -49,6 +53,9 @@ html[data-theme="light"] {
   --chip-bg: rgba(0, 0, 0, 0.05);
   --btn-bg: #1a1815;
   --btn-text: #faf9f6;
+  /* On paper the gold halo needs a darker gold edge to read at all. */
+  --glow-soft: 0 0 0 1px rgba(122, 90, 16, 0.35), 0 0 16px rgba(232, 200, 122, 0.5);
+  --glow-strong: 0 0 0 1px rgba(122, 90, 16, 0.55), 0 0 24px rgba(232, 200, 122, 0.65);
 }
 * { box-sizing: border-box; }
 /* The page itself never scrolls sideways: every sideways row scrolls
@@ -89,9 +96,32 @@ img { display: block; }
 .site-title { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 2rem; margin: 0.5rem 0 0; }
 .rule-gold { border: 0; border-top: 2px solid var(--link); width: 4rem; margin: 0.75rem 0 1rem; }
 .intro { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 500; font-size: 1.6rem; line-height: 1.45; margin: 0.5rem 0 1rem; }
-/* Social links: one row, easy to reach, easy to tap. */
-.social { display: flex; flex-wrap: wrap; gap: 0.25rem 1.25rem; margin: 0 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1rem; }
-.social a { padding: 0.6rem 0; }
+/* Connect: the social links live in one glowing dropdown now — tap
+   "Connect" to open it. Plain <details>, so it works with no
+   JavaScript; the script only shuts it on a tap outside or Escape. */
+.social-dropdown { position: relative; margin: 0 0 1.5rem; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1rem; }
+.social-dropdown__button {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.6rem 1rem; min-height: 2.75rem;
+  border: 1px solid var(--link); border-radius: 0.75rem;
+  background: var(--field-bg); color: var(--text); cursor: pointer;
+  font: 600 1rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  box-shadow: var(--glow-soft);
+  list-style: none;
+}
+.social-dropdown__button::-webkit-details-marker { display: none; }
+.social-dropdown__button:hover, .social-dropdown__button:focus-visible { box-shadow: var(--glow-strong); }
+.social-dropdown__chevron { display: inline-block; color: var(--link); transition: transform .2s ease; }
+.social-dropdown[open] .social-dropdown__chevron { transform: rotate(180deg); }
+.social-dropdown__list {
+  position: absolute; left: 0; top: calc(100% + 0.5rem); z-index: 20;
+  margin: 0; padding: 0.5rem 0; min-width: 12rem;
+  list-style: none; background: var(--bg);
+  border: 1px solid var(--link); border-radius: 0.75rem;
+  box-shadow: var(--glow-soft);
+}
+.social-dropdown__list a { display: block; padding: 0.6rem 1rem; text-decoration: none; }
+.social-dropdown__list a:hover { background: var(--chip-bg); }
 main ul { padding-left: 1.25rem; }
 main li { margin: 0.4rem 0; }
 main li a { padding: 0.15rem 0; }
@@ -597,6 +627,7 @@ button[type="submit"] {
 .js-fade [data-fade].is-visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .js-fade [data-fade] { opacity: 1; transform: none; transition: none; }
+  .social-dropdown__chevron, .comments-dropdown__chevron { transition: none; }
 }
 /* Instagram musician cards (music-and-faith): a plain link with a small
    local photo — no Instagram embed, no third-party script, nothing loads
@@ -643,6 +674,22 @@ button[type="submit"] {
 
 /* Comments: signed in with Google, real names only. */
 .comments-section { margin: clamp(2rem, 5vw, 3rem) 0; }
+/* Comments live in a glowing dropdown now — shut by default, tap to
+   open. The heading and the count stay visible when it is shut. */
+.comments-dropdown { border: 1px solid var(--line); border-radius: 0.75rem; box-shadow: var(--glow-soft); }
+.comments-dropdown[open] { border-color: var(--link); }
+.comments-dropdown__summary {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.25rem 0.75rem;
+  padding: 0.9rem 1rem; min-height: 2.75rem; cursor: pointer; list-style: none;
+  border-radius: 0.75rem;
+}
+.comments-dropdown__summary::-webkit-details-marker { display: none; }
+.comments-dropdown__summary:hover, .comments-dropdown__summary:focus-visible { box-shadow: var(--glow-strong); }
+.comments-dropdown__title { font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif; font-weight: 600; font-size: 1.25rem; line-height: 1.25; }
+.comments-dropdown__count { color: var(--muted); font-size: 0.95rem; }
+.comments-dropdown__chevron { margin-left: auto; color: var(--link); transition: transform .2s ease; }
+.comments-dropdown[open] .comments-dropdown__chevron { transform: rotate(180deg); }
+.comments-dropdown__body { padding: 0 1rem 1rem; border-top: 1px solid var(--line); }
 .comments-note { color: var(--muted); }
 .comments-list { list-style: none; padding-left: 0; }
 .comments-empty { color: var(--muted); }
