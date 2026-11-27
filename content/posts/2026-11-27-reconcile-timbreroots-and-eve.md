@@ -26,6 +26,8 @@ Released on 11 September 2026, it sits at the center of Timbreroots' EP Take Me 
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1odNeV2ByvvCMeB3MFKC6Z?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
 
+[Listen to the full playlist on Spotify](https://open.spotify.com/playlist/1odNeV2ByvvCMeB3MFKC6Z)
+
 ## Say hi
 
 I've done my best to make sure every artist I write about here is a real person — someone you may have just heard of, who would probably really appreciate you taking a moment to say hi on their social media.
