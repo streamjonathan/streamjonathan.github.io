@@ -22,8 +22,7 @@ eleventyExcludeFromCollections: true
 </details>
 
 
-<section class="featured" data-fade aria-labelledby="featured-heading">
-  <h2 id="featured-heading">Newest writing</h2>
+<section class="featured" data-fade>
   {% set newestPosts = collections.publishedPosts | reverse %}
   {# The lead is the newest article that has a photo, so the big card
      at the top always has an image to catch the eye. An article
