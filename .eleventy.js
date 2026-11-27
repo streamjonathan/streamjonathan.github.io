@@ -53,14 +53,25 @@ module.exports = function (eleventyConfig) {
 
   // Plain-text excerpt from rendered HTML: the first ~150 characters of
   // real text, never invented. The page heading and the post date line are
-  // dropped first, so the excerpt starts with the writing itself. Used
-  // for meta descriptions and JSON-LD.
+  // dropped first, so the excerpt starts with the writing itself. Also
+  // dropped (SEO audit, 27 Nov 2026): section headings, the "read in
+  // Japanese" link paragraph (it was leaking "日本語で読む →" into 21
+  // pages' meta descriptions), the archive "Originally posted …" line,
+  // lone-italic paragraphs (image captions and "Watch it on …" lines —
+  // captions were the description of most articles), and video facades
+  // (their play glyph is not text). Used for meta descriptions and JSON-LD.
   eleventyConfig.addFilter("excerpt", (html, length = 150) => {
     const text = String(html || "")
       .replace(/<script[\s\S]*?<\/script>/g, " ")
       .replace(/<style[\s\S]*?<\/style>/g, " ")
       .replace(/<h1[^>]*>.*?<\/h1>/g, " ")
+      .replace(/<h[2-6][^>]*>.*?<\/h[2-6]>/g, " ")
       .replace(/<p class="meta">.*?<\/p>/g, " ")
+      .replace(/<p class="poem-lang-link">.*?<\/p>/g, " ")
+      .replace(/<p>Originally posted[^<]*<\/p>/g, " ")
+      .replace(/<p>\s*<em>.*?<\/em>\s*<\/p>/g, " ")
+      .replace(/<div class="video-facade">[\s\S]*?<\/div>/g, " ")
+      .replace(/&#9654;/g, " ")
       .replace(/<[^>]+>/g, " ")
       .replace(/&amp;/g, "&")
       .replace(/&lt;/g, "<")
@@ -83,6 +94,7 @@ module.exports = function (eleventyConfig) {
   // and the share image is written there by the postbuild script.
   // Copying the originals would only bloat the deploy.
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("favicon.svg");
   // Cloudflare Pages reads these from the build output root.
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy("_redirects");
