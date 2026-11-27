@@ -40,6 +40,10 @@
   var result = document.getElementById("comments-result");
   var token = null;
   var myName = "";
+  // True once the thread has loaded and the header count is real.
+  // Until then the header says "Loading…" — never "No comments yet",
+  // which is a lie while the count is still unknown.
+  var countLoaded = false;
   // True when the reader is signed in via the interview session
   // (Google, Instagram, LINE, or email) — they can post without a
   // Google token, and the Worker reads the session cookie.
@@ -98,6 +102,7 @@
   }
 
   function render(comments) {
+    countLoaded = true;
     list.textContent = "";
     // The shut dropdown shows the count, so the reader knows whether
     // there is anything to open for — updated on every load.
@@ -398,7 +403,13 @@
   if (details) {
     if (details.open) maybeStartSignIn();
     details.addEventListener("toggle", function () {
-      if (details.open) maybeStartSignIn();
+      if (details.open) {
+        maybeStartSignIn();
+        // The first load may still be in flight (or have failed) when
+        // the reader opens the panel — re-check so the header count
+        // is right by the time they look at it.
+        if (!countLoaded) load();
+      }
     });
   } else {
     startSignIn();

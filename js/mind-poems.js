@@ -1,8 +1,8 @@
 // Mind Poems — one poem a day, with the full calendar one tap away (v2).
-// Day-of-month cycles through the poems: day 2 -> poem 2, ... day 7 ->
-// poem 7, day 8 -> poem 2 again; index = ((day - 2) % n + n) % n, so
-// day 1 shows the last poem and every day of the month shows a poem.
-// Previous / Next day step through the cycle and wrap around.
+// Only days with a poem are "today": if today has a poem it shows;
+// if not, the latest poem shows instead, labelled with its date, so
+// the page never shows a stale "today". Previous / Next day step
+// through the poems and wrap around.
 // The calendar is hidden on load (JS only); without JS it stays visible
 // below today's poem, and the server-rendered poem is still shown.
 // Tap a filled day to open it in a pop-up; close with the ×, the
@@ -11,6 +11,7 @@
   // --- Today's poem ---
   var articles = document.querySelectorAll("[data-today-poem]");
   var label = document.querySelector("[data-today-label]");
+  var defaultLabel = (label && label.getAttribute("data-default-label")) || "Today's poem";
   var current = -1;
   var todayIndex = -1;
 
@@ -22,15 +23,19 @@
     });
     if (label) {
       label.textContent =
-        current === todayIndex ? "Today's poem" : "Browsing the poems";
+        current === todayIndex ? defaultLabel : "Browsing the poems";
     }
   }
 
   if (articles.length) {
-    // Correct the build-date default to the reader's own clock.
-    todayIndex =
-      (((new Date().getDate() - 2) % articles.length) + articles.length) %
-      articles.length;
+    // Correct the build-date default to the reader's own clock: today
+    // if it has a poem, otherwise the latest poem.
+    var day = new Date().getDate();
+    todayIndex = -1;
+    Array.prototype.forEach.call(articles, function (el, idx) {
+      if (parseInt(el.getAttribute("data-today-poem"), 10) === day) todayIndex = idx;
+    });
+    if (todayIndex < 0) todayIndex = articles.length - 1;
     show(todayIndex);
     Array.prototype.forEach.call(
       document.querySelectorAll("[data-today-prev]"),

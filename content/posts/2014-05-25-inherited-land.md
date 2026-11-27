@@ -28,7 +28,7 @@ Let’s open our hearts to Jesus the reconciler, asking for the way ahead, being
 
 Here are some people that I have found helpful: 
  Richard Twiss’ life work: 
- [https://www.pcusa.org/news/2010/6/29/native-american-speaker-calls-truth-and-reconcilia/](https://www.pcusa.org/news/2010/6/29/native-american-speaker-calls-truth-and-reconcilia/) 
+ [https://web.archive.org/web/20240622110101/https://www.pcusa.org/news/2010/6/29/native-american-speaker-calls-truth-and-reconcilia/](https://web.archive.org/web/20240622110101/https://www.pcusa.org/news/2010/6/29/native-american-speaker-calls-truth-and-reconcilia/) 
  Dr Rick Love’s work: 
  [http://www.peace-catalyst.net/](http://www.peace-catalyst.net/)
 

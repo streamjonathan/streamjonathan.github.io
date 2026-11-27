@@ -45,7 +45,7 @@ eleventyExcludeFromCollections: true
     </span>
   </a>
   <p class="featured-row__hint">More new writing — swipe for the next one <span aria-hidden="true">→</span></p>
-  <ul class="featured-row" data-auto-carousel data-no-auto>
+  <ul class="featured-row" data-auto-carousel>
   {% set shown = 0 %}
   {% for post in newestPosts %}
     {% if post.url != latest.url and shown < 9 %}
@@ -141,7 +141,7 @@ eleventyExcludeFromCollections: true
 <section class="watch-section" data-fade aria-labelledby="watch-heading">
   <h2 id="watch-heading">Watch</h2>
   <p class="row-hint">More videos — swipe for the next one <span aria-hidden="true">→</span></p>
-  <ul class="watch-row" data-auto-carousel data-no-auto>
+  <ul class="watch-row" data-auto-carousel>
   {% set shown = [] %}
   {% for post in collections.publishedPosts | reverse %}
     {% if post.data.source_video and shown | length < 6 %}

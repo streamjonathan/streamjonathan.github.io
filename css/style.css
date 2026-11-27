@@ -733,6 +733,11 @@ button[type="submit"] {
 .comments-as { color: var(--muted); }
 .comments-result { color: var(--muted); }
 
+/* Search page: the "Searching…" line shows from the first keystroke
+   until Pagefind renders results, so a slow first query never looks
+   broken. */
+.search-status { color: var(--muted); }
+
 /* Poem pages: big easy link to the Japanese version. */
 .poem-lang-link { margin: 0 0 1.25rem; }
 .poem-lang-link a {
