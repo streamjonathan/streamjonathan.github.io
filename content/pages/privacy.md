@@ -4,8 +4,6 @@ slug: privacy
 original_url: https://jonathanmccallum.com/privacy/
 ---
 
-# Privacy
-
 This site is run by Jonathan McCallum, who lives in the Basque Country. It is a small personal site: writing, and a chat that answers from that writing. There are no accounts to create here, no tracking, no advertising, and nothing for sale. It follows European privacy law (GDPR) for all visitors, wherever they are in the world.
 
 If you need to ask about anything on this page, or about your personal data, write to Jonathan at <a href="#" data-contact-email data-contact-email-text>Email me</a>. You can also message him on [Instagram](https://www.instagram.com/jonamccallum) or [Threads](https://www.threads.com/@jonamccallum).
