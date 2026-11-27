@@ -42,7 +42,8 @@
   var myName = "";
   // True once the thread has loaded and the header count is real.
   // Until then the header says "Loading…" — never "No comments yet",
-  // which is a lie while the count is still unknown.
+  // which is a lie while the count is still unknown. If the load
+  // fails, the header falls back to plain "Comments" instead.
   var countLoaded = false;
   // True when the reader is signed in via the interview session
   // (Google, Instagram, LINE, or email) — they can post without a
@@ -233,6 +234,13 @@
         render(data.comments || []);
       })
       .catch(function () {
+        // The API is not there on preview deployments (the comments
+        // Worker is bound to the live domain only), and it can fail
+        // briefly on the live site too. Say so in the list, and drop
+        // the header back to plain "Comments" — never leave it stuck
+        // on "Loading…" when there is nothing left to wait for.
+        // countLoaded stays false, so opening the panel tries again.
+        if (countEl) countEl.textContent = "Comments";
         if (!list.children.length) {
           var li = document.createElement("li");
           li.className = "comments-empty";
