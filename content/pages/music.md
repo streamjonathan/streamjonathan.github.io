@@ -76,3 +76,49 @@ I put some playlists together on Spotify. They are public, so you can follow the
 - **[Christmas — Songs about Jesus](https://open.spotify.com/playlist/2ygr8YGnqC37zHbs44yKag)** — Christmas songs about Jesus, not Santa.
 - **[Rich Mullins — Best of Rich Mullins](https://open.spotify.com/playlist/2l8uXYHWn2OytafAfcbOEX)** — His best songs, from "Awesome God" to "The Color Green".
 - **[Music and Faith — the English musicians, by category](https://open.spotify.com/playlist/1HQ9a4Z6CzpPgHQdL3NZxc)** — One song each from the musicians on the Music and Faith page — singer-songwriters and folk first, then worship, then rap and pop punk.
+
+## Playlists on Spotify
+
+Here are a few of the playlists I have put together — follow them on Spotify and they will keep growing. You can also [follow me on Spotify](https://open.spotify.com/user/125807565).
+
+### Timbreroots — Best of Timbreroots
+
+Gentle folk from the Dolomites — the band behind "Reconcile", the song Bene and Eve sang on a mountain at sunrise.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/1odNeV2ByvvCMeB3MFKC6Z?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Peaceful & Sacred — Pärt, Barber & Quiet Faith
+
+Quiet, prayerful music — Arvo Pärt, Barber's Adagio, Tavener and Vaughan Williams.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6gDP4h9JLo6OSR0lhG86L8?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### World Music: Pacific & Polynesian
+
+Israel Kamakawiwo'ole, Te Vaka and Tahitian voices — music from the Pacific.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7k3MbSHCjdEvSBZeuKPkcO?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Basque Singer-Songwriters — Kantagileak
+
+Quiet Basque songs and storytellers — Eñaut Elorrieta, Esti Markez, Mikel Urdangarin and more.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6Q1RLzHuDfaGc4ORx0QfUk?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Anime & Film Scores — Japan
+
+Joe Hisaishi's Studio Ghibli scores plus Ryuichi Sakamoto and Yoko Kanno — film music from Japan.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/6X8KmeFfKAhAtsBNKZTVWJ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Japanese Worship — Songs about Jesus in Japanese
+
+Songs about Jesus in Japanese — bilingual worship from Lifehouse Worship, Tokyo.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/28ddY1zAPrlK3W3LHCs5vx?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+### Relaxing — Gentle Music
+
+Gentle music for resting, reading and quiet evenings.
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/52JM8qTuwz2Rw9HEWiX1wD?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
