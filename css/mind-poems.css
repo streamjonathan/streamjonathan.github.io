@@ -1,5 +1,5 @@
-/* Mind Poems — one poem a day, calendar grid + pop-up poems. Loaded only
-   on /mind-poems/ (v3). Site fonts: Fraunces for day numbers and poem
+/* Daily Poems — one poem a day, calendar grid + pop-up poems. Loaded only
+   on /mind-poems/ (v4). Site fonts: Fraunces for poem
    text, Newsreader for labels and small text, gold/silver/bronze rotating
    accents — the same three colours as the thumbnails and quote cards. */
 
@@ -140,14 +140,6 @@ html[data-theme="light"] {
   font: inherit;
 }
 
-.mind-poems__num {
-  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
 /* Days with a poem: a little fuller, with an ink dot. Tap to read. */
 button.mind-poems__day {
   cursor: pointer;
@@ -166,24 +158,7 @@ button.mind-poems__day:active {
   background: var(--chip-bg);
 }
 
-.mind-poems__day--filled .mind-poems__num {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
 /* Rotating accents, in filled-day order: gold, silver, bronze, repeat. */
-button.mind-poems__day:nth-of-type(3n + 1) .mind-poems__num {
-  color: var(--poem-gold);
-}
-
-button.mind-poems__day:nth-of-type(3n + 2) .mind-poems__num {
-  color: var(--poem-silver);
-}
-
-button.mind-poems__day:nth-of-type(3n) .mind-poems__num {
-  color: var(--poem-bronze);
-}
-
 .mind-poems__dot {
   position: absolute;
   right: 0.45rem;
@@ -246,7 +221,8 @@ button.mind-poems__day:nth-of-type(3n) .mind-poems__dot {
   font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
   font-weight: 600;
   letter-spacing: -0.01em;
-  font-size: 1.4rem;
+  font-size: 1.15rem;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.22);
   line-height: 1.65;
   margin: 0 0 1.5rem;
 }
