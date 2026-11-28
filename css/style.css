@@ -128,6 +128,19 @@ main li a { padding: 0.15rem 0; }
 .site-footer { border-top: 1px solid var(--line); margin-top: 2.5rem; padding-top: 0.75rem; font-size: 0.9rem; color: var(--muted); }
 .meta { color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-variant-numeric: tabular-nums; }
 blockquote { border-left: 3px solid var(--link); margin-left: 0; padding-left: 1rem; color: var(--quote); }
+/* Scripture blockquotes: gold left border, silver accent, Fraunces italic. */
+.post-body blockquote.scripture {
+  border-left: 3px solid var(--link);
+  border-right: 1px solid #b9b9b9;
+  padding: 0.5rem 1rem;
+  font-family: "Fraunces", Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font-weight: 600;
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+.post-body blockquote.scripture p { margin: 0; }
 /* Drop cap on the first paragraph of each essay. */
 .post-body > p:first-of-type::first-letter {
   font-size: 3.2em; float: left; line-height: 0.85;

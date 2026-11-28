@@ -42,14 +42,34 @@ That is why I love stories like The Great Divorce: they give us space to conside
 
 *Fellowship for Performing Arts' production of The Great Divorce. Carol Halstead on stage. Photo by Jeremy Daniel.*
 
-And look at how Jesus himself does it. He invites — he never forces. "Come unto me, all ye that labour and are heavy laden, and I will give you rest" (Matthew 11:28). "Behold, I stand at the door, and knock" (Revelation 3:20) — he waits for us to open it. And the people he is angry with are not the broken ones, or the ones who got it wrong. His anger is for the religious elite — the ones who load people with rules and shut the door in their faces. "Woe unto you, scribes and Pharisees, hypocrites! for ye shut up the kingdom of heaven against men" (Matthew 23:13). He turned over the tables in the temple (John 2:15) — but he sat down and ate with the people everyone else had written off. Which Jesus do we show people — the one who knocks, or the one who shuts the door?
+And look at how Jesus himself does it. He invites — he never forces.
 
-A few questions on these verses:
+<blockquote class="scripture">
+<p>"Come unto me, all ye that labour and are heavy laden, and I will give you rest. Take my yoke upon you, and learn of me; for I am meek and lowly in heart: and ye shall find rest unto your souls. For my yoke is easy, and my burden is light." — Matthew 11:28-30</p>
+</blockquote>
 
-- *Matthew 11:28 — rest is offered here, not ordered. What would it look like to receive it?*
-- *Revelation 3:20 — he knocks and waits. What would it take for you to open the door?*
-- *Matthew 23:13 — have you ever felt shut out? Who was doing the shutting — Jesus, or the people around him?*
-- *John 2:15 — he turns the tables for the house of prayer, then sits down with the people everyone wrote off. What do you make of that?*
+<blockquote class="scripture">
+<p>"Behold, I stand at the door, and knock: if any man hear my voice, and open the door, I will come in to him, and will sup with him, and he with me." — Revelation 3:20</p>
+</blockquote>
+
+He waits for us to open it. And the people he is angry with are not the broken ones, or the ones who got it wrong. His anger is for the religious elite — the ones who load people with rules and shut the door in their faces.
+
+<blockquote class="scripture">
+<p>"Woe unto you, scribes and Pharisees, hypocrites! for ye shut up the kingdom of heaven against men: for ye neither go in yourselves, neither suffer ye them that are entering to go in." — Matthew 23:13</p>
+</blockquote>
+
+<blockquote class="scripture">
+<p>"And when he had made a scourge of small cords, he drove them all out of the temple, and the sheep, and the oxen; and poured out the changers' money, and overthrew the tables; and said unto them that sold doves, Take these things hence; make not my Father's house an house of merchandise." — John 2:15-16</p>
+</blockquote>
+
+He turned over the tables in the temple — but he sat down and ate with the people everyone else had written off. Which Jesus do we show people — the one who knocks, or the one who shuts the door?
+
+A few thoughts on these verses:
+
+- *Matthew 11:28-30 — I reckon we all would like more grace and to know Jesus like this.*
+- *Revelation 3:20 — I reckon we'd all like someone who knocks and waits, instead of forcing the door.*
+- *Matthew 23:13 — I reckon most of us have felt shut out at some point. I wonder who was doing the shutting.*
+- *John 2:15-16 — I reckon we'd all like to know a Jesus like this — one who stands up for the house of prayer, then sits down with the people everyone wrote off.*
 
 What I keep coming back to is this: "Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him." That is 1 Corinthians 2:9. None of us can perceive what God has prepared. And Lewis, in The Great Divorce, writes that "Heaven, once attained, will work backwards and turn even that agony into a glory." Could that be the recompense — being with God, and the horrors of life healed as he brings us to him, in eternity, in the new heavens and the new earth? In The Magician's Nephew, Aslan sings a whole new world awake: "Narnia, Narnia, Narnia, awake. Love. Think. Speak." I have said Narnia imagines a world that is not fallen. What if the new heavens and the new earth are like that — a world made new? Lewis, writing as the demon Screwtape, put our situation the other way round: "The humans live in time but our Enemy destines them to eternity."
 
