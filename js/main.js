@@ -219,6 +219,15 @@ document.addEventListener("click", function (e) {
   }
   row.addEventListener("pointerdown", function () { paused = true; });
   row.addEventListener("pointerup", function () { touch(); });
+  // A press can end off the row — a drag released outside it, or a
+  // touch-drag the browser takes over for scrolling (pointercancel) —
+  // and then the row's own pointerup never fires, paused stays true,
+  // and that row sits still forever while the others keep moving.
+  // Catch the release on the window instead, but only when this row
+  // is the one being held, so an ordinary click elsewhere does not
+  // pause every row for five seconds.
+  window.addEventListener("pointerup", function () { if (paused) touch(); });
+  window.addEventListener("pointercancel", function () { if (paused) touch(); });
   row.addEventListener("wheel", function () { touch(); }, { passive: true });
   row.addEventListener("touchend", function () { touch(); }, { passive: true });
   if (prev) prev.addEventListener("click", function () { show(nearestIndex() - 1); touch(); });
