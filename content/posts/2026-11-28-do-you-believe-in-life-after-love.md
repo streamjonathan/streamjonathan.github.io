@@ -66,10 +66,13 @@ He turned over the tables in the temple — but he sat down and ate with the peo
 
 A few thoughts on these verses:
 
-- *Matthew 11:28-30 — I reckon we all would like more grace and to know Jesus like this.*
-- *Revelation 3:20 — I reckon we'd all like someone who knocks and waits, instead of forcing the door.*
-- *Matthew 23:13 — I reckon most of us have felt shut out at some point. I wonder who was doing the shutting.*
-- *John 2:15-16 — I reckon we'd all like to know a Jesus like this — one who stands up for the house of prayer, then sits down with the people everyone wrote off.*
+Matthew 11:28-30 — I reckon we all would like more grace and to know Jesus like this.
+
+Revelation 3:20 — I reckon we'd all like someone who knocks and waits, instead of forcing the door.
+
+Matthew 23:13 — I reckon most of us have felt shut out at some point. I wonder who was doing the shutting.
+
+John 2:15-16 — I reckon we'd all like to know a Jesus like this — one who stands up for the house of prayer, then sits down with the people everyone wrote off.
 
 I've written about this before — in [Suffering, Surfing and Jesus](https://jonathanmccallum.com/2026/10/30/suffering-surfing-and-jesus/) and in [Faith and Life in Jesus](https://jonathanmccallum.com/2024/07/25/faith-and-life-in-jesus/) — and I'm still on the journey myself. As Jesus walks up to you, he invites you to follow, and from the point we take hold of what he offers, we are on a journey with him. My closest friends and I talk about these things, and we admit how challenging they are. Nothing here is neat, and we don't pretend it is. I hope you and I can talk like that too — in the comments, in conversations, working it through together.
 
@@ -91,5 +94,6 @@ So, do you believe in life after love? I do. And I think the life after it never
 - The Great Divorce on stage: Fellowship for Performing Arts — https://fpatheatre.com/production/c-s-lewis-the-great-divorce-2/
 - C.S. Lewis — official site: https://www.cslewis.com/
 - Rich Mullins — official site: https://www.richmullins.com/
+- Read this on Substack: https://jonamccallum.substack.com/p/do-you-believe-in-life-after-love
 
 My home on the web is [jonathanmccallum.com](https://jonathanmccallum.com/).
