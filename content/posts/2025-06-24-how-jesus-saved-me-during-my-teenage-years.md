@@ -22,6 +22,4 @@ Those were amazing times in my life. The theological influence of the Chronicles
 
 I think about this now when I look at how much is changing around us. There is a cycle of producing more with less effort, and I think that means less brain power and less critical thinking. People are training AI models in their voice to reply to messages and create videos. The original voice of humanity is, in my opinion, being lost. My story is mine, in my own voice, and I want to keep telling it that way.
 
-Watch the video: [How Jesus Saved Me During My Teenage Years / Ai Reality Check on YouTube](https://www.youtube.com/watch?v=l5p-x8vz4l8)
-
 When did you first feel that God might be real?
