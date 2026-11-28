@@ -44,12 +44,12 @@ That is why I love stories like The Great Divorce: they give us space to conside
 
 And look at how Jesus himself does it. He invites — he never forces. "Come unto me, all ye that labour and are heavy laden, and I will give you rest" (Matthew 11:28). "Behold, I stand at the door, and knock" (Revelation 3:20) — he waits for us to open it. And the people he is angry with are not the broken ones, or the ones who got it wrong. His anger is for the religious elite — the ones who load people with rules and shut the door in their faces. "Woe unto you, scribes and Pharisees, hypocrites! for ye shut up the kingdom of heaven against men" (Matthew 23:13). He turned over the tables in the temple (John 2:15) — but he sat down and ate with the people everyone else had written off. Which Jesus do we show people — the one who knocks, or the one who shuts the door?
 
-A few notes on these verses:
+A few questions on these verses:
 
-- *Matthew 11:28 — an invitation, not an order. Rest is offered to the weary.*
-- *Revelation 3:20 — he knocks and waits. The door opens from the inside.*
-- *Matthew 23:13 — his sharpest words are for the ones who block the way in, not for the ones struggling to find it.*
-- *John 2:15 — the tables turn in defence of the house of prayer, not against a person.*
+- *Matthew 11:28 — rest is offered here, not ordered. What would it look like to receive it?*
+- *Revelation 3:20 — he knocks and waits. What would it take for you to open the door?*
+- *Matthew 23:13 — have you ever felt shut out? Who was doing the shutting — Jesus, or the people around him?*
+- *John 2:15 — he turns the tables for the house of prayer, then sits down with the people everyone wrote off. What do you make of that?*
 
 What I keep coming back to is this: "Eye hath not seen, nor ear heard, neither have entered into the heart of man, the things which God hath prepared for them that love him." That is 1 Corinthians 2:9. None of us can perceive what God has prepared. And Lewis, in The Great Divorce, writes that "Heaven, once attained, will work backwards and turn even that agony into a glory." Could that be the recompense — being with God, and the horrors of life healed as he brings us to him, in eternity, in the new heavens and the new earth? In The Magician's Nephew, Aslan sings a whole new world awake: "Narnia, Narnia, Narnia, awake. Love. Think. Speak." I have said Narnia imagines a world that is not fallen. What if the new heavens and the new earth are like that — a world made new? Lewis, writing as the demon Screwtape, put our situation the other way round: "The humans live in time but our Enemy destines them to eternity."
 
