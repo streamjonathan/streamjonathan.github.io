@@ -40,6 +40,11 @@
   var result = document.getElementById("comments-result");
   var token = null;
   var myName = "";
+  // True once the thread has loaded and the header count is real.
+  // Until then the header says "Loading…" — never "No comments yet",
+  // which is a lie while the count is still unknown. If the load
+  // fails, the header falls back to plain "Comments" instead.
+  var countLoaded = false;
   // True when the reader is signed in via the interview session
   // (Google, Instagram, LINE, or email) — they can post without a
   // Google token, and the Worker reads the session cookie.
@@ -98,6 +103,7 @@
   }
 
   function render(comments) {
+    countLoaded = true;
     list.textContent = "";
     // The shut dropdown shows the count, so the reader knows whether
     // there is anything to open for — updated on every load.
@@ -228,6 +234,13 @@
         render(data.comments || []);
       })
       .catch(function () {
+        // The API is not there on preview deployments (the comments
+        // Worker is bound to the live domain only), and it can fail
+        // briefly on the live site too. Say so in the list, and drop
+        // the header back to plain "Comments" — never leave it stuck
+        // on "Loading…" when there is nothing left to wait for.
+        // countLoaded stays false, so opening the panel tries again.
+        if (countEl) countEl.textContent = "Comments";
         if (!list.children.length) {
           var li = document.createElement("li");
           li.className = "comments-empty";
@@ -280,7 +293,7 @@
     var payload = decodePayload(token);
     myName = payload.name || "You";
     if (note) note.textContent = "Signed in — comments show your real name and photo.";
-    if (signinBox) signinBox.textContent = "";
+    if (signinBox) { signinBox.textContent = ""; signinBox.classList.remove("google-btn"); }
     if (asLine) asLine.textContent = "Commenting as " + myName + ".";
     if (form) form.hidden = false;
     load();
@@ -298,7 +311,7 @@
           // "Signed in with email" when an email session has no name.
           myName = me.name || (me.provider === "email" ? "Signed in with email" : "You");
           if (note) note.textContent = "Signed in — comments show your real name.";
-          if (signinBox) signinBox.textContent = "";
+          if (signinBox) { signinBox.textContent = ""; signinBox.classList.remove("google-btn"); }
           if (asLine) asLine.textContent = "Commenting as " + myName + ".";
           if (form) form.hidden = false;
           return;
@@ -337,7 +350,12 @@
     if (!window.google || !window.google.accounts || !window.google.accounts.id) return;
     window.google.accounts.id.initialize({ client_id: clientId, callback: onSignedIn });
     if (signinBox) {
-      window.google.accounts.id.renderButton(signinBox, { theme: "outline", size: "large" });
+      // Fixed button size (240x44) so the button never renders wide,
+      // and an explicit width so Google draws it at button size from
+      // the start. The button is never hidden: hiding it stopped
+      // Google's script settling it to normal size.
+      signinBox.classList.add("google-btn");
+      window.google.accounts.id.renderButton(signinBox, { theme: "outline", size: "large", width: 240 });
     }
   }
 
@@ -393,7 +411,13 @@
   if (details) {
     if (details.open) maybeStartSignIn();
     details.addEventListener("toggle", function () {
-      if (details.open) maybeStartSignIn();
+      if (details.open) {
+        maybeStartSignIn();
+        // The first load may still be in flight (or have failed) when
+        // the reader opens the panel — re-check so the header count
+        // is right by the time they look at it.
+        if (!countLoaded) load();
+      }
     });
   } else {
     startSignIn();

@@ -120,7 +120,7 @@ document.addEventListener("click", function (e) {
   var prev = section ? section.querySelector("[data-carousel-prev]") : null;
   var next = section ? section.querySelector("[data-carousel-next]") : null;
   var dots = [];
-  var index = 0, timer = null, paused = false, resumeAt = 0;
+  var index = 0, timer = null, paused = false, resumeAt = 0, lastLeft = -1;
 
   function nearestIndex() {
     var rowRect = row.getBoundingClientRect();
@@ -165,17 +165,23 @@ document.addEventListener("click", function (e) {
     // position itself (within a couple of pixels of maximum scroll), with
     // the last-card check as well for narrow viewports where only one
     // card is visible and the last card does reach the left edge.
+    // The scroll check can still miss: scroll-snap pulls the row back
+    // to the second-to-last card, a few pixels short of maximum scroll,
+    // so neither check fires and the row sits still forever. Catch that
+    // too — if a step leaves the row on the same card it tried to leave
+    // last time, the end is reached and it loops back to the start.
     var current = nearestIndex();
-    var atEnd = current >= cards.length - 1 || row.scrollLeft >= row.scrollWidth - row.clientWidth - 2;
-    if (atEnd) show(0);
-    else show(current + 1);
+    var atEnd = current >= cards.length - 1 || row.scrollLeft >= row.scrollWidth - row.clientWidth - 2
+      || (lastLeft >= 0 && current === lastLeft);
+    if (atEnd) { lastLeft = -1; show(0); }
+    else { lastLeft = current; show(current + 1); }
   }
   function start() {
     if (timer) return;
     timer = setInterval(step, 4000);
     setTimeout(step, 1200);
   }
-  function touch() { paused = false; resumeAt = Date.now() + 5000; }
+  function touch() { paused = false; resumeAt = Date.now() + 5000; lastLeft = -1; }
 
   if (dotsWrap) {
     if (useProgress) {
@@ -228,10 +234,9 @@ document.addEventListener("click", function (e) {
   }, { passive: true });
   if (section) section.classList.add("is-ready");
   markDot();
-  // Rows marked data-no-auto stay still until the reader moves them:
-  // the newest-writing row sits under a lead card that already carries
-  // the motion, and a row that slides away while the reader is reading
-  // an excerpt is a tap missed.
+  // Every row auto-advances, including the Newest and Watch rows: a
+  // row that sits still looks broken. Rows marked data-no-auto stay
+  // still until the reader moves them (none are marked that way now).
   if (!reduceMotion && !row.hasAttribute("data-no-auto")) start();
   });
 })();

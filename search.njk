@@ -10,7 +10,10 @@ eleventyExcludeFromCollections: true
 <p>Search everything published here. This search runs entirely in your browser — it cannot be tricked, and it works even when the AI chat is resting. It only finds posts that are already live; more appear as posts are published.</p>
 
 <div id="search"></div>
+<p class="search-status" id="search-status" hidden>Searching…</p>
 
+<link rel="preload" href="/pagefind/pagefind-ui.js" as="script">
+<link rel="preload" href="/pagefind/pagefind-ui.css" as="style">
 <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
 <script src="/pagefind/pagefind-ui.js" defer></script>
-<script src="/js/search.js?v=2" defer></script>
+<script src="/js/search.js?v=3" defer></script>

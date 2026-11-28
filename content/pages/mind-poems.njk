@@ -2,25 +2,26 @@
 title: "Daily Poems"
 slug: mind-poems
 pageStylesheet: /css/mind-poems.css?v=4
-pageScript: /js/mind-poems.js?v=2
+pageScript: /js/mind-poems.js?v=3
 ---
 
-{# One poem a day: the day of the month cycles through the poems.
-   Day 2 shows poem 2, … day 7 shows poem 7, day 8 shows poem 2 again:
-   index = (dayOfMonth - 2) mod 6, so day 1 shows poem 7. Every day of
-   the month shows a poem, and the cycle grows on its own if a poem is
-   added to mindPoems.json. JS re-picks today's poem from the reader's
-   own clock on load; the poem below is the build-date default, so the
-   page still shows a poem with JS off. #}
+{# One poem a day — but only days with a poem are "today". If today has
+   a poem, it shows with "Today's poem". If not (only days 2–7 have
+   poems so far), the latest poem shows instead, labelled with its date,
+   so the page never shows a stale "today". JS re-picks from the
+   reader's own clock on load; the poem below is the build-date default,
+   so the page still shows a poem with JS off. #}
 {% set todayNum = page.date.getDate() %}
-{% set defaultIndex = ((todayNum - 2) % 6 + 6) % 6 %}
-{% set defaultPoem = mindPoems[defaultIndex] %}
+{% set todayPoem = none %}
+{% for p in mindPoems %}{% if p.day == todayNum %}{% set todayPoem = p %}{% endif %}{% endfor %}
+{% set defaultPoem = todayPoem if todayPoem else mindPoems[mindPoems | length - 1] %}
+{% set defaultLabel = "Today's poem" if todayPoem else "Latest poem — " ~ defaultPoem.day ~ " November 2026" %}
 
 <p class="mind-poems__intro">One small poem a day, written by hand in the boxes of a calendar.</p>
 <p class="poem-lang-link"><a href="https://jonathanmccallum-ja.pages.dev/mind-poems/">日本語で読む →</a></p>
 
 <section class="mind-poems__today" aria-label="Today's poem">
-  <p class="mind-poems__today-label" data-today-label>Today's poem</p>
+  <p class="mind-poems__today-label" data-today-label data-default-label="{{ defaultLabel }}">{{ defaultLabel }}</p>
   {% for poem in mindPoems %}
   <article class="mind-poems__today-poem{% if poem.boxed %} mind-poems__today-poem--boxed{% endif %}" data-today-poem="{{ poem.day }}"{% if poem.day != defaultPoem.day %} hidden{% endif %}>
     <h2 class="mind-poems__today-day">{{ poem.day }} November 2026</h2>

@@ -691,6 +691,18 @@ button[type="submit"] {
 .comments-dropdown[open] .comments-dropdown__chevron { transform: rotate(180deg); }
 .comments-dropdown__body { padding: 0 1rem 1rem; border-top: 1px solid var(--line); }
 .comments-note { color: var(--muted); }
+/* Google sign-in button: fixed button size, so a slow-loading button
+   can never spill across the page as a giant "G". The box is only
+   sized once the button is being rendered (class set by js/comments.js
+   and js/ask.js), so an empty box takes no space. The button itself
+   is never hidden — hiding it stopped Google's script settling it
+   to normal size. */
+#comments-signin.google-btn, #interview-google-signin.google-btn {
+  width: 240px;
+  max-width: 100%;
+  height: 44px;
+  overflow: hidden;
+}
 .comments-list { list-style: none; padding-left: 0; }
 .comments-empty { color: var(--muted); }
 .comment { border-top: 1px solid var(--line); padding: 1rem 0; }
@@ -720,6 +732,11 @@ button[type="submit"] {
 #comments-form button[type="submit"] { padding: 0.75rem 1.5rem; border: 0; border-radius: 0.75rem; font: 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif; color: var(--btn-text); background: var(--btn-bg); cursor: pointer; min-height: 3.25rem; }
 .comments-as { color: var(--muted); }
 .comments-result { color: var(--muted); }
+
+/* Search page: the "Searching…" line shows from the first keystroke
+   until Pagefind renders results, so a slow first query never looks
+   broken. */
+.search-status { color: var(--muted); }
 
 /* Poem pages: big easy link to the Japanese version. */
 .poem-lang-link { margin: 0 0 1.25rem; }
